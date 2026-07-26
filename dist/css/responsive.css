@@ -247,19 +247,6 @@
         font-size: 0.8rem;
     }
 
-    .wishlist-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: var(--space-md);
-    }
-
-    .wishlist-card__img {
-        height: 140px;
-    }
-
-    .wishlist-card__body {
-        padding: var(--space-md);
-    }
-
     .settings-grid {
         grid-template-columns: 1fr;
     }
@@ -350,15 +337,6 @@
 
     .orders-filter__btn {
         justify-content: center;
-    }
-
-    .wishlist-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .wishlist-card__add-cart {
-        font-size: 0.75rem;
-        padding: var(--space-xs) var(--space-sm);
     }
 
     .tracking-search__btn span {
