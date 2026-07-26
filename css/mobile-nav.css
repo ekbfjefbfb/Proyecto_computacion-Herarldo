@@ -1,0 +1,186 @@
+/* ============================================ */
+/* NAVEGACION MOVIL - Sidebar                   */
+/* Menu lateral que se desliza en movil          */
+/* ============================================ */
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-modal);
+    pointer-events: none;
+}
+
+.mobile-nav.active {
+    pointer-events: all;
+}
+
+/* ── OVERLAY OSCURO ──────────────────────────── */
+.mobile-nav__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.mobile-nav.active .mobile-nav__overlay {
+    opacity: 1;
+}
+
+/* ── SIDEBAR LATERAL ─────────────────────────── */
+.mobile-nav__sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    max-width: 85vw;
+    height: 100%;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    transform: translateX(-100%);
+    transition: transform var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.mobile-nav.active .mobile-nav__sidebar {
+    transform: translateX(0);
+}
+
+/* ── CABECERA DEL SIDEBAR ────────────────────── */
+.mobile-nav__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-surface);
+}
+
+.mobile-nav__user {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.mobile-nav__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.mobile-nav__user-name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.mobile-nav__user-email {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ── BOTON CERRAR ────────────────────────────── */
+.mobile-nav__close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+}
+
+.mobile-nav__close:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    transform: rotate(90deg);
+}
+
+/* ── LINKS DE NAVEGACION ─────────────────────── */
+.mobile-nav__links {
+    list-style: none;
+    padding: var(--space-md) 0;
+    flex: 1;
+}
+
+.mobile-nav__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: all var(--transition-normal);
+}
+
+.mobile-nav__link:hover {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    padding-left: var(--space-xl);
+}
+
+.mobile-nav__link i {
+    width: 24px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.mobile-nav__divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: var(--space-sm) 0;
+}
+
+/* ── BREADCRUMBS ─────────────────────────────── */
+.breadcrumb {
+    margin-top: 70px;
+    padding: var(--space-md) 0;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.85rem;
+}
+
+.breadcrumb__link {
+    color: var(--text-muted);
+}
+
+.breadcrumb__link:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumb__separator {
+    color: var(--text-muted);
+}
+
+.breadcrumb__current {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ── CONTENIDO PRINCIPAL ─────────────────────── */
+.main-content {
+    min-height: calc(100vh - 70px - 50px - 300px);
+    padding: var(--space-2xl) 0;
+}

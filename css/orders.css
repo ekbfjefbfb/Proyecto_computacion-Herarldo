@@ -1,0 +1,257 @@
+/* ============================================ */
+/* HISTORIAL DE PEDIDOS                         */
+/* Filtros, tarjetas de pedido, estados         */
+/* ============================================ */
+
+/* ── FILTROS DE PEDIDOS ──────────────────────── */
+.orders-filter {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.orders-filter__btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+}
+
+.orders-filter__btn:hover {
+    border-color: var(--color-primary);
+    color: var(--text-primary);
+}
+
+.orders-filter__btn--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.orders-filter__count {
+    padding: 1px 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+}
+
+/* ── TARJETA DE PEDIDO ───────────────────────── */
+.order-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-md);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.order-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Cabecera del pedido */
+.order-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    padding: var(--space-lg) var(--space-xl);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.order-card__label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.order-card__number {
+    font-weight: 700;
+    color: var(--color-primary-light);
+}
+
+/* ── BADGES DE ESTADO ────────────────────────── */
+.order-card__status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.order-card__status--delivered {
+    background: rgba(0, 184, 148, 0.15);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+}
+
+.order-card__status--shipped {
+    background: rgba(116, 185, 255, 0.15);
+    color: var(--color-info);
+    border: 1px solid var(--color-info);
+}
+
+.order-card__status--pending {
+    background: rgba(253, 203, 110, 0.15);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning);
+}
+
+/* ── PRODUCTOS DEL PEDIDO ────────────────────── */
+.order-card__products {
+    padding: var(--space-md) var(--space-xl);
+}
+
+.order-card__product {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.order-card__product:last-child {
+    border-bottom: none;
+}
+
+.order-card__product-img {
+    width: 50px;
+    height: 50px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--color-primary-light);
+    flex-shrink: 0;
+}
+
+.order-card__product-info { flex: 1; }
+
+.order-card__product-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.order-card__product-info p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.order-card__product-qty {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.order-card__product-price {
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 100px;
+    text-align: right;
+}
+
+/* ── FOOTER DEL PEDIDO ───────────────────────── */
+.order-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg) var(--space-xl);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.order-card__total {
+    font-size: 1rem;
+}
+
+.order-card__total span {
+    color: var(--text-muted);
+    margin-right: var(--space-sm);
+}
+
+.order-card__total strong {
+    font-size: 1.2rem;
+    color: var(--color-primary-light);
+}
+
+/* ── BOTONES DE ACCION ───────────────────────── */
+.order-card__actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.order-card__btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+}
+
+.order-card__btn--track {
+    background: var(--color-primary);
+    color: white;
+}
+
+.order-card__btn--track:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.order-card__btn--review {
+    background: rgba(253, 203, 110, 0.15);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning);
+}
+
+.order-card__btn--review:hover {
+    background: var(--color-warning);
+    color: #000;
+}
+
+.order-card__btn--reorder {
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.order-card__btn--reorder:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary-light);
+}
+
+.order-card__btn--cancel {
+    background: rgba(255, 107, 107, 0.15);
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+}
+
+.order-card__btn--cancel:hover {
+    background: var(--color-error);
+    color: white;
+}
+
+.order-card--hidden { display: none; }

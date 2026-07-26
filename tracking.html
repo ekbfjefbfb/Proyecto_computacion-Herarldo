@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechStore - Tracking de Envio">
+    <title>TechStore | Tracking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/tracking.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- SECCION: TRACKING DE ENVIO                  -->
+    <!-- Buscador, progreso visual, timeline         -->
+    <!-- ============================================ -->
+    <section class="account-section account-section--active" id="section-tracking">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-truck"></i>
+                Tracking de Envio
+            </h1>
+            <p class="account-section__subtitle">Sigue tu pedido en tiempo real</p>
+        </div>
+
+        <!-- Buscador de tracking -->
+        <div class="tracking-search">
+            <div class="tracking-search__input-group">
+                <i class="fas fa-search"></i>
+                <input
+                    type="text"
+                    id="trackingInput"
+                    class="tracking-search__input"
+                    placeholder="Ingresa tu numero de pedido (ej: TS-2024-0092)"
+                >
+                <button class="tracking-search__btn" id="trackingSearchBtn">
+                    <span>Rastrear</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Resultado del tracking -->
+        <div class="tracking-result" id="trackingResult">
+            <!-- Info del pedido -->
+            <div class="tracking-info">
+                <div class="tracking-info__header">
+                    <div class="tracking-info__order">
+                        <span class="tracking-info__label">Pedido:</span>
+                        <span class="tracking-info__number">#TS-2024-0092</span>
+                    </div>
+                    <div class="tracking-info__carrier">
+                        <span class="tracking-info__label">Transportista:</span>
+                        <span class="tracking-info__carrier-name">
+                            <i class="fas fa-truck"></i> DHL Express
+                        </span>
+                    </div>
+                    <div class="tracking-info__eta">
+                        <span class="tracking-info__label">Entrega estimada:</span>
+                        <span class="tracking-info__date">
+                            <i class="fas fa-calendar-check"></i> 3 Enero 2025
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Barra de progreso -->
+                <div class="tracking-progress">
+                    <div class="tracking-progress__bar">
+                        <div class="tracking-progress__fill" style="width: 60%"></div>
+                    </div>
+                    <div class="tracking-progress__steps">
+                        <div class="tracking-progress__step tracking-progress__step--completed">
+                            <div class="tracking-progress__dot">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="tracking-progress__step-label">Confirmado</span>
+                            <span class="tracking-progress__step-date">22 Dic</span>
+                        </div>
+                        <div class="tracking-progress__step tracking-progress__step--completed">
+                            <div class="tracking-progress__dot">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="tracking-progress__step-label">Procesando</span>
+                            <span class="tracking-progress__step-date">23 Dic</span>
+                        </div>
+                        <div class="tracking-progress__step tracking-progress__step--active">
+                            <div class="tracking-progress__dot">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <span class="tracking-progress__step-label">En Transito</span>
+                            <span class="tracking-progress__step-date">25 Dic</span>
+                        </div>
+                        <div class="tracking-progress__step">
+                            <div class="tracking-progress__dot">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <span class="tracking-progress__step-label">Entregado</span>
+                            <span class="tracking-progress__step-date">Pendiente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline detallado -->
+            <div class="tracking-timeline">
+                <h3 class="tracking-timeline__title">
+                    <i class="fas fa-history"></i> Historial de Eventos
+                </h3>
+
+                <div class="tracking-timeline__list">
+                    <div class="tracking-timeline__item tracking-timeline__item--active">
+                        <div class="tracking-timeline__dot"></div>
+                        <div class="tracking-timeline__content">
+                            <div class="tracking-timeline__header">
+                                <span class="tracking-timeline__event">En transito - Centro de distribucion</span>
+                                <span class="tracking-timeline__time">Hace 2 horas</span>
+                            </div>
+                            <p class="tracking-timeline__desc">
+                                El paquete llego al centro de distribucion de DHL en Ciudad de Mexico.
+                                Siguiente destino: Oficina de entrega local.
+                            </p>
+                            <span class="tracking-timeline__location">
+                                <i class="fas fa-map-marker-alt"></i> Ciudad de Mexico, MX
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-timeline__item">
+                        <div class="tracking-timeline__dot"></div>
+                        <div class="tracking-timeline__content">
+                            <div class="tracking-timeline__header">
+                                <span class="tracking-timeline__event">Enviado desde bodega</span>
+                                <span class="tracking-timeline__time">Hace 1 dia</span>
+                            </div>
+                            <p class="tracking-timeline__desc">
+                                Paquete recogido por DHL Express. Numero de guia: 1234567890.
+                            </p>
+                            <span class="tracking-timeline__location">
+                                <i class="fas fa-map-marker-alt"></i> Guadalajara, MX
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-timeline__item">
+                        <div class="tracking-timeline__dot"></div>
+                        <div class="tracking-timeline__content">
+                            <div class="tracking-timeline__header">
+                                <span class="tracking-timeline__event">Pedido procesado</span>
+                                <span class="tracking-timeline__time">Hace 2 dias</span>
+                            </div>
+                            <p class="tracking-timeline__desc">
+                                Tu pedido ha sido empacado y esta listo para envio.
+                            </p>
+                            <span class="tracking-timeline__location">
+                                <i class="fas fa-map-marker-alt"></i> Bodega TechStore, MX
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="tracking-timeline__item">
+                        <div class="tracking-timeline__dot"></div>
+                        <div class="tracking-timeline__content">
+                            <div class="tracking-timeline__header">
+                                <span class="tracking-timeline__event">Pago confirmado</span>
+                                <span class="tracking-timeline__time">Hace 3 dias</span>
+                            </div>
+                            <p class="tracking-timeline__desc">
+                                Pago recibido exitosamente via tarjeta terminacion ****4589.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tracking-timeline__item">
+                        <div class="tracking-timeline__dot"></div>
+                        <div class="tracking-timeline__content">
+                            <div class="tracking-timeline__header">
+                                <span class="tracking-timeline__event">Pedido creado</span>
+                                <span class="tracking-timeline__time">Hace 3 dias</span>
+                            </div>
+                            <p class="tracking-timeline__desc">
+                                Tu pedido #TS-2024-0092 ha sido registrado exitosamente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

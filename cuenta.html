@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechStore - Mi Cuenta">
+    <title>TechStore | Mi Cuenta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/orders.css">
+    <link rel="stylesheet" href="css/wishlist.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- SECCION: LOGIN                               -->
+    <!-- ============================================ -->
+    <section class="account-section account-section--active" id="section-login">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-sign-in-alt"></i>
+                Iniciar Sesion
+            </h1>
+            <p class="account-section__subtitle">Accede a tu cuenta para gestionar tus pedidos</p>
+        </div>
+
+        <form class="auth-form" id="loginForm" novalidate>
+            <div class="auth-form__group">
+                <label class="auth-form__label" for="loginEmail">
+                    <i class="fas fa-envelope"></i> Correo Electronico
+                </label>
+                <div class="auth-form__input-wrapper">
+                    <input type="email" id="loginEmail" class="auth-form__input" placeholder="tu@email.com" required autocomplete="email">
+                    <span class="auth-form__input-icon"><i class="fas fa-check-circle"></i></span>
+                </div>
+                <span class="auth-form__error" id="loginEmailError"></span>
+            </div>
+
+            <div class="auth-form__group">
+                <label class="auth-form__label" for="loginPassword">
+                    <i class="fas fa-lock"></i> Contrasena
+                </label>
+                <div class="auth-form__input-wrapper">
+                    <input type="password" id="loginPassword" class="auth-form__input" placeholder="Tu contrasena" required autocomplete="current-password">
+                    <button type="button" class="auth-form__toggle-password" id="toggleLoginPassword" aria-label="Mostrar contrasena">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <span class="auth-form__input-icon"><i class="fas fa-check-circle"></i></span>
+                </div>
+                <span class="auth-form__error" id="loginPasswordError"></span>
+            </div>
+
+            <div class="auth-form__options">
+                <label class="auth-form__checkbox">
+                    <input type="checkbox" id="rememberMe">
+                    <span class="auth-form__checkbox-custom"></span>
+                    <span>Recordarme</span>
+                </label>
+                <a href="#" class="auth-form__forgot">Olvidaste tu contrasena?</a>
+            </div>
+
+            <button type="submit" class="auth-form__submit">
+                <span>Iniciar Sesion</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <div class="auth-form__divider">
+                <span>o continua con</span>
+            </div>
+
+            <div class="auth-form__social">
+                <button type="button" class="auth-form__social-btn auth-form__social-btn--google">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </button>
+                <button type="button" class="auth-form__social-btn auth-form__social-btn--facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </button>
+            </div>
+
+            <p class="auth-form__switch">
+                No tienes cuenta? <a href="#" id="switchToRegister">Registrate aqui</a>
+            </p>
+        </form>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCION: REGISTRO                            -->
+    <!-- ============================================ -->
+    <section class="account-section" id="section-register">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-user-plus"></i>
+                Crear Cuenta
+            </h1>
+            <p class="account-section__subtitle">Unete a TechStore y disfruta de beneficios exclusivos</p>
+        </div>
+
+        <form class="auth-form" id="registerForm" novalidate>
+            <div class="auth-form__group">
+                <label class="auth-form__label" for="regName">
+                    <i class="fas fa-user"></i> Nombre Completo
+                </label>
+                <div class="auth-form__input-wrapper">
+                    <input type="text" id="regName" class="auth-form__input" placeholder="Tu nombre completo" required autocomplete="name">
+                    <span class="auth-form__input-icon"><i class="fas fa-check-circle"></i></span>
+                </div>
+                <span class="auth-form__error" id="regNameError"></span>
+            </div>
+
+            <div class="auth-form__group">
+                <label class="auth-form__label" for="regEmail">
+                    <i class="fas fa-envelope"></i> Correo Electronico
+                </label>
+                <div class="auth-form__input-wrapper">
+                    <input type="email" id="regEmail" class="auth-form__input" placeholder="tu@email.com" required autocomplete="email">
+                    <span class="auth-form__input-icon"><i class="fas fa-check-circle"></i></span>
+                </div>
+                <span class="auth-form__error" id="regEmailError"></span>
+            </div>
+
+            <div class="auth-form__group">
+                <label class="auth-form__label" for="regPhone">
+                    <i class="fas fa-phone"></i> Telefono
+                </label>
+                <div class="auth-form__input-wrapper">
+                    <input type="tel" id="regPhone" class="auth-form__input" placeholder="+52 123 456 7890" required autocomplete="tel">
+                    <span class="auth-form__input-icon"><i class="fas fa-check-circle"></i></span>
+                </div>
+                <span class="auth-form__error" id="regPhoneError"></span>
+            </div>
+
+            <div class="auth-form__group">
+                <label class="auth-form__label" for="regPassword">
+                    <i class="fas fa-lock"></i> Contrasena
+                </label>
+                <div class="auth-form__input-wrapper">
+                    <input type="password" id="regPassword" class="auth-form__input" placeholder="Minimo 8 caracteres" required autocomplete="new-password">
+                    <button type="button" class="auth-form__toggle-password" id="toggleRegPassword" aria-label="Mostrar contrasena">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <span class="auth-form__input-icon"><i class="fas fa-check-circle"></i></span>
+                </div>
+                <div class="auth-form__strength" id="passwordStrength">
+                    <div class="auth-form__strength-bar"></div>
+                    <div class="auth-form__strength-bar"></div>
+                    <div class="auth-form__strength-bar"></div>
+                    <div class="auth-form__strength-bar"></div>
+                </div>
+                <span class="auth-form__error" id="regPasswordError"></span>
+            </div>
+
+            <div class="auth-form__group">
+                <label class="auth-form__label" for="regConfirmPassword">
+                    <i class="fas fa-lock"></i> Confirmar Contrasena
+                </label>
+                <div class="auth-form__input-wrapper">
+                    <input type="password" id="regConfirmPassword" class="auth-form__input" placeholder="Repite tu contrasena" required autocomplete="new-password">
+                    <span class="auth-form__input-icon"><i class="fas fa-check-circle"></i></span>
+                </div>
+                <span class="auth-form__error" id="regConfirmPasswordError"></span>
+            </div>
+
+            <div class="auth-form__group">
+                <label class="auth-form__checkbox">
+                    <input type="checkbox" id="acceptTerms" required>
+                    <span class="auth-form__checkbox-custom"></span>
+                    <span>Acepto los <a href="#">Terminos y Condiciones</a> y la <a href="#">Politica de Privacidad</a></span>
+                </label>
+                <span class="auth-form__error" id="regTermsError"></span>
+            </div>
+
+            <button type="submit" class="auth-form__submit auth-form__submit--register">
+                <span>Crear Cuenta</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <p class="auth-form__switch">
+                Ya tienes cuenta? <a href="#" id="switchToLogin">Inicia sesion aqui</a>
+            </p>
+        </form>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCION: MI PERFIL                           -->
+    <!-- ============================================ -->
+    <section class="account-section" id="section-profile">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-user"></i>
+                Mi Perfil
+            </h1>
+            <p class="account-section__subtitle">Gestiona tu informacion personal</p>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-card__cover">
+                <div class="profile-card__pattern"></div>
+            </div>
+            <div class="profile-card__body">
+                <div class="profile-card__avatar">
+                    <span>JD</span>
+                    <div class="profile-card__avatar-ring"></div>
+                </div>
+                <div class="profile-card__info">
+                    <h2 class="profile-card__name">Juan Doe</h2>
+                    <p class="profile-card__email">juan@email.com</p>
+                    <span class="profile-card__member-badge">
+                        <i class="fas fa-crown"></i> Miembro Gold
+                    </span>
+                </div>
+                <div class="profile-card__stats">
+                    <div class="profile-card__stat">
+                        <span class="profile-card__stat-number">12</span>
+                        <span class="profile-card__stat-label">Pedidos</span>
+                    </div>
+                    <div class="profile-card__stat">
+                        <span class="profile-card__stat-number">$2,450</span>
+                        <span class="profile-card__stat-label">Gastado</span>
+                    </div>
+                    <div class="profile-card__stat">
+                        <span class="profile-card__stat-number">8</span>
+                        <span class="profile-card__stat-label">Favoritos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="profile-form" id="profileForm">
+            <h3 class="profile-form__title">
+                <i class="fas fa-edit"></i> Informacion Personal
+            </h3>
+            <div class="profile-form__grid">
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="profileName">
+                        <i class="fas fa-user"></i> Nombre
+                    </label>
+                    <input type="text" id="profileName" class="profile-form__input" value="Juan" required>
+                </div>
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="profileLastName">
+                        <i class="fas fa-user"></i> Apellido
+                    </label>
+                    <input type="text" id="profileLastName" class="profile-form__input" value="Doe" required>
+                </div>
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="profileEmail">
+                        <i class="fas fa-envelope"></i> Correo Electronico
+                    </label>
+                    <input type="email" id="profileEmail" class="profile-form__input" value="juan@email.com" required>
+                </div>
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="profilePhone">
+                        <i class="fas fa-phone"></i> Telefono
+                    </label>
+                    <input type="tel" id="profilePhone" class="profile-form__input" value="+52 123 456 7890">
+                </div>
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="profileBirth">
+                        <i class="fas fa-calendar"></i> Fecha de Nacimiento
+                    </label>
+                    <input type="date" id="profileBirth" class="profile-form__input" value="1995-06-15">
+                </div>
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="profileGender">
+                        <i class="fas fa-venus-mars"></i> Genero
+                    </label>
+                    <select id="profileGender" class="profile-form__select">
+                        <option value="">Seleccionar...</option>
+                        <option value="male" selected>Masculino</option>
+                        <option value="female">Femenino</option>
+                        <option value="other">Otro</option>
+                        <option value="prefer-not">Prefiero no decir</option>
+                    </select>
+                </div>
+            </div>
+            <div class="profile-form__actions">
+                <button type="reset" class="profile-form__btn profile-form__btn--cancel">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button type="submit" class="profile-form__btn profile-form__btn--save">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+            </div>
+        </form>
+
+        <form class="profile-form" id="passwordForm">
+            <h3 class="profile-form__title">
+                <i class="fas fa-key"></i> Cambiar Contrasena
+            </h3>
+            <div class="profile-form__grid profile-form__grid--single">
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="currentPassword">
+                        <i class="fas fa-lock"></i> Contrasena Actual
+                    </label>
+                    <input type="password" id="currentPassword" class="profile-form__input" placeholder="Tu contrasena actual">
+                </div>
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="newPassword">
+                        <i class="fas fa-lock"></i> Nueva Contrasena
+                    </label>
+                    <input type="password" id="newPassword" class="profile-form__input" placeholder="Minimo 8 caracteres">
+                </div>
+                <div class="profile-form__group">
+                    <label class="profile-form__label" for="confirmNewPassword">
+                        <i class="fas fa-lock"></i> Confirmar Nueva Contrasena
+                    </label>
+                    <input type="password" id="confirmNewPassword" class="profile-form__input" placeholder="Repite la nueva contrasena">
+                </div>
+            </div>
+            <div class="profile-form__actions">
+                <button type="submit" class="profile-form__btn profile-form__btn--save">
+                    <i class="fas fa-key"></i> Actualizar Contrasena
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCION: HISTORIAL DE PEDIDOS                -->
+    <!-- ============================================ -->
+    <section class="account-section" id="section-orders">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-box"></i>
+                Mis Pedidos
+            </h1>
+            <p class="account-section__subtitle">Revisa el historial de tus compras</p>
+        </div>
+
+        <div class="orders-filter">
+            <button class="orders-filter__btn orders-filter__btn--active" data-filter="all">
+                Todos <span class="orders-filter__count">5</span>
+            </button>
+            <button class="orders-filter__btn" data-filter="pending">
+                Pendientes <span class="orders-filter__count">1</span>
+            </button>
+            <button class="orders-filter__btn" data-filter="shipped">
+                Enviados <span class="orders-filter__count">2</span>
+            </button>
+            <button class="orders-filter__btn" data-filter="delivered">
+                Entregados <span class="orders-filter__count">2</span>
+            </button>
+        </div>
+
+        <div class="orders-list" id="ordersList">
+            <!-- Pedido 1 - Entregado -->
+            <div class="order-card" data-status="delivered">
+                <div class="order-card__header">
+                    <div class="order-card__id">
+                        <span class="order-card__label">Pedido</span>
+                        <span class="order-card__number">#TS-2024-0089</span>
+                    </div>
+                    <div class="order-card__date">
+                        <span class="order-card__label">Fecha</span>
+                        <span>15 Dic 2024</span>
+                    </div>
+                    <div class="order-card__status order-card__status--delivered">
+                        <i class="fas fa-check-circle"></i> Entregado
+                    </div>
+                </div>
+                <div class="order-card__products">
+                    <div class="order-card__product">
+                        <div class="order-card__product-img">
+                            <i class="fas fa-headphones-alt"></i>
+                        </div>
+                        <div class="order-card__product-info">
+                            <h4>Sony WH-1000XM5</h4>
+                            <p>Audifonos Bluetooth</p>
+                        </div>
+                        <div class="order-card__product-qty"><span>x1</span></div>
+                        <div class="order-card__product-price">$599.00 USD</div>
+                    </div>
+                    <div class="order-card__product">
+                        <div class="order-card__product-img">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="order-card__product-info">
+                            <h4>Funda iPhone 15 Pro</h4>
+                            <p>Cover Transparent Premium</p>
+                        </div>
+                        <div class="order-card__product-qty"><span>x2</span></div>
+                        <div class="order-card__product-price">$29.98 USD</div>
+                    </div>
+                </div>
+                <div class="order-card__footer">
+                    <div class="order-card__total">
+                        <span>Total:</span>
+                        <strong>$628.98 USD</strong>
+                    </div>
+                    <div class="order-card__actions">
+                        <button class="order-card__btn order-card__btn--review">
+                            <i class="fas fa-star"></i> Calificar
+                        </button>
+                        <button class="order-card__btn order-card__btn--reorder">
+                            <i class="fas fa-redo"></i> Volver a Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 2 - Enviado -->
+            <div class="order-card" data-status="shipped">
+                <div class="order-card__header">
+                    <div class="order-card__id">
+                        <span class="order-card__label">Pedido</span>
+                        <span class="order-card__number">#TS-2024-0092</span>
+                    </div>
+                    <div class="order-card__date">
+                        <span class="order-card__label">Fecha</span>
+                        <span>22 Dic 2024</span>
+                    </div>
+                    <div class="order-card__status order-card__status--shipped">
+                        <i class="fas fa-shipping-fast"></i> Enviado
+                    </div>
+                </div>
+                <div class="order-card__products">
+                    <div class="order-card__product">
+                        <div class="order-card__product-img">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="order-card__product-info">
+                            <h4>MacBook Air M3</h4>
+                            <p>15" - 16GB RAM - 512GB</p>
+                        </div>
+                        <div class="order-card__product-qty"><span>x1</span></div>
+                        <div class="order-card__product-price">$1,299.00 USD</div>
+                    </div>
+                </div>
+                <div class="order-card__footer">
+                    <div class="order-card__total">
+                        <span>Total:</span>
+                        <strong>$1,299.00 USD</strong>
+                    </div>
+                    <div class="order-card__actions">
+                        <button class="order-card__btn order-card__btn--track" data-tracking="TS20240092">
+                            <i class="fas fa-map-marker-alt"></i> Rastrear Envio
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 3 - Enviado -->
+            <div class="order-card" data-status="shipped">
+                <div class="order-card__header">
+                    <div class="order-card__id">
+                        <span class="order-card__label">Pedido</span>
+                        <span class="order-card__number">#TS-2024-0095</span>
+                    </div>
+                    <div class="order-card__date">
+                        <span class="order-card__label">Fecha</span>
+                        <span>28 Dic 2024</span>
+                    </div>
+                    <div class="order-card__status order-card__status--shipped">
+                        <i class="fas fa-shipping-fast"></i> Enviado
+                    </div>
+                </div>
+                <div class="order-card__products">
+                    <div class="order-card__product">
+                        <div class="order-card__product-img">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="order-card__product-info">
+                            <h4>Control PS5 DualSense</h4>
+                            <p>Color Cosmic Red</p>
+                        </div>
+                        <div class="order-card__product-qty"><span>x1</span></div>
+                        <div class="order-card__product-price">$69.99 USD</div>
+                    </div>
+                    <div class="order-card__product">
+                        <div class="order-card__product-img">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <div class="order-card__product-info">
+                            <h4>Teclado Mecanico RGB</h4>
+                            <p>Logitech G Pro X</p>
+                        </div>
+                        <div class="order-card__product-qty"><span>x1</span></div>
+                        <div class="order-card__product-price">$149.99 USD</div>
+                    </div>
+                </div>
+                <div class="order-card__footer">
+                    <div class="order-card__total">
+                        <span>Total:</span>
+                        <strong>$219.98 USD</strong>
+                    </div>
+                    <div class="order-card__actions">
+                        <button class="order-card__btn order-card__btn--track" data-tracking="TS20240095">
+                            <i class="fas fa-map-marker-alt"></i> Rastrear Envio
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 4 - Entregado -->
+            <div class="order-card" data-status="delivered">
+                <div class="order-card__header">
+                    <div class="order-card__id">
+                        <span class="order-card__label">Pedido</span>
+                        <span class="order-card__number">#TS-2024-0078</span>
+                    </div>
+                    <div class="order-card__date">
+                        <span class="order-card__label">Fecha</span>
+                        <span>10 Dic 2024</span>
+                    </div>
+                    <div class="order-card__status order-card__status--delivered">
+                        <i class="fas fa-check-circle"></i> Entregado
+                    </div>
+                </div>
+                <div class="order-card__products">
+                    <div class="order-card__product">
+                        <div class="order-card__product-img">
+                            <i class="fas fa-tablet-alt"></i>
+                        </div>
+                        <div class="order-card__product-info">
+                            <h4>iPad Air M2</h4>
+                            <p>11" - 256GB - WiFi</p>
+                        </div>
+                        <div class="order-card__product-qty"><span>x1</span></div>
+                        <div class="order-card__product-price">$799.00 USD</div>
+                    </div>
+                </div>
+                <div class="order-card__footer">
+                    <div class="order-card__total">
+                        <span>Total:</span>
+                        <strong>$799.00 USD</strong>
+                    </div>
+                    <div class="order-card__actions">
+                        <button class="order-card__btn order-card__btn--review">
+                            <i class="fas fa-star"></i> Calificar
+                        </button>
+                        <button class="order-card__btn order-card__btn--reorder">
+                            <i class="fas fa-redo"></i> Volver a Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedido 5 - Pendiente -->
+            <div class="order-card" data-status="pending">
+                <div class="order-card__header">
+                    <div class="order-card__id">
+                        <span class="order-card__label">Pedido</span>
+                        <span class="order-card__number">#TS-2024-0098</span>
+                    </div>
+                    <div class="order-card__date">
+                        <span class="order-card__label">Fecha</span>
+                        <span>30 Dic 2024</span>
+                    </div>
+                    <div class="order-card__status order-card__status--pending">
+                        <i class="fas fa-clock"></i> Pendiente
+                    </div>
+                </div>
+                <div class="order-card__products">
+                    <div class="order-card__product">
+                        <div class="order-card__product-img">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <div class="order-card__product-info">
+                            <h4>Samsung 55" OLED 4K</h4>
+                            <p>Smart TV S95C</p>
+                        </div>
+                        <div class="order-card__product-qty"><span>x1</span></div>
+                        <div class="order-card__product-price">$1,499.00 USD</div>
+                    </div>
+                </div>
+                <div class="order-card__footer">
+                    <div class="order-card__total">
+                        <span>Total:</span>
+                        <strong>$1,499.00 USD</strong>
+                    </div>
+                    <div class="order-card__actions">
+                        <button class="order-card__btn order-card__btn--cancel">
+                            <i class="fas fa-times-circle"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCION: LISTA DE DESEOS                     -->
+    <!-- ============================================ -->
+    <section class="account-section" id="section-wishlist">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-heart"></i>
+                Lista de Deseos
+            </h1>
+            <p class="account-section__subtitle">Tus productos favoritos guardados para despues</p>
+        </div>
+
+        <div class="wishlist-info">
+            <span class="wishlist-info__count">
+                <i class="fas fa-heart"></i> 8 productos guardados
+            </span>
+            <button class="wishlist-info__share">
+                <i class="fas fa-share-alt"></i> Compartir Lista
+            </button>
+        </div>
+
+        <div class="wishlist-grid" id="wishlistGrid">
+            <div class="wishlist-card">
+                <div class="wishlist-card__badge">-20%</div>
+                <button class="wishlist-card__remove" aria-label="Eliminar de favoritos"><i class="fas fa-times"></i></button>
+                <div class="wishlist-card__img">
+                    <i class="fas fa-headphones-alt"></i>
+                    <div class="wishlist-card__img-overlay">
+                        <button class="wishlist-card__quick-view" aria-label="Vista rapida"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="wishlist-card__body">
+                    <span class="wishlist-card__brand">Sony</span>
+                    <h3 class="wishlist-card__name">WH-1000XM5</h3>
+                    <p class="wishlist-card__desc">Audifonos Noise Cancelling</p>
+                    <div class="wishlist-card__rating">
+                        <div class="wishlist-card__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span>(128)</span>
+                    </div>
+                    <div class="wishlist-card__price">
+                        <span class="wishlist-card__price-old">$749.00</span>
+                        <span class="wishlist-card__price-current">$599.00</span>
+                    </div>
+                    <button class="wishlist-card__add-cart"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="wishlist-card">
+                <div class="wishlist-card__badge wishlist-card__badge--new">Nuevo</div>
+                <button class="wishlist-card__remove" aria-label="Eliminar de favoritos"><i class="fas fa-times"></i></button>
+                <div class="wishlist-card__img">
+                    <i class="fas fa-laptop"></i>
+                    <div class="wishlist-card__img-overlay">
+                        <button class="wishlist-card__quick-view" aria-label="Vista rapida"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="wishlist-card__body">
+                    <span class="wishlist-card__brand">Apple</span>
+                    <h3 class="wishlist-card__name">MacBook Pro M3</h3>
+                    <p class="wishlist-card__desc">14" - 18GB RAM - 512GB</p>
+                    <div class="wishlist-card__rating">
+                        <div class="wishlist-card__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span>(89)</span>
+                    </div>
+                    <div class="wishlist-card__price">
+                        <span class="wishlist-card__price-current">$1,999.00</span>
+                    </div>
+                    <button class="wishlist-card__add-cart"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="wishlist-card">
+                <button class="wishlist-card__remove" aria-label="Eliminar de favoritos"><i class="fas fa-times"></i></button>
+                <div class="wishlist-card__img">
+                    <i class="fas fa-mobile-alt"></i>
+                    <div class="wishlist-card__img-overlay">
+                        <button class="wishlist-card__quick-view" aria-label="Vista rapida"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="wishlist-card__body">
+                    <span class="wishlist-card__brand">Samsung</span>
+                    <h3 class="wishlist-card__name">Galaxy S24 Ultra</h3>
+                    <p class="wishlist-card__desc">256GB - Titanium Black</p>
+                    <div class="wishlist-card__rating">
+                        <div class="wishlist-card__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </div>
+                        <span>(256)</span>
+                    </div>
+                    <div class="wishlist-card__price">
+                        <span class="wishlist-card__price-current">$1,199.00</span>
+                    </div>
+                    <button class="wishlist-card__add-cart"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="wishlist-card">
+                <div class="wishlist-card__badge wishlist-card__badge--sale">-30%</div>
+                <button class="wishlist-card__remove" aria-label="Eliminar de favoritos"><i class="fas fa-times"></i></button>
+                <div class="wishlist-card__img">
+                    <i class="fas fa-gamepad"></i>
+                    <div class="wishlist-card__img-overlay">
+                        <button class="wishlist-card__quick-view" aria-label="Vista rapida"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="wishlist-card__body">
+                    <span class="wishlist-card__brand">Sony</span>
+                    <h3 class="wishlist-card__name">PlayStation 5</h3>
+                    <p class="wishlist-card__desc">Consola Digital Edition</p>
+                    <div class="wishlist-card__rating">
+                        <div class="wishlist-card__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span>(512)</span>
+                    </div>
+                    <div class="wishlist-card__price">
+                        <span class="wishlist-card__price-old">$549.00</span>
+                        <span class="wishlist-card__price-current">$384.30</span>
+                    </div>
+                    <button class="wishlist-card__add-cart"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="wishlist-card">
+                <button class="wishlist-card__remove" aria-label="Eliminar de favoritos"><i class="fas fa-times"></i></button>
+                <div class="wishlist-card__img">
+                    <i class="fas fa-tablet-alt"></i>
+                    <div class="wishlist-card__img-overlay">
+                        <button class="wishlist-card__quick-view" aria-label="Vista rapida"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="wishlist-card__body">
+                    <span class="wishlist-card__brand">Apple</span>
+                    <h3 class="wishlist-card__name">iPad Pro M4</h3>
+                    <p class="wishlist-card__desc">11" - 256GB - WiFi</p>
+                    <div class="wishlist-card__rating">
+                        <div class="wishlist-card__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span>(67)</span>
+                    </div>
+                    <div class="wishlist-card__price">
+                        <span class="wishlist-card__price-current">$1,099.00</span>
+                    </div>
+                    <button class="wishlist-card__add-cart"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="wishlist-card">
+                <div class="wishlist-card__badge">-15%</div>
+                <button class="wishlist-card__remove" aria-label="Eliminar de favoritos"><i class="fas fa-times"></i></button>
+                <div class="wishlist-card__img">
+                    <i class="fas fa-clock"></i>
+                    <div class="wishlist-card__img-overlay">
+                        <button class="wishlist-card__quick-view" aria-label="Vista rapida"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="wishlist-card__body">
+                    <span class="wishlist-card__brand">Apple</span>
+                    <h3 class="wishlist-card__name">Apple Watch Ultra 2</h3>
+                    <p class="wishlist-card__desc">49mm - Titanium</p>
+                    <div class="wishlist-card__rating">
+                        <div class="wishlist-card__stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span>(203)</span>
+                    </div>
+                    <div class="wishlist-card__price">
+                        <span class="wishlist-card__price-old">$899.00</span>
+                        <span class="wishlist-card__price-current">$764.15</span>
+                    </div>
+                    <button class="wishlist-card__add-cart"><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCION: CONFIGURACION                       -->
+    <!-- ============================================ -->
+    <section class="account-section" id="section-settings">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-cog"></i>
+                Configuracion
+            </h1>
+            <p class="account-section__subtitle">Personaliza tu experiencia</p>
+        </div>
+
+        <div class="settings-grid">
+            <div class="settings-card">
+                <div class="settings-card__header">
+                    <i class="fas fa-bell"></i>
+                    <h3>Notificaciones</h3>
+                </div>
+                <div class="settings-card__body">
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>Notificaciones por Email</h4>
+                            <p>Recibe actualizaciones de pedidos y ofertas</p>
+                        </div>
+                        <label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label>
+                    </div>
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>SMS de Tracking</h4>
+                            <p>Alertas de envio por mensaje de texto</p>
+                        </div>
+                        <label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label>
+                    </div>
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>Newsletter</h4>
+                            <p>Ofertas exclusivas y novedades tech</p>
+                        </div>
+                        <label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-card__header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Seguridad</h3>
+                </div>
+                <div class="settings-card__body">
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>Autenticacion de 2 Factores</h4>
+                            <p>Proteccion adicional para tu cuenta</p>
+                        </div>
+                        <label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label>
+                    </div>
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>Sesiones Activas</h4>
+                            <p>2 dispositivos conectados</p>
+                        </div>
+                        <button class="settings-card__btn"><i class="fas fa-mobile-alt"></i> Gestionar</button>
+                    </div>
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>Historial de Acceso</h4>
+                            <p>Ultimo acceso: 29 Dic 2024, 10:30 AM</p>
+                        </div>
+                        <button class="settings-card__btn"><i class="fas fa-history"></i> Ver</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-card__header">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Privacidad</h3>
+                </div>
+                <div class="settings-card__body">
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>Visibilidad del Perfil</h4>
+                            <p>Quien puede ver tu informacion</p>
+                        </div>
+                        <select class="settings-card__select">
+                            <option value="private">Privado</option>
+                            <option value="friends">Amigos</option>
+                            <option value="public">Publico</option>
+                        </select>
+                    </div>
+                    <div class="settings-card__option">
+                        <div class="settings-card__option-info">
+                            <h4>Descargar Mis Datos</h4>
+                            <p>Copia de toda tu informacion</p>
+                        </div>
+                        <button class="settings-card__btn"><i class="fas fa-download"></i> Descargar</button>
+                    </div>
+                    <div class="settings-card__option settings-card__option--danger">
+                        <div class="settings-card__option-info">
+                            <h4>Eliminar Cuenta</h4>
+                            <p>Accion permanente e irreversible</p>
+                        </div>
+                        <button class="settings-card__btn settings-card__btn--danger"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCION: DIRECCIONES                         -->
+    <!-- ============================================ -->
+    <section class="account-section" id="section-addresses">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-map-marker-alt"></i>
+                Mis Direcciones
+            </h1>
+            <p class="account-section__subtitle">Gestiona tus direcciones de envio</p>
+        </div>
+
+        <div class="addresses-grid" id="addressesGrid">
+            <div class="address-card address-card--primary">
+                <div class="address-card__badge">Principal</div>
+                <div class="address-card__icon"><i class="fas fa-home"></i></div>
+                <h3 class="address-card__title">Casa</h3>
+                <p class="address-card__detail">
+                    Av. Reforma 123, Col. Centro<br>
+                    Ciudad de Mexico, CP 06000<br>
+                    Mexico
+                </p>
+                <p class="address-card__phone"><i class="fas fa-phone"></i> +52 123 456 7890</p>
+                <div class="address-card__actions">
+                    <button class="address-card__btn address-card__btn--edit"><i class="fas fa-edit"></i> Editar</button>
+                    <button class="address-card__btn address-card__btn--delete"><i class="fas fa-trash"></i> Eliminar</button>
+                </div>
+            </div>
+
+            <div class="address-card">
+                <div class="address-card__icon"><i class="fas fa-briefcase"></i></div>
+                <h3 class="address-card__title">Oficina</h3>
+                <p class="address-card__detail">
+                    Calle Tech 456, Piso 3<br>
+                    Guadalajara, CP 44100<br>
+                    Mexico
+                </p>
+                <p class="address-card__phone"><i class="fas fa-phone"></i> +52 987 654 3210</p>
+                <div class="address-card__actions">
+                    <button class="address-card__btn address-card__btn--edit"><i class="fas fa-edit"></i> Editar</button>
+                    <button class="address-card__btn address-card__btn--delete"><i class="fas fa-trash"></i> Eliminar</button>
+                </div>
+            </div>
+
+            <div class="address-card address-card--add" id="addAddressBtn">
+                <div class="address-card__add-icon"><i class="fas fa-plus"></i></div>
+                <h3>Agregar Direccion</h3>
+                <p>Click para agregar una nueva direccion de envio</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCION: METODOS DE PAGO                     -->
+    <!-- ============================================ -->
+    <section class="account-section" id="section-payment">
+        <div class="account-section__header">
+            <h1 class="account-section__title">
+                <i class="fas fa-credit-card"></i>
+                Metodos de Pago
+            </h1>
+            <p class="account-section__subtitle">Gestiona tus tarjetas y formas de pago</p>
+        </div>
+
+        <div class="payment-grid" id="paymentGrid">
+            <div class="payment-card payment-card--visa">
+                <div class="payment-card__chip"><i class="fas fa-microchip"></i></div>
+                <div class="payment-card__type"><i class="fab fa-cc-visa"></i></div>
+                <div class="payment-card__number">**** **** **** 4589</div>
+                <div class="payment-card__info">
+                    <div class="payment-card__holder">
+                        <span class="payment-card__label">Titular</span>
+                        <span class="payment-card__value">JUAN DOE</span>
+                    </div>
+                    <div class="payment-card__expiry">
+                        <span class="payment-card__label">Vence</span>
+                        <span class="payment-card__value">12/26</span>
+                    </div>
+                </div>
+                <div class="payment-card__actions">
+                    <button class="payment-card__btn"><i class="fas fa-edit"></i></button>
+                    <button class="payment-card__btn payment-card__btn--delete"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+
+            <div class="payment-card payment-card--mastercard">
+                <div class="payment-card__chip"><i class="fas fa-microchip"></i></div>
+                <div class="payment-card__type"><i class="fab fa-cc-mastercard"></i></div>
+                <div class="payment-card__number">**** **** **** 7823</div>
+                <div class="payment-card__info">
+                    <div class="payment-card__holder">
+                        <span class="payment-card__label">Titular</span>
+                        <span class="payment-card__value">JUAN DOE</span>
+                    </div>
+                    <div class="payment-card__expiry">
+                        <span class="payment-card__label">Vence</span>
+                        <span class="payment-card__value">08/25</span>
+                    </div>
+                </div>
+                <div class="payment-card__actions">
+                    <button class="payment-card__btn"><i class="fas fa-edit"></i></button>
+                    <button class="payment-card__btn payment-card__btn--delete"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+
+            <div class="payment-card payment-card--add" id="addPaymentBtn">
+                <div class="payment-card__add-icon"><i class="fas fa-plus"></i></div>
+                <h3>Agregar Tarjeta</h3>
+                <p>Agrega una nueva tarjeta de credito o debito</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
