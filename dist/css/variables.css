@@ -1,0 +1,81 @@
+/* ============================================ */
+/* VARIABLES CSS                                */
+/* Paleta de colores, espaciados, fuentes       */
+/* Configuracion global del tema oscuro tech    */
+/* ============================================ */
+
+:root {
+    /* ── COLORES PRINCIPALES ─────────────────── */
+    --color-primary: #6C5CE7;
+    --color-primary-dark: #5A4BD1;
+    --color-primary-light: #A29BFE;
+    --color-primary-glow: rgba(108, 92, 231, 0.3);
+
+    /* ── COLORES SECUNDARIOS ─────────────────── */
+    --color-secondary: #00CEC9;
+    --color-secondary-dark: #00B5B0;
+    --color-secondary-glow: rgba(0, 206, 201, 0.3);
+
+    /* ── COLORES DE ACCENTO ──────────────────── */
+    --color-accent: #FD79A8;
+    --color-accent-dark: #E84393;
+
+    /* ── COLORES DE ESTADO ───────────────────── */
+    --color-success: #00B894;
+    --color-warning: #FDCB6E;
+    --color-error: #FF6B6B;
+    --color-info: #74B9FF;
+
+    /* ── FONDOS (TEMA OSCURO) ────────────────── */
+    --bg-dark: #0A0A0F;
+    --bg-card: #12121A;
+    --bg-card-hover: #1A1A25;
+    --bg-surface: #1E1E2E;
+    --bg-input: #16161E;
+
+    /* ── COLORES DE TEXTO ────────────────────── */
+    --text-primary: #FFFFFF;
+    --text-secondary: #B4B4C0;
+    --text-muted: #6C6C80;
+    --text-link: var(--color-primary-light);
+
+    /* ── BORDES ──────────────────────────────── */
+    --border-color: #2A2A3A;
+    --border-focus: var(--color-primary);
+
+    /* ── SOMBRAS ─────────────────────────────── */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px var(--color-primary-glow);
+    --shadow-glow-strong: 0 0 40px var(--color-primary-glow);
+
+    /* ── ESPACIADOS ──────────────────────────── */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+
+    /* ── BORDER RADIUS ───────────────────────── */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* ── TRANSICIONES ────────────────────────── */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* ── Z-INDEX ─────────────────────────────── */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal: 400;
+    --z-toast: 500;
+}
