@@ -97,6 +97,23 @@
     animation: glow 2s ease-in-out infinite;
 }
 
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.page-transition.active {
+    opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

@@ -25,7 +25,6 @@
     addresses: 'Direcciones',
     payment: 'Metodos de Pago',
     product: 'MacBook Pro M3',
-    original: 'Pixel Store Original',
   };
 
   const SELECTORS = {
@@ -109,7 +108,7 @@
 
     var layout = document.querySelector('.account-layout');
     if (layout) {
-      layout.classList.toggle('account-layout--product-active', sectionId === 'product' || sectionId === 'original');
+      layout.classList.toggle('account-layout--product-active', sectionId === 'product');
     }
 
     if (DOM.breadcrumb) {
@@ -402,6 +401,21 @@
     setTimeout(function () {
       if (toast.parentNode) toast.parentNode.removeChild(toast);
     }, 4000);
+  }
+
+  /* ── PAGE TRANSITION ──────────────────────────── */
+  var transitionEl = document.getElementById('pageTransition');
+  if (transitionEl) {
+    document.querySelectorAll('a[href*=".html"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (REDUCED_MOTION) return;
+        var href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http')) return;
+        e.preventDefault();
+        transitionEl.classList.add('active');
+        setTimeout(function () { window.location.href = href; }, 300);
+      });
+    });
   }
 
   /* Exponer showToast globalmente para los micro-modulos de producto */

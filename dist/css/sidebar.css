@@ -227,23 +227,6 @@
     grid-template-columns: 1fr;
 }
 
-.original-frame {
-    width: 100%;
-    height: calc(100vh - 200px);
-    border: none;
-    border-radius: var(--radius-lg);
-    background: #87cefa;
-}
-
-#section-original {
-    padding: 0;
-    max-width: 100%;
-}
-
-#section-original.account-section--active {
-    display: flex;
-    flex-direction: column;
-}
 
 .account-layout--product-active .account-sidebar {
     display: none;
