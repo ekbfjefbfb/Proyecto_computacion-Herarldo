@@ -57,13 +57,12 @@
 
   if (isTouchDevice) return;
 
-  // Calcular la escala del zoom (qué tan ampliado se ve)
-  // zoomFactor = tamaño imagen zoom / tamaño imagen normal
-  // Se recalcula en cada mousemove porque no sabemos la img real hasta que carga
+  // Calcular la escala del zoom basada en la imagen real
   function getZoomFactor() {
-    var zoomSrc = mainImg.getAttribute('data-zoom');
-    if (!zoomSrc) return 2; // fallback
-    return 2.5; // La imagen zoom es 2-3x el tamaño normal
+    var nw = mainImg.naturalWidth;
+    var cw = galleryMain.offsetWidth;
+    if (nw && cw) return Math.min(nw / cw, 3);
+    return 2;
   }
 
   // Configurar el background del panel de zoom con la imagen @2x
