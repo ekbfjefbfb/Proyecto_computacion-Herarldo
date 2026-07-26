@@ -20,7 +20,6 @@
     profile: 'Mi Perfil',
     orders: 'Mis Pedidos',
     tracking: 'Tracking',
-    wishlist: 'Lista de Deseos',
     settings: 'Configuracion',
     addresses: 'Direcciones',
     payment: 'Metodos de Pago',
@@ -34,8 +33,6 @@
     filterBtns: '.orders-filter__btn',
     orderCards: '.order-card',
     trackBtns: '.order-card__btn--track',
-    wishlistRemove: '.wishlist-card__remove',
-    wishlistAddCart: '.wishlist-card__add-cart',
     logoutBtn: '#logoutBtn',
   };
 
@@ -346,31 +343,6 @@
       showSection('login');
     });
   }
-
-  /* ── WISHLIST ──────────────────────────────────── */
-  qsa(SELECTORS.wishlistRemove).forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var card = btn.closest('.wishlist-card');
-      if (!card) return;
-      card.classList.add('wishlist-card--removing');
-      setTimeout(function () {
-        if (card.parentNode) card.parentNode.removeChild(card);
-      }, 300);
-      showToast('info', 'Eliminado', 'Producto removido de favoritos');
-    });
-  });
-
-  qsa(SELECTORS.wishlistAddCart).forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (!DOM.cartCount) return;
-      var count = parseInt(DOM.cartCount.textContent, 10) + 1;
-      DOM.cartCount.textContent = count;
-      DOM.cartCount.classList.remove('cart-bounce');
-      DOM.cartCount.offsetHeight;
-      DOM.cartCount.classList.add('cart-bounce');
-      showToast('success', 'Agregado', 'Producto agregado al carrito');
-    });
-  });
 
   /* ── TOAST ─────────────────────────────────────── */
   var TOAST_ICONS = {
