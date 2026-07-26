@@ -128,61 +128,53 @@
         <div class="container">
             <div class="account-layout">
 
-                <!-- SIDEBAR -->
-                <aside class="account-sidebar" id="accountSidebar">
-                    <div class="account-sidebar__user">
-                        <div class="account-sidebar__avatar">
-                            <span id="avatarInitials">JD</span>
-                            <label class="account-sidebar__avatar-upload" for="avatarInput"><i class="fas fa-camera"></i></label>
-                            <input type="file" id="avatarInput" accept="image/*" hidden>
+                <!-- NAV HORIZONTAL -->
+                <nav class="account-nav" id="accountNav">
+                    <div class="account-nav__user">
+                        <div class="account-nav__avatar" id="avatarInitials">JD</div>
+                        <div class="account-nav__user-info">
+                            <span class="account-nav__name" id="userName">Juan Doe</span>
+                            <span class="account-nav__email" id="userEmail">juan@email.com</span>
                         </div>
-                        <h3 class="account-sidebar__name" id="userName">Juan Doe</h3>
-                        <p class="account-sidebar__email" id="userEmail">juan@email.com</p>
-                        <span class="account-sidebar__badge">Miembro desde 2024</span>
                     </div>
-
-                    <nav class="account-sidebar__nav">
-                        <button class="account-sidebar__link account-sidebar__link--active" data-section="login">
-                            <i class="fas fa-sign-in-alt"></i><span>Iniciar Sesion</span>
+                    <div class="account-nav__links">
+                        <button class="account-nav__link account-nav__link--active" data-section="login">
+                            <i class="fas fa-sign-in-alt"></i><span>Ingresar</span>
                         </button>
-                        <button class="account-sidebar__link" data-section="register">
-                            <i class="fas fa-user-plus"></i><span>Registrarse</span>
+                        <button class="account-nav__link" data-section="register">
+                            <i class="fas fa-user-plus"></i><span>Registro</span>
                         </button>
-                        <button class="account-sidebar__link" data-section="profile">
-                            <i class="fas fa-user"></i><span>Mi Perfil</span>
+                        <button class="account-nav__link" data-section="profile">
+                            <i class="fas fa-user"></i><span>Perfil</span>
                         </button>
-                        <button class="account-sidebar__link" data-section="orders">
-                            <i class="fas fa-box"></i><span>Mis Pedidos</span>
-                            <span class="account-sidebar__badge-count">5</span>
+                        <button class="account-nav__link" data-section="orders">
+                            <i class="fas fa-box"></i><span>Pedidos</span>
                         </button>
-                        <button class="account-sidebar__link" data-section="tracking">
+                        <button class="account-nav__link" data-section="tracking">
                             <i class="fas fa-truck"></i><span>Tracking</span>
-                            <span class="account-sidebar__badge-count account-sidebar__badge-count--active">2</span>
                         </button>
-                        <button class="account-sidebar__link" data-section="settings">
-                            <i class="fas fa-cog"></i><span>Configuracion</span>
+                        <button class="account-nav__link" data-section="settings">
+                            <i class="fas fa-cog"></i><span>Config</span>
                         </button>
-                        <button class="account-sidebar__link" data-section="addresses">
+                        <button class="account-nav__link" data-section="addresses">
                             <i class="fas fa-map-marker-alt"></i><span>Direcciones</span>
                         </button>
-                        <button class="account-sidebar__link" data-section="payment">
-                            <i class="fas fa-credit-card"></i><span>Metodos de Pago</span>
+                        <button class="account-nav__link" data-section="payment">
+                            <i class="fas fa-credit-card"></i><span>Pago</span>
                         </button>
-                        <div class="account-sidebar__divider"></div>
-                        <button class="account-sidebar__link" data-section="product">
-                            <i class="fas fa-laptop"></i><span>Detalle Producto</span>
+                        <button class="account-nav__link" data-section="product">
+                            <i class="fas fa-laptop"></i><span>Producto</span>
                         </button>
-                        <a href="pixel.html" class="account-sidebar__link">
-                            <i class="fas fa-puzzle-piece"></i><span>Pixel Store Original</span>
+                        <a href="pixel.html" class="account-nav__link account-nav__link--pixel">
+                            <i class="fas fa-puzzle-piece"></i><span>Pixel</span>
                         </a>
-                    </nav>
-
-                    <div class="account-sidebar__footer">
-                        <button class="account-sidebar__logout" id="logoutBtn">
-                            <i class="fas fa-sign-out-alt"></i><span>Cerrar Sesion</span>
+                    </div>
+                    <div class="account-nav__actions">
+                        <button class="account-nav__logout" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
                         </button>
                     </div>
-                </aside>
+                </nav>
 
                 <!-- CONTENIDO -->
                 <div class="account-content">

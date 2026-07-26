@@ -32,25 +32,26 @@
         width: 98%;
         max-height: 85vh;
     }
-    .account-layout {
-        grid-template-columns: 1fr;
+    .account-nav {
+        flex-wrap: wrap;
     }
 
-    .account-sidebar {
-        position: static;
-        display: none;
+    .account-nav__user {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: var(--space-sm);
+        margin-bottom: var(--space-sm);
     }
 
-    .account-sidebar.show-mobile {
-        display: block;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 280px;
-        height: calc(100vh - 70px);
-        z-index: var(--z-fixed);
-        border-radius: 0;
-        overflow-y: auto;
+    .account-nav__links {
+        order: 2;
+    }
+
+    .account-nav__actions {
+        order: 3;
+        border-left: none;
+        padding-left: 0;
     }
 
     .header__search {

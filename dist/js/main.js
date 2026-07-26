@@ -27,7 +27,7 @@
   };
 
   const SELECTORS = {
-    sidebarLinks: '.account-sidebar__link',
+    navLinks: '.account-nav__link',
     sections: '.account-section',
     dropdownItems: '.header__dropdown-item, .mobile-nav__link',
     filterBtns: '.orders-filter__btn',
@@ -87,34 +87,30 @@
   });
 
   /* ── SECTION NAVIGATION ────────────────────────── */
-  const sidebarLinks = qsa(SELECTORS.sidebarLinks);
+  const navLinks = qsa(SELECTORS.navLinks);
   const sections = qsa(SELECTORS.sections);
 
   function showSection(sectionId) {
     sections.forEach(function (s) { s.classList.remove('account-section--active'); });
-    sidebarLinks.forEach(function (l) { l.classList.remove('account-sidebar__link--active'); });
+    navLinks.forEach(function (l) { l.classList.remove('account-nav__link--active'); });
 
     var target = document.getElementById('section-' + sectionId);
     if (target) target.classList.add('account-section--active');
 
-    sidebarLinks.forEach(function (link) {
-      if (link.dataset.section === sectionId) {
-        link.classList.add('account-sidebar__link--active');
+    navLinks.forEach(function (link) {
+      if (link.dataset && link.dataset.section === sectionId) {
+        link.classList.add('account-nav__link--active');
       }
     });
-
-    var layout = document.querySelector('.account-layout');
-    if (layout) {
-      layout.classList.toggle('account-layout--product-active', sectionId === 'product');
-    }
 
     if (DOM.breadcrumb) {
       DOM.breadcrumb.textContent = SECTIONS[sectionId] || 'Mi Cuenta';
     }
   }
 
-  sidebarLinks.forEach(function (link) {
+  navLinks.forEach(function (link) {
     link.addEventListener('click', function () {
+      if (!link.dataset.section) return;
       showSection(link.dataset.section);
       closeMobileNav();
     });

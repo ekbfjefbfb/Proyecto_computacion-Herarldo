@@ -1,259 +1,163 @@
 /* ============================================ */
-/* SIDEBAR DE LA CUENTA                         */
-/* Navegacion lateral izquierda                 */
+/* NAV HORIZONTAL                               */
+/* Barra de navegacion superior en horizontal   */
 /* ============================================ */
 
 .account-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: var(--space-xl);
-    align-items: start;
+    display: block;
 }
 
-.account-sidebar {
-    position: sticky;
-    top: 90px;
+.account-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: all var(--transition-normal);
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-xl);
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
-/* ── CABECERA CON INFO USUARIO ───────────────── */
-.account-sidebar__user {
-    padding: var(--space-xl);
-    text-align: center;
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(0, 206, 201, 0.1));
-    border-bottom: 1px solid var(--border-color);
-    position: relative;
-    overflow: hidden;
+.account-nav::-webkit-scrollbar {
+    display: none;
 }
 
-/* Patron decorativo animado */
-.account-sidebar__user::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(108, 92, 231, 0.03) 10px,
-        rgba(108, 92, 231, 0.03) 20px
-    );
-    animation: patternMove 20s linear infinite;
+.account-nav__user {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-right: var(--space-md);
+    border-right: 1px solid var(--border-color);
+    flex-shrink: 0;
 }
 
-@keyframes patternMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(20px, 20px); }
-}
-
-/* ── AVATAR ──────────────────────────────────── */
-.account-sidebar__avatar {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto var(--space-md);
+.account-nav__avatar {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: white;
-    position: relative;
-    z-index: 1;
-    transition: all var(--transition-normal);
-    box-shadow: 0 0 0 4px var(--bg-card), 0 0 20px var(--color-primary-glow);
-}
-
-.account-sidebar__avatar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 4px var(--bg-card), 0 0 30px var(--color-primary-glow);
-}
-
-/* Boton de subir foto */
-.account-sidebar__avatar-upload {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 28px;
-    height: 28px;
-    background: var(--color-secondary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    color: white;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    border: 2px solid var(--bg-card);
-}
-
-.account-sidebar__avatar-upload:hover {
-    transform: scale(1.1);
-    background: var(--color-secondary-dark);
-}
-
-/* Nombre y email */
-.account-sidebar__name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    position: relative;
-    z-index: 1;
-}
-
-.account-sidebar__email {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: var(--space-xs);
-    position: relative;
-    z-index: 1;
-}
-
-/* Badge de miembro */
-.account-sidebar__badge {
-    display: inline-block;
-    margin-top: var(--space-sm);
-    padding: var(--space-xs) var(--space-md);
-    background: rgba(108, 92, 231, 0.2);
-    border: 1px solid var(--color-primary);
-    border-radius: var(--radius-full);
     font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.account-nav__user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.account-nav__name {
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--color-primary-light);
-    position: relative;
-    z-index: 1;
+    color: var(--text-primary);
+    white-space: nowrap;
 }
 
-/* ── NAV DEL SIDEBAR ─────────────────────────── */
-.account-sidebar__nav {
-    padding: var(--space-md) 0;
+.account-nav__email {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
 }
 
-.account-sidebar__link {
+.account-nav__links {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
-    width: 100%;
-    padding: var(--space-md) var(--space-xl);
+    gap: 2px;
+    flex: 1;
+}
+
+.account-nav__link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: var(--space-sm) var(--space-md);
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    text-align: left;
-    transition: all var(--transition-normal);
-    border-left: 3px solid transparent;
-    position: relative;
-    overflow: hidden;
+    white-space: nowrap;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
-/* Efecto hover con gradiente */
-.account-sidebar__link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(108, 92, 231, 0.1), transparent);
-    opacity: 0;
-    transition: opacity var(--transition-normal);
+.account-nav__link i {
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
 }
 
-.account-sidebar__link:hover::before {
-    opacity: 1;
-}
-
-.account-sidebar__link:hover {
+.account-nav__link:hover {
     color: var(--text-primary);
-    border-left-color: var(--color-primary-light);
-    padding-left: var(--space-xl);
+    background: rgba(108, 92, 231, 0.08);
 }
 
-.account-sidebar__link i {
-    width: 20px;
-    text-align: center;
-    font-size: 1rem;
-    transition: all var(--transition-normal);
-}
-
-.account-sidebar__link:hover i {
+.account-nav__link:hover i {
     color: var(--color-primary-light);
-    transform: scale(1.1);
 }
 
-/* Estado activo */
-.account-sidebar__link--active {
+.account-nav__link--active {
     color: var(--text-primary);
-    background: linear-gradient(90deg, rgba(108, 92, 231, 0.15), transparent);
-    border-left-color: var(--color-primary);
+    background: rgba(108, 92, 231, 0.15);
 }
 
-.account-sidebar__link--active i {
+.account-nav__link--active i {
     color: var(--color-primary);
 }
 
-/* Badge de conteo */
-.account-sidebar__badge-count {
-    margin-left: auto;
-    padding: 2px 8px;
-    background: var(--bg-surface);
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-muted);
+.account-nav__link--pixel {
+    color: var(--color-accent);
 }
 
-.account-sidebar__badge-count--active {
-    background: var(--color-primary);
-    color: white;
+.account-nav__link--pixel:hover {
+    background: rgba(255, 165, 0, 0.1);
+    color: var(--color-accent);
 }
 
-/* ── FOOTER DEL SIDEBAR ──────────────────────── */
-.account-sidebar__divider {
-    height: 1px;
-    background: var(--border-color);
-    margin: var(--space-sm) var(--space-xl);
-}
-
-.account-layout--product-active {
-    grid-template-columns: 1fr;
-}
-
-
-.account-layout--product-active .account-sidebar {
-    display: none;
-}
-
-.account-layout--product-active .account-content {
-    max-width: 100%;
-}
-
-.account-sidebar__footer {
-    padding: var(--space-md) var(--space-xl);
-    border-top: 1px solid var(--border-color);
-}
-
-.account-sidebar__logout {
+.account-nav__actions {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    width: 100%;
-    padding: var(--space-md);
-    color: var(--color-error);
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-normal);
+    padding-left: var(--space-md);
+    border-left: 1px solid var(--border-color);
+    flex-shrink: 0;
 }
 
-.account-sidebar__logout:hover {
+.account-nav__logout {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    color: var(--color-error);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.account-nav__logout:hover {
     background: rgba(255, 107, 107, 0.1);
+}
+
+.account-section {
+    display: none;
+}
+
+.account-section--active {
+    display: block;
+}
+
+.account-section__header {
+    margin-bottom: var(--space-xl);
+}
+
+.account-section__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
 }
