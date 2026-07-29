@@ -1062,19 +1062,11 @@
 }
 
 .section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(var(--color-primary-rgb),0.2), transparent);
-    opacity: 0.6;
+    display: none;
 }
 
 .section--alt::before {
-    background: linear-gradient(90deg, transparent, rgba(var(--color-secondary-rgb),0.15), transparent);
+    display: none;
 }
 
 .section-clean::before,

@@ -149,7 +149,7 @@
 
         return '<article class="product-card" data-id="' + p.id + '" data-cat="' + p.cat + '" style="cursor:pointer">' +
             badgeHTML +
-            '<div class="product-card__media"><i data-lucide="' + p.icon + '"></i></div>' +
+            '<div class="product-card__media" data-cat="' + p.cat + '"><i data-lucide="' + p.icon + '"></i></div>' +
             '<div class="product-card__cat">' + p.cat + '</div>' +
             '<h3>' + p.name + '</h3>' +
             '<p class="product-card__specs">' + p.specs + '</p>' +

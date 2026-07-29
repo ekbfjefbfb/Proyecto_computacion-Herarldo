@@ -25,10 +25,7 @@
     <header class="header" id="header">
         <div class="header__container">
             <a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a>
-            <div class="header__search">
-                <input type="text" placeholder="Buscar productos..." class="header__search-input">
-                <button class="header__search-btn" aria-label="Buscar"><i data-lucide="search"></i></button>
-            </div>
+
             <nav class="header__nav">
                 <a href="index.html" class="header__nav-link">Inicio</a>
                 <a href="tienda.html" class="header__nav-link">Tienda</a>
@@ -37,7 +34,6 @@
             </nav>
             <div class="header__actions">
                 <a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta"><i data-lucide="user"></i></a>
-                <button class="header__cart" id="cartBtn" aria-label="Abrir carrito"><i data-lucide="shopping-cart"></i><span class="header__cart-count" id="cartCount" style="display:none">0</span></button>
             </div>
             <button class="header__menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
@@ -256,13 +252,6 @@
         trackingSearchBtn.addEventListener('click', doSearch);
         trackingInput.addEventListener('keydown', function(e){ if(e.key==='Enter') doSearch(); });
     </script>
-    <div class="cart-overlay" id="cartOverlay"></div>
-    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
-        <div class="cart-drawer__head"><h3><i data-lucide="shopping-cart"></i> Tu carrito</h3><button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button></div>
-        <div class="cart-drawer__items" id="cartItems"></div>
-        <div class="cart-drawer__foot"><div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div><button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button></div>
-    </aside>
-
     <div class="toast-container" id="toastContainer"></div>
 
     <script src="js/store.js"></script>
