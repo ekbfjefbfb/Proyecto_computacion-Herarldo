@@ -106,14 +106,43 @@
             tab.addEventListener('click',function(){switchTab(tab.dataset.tab);});
         });
 
+        var toast=window.showToast||function(){};
+
         document.getElementById('loginForm').addEventListener('submit',function(e){
             e.preventDefault();
-            window.location.href = 'mi-cuenta.html';
+            var inputs=this.querySelectorAll('.auth-card__input');
+            var email=inputs[0].value.trim();
+            var pass=inputs[1].value;
+            if(!email||!pass){toast('error','Error','Completa todos los campos');return;}
+            var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');
+            var user=users.find(function(u){return u.email===email&&u.password===pass;});
+            if(!user){toast('error','Error','Correo o contrasena incorrectos');return;}
+            localStorage.setItem('techstore_session',JSON.stringify({id:user.id,name:user.name,email:user.email,phone:user.phone}));
+            toast('success','Bienvenido','Hola '+user.name);
+            setTimeout(function(){window.location.href='mi-cuenta.html';},800);
         });
 
         document.getElementById('registerForm').addEventListener('submit',function(e){
             e.preventDefault();
-            window.location.href = 'mi-cuenta.html';
+            var inputs=this.querySelectorAll('.auth-card__input');
+            var name=inputs[0].value.trim();
+            var email=inputs[1].value.trim();
+            var phone=inputs[2].value.trim();
+            var pass=inputs[3].value;
+            var confirm=inputs[4].value;
+            var terms=this.querySelector('input[type=checkbox]').checked;
+            if(!name||!email||!pass){toast('error','Error','Completa nombre, correo y contrasena');return;}
+            if(pass.length<8){toast('error','Error','La contrasena debe tener minimo 8 caracteres');return;}
+            if(pass!==confirm){toast('error','Error','Las contrasenas no coinciden');return;}
+            if(!terms){toast('error','Error','Debes aceptar los terminos');return;}
+            var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');
+            if(users.find(function(u){return u.email===email;})){toast('error','Error','Este correo ya esta registrado');return;}
+            var newUser={id:Date.now(),name:name,email:email,phone:phone,password:pass};
+            users.push(newUser);
+            localStorage.setItem('techstore_users',JSON.stringify(users));
+            localStorage.setItem('techstore_session',JSON.stringify({id:newUser.id,name:newUser.name,email:newUser.email,phone:newUser.phone}));
+            toast('success','Cuenta creada','Bienvenido '+name);
+            setTimeout(function(){window.location.href='mi-cuenta.html';},800);
         });
     })();
 

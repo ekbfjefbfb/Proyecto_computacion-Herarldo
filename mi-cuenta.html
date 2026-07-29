@@ -292,6 +292,64 @@
     <script src="js/store.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    (function(){
+        var session=null;
+        try{session=JSON.parse(localStorage.getItem('techstore_session'));}catch(e){}
+        if(!session){window.location.href='cuenta.html';return;}
+
+        var nameParts=(session.name||'').split(' ');
+        var initials=(nameParts[0]||'').charAt(0).toUpperCase()+(nameParts[nameParts.length-1]||'').charAt(0).toUpperCase();
+
+        document.getElementById('avatarInitials').textContent=initials;
+        document.getElementById('userName').textContent=session.name;
+        document.getElementById('userEmail').textContent=session.email;
+
+        var profileAvatar=document.querySelector('.profile-card__avatar span');
+        var profileName=document.querySelector('.profile-card__name');
+        var profileEmail=document.querySelector('.profile-card__email');
+        if(profileAvatar)profileAvatar.textContent=initials;
+        if(profileName)profileName.textContent=session.name;
+        if(profileEmail)profileEmail.textContent=session.email;
+
+        var fName=document.getElementById('profileName');
+        var fEmail=document.getElementById('profileEmail');
+        var fPhone=document.getElementById('profilePhone');
+        if(fName)fName.value=session.name||'';
+        if(fEmail)fEmail.value=session.email||'';
+        if(fPhone)fPhone.value=session.phone||'';
+
+        var profileForm=document.getElementById('profileForm');
+        if(profileForm){
+            profileForm.addEventListener('submit',function(e){
+                e.preventDefault();
+                var newName=fName?fName.value.trim():session.name;
+                var newEmail=fEmail?fEmail.value.trim():session.email;
+                var newPhone=fPhone?fPhone.value.trim():session.phone;
+                if(!newName||!newEmail){window.showToast('error','Error','Nombre y correo son obligatorios');return;}
+                session.name=newName;session.email=newEmail;session.phone=newPhone;
+                localStorage.setItem('techstore_session',JSON.stringify(session));
+                var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');
+                var user=users.find(function(u){return u.id===session.id;});
+                if(user){user.name=newName;user.email=newEmail;user.phone=newPhone;localStorage.setItem('techstore_users',JSON.stringify(users));}
+                var np=newName.split(' ');var ni=(np[0]||'').charAt(0).toUpperCase()+(np[np.length-1]||'').charAt(0).toUpperCase();
+                document.getElementById('avatarInitials').textContent=ni;
+                document.getElementById('userName').textContent=newName;
+                document.getElementById('userEmail').textContent=newEmail;
+                if(profileAvatar)profileAvatar.textContent=ni;
+                if(profileName)profileName.textContent=newName;
+                if(profileEmail)profileEmail.textContent=newEmail;
+                window.showToast('success','Guardado','Perfil actualizado correctamente');
+            });
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click',function(e){
+            e.preventDefault();
+            localStorage.removeItem('techstore_session');
+            window.location.href='cuenta.html';
+        });
+    })();
+    </script>
     <script>lucide.createIcons();</script>
 </body>
 </html>

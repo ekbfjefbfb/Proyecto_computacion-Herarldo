@@ -347,6 +347,7 @@
   var logoutBtn = qs(SELECTORS.logoutBtn);
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function () {
+      localStorage.removeItem('techstore_session');
       showToast('info', 'Sesion cerrada', 'Has cerrado sesion correctamente');
       setTimeout(function () { window.location.href = 'cuenta.html'; }, 1500);
     });
