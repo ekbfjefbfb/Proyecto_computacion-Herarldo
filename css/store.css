@@ -980,6 +980,14 @@
         display: none;
     }
 
+    .header__menu-btn {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
     .section__head--row {
         flex-direction: column;
         align-items: flex-start;

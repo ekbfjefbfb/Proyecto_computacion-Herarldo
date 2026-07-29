@@ -88,7 +88,7 @@
                     <section class="account-section account-section--active" id="section-profile">
                         <div class="account-section__header">
                             <h1 class="account-section__title"><i data-lucide="user"></i> Mi Perfil</h1>
-                            <p class="account-section__subtitle">Gestiona tu informacion personal</p>
+                            <p class="account-section__subtitle">Gestiona tu información personal</p>
                         </div>
                         <div class="profile-card">
                             <div class="profile-card__cover"><div class="profile-card__pattern"></div></div>
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <form class="profile-form" id="profileForm">
-                            <h3 class="profile-form__title"><i data-lucide="pencil"></i> Informacion Personal</h3>
+                            <h3 class="profile-form__title"><i data-lucide="pencil"></i> Información Personal</h3>
                             <div class="profile-form__grid">
                                 <div class="profile-form__group"><label class="profile-form__label" for="profileName"><i data-lucide="user"></i> Nombre</label><input type="text" id="profileName" class="profile-form__input" value="Juan" required></div>
                                 <div class="profile-form__group"><label class="profile-form__label" for="profileLastName"><i data-lucide="user"></i> Apellido</label><input type="text" id="profileLastName" class="profile-form__input" value="Doe" required></div>
@@ -151,14 +151,14 @@
                                 <div class="settings-card__header"><i data-lucide="bell"></i><h3>Notificaciones</h3></div>
                                 <div class="settings-card__body">
                                     <div class="settings-card__option"><div class="settings-card__option-info"><h4>Notificaciones por Email</h4><p>Recibe actualizaciones de pedidos y ofertas</p></div><label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label></div>
-                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>SMS de Tracking</h4><p>Alertas de envio por mensaje de texto</p></div><label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label></div>
+                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>SMS de Tracking</h4><p>Alertas de envío por mensaje de texto</p></div><label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label></div>
                                     <div class="settings-card__option"><div class="settings-card__option-info"><h4>Newsletter</h4><p>Ofertas exclusivas y novedades tech</p></div><label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label></div>
                                 </div>
                             </div>
                             <div class="settings-card">
                                 <div class="settings-card__header"><i data-lucide="shield-check"></i><h3>Seguridad</h3></div>
                                 <div class="settings-card__body">
-                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Autenticacion de 2 Factores</h4><p>Proteccion adicional para tu cuenta</p></div><label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label></div>
+                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Autenticacion de 2 Factores</h4><p>Protección adicional para tu cuenta</p></div><label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label></div>
                                     <div class="settings-card__option"><div class="settings-card__option-info"><h4>Sesiones Activas</h4><p>2 dispositivos conectados</p></div><button class="settings-card__btn"><i data-lucide="smartphone"></i> Gestionar</button></div>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
-                <div class="footer__brand"><a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a><p>Tu tienda de tecnologia de confianza.</p><div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div></div>
+                <div class="footer__brand"><a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a><p>Tu tienda de tecnología de confianza.</p><div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div></div>
                 <div class="footer__col"><h4>Tienda</h4><ul><li><a href="tienda.html">Productos</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div>
                 <div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li></ul></div>
                 <div class="footer__col"><h4>Cuenta</h4><ul><li><a href="mi-cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li></ul></div>
@@ -389,9 +389,9 @@
         }
 
         window.addAddress=function(){
-            var type=prompt('Tipo de direccion (Casa, Oficina, etc.):');
+            var type=prompt('Tipo de dirección (Casa, Oficina, etc.):');
             if(!type)return;
-            var addr=prompt('Direccion completa:');
+            var addr=prompt('Dirección completa:');
             if(!addr)return;
             var city=prompt('Ciudad:');
             if(!city)return;
@@ -401,7 +401,7 @@
             addresses.push({id:Date.now(),type:type,address:addr,city:city,zip:zip,phone:phone||'',isPrimary:addresses.length===0});
             localStorage.setItem(addrKey,JSON.stringify(addresses));
             renderAddresses();
-            window.showToast('success','Direccion agregada',type+' agregada correctamente');
+            window.showToast('success','Dirección agregada',type+' agregada correctamente');
         };
 
         window.editAddress=function(id){
@@ -415,7 +415,7 @@
             if(newZip)addr.zip=newZip;
             localStorage.setItem(addrKey,JSON.stringify(addresses));
             renderAddresses();
-            window.showToast('success','Direccion actualizada','Datos guardados correctamente');
+            window.showToast('success','Dirección actualizada','Datos guardados correctamente');
         };
 
         window.deleteAddress=function(id){
@@ -424,7 +424,7 @@
             if(addresses.length>0)addresses[0].isPrimary=true;
             localStorage.setItem(addrKey,JSON.stringify(addresses));
             renderAddresses();
-            window.showToast('info','Direccion eliminada','Direccion removida');
+            window.showToast('info','Dirección eliminada','Dirección removida');
         };
 
         renderAddresses();

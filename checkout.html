@@ -167,7 +167,7 @@
         </div>
     </main>
 
-    <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a><p>Tu tienda de tecnologia de confianza.</p><div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div></div><div class="footer__col"><h4>Tienda</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="tienda.html">Tienda</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div><div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li><li><a href="politica-devoluciones.html">Devoluciones</a></li></ul></div><div class="footer__col"><h4>Cuenta</h4><ul><li><a href="cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li><li><a href="blog.html">Blog</a></li></ul></div></div><div class="footer__bottom"><p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p><div class="footer__payments"><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i></div></div></div></footer>
+    <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a><p>Tu tienda de tecnología de confianza.</p><div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div></div><div class="footer__col"><h4>Tienda</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="tienda.html">Tienda</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div><div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li><li><a href="politica-devoluciones.html">Devoluciones</a></li></ul></div><div class="footer__col"><h4>Cuenta</h4><ul><li><a href="cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li><li><a href="blog.html">Blog</a></li></ul></div></div><div class="footer__bottom"><p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p><div class="footer__payments"><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i></div></div></div></footer>
 
     <div class="cart-overlay" id="cartOverlay"></div>
     <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
@@ -207,7 +207,7 @@
     var validCoupons = {
         'TECH10': { type: 'percent', value: 10, label: '10% de descuento' },
         'AHORRO50': { type: 'fixed', value: 50, label: '$50 de descuento' },
-        'FRETE': { type: 'shipping', value: 0, label: 'Envio gratis' }
+        'FRETE': { type: 'shipping', value: 0, label: 'Envío gratis' }
     };
 
     function formatPrice(n){return '$' + n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});}
@@ -328,13 +328,19 @@
             var orderId = 'TS-' + Math.random().toString(36).substr(2,8).toUpperCase();
             var subtotal = 0;
             cart.forEach(function(item){ subtotal += item.price * item.qty; });
+            var discount = 0;
             var shipping = subtotal >= SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
             if(couponApplied){
                 var c = validCoupons[document.getElementById('couponInput').value.toUpperCase()];
-                if(c && c.type === 'shipping') shipping = 0;
+                if(c){
+                    if(c.type === 'percent') discount = Math.round(subtotal * c.value / 100);
+                    else if(c.type === 'fixed') discount = Math.min(c.value, subtotal);
+                    else if(c.type === 'shipping') shipping = 0;
+                }
             }
-            var tax = Math.round((subtotal) * TAX_RATE);
-            var total = subtotal + shipping + tax;
+            var afterDiscount = subtotal - discount;
+            var tax = Math.round(afterDiscount * TAX_RATE);
+            var total = afterDiscount + shipping + tax;
 
             var session = null;
             try { session = JSON.parse(localStorage.getItem('techstore_session')); } catch(e){}

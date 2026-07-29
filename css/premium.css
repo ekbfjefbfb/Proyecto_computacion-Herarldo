@@ -953,7 +953,7 @@
 
 /* ── PAGE HEADER ───────────────────────────── */
 .page-header {
-    padding: 140px 0 60px;
+    padding: calc(var(--header-height) + 60px) 0 60px;
     text-align: center;
     position: relative;
     overflow: hidden;

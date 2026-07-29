@@ -5,6 +5,12 @@
 /* ============================================ */
 
 :root {
+    color-scheme: dark;
+
+    /* ── LAYOUT ───────────────────────────────── */
+    --header-height: 70px;
+    --container-max-width: 1280px;
+
     /* ── COLORES PRINCIPALES ─────────────────── */
     --color-primary: #6C5CE7;
     --color-primary-rgb: 108, 92, 231;
@@ -31,6 +37,7 @@
     --color-error: #FF6B6B;
     --color-error-rgb: 255, 107, 107;
     --color-info: #74B9FF;
+    --color-info-rgb: 116, 185, 255;
 
     /* ── COLORES DE CATEGORÍA ────────────────── */
     --cat-laptops: var(--color-primary-light);
@@ -46,7 +53,6 @@
     --bg-dark-rgb: 10, 10, 15;
     --bg-primary: #12121A;
     --bg-primary-rgb: 18, 18, 26;
-    --bg-secondary: #1E1E2E;
     --bg-card: #12121A;
     --bg-card-hover: #1A1A25;
     --bg-surface: #1E1E2E;

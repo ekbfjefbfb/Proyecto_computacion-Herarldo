@@ -12,19 +12,19 @@
     ];
 
     var PRODUCTS = [
-        { id: 1,  name: 'NovaBook Air 13',         cat: 'laptops',     price: 899,  old: null,  specs: '8GB RAM · 256GB SSD · Intel i5',        icon: 'laptop',          rating: 4.5, reviews: 128, badge: null },
-        { id: 2,  name: 'NovaBook Pro 14',         cat: 'laptops',     price: 1299, old: 1499, specs: '16GB RAM · 512GB SSD · Intel i7',       icon: 'laptop',          rating: 4.8, reviews: 342, badge: 'Mas vendido' },
-        { id: 3,  name: 'NovaBook Ultra X',        cat: 'laptops',     price: 1899, old: null,  specs: '32GB RAM · 1TB SSD · RTX 4060',         icon: 'laptop',          rating: 4.7, reviews: 87,  badge: null },
-        { id: 4,  name: 'Zenith X12',              cat: 'smartphones', price: 799,  old: null,  specs: '128GB · Camara 50MP · 5G',              icon: 'smartphone',      rating: 4.6, reviews: 210, badge: null },
-        { id: 5,  name: 'Zenith X12 Mini',         cat: 'smartphones', price: 649,  old: 749,  specs: '128GB · Camara 48MP · Compacto',        icon: 'smartphone',      rating: 4.4, reviews: 156, badge: null },
-        { id: 6,  name: 'Pulse Edge 5G',           cat: 'smartphones', price: 549,  old: null,  specs: '256GB · Camara 108MP · 5G',             icon: 'smartphone',      rating: 4.3, reviews: 64,  badge: 'Nuevo' },
-        { id: 7,  name: 'AuroraBuds Pro',          cat: 'accesorios',  price: 149,  old: 199,  specs: 'Cancelacion de ruido · 30h bateria',    icon: 'headphones',      rating: 4.7, reviews: 289, badge: null },
-        { id: 8,  name: 'VoltCharge 65W GaN',      cat: 'accesorios',  price: 39,   old: null,  specs: 'Carga rapida · USB-C · GaN',            icon: 'plug-zap',        rating: 4.5, reviews: 412, badge: null },
-        { id: 9,  name: 'HyperKey Mechanical RGB', cat: 'accesorios',  price: 89,   old: null,  specs: 'Switches mecanicos · RGB · Anti-ghost',  icon: 'keyboard',        rating: 4.6, reviews: 133, badge: null },
-        { id: 10, name: 'NexMouse Wireless Pro',   cat: 'accesorios',  price: 49,   old: 69,   specs: 'Inalambrico · 16000 DPI · RGB',         icon: 'mouse',           rating: 4.4, reviews: 178, badge: null },
-        { id: 11, name: 'ArcadeX Controller Pro',  cat: 'gaming',      price: 69,   old: null,  specs: 'Inalambrico · Vibracion dual · USB-C',  icon: 'gamepad-2',       rating: 4.8, reviews: 95,  badge: null },
-        { id: 12, name: 'PixelView 27" 165Hz',     cat: 'gaming',      price: 329,  old: 399,  specs: '165Hz · 1ms · IPS QHD',                 icon: 'monitor',         rating: 4.9, reviews: 267, badge: 'Top ventas' },
-        { id: 13, name: 'QuantumConsole One',      cat: 'gaming',      price: 499,  old: null,  specs: '4K · 1TB SSD · Ray Tracing',            icon: 'monitor',         rating: 4.7, reviews: 121, badge: null }
+        { id: 1,  name: 'NovaBook Air 13',         cat: 'laptops',     price: 899,  old: null,  specs: '8GB RAM · 256GB SSD · Intel i5',        icon: 'laptop',          img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop', rating: 4.5, reviews: 128, badge: null },
+        { id: 2,  name: 'NovaBook Pro 14',         cat: 'laptops',     price: 1299, old: 1499, specs: '16GB RAM · 512GB SSD · Intel i7',       icon: 'laptop',          img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop', rating: 4.8, reviews: 342, badge: 'Mas vendido' },
+        { id: 3,  name: 'NovaBook Ultra X',        cat: 'laptops',     price: 1899, old: null,  specs: '32GB RAM · 1TB SSD · RTX 4060',         icon: 'laptop',          img: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&h=400&fit=crop', rating: 4.7, reviews: 87,  badge: null },
+        { id: 4,  name: 'Zenith X12',              cat: 'smartphones', price: 799,  old: null,  specs: '128GB · Camara 50MP · 5G',              icon: 'smartphone',      img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop', rating: 4.6, reviews: 210, badge: null },
+        { id: 5,  name: 'Zenith X12 Mini',         cat: 'smartphones', price: 649,  old: 749,  specs: '128GB · Camara 48MP · Compacto',        icon: 'smartphone',      img: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600&h=400&fit=crop', rating: 4.4, reviews: 156, badge: null },
+        { id: 6,  name: 'Pulse Edge 5G',           cat: 'smartphones', price: 549,  old: null,  specs: '256GB · Camara 108MP · 5G',             icon: 'smartphone',      img: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=400&fit=crop', rating: 4.3, reviews: 64,  badge: 'Nuevo' },
+        { id: 7,  name: 'AuroraBuds Pro',          cat: 'accesorios',  price: 149,  old: 199,  specs: 'Cancelacion de ruido · 30h bateria',    icon: 'headphones',      img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop', rating: 4.7, reviews: 289, badge: null },
+        { id: 8,  name: 'VoltCharge 65W GaN',      cat: 'accesorios',  price: 39,   old: null,  specs: 'Carga rapida · USB-C · GaN',            icon: 'plug-zap',        img: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&h=400&fit=crop', rating: 4.5, reviews: 412, badge: null },
+        { id: 9,  name: 'HyperKey Mechanical RGB', cat: 'accesorios',  price: 89,   old: null,  specs: 'Switches mecanicos · RGB · Anti-ghost',  icon: 'keyboard',        img: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=600&h=400&fit=crop', rating: 4.6, reviews: 133, badge: null },
+        { id: 10, name: 'NexMouse Wireless Pro',   cat: 'accesorios',  price: 49,   old: 69,   specs: 'Inalambrico · 16000 DPI · RGB',         icon: 'mouse',           img: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&h=400&fit=crop', rating: 4.4, reviews: 178, badge: null },
+        { id: 11, name: 'ArcadeX Controller Pro',  cat: 'gaming',      price: 69,   old: null,  specs: 'Inalambrico · Vibracion dual · USB-C',  icon: 'gamepad-2',       img: 'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=600&h=400&fit=crop', rating: 4.8, reviews: 95,  badge: null },
+        { id: 12, name: 'PixelView 27" 165Hz',     cat: 'gaming',      price: 329,  old: 399,  specs: '165Hz · 1ms · IPS QHD',                 icon: 'monitor',         img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=400&fit=crop', rating: 4.9, reviews: 267, badge: 'Top ventas' },
+        { id: 13, name: 'QuantumConsole One',      cat: 'gaming',      price: 499,  old: null,  specs: '4K · 1TB SSD · Ray Tracing',            icon: 'monitor',         img: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=400&fit=crop', rating: 4.7, reviews: 121, badge: null }
     ];
 
     /* =====================================================
@@ -68,13 +68,21 @@
     /* =====================================================
        TOAST
        ===================================================== */
-    function showToast(message) {
+    function showToast(typeOrMsg, title, message) {
+        if (window.showToast && window.showToast !== showToast) {
+            window.showToast(typeOrMsg, title, message);
+            return;
+        }
+        var type = title ? typeOrMsg : 'success';
+        var msg = title || typeOrMsg;
         var container = document.getElementById('toastContainer');
         if (!container) return;
+        var iconMap = { success: 'circle-check', error: 'circle-x', info: 'info', warning: 'alert-triangle' };
         var toast = document.createElement('div');
-        toast.className = 'toast toast--success';
-        toast.innerHTML = '<i data-lucide="circle-check" class="toast__icon"></i>' +
-            '<div class="toast__content"><div class="toast__title">' + esc(message) + '</div></div>' +
+        toast.className = 'toast toast--' + type;
+        toast.innerHTML = '<i data-lucide="' + (iconMap[type] || 'circle-check') + '" class="toast__icon"></i>' +
+            '<div class="toast__content"><div class="toast__title">' + esc(msg) + '</div>' +
+            (message ? '<div class="toast__message">' + esc(message) + '</div>' : '') + '</div>' +
             '<button class="toast__close" aria-label="Cerrar"><i data-lucide="x"></i></button>';
         container.appendChild(toast);
         if (window.lucide) lucide.createIcons();
@@ -147,9 +155,13 @@
             badgeHTML = '<span class="product-card__badge">' + p.badge + '</span>';
         }
 
+        var mediaContent = p.img ?
+            '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">' :
+            '<i data-lucide="' + p.icon + '"></i>';
+
         return '<article class="product-card" data-id="' + p.id + '" data-cat="' + p.cat + '" style="cursor:pointer">' +
             badgeHTML +
-            '<div class="product-card__media" data-cat="' + p.cat + '"><i data-lucide="' + p.icon + '"></i></div>' +
+            '<div class="product-card__media" data-cat="' + p.cat + '">' + mediaContent + '</div>' +
             '<div class="product-card__cat">' + p.cat + '</div>' +
             '<h3>' + p.name + '</h3>' +
             '<p class="product-card__specs">' + p.specs + '</p>' +
@@ -226,9 +238,12 @@
     /* =====================================================
        CART — Logica
        ===================================================== */
-    function addToCart(id) {
+    function addToCart(id, qty) {
+        id = parseInt(id, 10);
+        if (isNaN(id)) return;
+        qty = parseInt(qty, 10) || 1;
         var item = state.cart.find(function (c) { return c.id === id; });
-        if (item) { item.qty += 1; } else { state.cart.push({ id: id, qty: 1 }); }
+        if (item) { item.qty += qty; } else { state.cart.push({ id: id, qty: qty }); }
         saveCart();
         renderCart();
         var p = findProduct(id);
@@ -590,7 +605,7 @@
         stars: stars,
         addToCart: addToCart,
         saveCart: saveCart,
-        getCart: function () { return state.cart; }
+        getCart: function () { return state.cart.map(function(c) { return {id: c.id, qty: c.qty}; }); }
     };
 
     document.addEventListener('DOMContentLoaded', init);

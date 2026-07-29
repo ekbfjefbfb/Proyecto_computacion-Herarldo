@@ -81,7 +81,7 @@
                     <input type="email" class="auth-card__input" placeholder="Correo electronico" required>
                     <input type="tel" class="auth-card__input" placeholder="Telefono">
                 </div>
-                <input type="password" class="auth-card__input" placeholder="Contrasena (min. 8 caracteres)" required>
+                <input type="password" class="auth-card__input" placeholder="Contraseña (min. 8 caracteres)" required>
                 <input type="password" class="auth-card__input" placeholder="Confirmar contrasena" required>
                 <label class="auth-card__check"><input type="checkbox" required> Acepto los <a href="terminos-condiciones.html" style="color:var(--color-secondary)">Terminos</a></label>
                 <button type="submit" class="auth-card__submit">Crear cuenta</button>
@@ -116,7 +116,7 @@
             if(!email||!pass){toast('error','Error','Completa todos los campos');return;}
             var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');
             var user=users.find(function(u){return u.email===email&&u.password===pass;});
-            if(!user){toast('error','Error','Correo o contrasena incorrectos');return;}
+            if(!user){toast('error','Error','Correo o contraseña incorrectos');return;}
             localStorage.setItem('techstore_session',JSON.stringify({id:user.id,name:user.name,email:user.email,phone:user.phone}));
             toast('success','Bienvenido','Hola '+user.name);
             setTimeout(function(){window.location.href='mi-cuenta.html';},800);
@@ -132,7 +132,7 @@
             var confirm=inputs[4].value;
             var terms=this.querySelector('input[type=checkbox]').checked;
             if(!name||!email||!pass){toast('error','Error','Completa nombre, correo y contrasena');return;}
-            if(pass.length<8){toast('error','Error','La contrasena debe tener minimo 8 caracteres');return;}
+            if(pass.length<8){toast('error','Error','La contraseña debe tener minimo 8 caracteres');return;}
             if(pass!==confirm){toast('error','Error','Las contrasenas no coinciden');return;}
             if(!terms){toast('error','Error','Debes aceptar los terminos');return;}
             var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');

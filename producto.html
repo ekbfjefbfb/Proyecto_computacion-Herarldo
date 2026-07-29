@@ -162,7 +162,7 @@
             <span class="product-info__price-old">$2,299.00</span>
             <span class="product-info__price-discount">-13%</span>
           </div>
-          <span class="product-info__price-tax">Impuestos incluidos. Envio gratis.</span>
+          <span class="product-info__price-tax">Impuestos incluidos. Envío gratis.</span>
 
           <!-- ── COLOR ────────────────────────── -->
           <div class="product-info__variants">
@@ -202,9 +202,9 @@
 
           <!-- ── FEATURES ─────────────────────── -->
           <ul class="product-info__features">
-            <li><i data-lucide="check"></i> Envio gratis a todo Mexico</li>
-            <li><i data-lucide="check"></i> 12 meses de garantia extendida</li>
-            <li><i data-lucide="check"></i> Devolucion gratuita en 30 dias</li>
+            <li><i data-lucide="check"></i> Envío gratis a todo Mexico</li>
+            <li><i data-lucide="check"></i> 12 meses de garantía extendida</li>
+            <li><i data-lucide="check"></i> Devolución gratuita en 30 dias</li>
             <li><i data-lucide="check"></i> Soporte tecnico 24/7</li>
           </ul>
 
@@ -244,7 +244,7 @@
               <h3>Potencia sin limites. Procesa sin pausa.</h3>
               <p>
                 El MacBook Pro M3 representa un salto generacional en potencia y eficiencia.
-                Con el nuevo chip M3 Pro de Apple, diseñado con tecnologia de 3 nanometros,
+                Con el nuevo chip M3 Pro de Apple, diseñado con tecnología de 3 nanometros,
                 ofrece un rendimiento CPU y GPU revolucionario que transforma tu flujo de trabajo.
               </p>
               <p>
@@ -390,7 +390,7 @@
                 <div class="review-card__text">
                   <p>
                     El rendimiento es bestial, especialmente en edicion de video con Final Cut.
-                    Lo unico que me duele es el precio de las upgrades de RAM/SSD.
+                    Lo único que me duele es el precio de las upgrades de RAM/SSD.
                     Si puedes costearlo, es la mejor laptop del mercado hoy.
                   </p>
                 </div>
@@ -621,7 +621,7 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a>
-          <p>Tu tienda de tecnologia de confianza.</p>
+          <p>Tu tienda de tecnología de confianza.</p>
           <div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div>
         </div>
         <div class="footer__col"><h4>Tienda</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="tienda.html">Tienda</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div>
@@ -720,7 +720,7 @@
           addBtn.addEventListener('click', function(){
               var qtyEl = document.getElementById('qtyValue');
               var qty = qtyEl ? parseInt(qtyEl.value, 10) : 1;
-              for (var i = 0; i < qty; i++) TS.addToCart(product.id);
+              TS.addToCart(product.id, qty);
           });
       }
 

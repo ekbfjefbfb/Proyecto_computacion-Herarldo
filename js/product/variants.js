@@ -110,10 +110,7 @@
       var qty = qtyValue ? parseInt(qtyValue.value, 10) : 1;
       if (isNaN(qty) || qty < 1) qty = 1;
 
-      // Add each unit to cart via store.js
-      for (var i = 0; i < qty; i++) {
-        store.addToCart(productId);
-      }
+      store.addToCart(parseInt(productId, 10), qty);
 
       // Bounce animation on cart count
       var cartCountEl = document.getElementById('cartCount');

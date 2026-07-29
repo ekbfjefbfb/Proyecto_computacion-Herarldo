@@ -229,6 +229,8 @@
 /* Input de estrellas clickeables */
 .review-form__stars-input {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   gap: 4px;
   font-size: 1.5rem;
   cursor: pointer;
@@ -244,10 +246,11 @@
   fill: var(--color-warning);
 }
 
-/* Efecto hover que llena estrellas hacia la izquierda */
+/* Hover llena estrellas hacia la izquierda (funciona gracias a row-reverse) */
 .review-form__stars-input i:hover,
 .review-form__stars-input i:hover ~ i {
   color: var(--color-warning);
+  fill: var(--color-warning);
 }
 
 .review-form__input,

@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
+    height: var(--header-height);
     background: rgba(var(--bg-dark-rgb), 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
