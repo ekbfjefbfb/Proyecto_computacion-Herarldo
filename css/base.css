@@ -18,12 +18,68 @@ html {
 body {
     font-family: var(--font-family);
     background-color: var(--bg-dark);
+    background-image:
+        linear-gradient(180deg, rgba(6,6,10,.88) 0%, rgba(6,6,10,.82) 40%, rgba(6,6,10,.92) 100%),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1920&h=1080&fit=crop");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: var(--line-height);
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+/* ── TRANSICIONES EXTREMAS 60FPS ── */
+a, button, input, select, textarea, .product-card, .category-card, .related-card, .filter-btn, .variant-btn {
+    transition-property: transform, opacity, background-color, border-color, box-shadow, color;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition-duration: 0.2s;
+}
+
+button:active, .filter-btn:active, .variant-btn:active {
+    transform: scale(0.97) !important;
+}
+
+.product-card, .related-card {
+    contain: layout style;
+}
+
+.product-card:hover, .related-card:hover {
+    transform: translateY(-4px);
+    transition-duration: 0.35s;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    max-height: 100svh;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    padding: 12px 24px;
+    background: var(--color-primary);
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 10000;
+    border-radius: 0 0 var(--radius-md) 0;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
 }
 
 /* ── FONDO ANIMADO CON GRADIENTE QUE SE MUEVE ── */
@@ -84,7 +140,7 @@ input, select, textarea {
 :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
 }
 
 button:focus-visible,
@@ -103,7 +159,7 @@ textarea:focus-visible {
 /* ── CONTENEDOR GENERAL ──────────────────────── */
 .container {
     width: 100%;
-    max-width: 1280px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--space-md);
 }
@@ -144,12 +200,7 @@ p {
 /* ── SELECCION DE TEXTO ──────────────────────── */
 ::selection {
     background: var(--color-primary);
-    color: white;
-}
-
-::-moz-selection {
-    background: var(--color-primary);
-    color: white;
+    color: var(--text-primary);
 }
 
 /* ── SCROLLBAR PERSONALIZADA ─────────────────── */

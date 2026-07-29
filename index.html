@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="TechStore - Tecnologia premium lista para comprar. Laptops, smartphones, accesorios y gaming con envio seguro.">
+    <meta property="og:title" content="TechStore | Tecnologia premium lista para comprar">
+    <meta property="og:description" content="Laptops, smartphones, accesorios y gaming de alto rendimiento con envio seguro a Honduras.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_HN">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TechStore | Tecnologia premium">
+    <meta name="twitter:description" content="Laptops, smartphones, accesorios y gaming de alto rendimiento con envio seguro a Honduras.">
     <title>TechStore | Tecnologia premium lista para comprar</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,49 +24,12 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/store.css">
     <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/landing.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <style>
-        .landing-hero__trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
-        .trust-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.035)}
-        .trust-item__dot{width:28px;height:28px;border-radius:8px;background:rgba(var(--color-secondary-rgb),.1);display:grid;place-items:center;color:var(--color-secondary);flex-shrink:0}
-        .trust-item__dot svg{width:15px;height:15px}
-        .trust-item__text b{display:block;font-size:.8rem;font-weight:750;color:var(--text-primary)}
-        .trust-item__text span{display:block;font-size:.72rem;color:var(--text-muted)}
-        .section-clean__head{text-align:center;margin-bottom:48px}
-        .section-clean__eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:12px}
-        .section-clean__head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
-        .section-clean__head p{color:var(--text-muted);font-size:1rem;max-width:50ch;margin:0 auto}
-        .bento-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
-        .bento-card:hover{transform:translateY(-6px)}
-        .bento-card__bg{position:absolute;inset:0;border-radius:20px;border:1px solid var(--border-color);background:var(--bg-surface);transition:all 0.3s ease;overflow:hidden}
-        .bento-card:hover .bento-card__bg{border-color:rgba(var(--color-primary-rgb),0.4);box-shadow:0 20px 40px rgba(0,0,0,0.25)}
-        .bento-card__content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
-        .bento-card__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;transform:scale(1.02);transition:transform .45s ease,opacity .45s ease}
-        .bento-card:hover .bento-card__image{opacity:.68;transform:scale(1.08)}
-        .bento-card__icon{width:42px;height:42px;border-radius:10px;background:rgba(3,5,10,.62);border:1px solid rgba(255,255,255,.13);display:grid;place-items:center;color:var(--color-secondary);margin-bottom:12px;backdrop-filter:blur(10px)}
-        .bento-card__icon svg{width:21px;height:21px}
-        .bento-card__label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-secondary);margin-bottom:6px}
-        .bento-card h3{font-size:1.15rem;font-weight:800;margin-bottom:4px}
-        .bento-card p{font-size:0.82rem;color:var(--text-muted);line-height:1.5}
-        .bento-card__arrow{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all 0.3s ease}
-        .bento-card:hover .bento-card__arrow{background:var(--color-primary);border-color:var(--color-primary);color:#fff;transform:translate(2px,-2px)}
-        .bento-card__arrow svg{width:16px;height:16px}
-        .featured-bento{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:230px 230px;gap:18px}
-        .featured-bento .bento-card:first-child{grid-row:span 2}
-        @media(max-width:900px){.featured-bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.featured-bento .bento-card:first-child{grid-column:span 2;grid-row:span 1}}
-        @media(max-width:640px){.featured-bento{grid-template-columns:1fr}.featured-bento .bento-card:first-child{grid-column:span 1}.landing-hero__trust{gap:10px}}
-        .cta-banner{background:linear-gradient(135deg,rgba(var(--color-primary-rgb),0.12),rgba(var(--color-secondary-rgb),0.08));border:1px solid rgba(var(--color-primary-rgb),0.2);border-radius:24px;padding:48px 56px;display:flex;align-items:center;justify-content:space-between;gap:32px}
-        .cta-banner h2{font-size:1.5rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-        .cta-banner p{color:var(--text-muted);font-size:0.92rem}
-        .cta-banner__btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:700;font-size:0.88rem;text-decoration:none;background:var(--color-secondary);color:var(--text-on-primary);transition:all 0.3s ease;white-space:nowrap}
-        .cta-banner__btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--color-secondary-rgb),0.3)}
-        .cta-banner__btn svg{width:18px;height:18px}
-        @media(max-width:768px){.cta-banner{flex-direction:column;text-align:center;padding:36px 28px}.cta-banner__btn{align-self:center}}
-        .site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}
-        .site-logo svg{width:28px;height:28px;color:var(--color-secondary)}
-    </style>
 </head>
-<body>
+<body class="no-scroll">
+
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
     <header class="header" id="header">
         <div class="header__container">
@@ -70,11 +40,6 @@
                 <span>TechStore</span>
             </a>
 
-            <div class="header__search">
-                <input type="text" placeholder="Busca laptops, audifonos, monitores..." class="header__search-input" id="searchInput">
-                <button class="header__search-btn" aria-label="Buscar"><i data-lucide="search"></i></button>
-            </div>
-
             <nav class="header__nav" id="headerNav">
                 <a href="index.html" class="header__nav-link header__nav-link--active">Inicio</a>
                 <a href="tienda.html" class="header__nav-link">Tienda</a>
@@ -83,13 +48,9 @@
             </nav>
 
             <div class="header__actions">
-                <button class="header__search-toggle" id="searchToggle" aria-label="Buscar">
-                    <i data-lucide="search"></i>
-                </button>
                 <a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta">
                     <i data-lucide="user"></i>
                 </a>
-                <button class="header__cart" id="cartBtn" aria-label="Abrir carrito"><i data-lucide="shopping-cart"></i><span class="header__cart-count" id="cartCount">0</span></button>
             </div>
 
             <button class="header__menu-btn" id="menuBtn" aria-label="Menú">
@@ -125,77 +86,27 @@
     </nav>
 
     <!-- HERO -->
+    <main id="main-content">
     <section class="landing-hero" id="inicio">
-        <div class="container">
+        <div class="container landing-hero__split">
             <div class="landing-hero__content">
-                <span class="landing-hero__eyebrow"><i data-lucide="sparkles"></i> Compra directa, sin friccion</span>
-                <h1 class="landing-hero__title">Tecnologia premium, lista para <span class="accent">comprar hoy</span></h1>
-                <p class="landing-hero__desc">Busca, compara y agrega al carrito desde el inicio. Productos curados, imagenes reales y una experiencia rapida para comprar sin perder el hilo.</p>
-                <div class="hero-commerce">
-                    <div class="hero-commerce__search">
-                        <i data-lucide="search"></i>
-                        <input type="text" id="homeSearchInput" placeholder="Buscar MacBook, audifonos, monitor 165Hz...">
-                        <button id="homeSearchBtn">Buscar</button>
-                    </div>
-                    <div class="hero-commerce__chips">
-                        <a href="tienda.html?cat=laptops"><i data-lucide="laptop"></i> Laptops</a>
-                        <a href="tienda.html?cat=smartphones"><i data-lucide="smartphone"></i> Smartphones</a>
-                        <a href="tienda.html?cat=accesorios"><i data-lucide="headphones"></i> Accesorios</a>
-                        <a href="tienda.html?cat=gaming"><i data-lucide="gamepad-2"></i> Gaming</a>
-                    </div>
-                </div>
-                <div class="landing-hero__trust">
-                    <div class="trust-item">
-                        <div class="trust-item__dot"><i data-lucide="truck"></i></div>
-                        <div class="trust-item__text"><b>Envío gratis</b><span>en pedidos +$999</span></div>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-item__dot"><i data-lucide="shield-check"></i></div>
-                        <div class="trust-item__text"><b>2 años garantía</b><span>en todos los productos</span></div>
-                    </div>
-                    <div class="trust-item">
-                        <div class="trust-item__dot"><i data-lucide="lock"></i></div>
-                        <div class="trust-item__text"><b>Pago seguro</b><span>cifrado SSL</span></div>
-                    </div>
+                <h1 class="landing-hero__title">Tecnología de precisión <span class="accent">sin concesiones</span></h1>
+                <p class="landing-hero__desc">Laptops, smartphones, audio y gaming gear de alto rendimiento.</p>
+                <div class="hero-cta">
+                    <a href="tienda.html" class="hero-cta__btn hero-cta__btn--primary">
+                        Ver catálogo
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <a href="ofertas.html" class="hero-cta__btn hero-cta__btn--accent">
+                        Explora ofertas
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+                    </a>
                 </div>
             </div>
-            <div class="home-shelf" aria-label="Productos destacados">
-                <div class="home-shelf__head">
-                    <span>Seleccion destacados</span>
-                    <a href="tienda.html">Ver catalogo <i data-lucide="arrow-right"></i></a>
-                </div>
-                <div class="product-grid product-grid--home" id="featuredProducts"></div>
-            </div>
+            <div class="landing-hero__bento" id="featuredBento"><noscript><p style="text-align:center;padding:40px;color:var(--text-muted)">Activa JavaScript para ver productos destacados.</p></noscript></div>
         </div>
     </section>
-
-    <!-- CATEGORIAS -->
-    <section class="section-clean reveal" id="categorias">
-        <div class="container">
-            <div class="section-clean__head">
-                <span class="section-clean__eyebrow">Explora</span>
-                <h2>Compra por categoria</h2>
-                <p>Rutas claras para entrar al catalogo con el filtro correcto ya aplicado.</p>
-            </div>
-            <div class="featured-bento" id="featuredBento"></div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section reveal">
-        <div class="container">
-            <div class="cta-banner">
-                <div>
-                    <h2>Ofertas por tiempo limitado</h2>
-                    <p>Hasta 40% de descuento en productos seleccionados. No dejes pasar estas ofertas.</p>
-                </div>
-                <a href="ofertas.html" class="cta-banner__btn">
-                    Ver ofertas
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-                </a>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer" id="contacto">
@@ -208,7 +119,7 @@
                         </svg>
                         <span>TechStore</span>
                     </a>
-                    <p>Tu tienda de tecnología de confianza. Laptops, smartphones, accesorios y gaming gear seleccionados para acompañar tu día a día digital.</p>
+                    <p>Tecnología premium seleccionada con precisión, envío express y garantía oficial.</p>
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
                         <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -255,7 +166,7 @@
     </footer>
 
     <div class="cart-overlay" id="cartOverlay"></div>
-    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras" aria-hidden="true">
         <div class="cart-drawer__head"><h3><i data-lucide="shopping-cart"></i> Tu carrito</h3><button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button></div>
         <div class="cart-drawer__items" id="cartItems"></div>
         <div class="cart-drawer__foot"><div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div><button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button></div>

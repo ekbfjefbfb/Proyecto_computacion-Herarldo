@@ -22,9 +22,10 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-<style>.site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}.site-logo svg{width:28px;height:28px;color:var(--color-secondary)}</style>
 </head>
 <body>
+
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
     <header class="header" id="header">
         <div class="header__container">
@@ -59,7 +60,7 @@
         </div>
     </section>
 
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <div class="container">
             <div class="account-layout">
 
@@ -80,7 +81,7 @@
                     </div>
                     <div class="account-nav__actions">
                         <a href="tracking.html" class="account-nav__link" title="Tracking"><i data-lucide="truck"></i></a>
-                        <button class="account-nav__logout" id="logoutBtn" onclick="window.location.href='cuenta.html'"><i data-lucide="log-out"></i></button>
+                        <button class="account-nav__logout" id="logoutBtn"><i data-lucide="log-out"></i></button>
                     </div>
                 </nav>
 
@@ -207,8 +208,16 @@
     <script>
     (function(){
         var session=null;
-        try{session=JSON.parse(localStorage.getItem('techstore_session'));}catch(e){}
-        if(!session){window.location.href='cuenta.html';return;}
+        try{
+            var raw=localStorage.getItem('techstore_session');
+            session=raw?JSON.parse(raw):null;
+        }catch(e){
+            session=null;
+        }
+        if(!session||!session.id){
+            window.location.href='cuenta.html';
+            return;
+        }
 
         var nameParts=(session.name||'').split(' ');
         var initials=(nameParts[0]||'').charAt(0).toUpperCase()+(nameParts[nameParts.length-1]||'').charAt(0).toUpperCase();
@@ -240,10 +249,10 @@
                 var newPhone=fPhone?fPhone.value.trim():session.phone;
                 if(!newName||!newEmail){window.showToast('error','Error','Nombre y correo son obligatorios');return;}
                 session.name=newName;session.email=newEmail;session.phone=newPhone;
-                localStorage.setItem('techstore_session',JSON.stringify(session));
-                var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');
+                try{localStorage.setItem('techstore_session',JSON.stringify(session));}catch(e){}
+                var users=(function(){try{return JSON.parse(localStorage.getItem('techstore_users')||'[]');}catch(e){return[];}})();
                 var user=users.find(function(u){return u.id===session.id;});
-                if(user){user.name=newName;user.email=newEmail;user.phone=newPhone;localStorage.setItem('techstore_users',JSON.stringify(users));}
+                if(user){user.name=newName;user.email=newEmail;user.phone=newPhone;try{localStorage.setItem('techstore_users',JSON.stringify(users));}catch(e){}}
                 var np=newName.split(' ');var ni=(np[0]||'').charAt(0).toUpperCase()+(np[np.length-1]||'').charAt(0).toUpperCase();
                 document.getElementById('avatarInitials').textContent=ni;
                 document.getElementById('userName').textContent=newName;
@@ -255,14 +264,8 @@
             });
         }
 
-        document.getElementById('logoutBtn').addEventListener('click',function(e){
-            e.preventDefault();
-            localStorage.removeItem('techstore_session');
-            window.location.href='cuenta.html';
-        });
-
         /* ── ORDERS ──────────────────────────────────── */
-        var allOrders=JSON.parse(localStorage.getItem('techstore_orders')||'[]').filter(function(o){return o.userId===session.id;});
+        var allOrders=(function(){try{return JSON.parse(localStorage.getItem('techstore_orders')||'[]');}catch(e){return[];}})().filter(function(o){return o.userId===session.id;});
         var statusLabels={pending:{label:'Pendiente',icon:'clock'},shipped:{label:'Enviado',icon:'truck'},delivered:{label:'Entregado',icon:'circle-check'},cancelled:{label:'Cancelado',icon:'circle-x'}};
         var statusNames={pending:'pending',shipped:'shipped',delivered:'delivered',cancelled:'cancelled'};
 
@@ -317,21 +320,21 @@
         }
 
         window.cancelOrder=function(orderId){
-            var orders=JSON.parse(localStorage.getItem('techstore_orders')||'[]');
+            var orders=(function(){try{return JSON.parse(localStorage.getItem('techstore_orders')||'[]');}catch(e){return[];}})();
             var order=orders.find(function(o){return o.id===orderId;});
-            if(order){order.status='cancelled';localStorage.setItem('techstore_orders',JSON.stringify(orders));allOrders=orders.filter(function(o){return o.userId===session.id;});renderOrders('all');window.showToast('info','Pedido cancelado','El pedido #'+orderId+' ha sido cancelado');}
+            if(order){order.status='cancelled';try{localStorage.setItem('techstore_orders',JSON.stringify(orders));}catch(e){}allOrders=orders.filter(function(o){return o.userId===session.id;});renderOrders('all');window.showToast('info','Pedido cancelado','El pedido #'+orderId+' ha sido cancelado');}
         };
 
         window.reorder=function(orderId){
-            var orders=JSON.parse(localStorage.getItem('techstore_orders')||'[]');
+            var orders=(function(){try{return JSON.parse(localStorage.getItem('techstore_orders')||'[]');}catch(e){return[];}})();
             var order=orders.find(function(o){return o.id===orderId;});
             if(!order)return;
-            var cart=JSON.parse(localStorage.getItem('techstore_cart')||'[]');
+            var cart=(function(){try{return JSON.parse(localStorage.getItem('techstore_cart')||'[]');}catch(e){return[];}})();
             order.items.forEach(function(item){
                 var existing=cart.find(function(c){return c.id===item.id;});
                 if(existing){existing.qty+=item.qty;}else{cart.push({id:item.id,qty:item.qty});}
             });
-            localStorage.setItem('techstore_cart',JSON.stringify(cart));
+            try{localStorage.setItem('techstore_cart',JSON.stringify(cart));}catch(e){}
             window.showToast('success','Agregado','Productos agregados al carrito');
         };
 
@@ -342,7 +345,7 @@
         var statOrders=document.getElementById('statOrders');if(statOrders)statOrders.textContent=totalOrders;
         var statSpent=document.getElementById('statSpent');if(statSpent)statSpent.textContent=formatPrice(totalSpent);
         var favKey='techstore_favorites_'+session.id;
-        var favorites=JSON.parse(localStorage.getItem(favKey)||'[]');
+        var favorites=(function(){try{return JSON.parse(localStorage.getItem(favKey)||'[]');}catch(e){return[];}})();
         var statFav=document.getElementById('statFavorites');if(statFav)statFav.textContent=favorites.length;
 
         document.querySelectorAll('#ordersFilter .orders-filter__btn').forEach(function(btn){
@@ -355,21 +358,21 @@
 
         /* ── SETTINGS ──────────────────────────────── */
         var settingsKey='techstore_settings_'+session.id;
-        var settings=JSON.parse(localStorage.getItem(settingsKey)||'{"emailNotif":true,"smsTracking":true,"newsletter":false,"twoFactor":false}');
+        var settings=(function(){try{return JSON.parse(localStorage.getItem(settingsKey)||'{"emailNotif":true,"smsTracking":true,"newsletter":false,"twoFactor":false}');}catch(e){return{emailNotif:true,smsTracking:true,newsletter:false,twoFactor:false};}})();
         var toggles=document.querySelectorAll('.settings-card__option input[type=checkbox]');
         toggles.forEach(function(t,i){
             var keys=['emailNotif','smsTracking','newsletter','twoFactor'];
             if(keys[i])t.checked=settings[keys[i]];
             t.addEventListener('change',function(){
                 settings[keys[i]]=t.checked;
-                localStorage.setItem(settingsKey,JSON.stringify(settings));
+                try{localStorage.setItem(settingsKey,JSON.stringify(settings));}catch(e){}
                 window.showToast('success','Configuracion','Preferencia actualizada');
             });
         });
 
         /* ── ADDRESSES ─────────────────────────────── */
         var addrKey='techstore_addresses_'+session.id;
-        var addresses=JSON.parse(localStorage.getItem(addrKey)||'[{"id":1,"type":"Casa","address":"Av. Reforma 123, Col. Centro","city":"Ciudad de Mexico","zip":"06000","phone":"'+(session.phone||'')+'","isPrimary":true}]');
+        var addresses=(function(){try{return JSON.parse(localStorage.getItem(addrKey)||'[{"id":1,"type":"Casa","address":"Av. Reforma 123, Col. Centro","city":"Ciudad de Honduras","zip":"11101","phone":"'+(session.phone||'')+'","isPrimary":true}]');}catch(e){return[{id:1,type:'Casa',address:'Av. Reforma 123, Col. Centro',city:'Ciudad de Honduras',zip:'11101',phone:session.phone||'',isPrimary:true}];}})();
 
         function renderAddresses(){
             var grid=document.getElementById('addressesGrid');
@@ -400,7 +403,7 @@
             if(!zip)return;
             var phone=prompt('Telefono:',session.phone||'');
             addresses.push({id:Date.now(),type:type,address:addr,city:city,zip:zip,phone:phone||'',isPrimary:addresses.length===0});
-            localStorage.setItem(addrKey,JSON.stringify(addresses));
+            try{localStorage.setItem(addrKey,JSON.stringify(addresses));}catch(e){}
             renderAddresses();
             window.showToast('success','Dirección agregada',type+' agregada correctamente');
         };
@@ -414,7 +417,7 @@
             if(newCity)addr.city=newCity;
             var newZip=prompt('Codigo postal:',addr.zip);
             if(newZip)addr.zip=newZip;
-            localStorage.setItem(addrKey,JSON.stringify(addresses));
+            try{localStorage.setItem(addrKey,JSON.stringify(addresses));}catch(e){}
             renderAddresses();
             window.showToast('success','Dirección actualizada','Datos guardados correctamente');
         };
@@ -423,7 +426,7 @@
             if(!confirm('Eliminar esta direccion?'))return;
             addresses=addresses.filter(function(a){return a.id!==id;});
             if(addresses.length>0)addresses[0].isPrimary=true;
-            localStorage.setItem(addrKey,JSON.stringify(addresses));
+            try{localStorage.setItem(addrKey,JSON.stringify(addresses));}catch(e){}
             renderAddresses();
             window.showToast('info','Dirección eliminada','Dirección removida');
         };
@@ -432,7 +435,7 @@
 
         /* ── PAYMENT CARDS ─────────────────────────── */
         var payKey='techstore_payments_'+session.id;
-        var payments=JSON.parse(localStorage.getItem(payKey)||'[{"id":1,"number":"**** **** **** 4589","holder":(session.name||"USUARIO").toUpperCase(),"expiry":"12/26","brand":"visa"}]');
+        var payments=(function(){try{return JSON.parse(localStorage.getItem(payKey)||'[{"id":1,"number":"**** **** **** 4589","holder":(session.name||"USUARIO").toUpperCase(),"expiry":"12/26","brand":"visa"}]');}catch(e){return[{id:1,number:'**** **** **** 4589',holder:(session.name||'USUARIO').toUpperCase(),expiry:'12/26',brand:'visa'}];}})();
 
         function renderPayments(){
             var grid=document.getElementById('paymentGrid');
@@ -461,7 +464,7 @@
             var exp=prompt('Vencimiento (MM/AA):','12/26');
             if(!exp)return;
             payments.push({id:Date.now(),number:num,holder:holder.toUpperCase(),expiry:exp,brand:'visa'});
-            localStorage.setItem(payKey,JSON.stringify(payments));
+            try{localStorage.setItem(payKey,JSON.stringify(payments));}catch(e){}
             renderPayments();
             window.showToast('success','Tarjeta agregada',num+' agregada correctamente');
         };
@@ -473,7 +476,7 @@
             if(newHolder)card.holder=newHolder.toUpperCase();
             var newExp=prompt('Vencimiento:',card.expiry);
             if(newExp)card.expiry=newExp;
-            localStorage.setItem(payKey,JSON.stringify(payments));
+            try{localStorage.setItem(payKey,JSON.stringify(payments));}catch(e){}
             renderPayments();
             window.showToast('success','Tarjeta actualizada','Datos guardados correctamente');
         };
@@ -481,7 +484,7 @@
         window.deletePayment=function(id){
             if(!confirm('Eliminar esta tarjeta?'))return;
             payments=payments.filter(function(c){return c.id!==id;});
-            localStorage.setItem(payKey,JSON.stringify(payments));
+            try{localStorage.setItem(payKey,JSON.stringify(payments));}catch(e){}
             renderPayments();
             window.showToast('info','Tarjeta eliminada','Tarjeta removida');
         };

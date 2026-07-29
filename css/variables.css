@@ -1,7 +1,6 @@
 /* ============================================ */
-/* VARIABLES CSS                                */
-/* Paleta de colores, espaciados, fuentes       */
-/* Configuracion global del tema oscuro tech    */
+/* VARIABLES CSS — PREMIUM 2026                 */
+/* Sistema de diseño Luxury Tech Store          */
 /* ============================================ */
 
 :root {
@@ -14,38 +13,38 @@
     /* ── TIPOGRAFÍA ──────────────────────────── */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --line-height: 1.6;
-    --line-height-tight: 1.15;
+    --line-height-tight: 1.08;
     --line-height-relaxed: 1.7;
-    --letter-spacing: -0.02em;
+    --letter-spacing: -0.04em;
     --letter-spacing-wide: 0.02em;
 
     /* ── COLORES PRINCIPALES ─────────────────── */
-    --color-primary: #6C5CE7;
-    --color-primary-rgb: 108, 92, 231;
-    --color-primary-dark: #5A4BD1;
-    --color-primary-light: #A29BFE;
-    --color-primary-glow: rgba(var(--color-primary-rgb), 0.3);
+    --color-primary: #7B68EE;
+    --color-primary-rgb: 123, 104, 238;
+    --color-primary-dark: #6A5ACD;
+    --color-primary-light: #A890FF;
+    --color-primary-glow: rgba(var(--color-primary-rgb), 0.35);
 
-    /* ── COLORES SECUNDARIOS ─────────────────── */
-    --color-secondary: #00CEC9;
-    --color-secondary-rgb: 0, 206, 201;
-    --color-secondary-dark: #00B5B0;
-    --color-secondary-glow: rgba(var(--color-secondary-rgb), 0.3);
+    /* ── COLORES SECUNDARIOS (Teal premium) ─── */
+    --color-secondary: #00E5C7;
+    --color-secondary-rgb: 0, 229, 199;
+    --color-secondary-dark: #00C4B0;
+    --color-secondary-glow: rgba(var(--color-secondary-rgb), 0.35);
 
     /* ── COLORES DE ACCENTO ──────────────────── */
-    --color-accent: #FD79A8;
-    --color-accent-rgb: 253, 121, 168;
-    --color-accent-dark: #E84393;
+    --color-accent: #FF7A9A;
+    --color-accent-rgb: 255, 122, 154;
+    --color-accent-dark: #E85D7A;
 
     /* ── COLORES DE ESTADO ───────────────────── */
-    --color-success: #00B894;
-    --color-success-rgb: 0, 184, 148;
-    --color-warning: #FDCB6E;
-    --color-warning-rgb: 253, 203, 110;
-    --color-error: #FF6B6B;
-    --color-error-rgb: 255, 107, 107;
-    --color-info: #74B9FF;
-    --color-info-rgb: 116, 185, 255;
+    --color-success: #2ECC71;
+    --color-success-rgb: 46, 204, 113;
+    --color-warning: #F5C542;
+    --color-warning-rgb: 245, 197, 66;
+    --color-error: #FF5370;
+    --color-error-rgb: 255, 83, 112;
+    --color-info: #48CAFF;
+    --color-info-rgb: 72, 202, 255;
 
     /* ── COLORES DE CATEGORÍA ────────────────── */
     --cat-laptops: var(--color-primary-light);
@@ -53,35 +52,33 @@
     --cat-accesorios: var(--color-accent);
     --cat-gaming: var(--color-warning);
 
-    /* ── COLORES DE TEXTO ────────────────────── */
-    --text-on-primary: #0A0A0F;
-
-    /* ── FONDOS (TEMA OSCURO) ────────────────── */
-    --bg-dark: #0A0A0F;
-    --bg-dark-rgb: 10, 10, 15;
-    --bg-primary: #12121A;
-    --bg-primary-rgb: 18, 18, 26;
-    --bg-card: #12121A;
-    --bg-card-hover: #1A1A25;
-    --bg-surface: #1E1E2E;
-    --bg-input: #16161E;
+    /* ── FONDOS (TEMA OSCURO PREMIUM) ─────────── */
+    --bg-dark: #06060A;
+    --bg-dark-rgb: 6, 6, 10;
+    --bg-primary: #0E0E14;
+    --bg-primary-rgb: 14, 14, 20;
+    --bg-card: #13131D;
+    --bg-card-hover: #1A1A28;
+    --bg-surface: #1B1B2A;
+    --bg-input: #151520;
 
     /* ── COLORES DE TEXTO ────────────────────── */
     --text-primary: #FFFFFF;
-    --text-secondary: #B4B4C0;
-    --text-muted: #8A8AA0;
+    --text-secondary: #B5B5C5;
+    --text-muted: #6E6E82;
     --text-link: var(--color-primary-light);
+    --text-on-primary: #06060A;
 
     /* ── BORDES ──────────────────────────────── */
-    --border-color: #2A2A3A;
+    --border-color: rgba(255, 255, 255, 0.07);
     --border-focus: var(--color-primary);
 
     /* ── SOMBRAS ─────────────────────────────── */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 20px var(--color-primary-glow);
-    --shadow-glow-strong: 0 0 40px var(--color-primary-glow);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
+    --shadow-glow: 0 0 24px var(--color-primary-glow);
+    --shadow-glow-strong: 0 0 48px var(--color-primary-glow);
 
     /* ── ESPACIADOS ──────────────────────────── */
     --space-xs: 4px;
@@ -96,13 +93,15 @@
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
+    --radius-bento: 18px;
+    --radius-card: 20px;
     --radius-xl: 24px;
     --radius-full: 9999px;
 
-    /* ── TRANSICIONES ────────────────────────── */
-    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    /* ── TRANSICIONES (Cinematic) ────────────── */
+    --transition-fast: 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-normal: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-smooth: 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     /* ── Z-INDEX ─────────────────────────────── */
@@ -113,4 +112,14 @@
     --z-modal: 400;
     --z-toast: 500;
     --z-max: 600;
+
+    /* ── DEGRADADOS PREMIUM ──────────────────── */
+    --gradient-hero: radial-gradient(ellipse at 20% 40%, rgba(var(--color-primary-rgb), 0.18) 0%, transparent 60%),
+                     radial-gradient(ellipse at 80% 10%, rgba(var(--color-secondary-rgb), 0.12) 0%, transparent 50%),
+                     radial-gradient(ellipse at 50% 100%, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 50%),
+                     linear-gradient(180deg, #06060A 0%, #0A0A14 100%);
+
+    --gradient-page: radial-gradient(ellipse at 15% 30%, rgba(var(--color-primary-rgb), 0.10) 0%, transparent 55%),
+                     radial-gradient(ellipse at 85% 15%, rgba(var(--color-secondary-rgb), 0.06) 0%, transparent 45%),
+                     linear-gradient(180deg, var(--bg-dark) 0%, #08080F 100%);
 }

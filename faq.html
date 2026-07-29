@@ -16,24 +16,12 @@
     <link rel="stylesheet" href="css/store.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/legal.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <style>
-        .legal-page { padding: 120px 0 80px; }
-        .legal-page .container { max-width: 800px; }
-        .legal-page h1 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
-        .legal-page .subtitle { color: var(--text-muted); font-size: 1rem; margin-bottom: 48px; }
-        .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; background: var(--bg-card); }
-        .faq-item__q { width: 100%; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; background: none; border: none; color: var(--text-primary); font-size: 0.95rem; font-weight: 600; cursor: pointer; text-align: left; transition: background 0.3s ease; }
-        .faq-item__q:hover { background: var(--bg-surface); }
-        .faq-item__q i { color: var(--color-secondary); transition: transform 0.3s ease; font-size: 0.8rem; }
-        .faq-item.open .faq-item__q i { transform: rotate(180deg); }
-        .faq-item__a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
-        .faq-item.open .faq-item__a { max-height: 400px; }
-        .faq-item__a-inner { padding: 0 20px 18px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
-        .site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}.site-logo svg{width:28px;height:28px;color:var(--color-secondary)}
-    </style>
 </head>
 <body>
+
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
     <!-- HEADER -->
     <header class="header" id="header">
@@ -74,7 +62,7 @@
     </nav>
 
     <!-- CONTENIDO -->
-    <main class="legal-page">
+    <main class="legal-page" id="main-content">
         <div class="container">
             <h1><i data-lucide="help-circle"></i> Preguntas Frecuentes</h1>
             <p class="subtitle">Encuentra respuestas a las consultas mas comunes sobre nuestros productos y servicios.</p>

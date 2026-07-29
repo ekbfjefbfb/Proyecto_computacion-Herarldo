@@ -18,9 +18,10 @@
     <link rel="stylesheet" href="css/store.css">
     <link rel="stylesheet" href="css/premium.css">
     <link rel="stylesheet" href="css/responsive.css">
-<style>.site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}.site-logo svg{width:28px;height:28px;color:var(--color-secondary)}</style>
 </head>
 <body>
+
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
     <header class="header" id="header">
         <div class="header__container">
@@ -65,13 +66,7 @@
         </div>
     </nav>
 
-    <section class="page-header page-header--offers">
-        <div class="container">
-            <h1><i data-lucide="flame"></i> Ofertas activas</h1>
-            <p>Descuentos visibles, productos reales y compra directa al carrito mientras dure el stock.</p>
-        </div>
-    </section>
-
+    <main id="main-content">
     <section class="section">
         <div class="container">
             <div style="display:flex;justify-content:center;margin-bottom:40px">
@@ -80,9 +75,10 @@
                     Termina en <span id="cd-h">05</span>:<span id="cd-m">59</span>:<span id="cd-s">59</span>
                 </div>
             </div>
-            <div class="product-grid" id="offersGrid"></div>
+            <div class="product-grid" id="offersGrid"><noscript><p style="text-align:center;padding:40px;color:var(--text-muted)">Activa JavaScript para ver las ofertas.</p></noscript></div>
         </div>
     </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
@@ -101,7 +97,7 @@
     </footer>
 
     <div class="cart-overlay" id="cartOverlay"></div>
-    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras" aria-hidden="true">
         <div class="cart-drawer__head"><h3><i data-lucide="shopping-cart"></i> Tu carrito</h3><button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button></div>
         <div class="cart-drawer__items" id="cartItems"></div>
         <div class="cart-drawer__foot"><div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div><button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button></div>

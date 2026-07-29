@@ -6,8 +6,8 @@
 /* ── PRODUCT LAYOUT BASE ─────────────────────── */
 .product-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2xl);
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(32px, 4vw, 56px);
     align-items: start;
 }
 
@@ -213,14 +213,6 @@
 
     .account-section__title {
         font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-    }
-
-    .auth-form {
-        padding: var(--space-lg);
-    }
-
-    .auth-form__social {
-        grid-template-columns: 1fr;
     }
 
     .profile-card__body {

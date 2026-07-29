@@ -18,9 +18,10 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-<style>.site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}.site-logo svg{width:28px;height:28px;color:var(--color-secondary)}</style>
 </head>
 <body>
+
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
     <header class="header" id="header">
         <div class="header__container">
@@ -47,11 +48,8 @@
         </div>
     </nav>
 
-    <main class="auth-centered">
-        <div class="auth-centered__bg">
-            <div class="orb orb--1"></div>
-            <div class="orb orb--2"></div>
-        </div>
+    <main class="auth-centered" id="main-content">
+        <div class="auth-centered__bg"></div>
 
         <div class="auth-card">
             <div class="auth-card__logo">
@@ -68,11 +66,7 @@
                 <input type="password" class="auth-card__input" placeholder="Contrasena" required>
                 <label class="auth-card__check"><input type="checkbox" checked> Recordarme</label>
                 <button type="submit" class="auth-card__submit">Iniciar sesion</button>
-                <div class="auth-card__divider"><span>o continua con</span></div>
-                <div class="auth-card__social">
-                    <button type="button" class="auth-card__social-btn" onclick="alert('Proximamente')"><i data-lucide="chrome"></i> Google</button>
-                    <button type="button" class="auth-card__social-btn" onclick="alert('Proximamente')"><i data-lucide="globe"></i> Facebook</button>
-                </div>
+                <div class="auth-card__divider"><span>Acceso local demo</span></div>
                 <p class="auth-card__footer">No tienes cuenta? <a href="#" onclick="switchTab('register');return false;">Registrate</a></p>
             </form>
 
@@ -109,18 +103,22 @@
 
         var toast=window.showToast||function(){};
 
+        function safeGetUsers(){try{return JSON.parse(localStorage.getItem('techstore_users')||'[]');}catch(e){return[];}}
+        function safeSet(key,val){try{localStorage.setItem(key,JSON.stringify(val));return true;}catch(e){return false;}}
+
         document.getElementById('loginForm').addEventListener('submit',function(e){
             e.preventDefault();
             var inputs=this.querySelectorAll('.auth-card__input');
             var email=inputs[0].value.trim();
             var pass=inputs[1].value;
             if(!email||!pass){toast('error','Error','Completa todos los campos');return;}
-            var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');
+            var users=safeGetUsers();
             var user=users.find(function(u){return u.email===email&&u.password===pass;});
-            if(!user){toast('error','Error','Correo o contraseña incorrectos');return;}
-            localStorage.setItem('techstore_session',JSON.stringify({id:user.id,name:user.name,email:user.email,phone:user.phone}));
+            if(!user){toast('error','Error','Correo o contrasena incorrectos');return;}
+            var sessionData={id:user.id,name:user.name,email:user.email,phone:user.phone};
+            if(!safeSet('techstore_session',sessionData)){toast('error','Error','No se pudo guardar la sesion');return;}
             toast('success','Bienvenido','Hola '+user.name);
-            setTimeout(function(){window.location.href='mi-cuenta.html';},800);
+            setTimeout(function(){window.location.href='mi-cuenta.html';},500);
         });
 
         document.getElementById('registerForm').addEventListener('submit',function(e){
@@ -128,22 +126,23 @@
             var inputs=this.querySelectorAll('.auth-card__input');
             var name=inputs[0].value.trim();
             var email=inputs[1].value.trim();
-            var phone=inputs[2].value.trim();
+            var phone=inputs[2]?inputs[2].value.trim():'';
             var pass=inputs[3].value;
             var confirm=inputs[4].value;
             var terms=this.querySelector('input[type=checkbox]').checked;
             if(!name||!email||!pass){toast('error','Error','Completa nombre, correo y contrasena');return;}
-            if(pass.length<8){toast('error','Error','La contraseña debe tener minimo 8 caracteres');return;}
+            if(pass.length<8){toast('error','Error','La contrasena debe tener minimo 8 caracteres');return;}
             if(pass!==confirm){toast('error','Error','Las contrasenas no coinciden');return;}
             if(!terms){toast('error','Error','Debes aceptar los terminos');return;}
-            var users=JSON.parse(localStorage.getItem('techstore_users')||'[]');
+            var users=safeGetUsers();
             if(users.find(function(u){return u.email===email;})){toast('error','Error','Este correo ya esta registrado');return;}
             var newUser={id:Date.now(),name:name,email:email,phone:phone,password:pass};
             users.push(newUser);
-            localStorage.setItem('techstore_users',JSON.stringify(users));
-            localStorage.setItem('techstore_session',JSON.stringify({id:newUser.id,name:newUser.name,email:newUser.email,phone:newUser.phone}));
+            if(!safeSet('techstore_users',users)){toast('error','Error','No se pudo crear la cuenta');return;}
+            var sessionData={id:newUser.id,name:newUser.name,email:newUser.email,phone:newUser.phone};
+            if(!safeSet('techstore_session',sessionData)){toast('error','Error','Cuenta creada pero no se pudo iniciar sesion');setTimeout(function(){window.location.href='cuenta.html';},1000);return;}
             toast('success','Cuenta creada','Bienvenido '+name);
-            setTimeout(function(){window.location.href='mi-cuenta.html';},800);
+            setTimeout(function(){window.location.href='mi-cuenta.html';},500);
         });
     })();
 

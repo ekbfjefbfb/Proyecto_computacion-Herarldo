@@ -281,77 +281,74 @@
     });
   }
 
-  /* ── PROFILE FORM ──────────────────────────────── */
-  if (!document.getElementById('ordersEmpty')) {
-    var profileForm = document.getElementById('profileForm');
-    if (profileForm) {
-      profileForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        showToast('success', 'Guardado!', 'Tu perfil ha sido actualizado');
-      });
-    }
-
-    var passwordForm = document.getElementById('passwordForm');
-    if (passwordForm) {
-      passwordForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var current = document.getElementById('currentPassword').value;
-        var newPass = document.getElementById('newPassword').value;
-        var confirm = document.getElementById('confirmNewPassword').value;
-
-        if (!current || !newPass || !confirm) {
-          showToast('error', 'Error', 'Completa todos los campos');
-          return;
-        }
-        if (newPass !== confirm) {
-          showToast('error', 'Error', 'Las contrasenas no coinciden');
-          return;
-        }
-        showToast('success', 'Actualizado', 'Tu contrasena ha sido cambiada');
-        passwordForm.reset();
-      });
-    }
-
-    /* ── ORDER FILTERS ─────────────────────────────── */
-    var filterBtns = qsa(SELECTORS.filterBtns);
-    var orderCards = qsa(SELECTORS.orderCards);
-
-    filterBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        filterBtns.forEach(function (b) { b.classList.remove('orders-filter__btn--active'); });
-        btn.classList.add('orders-filter__btn--active');
-
-        var filter = btn.dataset.filter;
-        orderCards.forEach(function (card) {
-          var match = filter === 'all' || card.dataset.status === filter;
-          card.classList.toggle('order-card--hidden', !match);
-          if (match) {
-            card.style.animation = 'none';
-            card.offsetHeight;
-            card.style.animation = REDUCED_MOTION ? 'none' : 'fadeSlideIn 0.4s ease forwards';
-          }
-        });
-      });
-    });
-
-    /* ── TRACK FROM ORDERS ─────────────────────────── */
-    qsa(SELECTORS.trackBtns).forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        showSection('tracking');
-        if (DOM.trackingInput && btn.dataset.tracking) {
-          DOM.trackingInput.value = btn.dataset.tracking;
-        }
-      });
+  /* ── PROFILE FORM (cuenta.html only — mi-cuenta.html handles its own) ── */
+  var profileForm = document.getElementById('profileForm');
+  if (profileForm && !document.getElementById('ordersEmpty')) {
+    profileForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      showToast('success', 'Guardado!', 'Tu perfil ha sido actualizado');
     });
   }
+
+  var passwordForm = document.getElementById('passwordForm');
+  if (passwordForm && !document.getElementById('ordersEmpty')) {
+    passwordForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var current = document.getElementById('currentPassword').value;
+      var newPass = document.getElementById('newPassword').value;
+      var confirm = document.getElementById('confirmNewPassword').value;
+
+      if (!current || !newPass || !confirm) {
+        showToast('error', 'Error', 'Completa todos los campos');
+        return;
+      }
+      if (newPass !== confirm) {
+        showToast('error', 'Error', 'Las contrasenas no coinciden');
+        return;
+      }
+      showToast('success', 'Actualizado', 'Tu contrasena ha sido cambiada');
+      passwordForm.reset();
+    });
+  }
+
+  /* ── ORDER FILTERS ─────────────────────────────── */
+  var filterBtns = qsa(SELECTORS.filterBtns);
+  var orderCards = qsa(SELECTORS.orderCards);
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('orders-filter__btn--active'); });
+      btn.classList.add('orders-filter__btn--active');
+
+      var filter = btn.dataset.filter;
+      orderCards.forEach(function (card) {
+        var match = filter === 'all' || card.dataset.status === filter;
+        card.classList.toggle('order-card--hidden', !match);
+        if (match) {
+          card.style.animation = 'none';
+          card.offsetHeight;
+          card.style.animation = REDUCED_MOTION ? 'none' : 'fadeSlideIn 0.4s ease forwards';
+        }
+      });
+    });
+  });
+
+  /* ── TRACK FROM ORDERS ─────────────────────────── */
+  qsa(SELECTORS.trackBtns).forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      showSection('tracking');
+      if (DOM.trackingInput && btn.dataset.tracking) {
+        DOM.trackingInput.value = btn.dataset.tracking;
+      }
+    });
+  });
 
   /* ── LOGOUT ────────────────────────────────────── */
   var logoutBtn = qs(SELECTORS.logoutBtn);
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function () {
-      localStorage.removeItem('techstore_session');
-      showToast('info', 'Sesion cerrada', 'Has cerrado sesion correctamente');
-      setTimeout(function () { window.location.href = 'cuenta.html'; }, 1500);
+      try { localStorage.removeItem('techstore_session'); } catch (e) {}
+      window.location.href = 'cuenta.html';
     });
   }
 
@@ -393,8 +390,10 @@
     document.querySelectorAll('a[href*=".html"]').forEach(function (link) {
       link.addEventListener('click', function (e) {
         if (REDUCED_MOTION) return;
+        if (link.target === '_blank' || link.hasAttribute('download') || link.getAttribute('rel') === 'external') return;
+        if (e.defaultPrevented) return;
         var href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('http')) return;
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
         e.preventDefault();
         transitionEl.classList.add('active');
         setTimeout(function () { window.location.href = href; }, 300);
@@ -421,8 +420,8 @@
   if (dropdownLogout) {
     dropdownLogout.addEventListener('click', function (e) {
       e.preventDefault();
-      showToast('info', 'Sesion cerrada', 'Has cerrado sesion correctamente');
-      setTimeout(function () { window.location.href = 'cuenta.html'; }, 1500);
+      try { localStorage.removeItem('techstore_session'); } catch (e) {}
+      window.location.href = 'cuenta.html';
     });
   }
 

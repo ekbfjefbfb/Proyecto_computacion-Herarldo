@@ -26,9 +26,10 @@
   <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
-<style>.site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}.site-logo svg{width:28px;height:28px;color:var(--color-secondary)}</style>
 </head>
 <body>
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <!-- HEADER -->
   <header class="header" id="header">
@@ -72,23 +73,8 @@
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════════════ -->
-  <!-- BREADCRUMB                                    -->
-  <!-- ══════════════════════════════════════════════ -->
-  <section class="breadcrumb">
-    <div class="container">
-      <a href="index.html" class="breadcrumb__link">Inicio</a>
-      <span class="breadcrumb__separator">/</span>
-      <a href="tienda.html" class="breadcrumb__link">Productos</a>
-      <span class="breadcrumb__separator">/</span>
-      <span class="breadcrumb__current" id="breadcrumbProduct">MacBook Pro M3</span>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════ -->
-  <!-- MAIN CONTENT                                  -->
-  <!-- ══════════════════════════════════════════════ -->
-  <main class="main-content">
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="main-content">
     <div class="container">
 
       <!-- ── PRODUCT LAYOUT ─────────────────────── -->
@@ -101,8 +87,8 @@
 
           <div class="gallery-main" id="galleryMain">
             <div class="gallery-badge">
-              <span class="gallery-badge__item gallery-badge__item--new">Nuevo</span>
-              <span class="gallery-badge__item gallery-badge__item--exclusive">Exclusivo</span>
+              <span class="gallery-badge__item gallery-badge__item--new" style="display:none"></span>
+              <span class="gallery-badge__item gallery-badge__item--exclusive" style="display:none"></span>
             </div>
 
             <img
@@ -170,8 +156,9 @@
             <div class="variant-label">Color: <span id="selectedColor">Space Black</span></div>
             <div class="variant-options" id="colorOptions">
               <button class="variant-btn active" style="background:#1a1a1e" data-label="Space Black" aria-label="Space Black"></button>
-              <button class="variant-btn" style="background:#d4d4d4" data-label="Silver" aria-label="Silver"></button>
-              <button class="variant-btn" style="background:#6b4c3b" data-label="Space Gray" aria-label="Space Gray"></button>
+              <button class="variant-btn" style="background:#c0c0c0" data-label="Silver" aria-label="Silver"></button>
+              <button class="variant-btn" style="background:#5c5c5c" data-label="Space Gray" aria-label="Space Gray"></button>
+              <button class="variant-btn" style="background:#f5f0e8" data-label="Starlight" aria-label="Starlight"></button>
             </div>
           </div>
 
@@ -203,7 +190,7 @@
 
           <!-- ── FEATURES ─────────────────────── -->
           <ul class="product-info__features">
-            <li><i data-lucide="check"></i> Envío gratis a todo Mexico</li>
+            <li><i data-lucide="check"></i> Envío gratis a todo Honduras</li>
             <li><i data-lucide="check"></i> 12 meses de garantía extendida</li>
             <li><i data-lucide="check"></i> Devolución gratuita en 30 dias</li>
             <li><i data-lucide="check"></i> Soporte tecnico 24/7</li>
@@ -215,7 +202,7 @@
             <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" rel="noopener noreferrer" class="product-info__share-link product-info__share-link--fb" aria-label="Compartir en Facebook"><i data-lucide="globe"></i></a>
             <a href="https://twitter.com/intent/tweet?text=" target="_blank" rel="noopener noreferrer" class="product-info__share-link product-info__share-link--tw" aria-label="Compartir en Twitter"><i data-lucide="at-sign"></i></a>
             <a href="https://wa.me/?text=" target="_blank" rel="noopener noreferrer" class="product-info__share-link product-info__share-link--wa" aria-label="Compartir en WhatsApp"><i data-lucide="message-circle"></i></a>
-            <button type="button" class="product-info__share-link product-info__share-link--cp" aria-label="Copiar enlace" onclick="navigator.clipboard.writeText(window.location.href).then(function(){var t=document.createElement('div');t.className='toast toast--success';t.innerHTML='<div class=\"toast__content\"><div class=\"toast__title\">Enlace copiado</div></div>';var c=document.getElementById('toastContainer');if(c){c.appendChild(t);setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},2000);}});return false;"><i data-lucide="link"></i></button>
+            <button type="button" class="product-info__share-link product-info__share-link--cp" id="copyLinkBtn" aria-label="Copiar enlace"><i data-lucide="link"></i></button>
           </div>
         </div>
       </div>
@@ -241,63 +228,13 @@
 
           <!-- ── TAB: DESCRIPTION ─────────────── -->
           <div class="tab-panel active" id="tab-description" role="tabpanel">
-            <div class="tab-description">
-              <h3>Potencia sin limites. Procesa sin pausa.</h3>
-              <p>
-                El MacBook Pro M3 representa un salto generacional en potencia y eficiencia.
-                Con el nuevo chip M3 Pro de Apple, diseñado con tecnología de 3 nanometros,
-                ofrece un rendimiento CPU y GPU revolucionario que transforma tu flujo de trabajo.
-              </p>
-              <p>
-                La pantalla Liquid Retina XDR de 14 pulgadas con ProMotion de 120Hz te sumerge
-                en cada detalle con brillo extremo de 1600 nits y precision de color P3.
-                Ideal para creadores, desarrolladores y profesionales que exigen lo mejor.
-              </p>
-
-              <div class="tab-description__highlights">
-                <div class="tab-description__highlight">
-                  <i data-lucide="cpu"></i>
-                  <h4>Chip M3 Pro</h4>
-                  <p>CPU de 12 núcleos y GPU de 18 núcleos</p>
-                </div>
-                <div class="tab-description__highlight">
-                  <i data-lucide="memory-stick"></i>
-                  <h4>18GB RAM Unificada</h4>
-                  <p>Memoria ultrarrápida para multitarea extrema</p>
-                </div>
-                <div class="tab-description__highlight">
-                  <i data-lucide="battery-full"></i>
-                  <h4>Hasta 18 horas</h4>
-                  <p>Batería para todo un día de trabajo intensivo</p>
-                </div>
-                <div class="tab-description__highlight">
-                  <i data-lucide="monitor"></i>
-                  <h4>Liquid Retina XDR</h4>
-                  <p>14" ProMotion 120Hz · 1600 nits</p>
-                </div>
-              </div>
-            </div>
+            <div class="tab-description" id="tabDescription"></div>
           </div>
 
           <!-- ── TAB: SPECIFICATIONS ───────────── -->
           <div class="tab-panel" id="tab-specs" role="tabpanel">
             <table class="specs-table">
-              <tbody>
-                <tr><th>Procesador</th><td>Apple M3 Pro — CPU 12 núcleos (6 rendimiento + 6 eficiencia)</td></tr>
-                <tr><th>GPU</th><td>18 núcleos — Hasta 40% mas rapido que M2 Pro</td></tr>
-                <tr><th>Neural Engine</th><td>16 núcleos — 18 TOPS</td></tr>
-                <tr><th>Memoria RAM</th><td>18GB LPDDR5 Unificada</td></tr>
-                <tr><th>Almacenamiento</th><td>512GB SSD — Lectura 7.4GB/s · Escritura 5.2GB/s</td></tr>
-                <tr><th>Pantalla</th><td>14.2" Liquid Retina XDR — 3024x1964 — 120Hz ProMotion</td></tr>
-                <tr><th>Brillo</th><td>1000 nits sostenido · 1600 nits maximo (HDR)</td></tr>
-                <tr><th>Puertos</th><td>3x Thunderbolt 4 · HDMI 2.1 · SDXC · MagSafe 3 · Jack 3.5mm</td></tr>
-                <tr><th>Conectividad</th><td>Wi-Fi 6E · Bluetooth 5.3</td></tr>
-                <tr><th>Bateria</th><td>72.4Wh — Hasta 18 horas video · 12 horas web</td></tr>
-                <tr><th>Cargador</th><td>Adaptador USB-C 96W — Carga rapida 50% en 30 min</td></tr>
-                <tr><th>Peso</th><td>1.61 kg</td></tr>
-                <tr><th>Dimensiones</th><td>31.26 x 22.12 x 1.55 cm</td></tr>
-                <tr><th>Sistema</th><td>macOS Sequoia — Actualizaciones gratuitas de por vida</td></tr>
-              </tbody>
+              <tbody id="specsBody"></tbody>
             </table>
           </div>
 
@@ -468,120 +405,12 @@
         </div>
       </section>
 
-      <!-- ══════════════════════════════════════════ -->
-      <!-- RELATED PRODUCTS                           -->
-      <!-- ══════════════════════════════════════════ -->
+      <!-- RELATED PRODUCTS -->
       <section class="related-products">
         <div class="related-products__header">
-          <h2 class="related-products__title"><i data-lucide="git-compare"></i> Productos Relacionados</h2>
-          <div class="related-products__nav">
-            <button class="related-nav__btn" id="relatedPrev" aria-label="Anterior"><i data-lucide="chevron-left"></i></button>
-            <button class="related-nav__btn" id="relatedNext" aria-label="Siguiente"><i data-lucide="chevron-right"></i></button>
-          </div>
+          <h2 class="related-products__title">También te puede interesar</h2>
         </div>
-
-        <div class="related-grid" id="relatedGrid">
-          <div class="related-card" data-compare-id="1" data-compare-name="MacBook Air M3" data-compare-price="$1,299" data-compare-img="laptop">
-            <div class="related-card__badge-compare">
-              <button class="related-card__compare-btn" data-compare="1" aria-label="Comparar producto">
-                <i data-lucide="scale"></i>
-              </button>
-            </div>
-            <div class="related-card__img">
-              <img src="https://picsum.photos/seed/macbook-air/300/300" alt="MacBook Air M3" loading="lazy">
-            </div>
-            <div class="related-card__body">
-              <span class="related-card__brand">Apple</span>
-              <h3 class="related-card__name">MacBook Air M3</h3>
-              <div class="related-card__rating">
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <span>(189)</span>
-              </div>
-              <div class="related-card__price">
-                <span class="related-card__price-current">$1,299.00</span>
-                <span class="related-card__price-old">$1,499.00</span>
-              </div>
-              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
-            </div>
-          </div>
-
-          <div class="related-card" data-compare-id="2" data-compare-name="iPad Pro M4" data-compare-price="$1,099" data-compare-img="tablet">
-            <div class="related-card__badge-compare">
-              <button class="related-card__compare-btn" data-compare="2" aria-label="Comparar producto">
-                <i data-lucide="scale"></i>
-              </button>
-            </div>
-            <div class="related-card__img">
-              <img src="https://picsum.photos/seed/ipad-pro/300/300" alt="iPad Pro M4" loading="lazy">
-            </div>
-            <div class="related-card__body">
-              <span class="related-card__brand">Apple</span>
-              <h3 class="related-card__name">iPad Pro M4</h3>
-              <div class="related-card__rating">
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star-half" class="star-icon star-icon--fill"></i>
-                <span>(67)</span>
-              </div>
-              <div class="related-card__price">
-                <span class="related-card__price-current">$1,099.00</span>
-              </div>
-              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
-            </div>
-          </div>
-
-          <div class="related-card" data-compare-id="3" data-compare-name="Mac Mini M3" data-compare-price="$699" data-compare-img="desktop">
-            <div class="related-card__badge-compare">
-              <button class="related-card__compare-btn" data-compare="3" aria-label="Comparar producto">
-                <i data-lucide="scale"></i>
-              </button>
-            </div>
-            <div class="related-card__img">
-              <img src="https://picsum.photos/seed/mac-mini/300/300" alt="Mac Mini M3" loading="lazy">
-            </div>
-            <div class="related-card__body">
-              <span class="related-card__brand">Apple</span>
-              <h3 class="related-card__name">Mac Mini M3</h3>
-              <div class="related-card__rating">
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <span>(42)</span>
-              </div>
-              <div class="related-card__price">
-                <span class="related-card__price-current">$699.00</span>
-              </div>
-              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
-            </div>
-          </div>
-
-          <div class="related-card" data-compare-id="4" data-compare-name="MacBook Pro 16 M3 Max" data-compare-price="$3,499" data-compare-img="laptop-large">
-            <div class="related-card__badge-compare">
-              <button class="related-card__compare-btn" data-compare="4" aria-label="Comparar producto">
-                <i data-lucide="scale"></i>
-              </button>
-            </div>
-            <div class="related-card__img">
-              <img src="https://picsum.photos/seed/macbook-pro-16/300/300" alt="MacBook Pro 16 M3 Max" loading="lazy">
-            </div>
-            <div class="related-card__body">
-              <span class="related-card__brand">Apple</span>
-              <h3 class="related-card__name">MacBook Pro 16" M3 Max</h3>
-              <div class="related-card__rating">
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <i data-lucide="star" class="star-icon star-icon--fill"></i>
-                <span>(103)</span>
-              </div>
-              <div class="related-card__price">
-                <span class="related-card__price-current">$3,499.00</span>
-              </div>
-              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
-            </div>
-          </div>
-        </div>
+        <div class="related-grid" id="relatedGrid"></div>
       </section>
 
     </div>
@@ -641,7 +470,7 @@
 
   <!-- CART DRAWER -->
   <div class="cart-overlay" id="cartOverlay"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras" aria-hidden="true">
     <div class="cart-drawer__head">
       <h3><i data-lucide="shopping-cart"></i> Tu carrito</h3>
       <button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button>
@@ -673,14 +502,6 @@
       if (!product) return;
 
       document.title = 'TechStore | ' + product.name;
-
-      var breadcrumbCat = document.querySelector('.breadcrumb__link:nth-child(3)');
-      if (breadcrumbCat) {
-          breadcrumbCat.textContent = product.cat.charAt(0).toUpperCase() + product.cat.slice(1);
-          breadcrumbCat.href = 'index.html#' + product.cat;
-      }
-      var breadcrumbName = document.querySelector('.breadcrumb__current');
-      if (breadcrumbName) breadcrumbName.textContent = product.name;
 
       var brandEl = document.querySelector('.product-info__brand');
       if (brandEl) brandEl.textContent = product.cat.charAt(0).toUpperCase() + product.cat.slice(1);
@@ -716,6 +537,62 @@
       var summaryTotal = document.querySelector('.reviews-summary__total');
       if (summaryTotal) summaryTotal.textContent = product.reviews + ' reseñas';
 
+      var descEl = document.getElementById('tabDescription');
+      if (descEl && product.desc) {
+          var hl = product.highlights || [];
+          var hlHtml = hl.map(function(h) {
+              return '<div class="tab-description__highlight"><i data-lucide="' + h.icon + '"></i><h4>' + TS.esc(h.title) + '</h4><p>' + TS.esc(h.desc) + '</p></div>';
+          }).join('');
+          descEl.innerHTML =
+              '<p>' + TS.esc(product.desc) + '</p>' +
+              (hlHtml ? '<div class="tab-description__highlights">' + hlHtml + '</div>' : '');
+      }
+
+      var specsBody = document.getElementById('specsBody');
+      if (specsBody && product.descSpecs) {
+          specsBody.innerHTML = product.descSpecs.map(function(s) {
+              return '<tr><th>' + TS.esc(s.k) + '</th><td>' + TS.esc(s.v) + '</td></tr>';
+          }).join('');
+      }
+
+      if (window.lucide) lucide.createIcons();
+
+      var mainImg = document.getElementById('galleryMainImg');
+      if (mainImg && product.images && product.images.length > 0) {
+          mainImg.src = product.images[0];
+          mainImg.alt = product.name;
+          mainImg.dataset.zoom = product.images[0].replace('w=800', 'w=1600').replace('h=800', 'h=1600');
+      } else if (mainImg && product.img) {
+          mainImg.src = product.img;
+          mainImg.alt = product.name;
+          mainImg.dataset.zoom = product.img;
+      }
+
+      var badgeNew = document.querySelector('.gallery-badge__item--new');
+      var badgeExc = document.querySelector('.gallery-badge__item--exclusive');
+      if (product.badge === 'Nuevo') {
+          if (badgeNew) badgeNew.style.display = '';
+          if (badgeExc) badgeExc.style.display = 'none';
+      } else if (product.badge === 'Mas vendido') {
+          if (badgeNew) badgeNew.style.display = 'none';
+          if (badgeExc) { badgeExc.textContent = 'Mas vendido'; badgeExc.style.display = ''; }
+      } else {
+          if (badgeNew) badgeNew.style.display = 'none';
+          if (badgeExc) badgeExc.style.display = 'none';
+      }
+
+      var thumbs = document.querySelectorAll('.gallery-thumb');
+      if (thumbs.length > 0 && product.images && product.images.length > 0) {
+          thumbs.forEach(function(thumb, i) {
+              var src = product.images[i] || product.images[0];
+              var zoom = src.replace('w=800', 'w=1600').replace('h=800', 'h=1600');
+              thumb.querySelector('img').src = src.replace('w=800', 'w=150').replace('h=800', 'h=150');
+              thumb.querySelector('img').alt = product.name + ' - Vista ' + (i + 1);
+              thumb.dataset.img = src;
+              thumb.dataset.zoom = zoom;
+          });
+      }
+
       var addBtn = document.getElementById('addToCartBtn');
       if (addBtn) {
           addBtn.addEventListener('click', function(){
@@ -736,6 +613,43 @@
           qtyPlus.addEventListener('click', function(){
               var v = parseInt(qtyValue.value, 10);
               if (v < 99) qtyValue.value = v + 1;
+          });
+      }
+
+      var relatedGrid = document.getElementById('relatedGrid');
+      if (relatedGrid) {
+          var related = TS.PRODUCTS.filter(function(p) { return p.cat === product.cat && p.id !== product.id; }).slice(0, 4);
+          if (related.length === 0) related = TS.PRODUCTS.filter(function(p) { return p.id !== product.id; }).slice(0, 4);
+          relatedGrid.innerHTML = related.map(function(p) {
+              var starsHtml = '';
+              for (var s = 0; s < 5; s++) {
+                  starsHtml += '<i data-lucide="star" class="star-icon' + (s < Math.round(p.rating) ? ' star-icon--fill' : '') + '"></i>';
+              }
+              return '<a href="producto.html?id=' + p.id + '" class="related-card" style="text-decoration:none;color:inherit">' +
+                  '<div class="related-card__img"><img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy"></div>' +
+                  '<div class="related-card__body">' +
+                      '<h3 class="related-card__name">' + esc(p.name) + '</h3>' +
+                      '<div class="related-card__rating">' + starsHtml + '<span>(' + p.reviews + ')</span></div>' +
+                      '<div class="related-card__price">' +
+                          (p.old ? '<span class="related-card__price-old">$' + p.old.toLocaleString('en-US') + '.00</span>' : '') +
+                          '<span class="related-card__price-current">$' + p.price.toLocaleString('en-US') + '.00</span>' +
+                      '</div>' +
+                  '</div>' +
+              '</a>';
+          }).join('');
+          if (window.lucide) lucide.createIcons();
+      }
+
+      var copyBtn = document.getElementById('copyLinkBtn');
+      if (copyBtn) {
+          copyBtn.addEventListener('click', function() {
+              navigator.clipboard.writeText(window.location.href).then(function() {
+                  var t = document.createElement('div');
+                  t.className = 'toast toast--success';
+                  t.innerHTML = '<div class="toast__content"><div class="toast__title">Enlace copiado</div></div>';
+                  var c = document.getElementById('toastContainer');
+                  if (c) { c.appendChild(t); setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 2000); }
+              });
           });
       }
   })();

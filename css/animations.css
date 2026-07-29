@@ -65,6 +65,61 @@
     border-radius: var(--radius-sm);
 }
 
+.skeleton-text {
+    height: 14px;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-text--sm {
+    height: 10px;
+    width: 60%;
+}
+
+.skeleton-text--lg {
+    height: 20px;
+    width: 80%;
+}
+
+.skeleton-title {
+    height: 24px;
+    width: 50%;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.skeleton-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeleton-btn {
+    height: 44px;
+    border-radius: var(--radius-md);
+    width: 100%;
+}
+
+.skeleton-btn--sm {
+    height: 36px;
+    width: 120px;
+    border-radius: var(--radius-md);
+}
+
 /* ── SPIN ────────────────────────────────────── */
 @keyframes spin {
     from { transform: rotate(0deg); }

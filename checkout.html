@@ -15,65 +15,17 @@
     <link rel="stylesheet" href="css/mobile-nav.css">
     <link rel="stylesheet" href="css/store.css">
     <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/checkout-page.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <style>
-        .checkout{padding:120px 0 80px}.checkout .container{max-width:1100px}.checkout h1{font-size:1.8rem;font-weight:800;margin-bottom:32px}
-        .checkout__grid{display:grid;grid-template-columns:1fr 400px;gap:32px;align-items:start}
-        .checkout__form{display:flex;flex-direction:column;gap:24px}
-        .checkout__section{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:24px}
-        .checkout__section h2{font-size:1rem;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px}.checkout__section h2 i{color:var(--color-secondary);font-size:0.9rem}
-        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-        .form-group{margin-bottom:16px}.form-group:last-child{margin-bottom:0}
-        .form-group label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:6px;color:var(--text-secondary)}
-        .form-group input,.form-group select{width:100%;padding:10px 14px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:var(--radius-sm);color:var(--text-primary);font-family:inherit;font-size:0.85rem;transition:border-color .2s}.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--color-secondary)}
-        .form-group input::placeholder{color:var(--text-muted)}
-        .payment-methods{display:flex;flex-direction:column;gap:10px}
-        .payment-method{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:var(--radius-sm);cursor:pointer;transition:border-color .2s}.payment-method:hover{border-color:var(--color-secondary)}.payment-method.active{border-color:var(--color-secondary);background:rgba(0,206,201,0.05)}
-        .payment-method input{display:none}.payment-method__radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border-color);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s}.payment-method.active .payment-method__radio{border-color:var(--color-secondary)}.payment-method.active .payment-method__radio::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--color-secondary)}
-        .payment-method__info{flex:1}.payment-method__name{font-size:0.85rem;font-weight:600}.payment-method__desc{font-size:0.72rem;color:var(--text-muted)}
-        .payment-method__icon{font-size:1.2rem;color:var(--text-muted)}
-
-        .checkout__summary{position:sticky;top:100px}
-        .summary-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:24px}
-        .summary-card h2{font-size:1rem;font-weight:700;margin-bottom:20px}
-        .summary__items{margin-bottom:20px}
-        .summary__item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border-color)}.summary__item:last-child{border-bottom:none}
-        .summary__item-img{width:50px;height:50px;border-radius:var(--radius-sm);background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--color-secondary);flex-shrink:0}
-        .summary__item-info{flex:1;min-width:0}.summary__item-name{font-size:0.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.summary__item-qty{font-size:0.72rem;color:var(--text-muted)}
-        .summary__item-price{font-size:0.85rem;font-weight:700;color:var(--color-secondary);white-space:nowrap}
-        .summary__empty{text-align:center;padding:32px 0;color:var(--text-muted);font-size:0.85rem}
-        .summary__empty i{font-size:2rem;display:block;margin-bottom:12px;color:var(--border-color)}
-
-        .summary__coupon{display:flex;gap:8px;margin-bottom:20px}
-        .summary__coupon input{flex:1;padding:10px 14px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:var(--radius-sm);color:var(--text-primary);font-family:inherit;font-size:0.82rem}
-        .summary__coupon input:focus{outline:none;border-color:var(--color-secondary)}
-        .summary__coupon button{padding:10px 16px;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:0.8rem;font-weight:600;cursor:pointer;white-space:nowrap}
-        .summary__coupon-btn:disabled{opacity:0.5;cursor:not-allowed}
-        .coupon-msg{font-size:0.75rem;margin-top:6px;margin-bottom:10px}.coupon-msg.success{color:var(--color-success)}.coupon-msg.error{color:var(--color-error)}
-
-        .summary__lines{margin-bottom:16px}
-        .summary__line{display:flex;justify-content:space-between;font-size:0.82rem;padding:6px 0}.summary__line span:first-child{color:var(--text-muted)}.summary__line span:last-child{font-weight:600}
-        .summary__line.discount span:last-child{color:var(--color-success)}
-        .summary__line.shipping span:last-child{color:var(--color-secondary)}
-        .summary__divider{height:1px;background:var(--border-color);margin:12px 0}
-        .summary__total{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:800;padding:8px 0 20px}
-
-        .btn-checkout{width:100%;padding:14px;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform .2s,opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}.btn-checkout:hover{transform:translateY(-1px);opacity:.9}.btn-checkout:disabled{opacity:0.5;cursor:not-allowed;transform:none}
-        .btn-checkout i{font-size:0.85rem}
-
-        .checkout__secure{text-align:center;margin-top:16px;font-size:0.72rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:6px}.checkout__secure i{color:var(--color-secondary)}
-
-        .checkout-success{text-align:center;padding:80px 0}.checkout-success__icon{width:80px;height:80px;border-radius:50%;background:rgba(0,184,148,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;color:var(--color-success)}.checkout-success h2{font-size:1.5rem;font-weight:800;margin-bottom:8px}.checkout-success p{color:var(--text-muted);margin-bottom:8px}.checkout-success .order-id{font-size:0.85rem;color:var(--color-secondary);font-weight:700;margin-bottom:32px}
-    .site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}.site-logo svg{width:28px;height:28px;color:var(--color-secondary)}
-    </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
     <header class="header" id="header"><div class="header__container"><a href="index.html" class="site-logo"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/></svg><span>TechStore</span></a><div class="header__search"><input type="text" placeholder="Buscar productos..." class="header__search-input" id="searchInput"><button class="header__search-btn" aria-label="Buscar"><i data-lucide="search"></i></button></div><nav class="header__nav"><a href="index.html" class="header__nav-link">Inicio</a><a href="tienda.html" class="header__nav-link">Tienda</a><a href="ofertas.html" class="header__nav-link">Ofertas</a><a href="index.html#contacto" class="header__nav-link">Contacto</a></nav><div class="header__actions"><a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta"><i data-lucide="user"></i></a><button class="header__cart" id="cartBtn" aria-label="Abrir carrito"><i data-lucide="shopping-cart"></i><span class="header__cart-count" id="cartCount" style="display:none">0</span></button></div><button class="header__menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
     <nav class="mobile-nav" id="mobileNav"><div class="mobile-nav__overlay" id="mobileNavOverlay"></div><div class="mobile-nav__sidebar"><div class="mobile-nav__header"><a href="index.html" class="site-logo" style="padding:0"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/></svg><span>TechStore</span></a><button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar"><i data-lucide="x"></i></button></div><ul class="mobile-nav__links"><li><a href="index.html" class="mobile-nav__link"><i data-lucide="home"></i> Inicio</a></li><li><a href="tienda.html" class="mobile-nav__link"><i data-lucide="layout-grid"></i> Productos</a></li><li><a href="ofertas.html" class="mobile-nav__link"><i data-lucide="tag"></i> Ofertas</a></li><li><a href="index.html#contacto" class="mobile-nav__link"><i data-lucide="mail"></i> Contacto</a></li><li class="mobile-nav__divider"></li><li><a href="cuenta.html" class="mobile-nav__link"><i data-lucide="user"></i> Mi Cuenta</a></li><li><a href="tracking.html" class="mobile-nav__link"><i data-lucide="truck"></i> Tracking</a></li></ul></div></nav>
 
-    <main class="checkout">
+    <main class="checkout" id="main-content">
         <div class="container">
             <h1 id="checkoutTitle"><i data-lucide="lock"></i> Finalizar compra</h1>
 
@@ -91,7 +43,7 @@
                         </div>
                         <div class="form-group"><label>Direccion</label><input type="text" id="shipAddr" placeholder="Calle, numero, colonia"></div>
                         <div class="form-row">
-                            <div class="form-group"><label>Ciudad</label><input type="text" id="shipCity" placeholder="Ciudad de Mexico"></div>
+                            <div class="form-group"><label>Ciudad</label><input type="text" id="shipCity" placeholder="Ciudad de Honduras"></div>
                             <div class="form-group"><label>Codigo postal</label><input type="text" id="shipZip" placeholder="06600"></div>
                         </div>
                         <div class="form-group"><label>Referencias (opcional)</label><input type="text" id="shipRef" placeholder="Departamento, piso, etc."></div>
@@ -171,7 +123,7 @@
     <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="site-logo"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/></svg><span>TechStore</span></a><p>Tu tienda de tecnología de confianza.</p><div class="footer__social"><a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" aria-label="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div></div><div class="footer__col"><h4>Tienda</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="tienda.html">Tienda</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div><div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li><li><a href="politica-devoluciones.html">Devoluciones</a></li></ul></div><div class="footer__col"><h4>Cuenta</h4><ul><li><a href="cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li><li><a href="blog.html">Blog</a></li></ul></div></div><div class="footer__bottom"><p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p><div class="footer__payments"><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#1A1F71"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="Inter,sans-serif">VISA</text></svg><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#252525"/><circle cx="16" cy="13" r="8" fill="#EB001B" opacity="0.9"/><circle cx="24" cy="13" r="8" fill="#F79E1B" opacity="0.9"/></svg><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#279EDB"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Inter,sans-serif">AMEX</text></svg><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#253B80"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="7" font-weight="700" font-family="Inter,sans-serif">PayPal</text></svg></div></div></div></footer>
 
     <div class="cart-overlay" id="cartOverlay"></div>
-    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras" aria-hidden="true">
         <div class="cart-drawer__head"><h3><i data-lucide="shopping-cart"></i> Tu carrito</h3><button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button></div>
         <div class="cart-drawer__items" id="cartItems"></div>
         <div class="cart-drawer__foot"><div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div><button class="btn btn--primary btn--block" id="drawerCheckoutBtn" disabled>Finalizar compra</button></div>
@@ -193,7 +145,7 @@
 
     var TS = window.TechStore;
     var PRODUCTS = TS ? TS.PRODUCTS : [];
-    var rawCart = JSON.parse(localStorage.getItem('techstore_cart') || '[]');
+    var rawCart = (function(){try{return JSON.parse(localStorage.getItem('techstore_cart') || '[]');}catch(e){return[];}})();
     var cart = rawCart.map(function(item){
         var p = PRODUCTS.find(function(prod){ return prod.id === item.id; });
         return p ? { id: p.id, name: p.name, price: p.price, icon: p.icon || 'package', qty: item.qty } : null;
@@ -204,6 +156,44 @@
     var SHIPPING_THRESHOLD = 999;
     var SHIPPING_COST = 99;
     var TAX_RATE = 0.16;
+
+    /* ── SESSION CHECK: auto-fill or show full form ── */
+    var session = null;
+    try { session = JSON.parse(localStorage.getItem('techstore_session')); } catch(e){}
+
+    if (session && session.id) {
+        var shipSection = document.querySelector('.checkout__section');
+        if (shipSection) {
+            var h2 = shipSection.querySelector('h2');
+            if (h2) h2.innerHTML = '<i data-lucide="map-pin"></i> Tus datos de envio';
+            var nameParts = (session.name || '').split(' ');
+            var fName = nameParts[0] || '';
+            var lName = nameParts.slice(1).join(' ') || '';
+            var shipName = document.getElementById('shipName');
+            var shipLast = document.getElementById('shipLast');
+            var shipEmail = document.getElementById('shipEmail');
+            var shipPhone = document.getElementById('shipPhone');
+            if (shipName) { shipName.value = fName; shipName.readOnly = true; shipName.style.opacity = '0.6'; }
+            if (shipLast) { shipLast.value = lName; shipLast.readOnly = true; shipLast.style.opacity = '0.6'; }
+            if (shipEmail) { shipEmail.value = session.email || ''; shipEmail.readOnly = true; shipEmail.style.opacity = '0.6'; }
+            if (shipPhone) { shipPhone.value = session.phone || ''; shipPhone.readOnly = true; shipPhone.style.opacity = '0.6'; }
+
+            var addrKey = 'techstore_addresses_' + session.id;
+            var addrs = (function(){try{return JSON.parse(localStorage.getItem(addrKey) || '[]');}catch(e){return[];}})();
+            if (addrs.length > 0) {
+                var addr = addrs[0];
+                var shipAddr = document.getElementById('shipAddr');
+                var shipCity = document.getElementById('shipCity');
+                var shipZip = document.getElementById('shipZip');
+                if (shipAddr) { shipAddr.value = addr.address || ''; shipAddr.readOnly = true; shipAddr.style.opacity = '0.6'; }
+                if (shipCity) { shipCity.value = addr.city || ''; shipCity.readOnly = true; shipCity.style.opacity = '0.6'; }
+                if (shipZip) { shipZip.value = addr.zip || ''; shipZip.readOnly = true; shipZip.style.opacity = '0.6'; }
+            }
+        }
+
+        var cardName = document.getElementById('cardName');
+        if (cardName) cardName.value = (session.name || '').toUpperCase();
+    }
 
     var validCoupons = {
         'TECH10': { type: 'percent', value: 10, label: '10% de descuento' },
@@ -304,12 +294,13 @@
     window.applyCoupon = applyCoupon;
 
     function validateForm(){
-        var required = ['shipName','shipLast','shipEmail','shipPhone','shipAddr','shipCity','shipZip'];
+        var required = ['shipAddr','shipCity','shipZip'];
         var method = document.querySelector('.payment-method.active').dataset.method;
         if(method === 'card') required = required.concat(['cardNum','cardExp','cardCvv','cardName']);
+        if(!session||!session.id) required = ['shipName','shipLast','shipEmail','shipPhone','shipAddr','shipCity','shipZip'].concat(method==='card'?['cardNum','cardExp','cardCvv','cardName']:[]);
         for(var i=0;i<required.length;i++){
             var el = document.getElementById(required[i]);
-            if(!el.value.trim()) return false;
+            if(!el || !el.value.trim()) return false;
         }
         return true;
     }
@@ -369,16 +360,16 @@
                 paymentMethod: document.querySelector('.payment-method.active') ? document.querySelector('.payment-method.active').dataset.method : 'card'
             };
 
-            var orders = JSON.parse(localStorage.getItem('techstore_orders') || '[]');
+            var orders = (function(){try{return JSON.parse(localStorage.getItem('techstore_orders') || '[]');}catch(e){return[];}})();
             orders.push(order);
-            localStorage.setItem('techstore_orders', JSON.stringify(orders));
+            try{localStorage.setItem('techstore_orders', JSON.stringify(orders));}catch(e){}
 
             document.getElementById('checkoutGrid').style.display = 'none';
             document.getElementById('checkoutTitle').style.display = 'none';
             document.getElementById('checkoutSuccess').style.display = 'block';
             document.getElementById('orderId').textContent = 'Pedido: ' + orderId;
             if (window.lucide) lucide.createIcons();
-            localStorage.removeItem('techstore_cart');
+            try{localStorage.removeItem('techstore_cart');}catch(e){}
             cart = [];
         }, 2000);
     }
