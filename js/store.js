@@ -100,14 +100,14 @@
     function renderCategories() {
         var bento = document.getElementById('featuredBento');
         if (!bento) return;
-        var icons = { laptops: 'laptop', smartphones: 'smartphone', accesorios: 'headphones', gaming: 'gamepad-2' };
+        var emojis = { laptops: '💻', smartphones: '📱', accesorios: '🎧', gaming: '🎮' };
         var colors = { laptops: '#6C5CE7', smartphones: '#00CEC9', accesorios: '#FD79A8', gaming: '#FDCB6E' };
         bento.innerHTML = CATEGORIES.map(function (c, i) {
             return '<div class="bento-card' + (i === 0 ? ' bento-featured' : '') + '" data-category="' + c.key + '">' +
                 '<div class="bento-card__bg"></div>' +
                 '<div class="bento-card__content">' +
-                    '<div class="bento-card__arrow"><i data-lucide="arrow-right"></i></div>' +
-                    '<div class="bento-card__icon" style="background:' + colors[c.key] + '15;border-color:' + colors[c.key] + '40;color:' + colors[c.key] + '"><i data-lucide="' + icons[c.key] + '"></i></div>' +
+                    '<div class="bento-card__arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>' +
+                    '<div class="bento-card__emoji">' + emojis[c.key] + '</div>' +
                     '<div class="bento-card__label">' + c.name + '</div>' +
                     '<h3>' + c.name + '</h3>' +
                     '<p>' + c.desc + '</p>' +

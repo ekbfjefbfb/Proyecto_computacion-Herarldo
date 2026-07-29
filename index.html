@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="TechStore - Tu tienda de tecnología de confianza. Laptops, smartphones, accesorios y gaming.">
     <title>TechStore | Tecnología de Confianza</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
@@ -18,16 +18,58 @@
     <link rel="stylesheet" href="css/store.css">
     <link rel="stylesheet" href="css/premium.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .landing-hero__trust{display:flex;gap:40px;flex-wrap:wrap;margin-top:8px}
+        .trust-item{display:flex;align-items:center;gap:10px}
+        .trust-item__dot{width:6px;height:6px;border-radius:50%;background:var(--color-secondary);flex-shrink:0}
+        .trust-item__text b{font-size:0.85rem;font-weight:600;color:var(--text-primary)}
+        .trust-item__text span{font-size:0.78rem;color:var(--text-muted);margin-left:4px}
+        .hero-cta-group{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px}
+        .hero-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);border:none;cursor:pointer}
+        .hero-btn--primary{background:var(--color-primary);color:#fff;box-shadow:0 4px 20px rgba(var(--color-primary-rgb),0.35)}
+        .hero-btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(var(--color-primary-rgb),0.5)}
+        .hero-btn--ghost{background:transparent;color:var(--text-primary);border:1px solid var(--border-color)}
+        .hero-btn--ghost:hover{border-color:var(--color-secondary);color:var(--color-secondary)}
+        .hero-btn svg{width:18px;height:18px}
+        .section-clean__head{text-align:center;margin-bottom:48px}
+        .section-clean__eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:12px}
+        .section-clean__head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
+        .section-clean__head p{color:var(--text-muted);font-size:1rem;max-width:50ch;margin:0 auto}
+        .bento-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+        .bento-card:hover{transform:translateY(-6px)}
+        .bento-card__bg{position:absolute;inset:0;border-radius:20px;border:1px solid var(--border-color);transition:all 0.3s ease}
+        .bento-card:hover .bento-card__bg{border-color:rgba(var(--color-primary-rgb),0.4);box-shadow:0 20px 40px rgba(0,0,0,0.25)}
+        .bento-card__content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+        .bento-card__emoji{font-size:2rem;margin-bottom:12px;line-height:1}
+        .bento-card__label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-secondary);margin-bottom:6px}
+        .bento-card h3{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+        .bento-card p{font-size:0.82rem;color:var(--text-muted);line-height:1.5}
+        .bento-card__arrow{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all 0.3s ease}
+        .bento-card:hover .bento-card__arrow{background:var(--color-primary);border-color:var(--color-primary);color:#fff;transform:translate(2px,-2px)}
+        .bento-card__arrow svg{width:16px;height:16px}
+        .featured-bento{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:260px 260px;gap:20px}
+        .featured-bento .bento-card:first-child{grid-row:span 2}
+        @media(max-width:900px){.featured-bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.featured-bento .bento-card:first-child{grid-column:span 2;grid-row:span 1}}
+        @media(max-width:640px){.featured-bento{grid-template-columns:1fr}.featured-bento .bento-card:first-child{grid-column:span 1}.landing-hero__trust{gap:20px}.hero-cta-group{flex-direction:column}.hero-btn{justify-content:center}}
+        .cta-banner{background:linear-gradient(135deg,rgba(var(--color-primary-rgb),0.12),rgba(var(--color-secondary-rgb),0.08));border:1px solid rgba(var(--color-primary-rgb),0.2);border-radius:24px;padding:48px 56px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+        .cta-banner h2{font-size:1.5rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+        .cta-banner p{color:var(--text-muted);font-size:0.92rem}
+        .cta-banner__btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-weight:700;font-size:0.88rem;text-decoration:none;background:var(--color-secondary);color:var(--text-on-primary);transition:all 0.3s ease;white-space:nowrap}
+        .cta-banner__btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--color-secondary-rgb),0.3)}
+        .cta-banner__btn svg{width:18px;height:18px}
+        @media(max-width:768px){.cta-banner{flex-direction:column;text-align:center;padding:36px 28px}.cta-banner__btn{align-self:center}}
+        .site-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em}
+        .site-logo svg{width:28px;height:28px;color:var(--color-secondary)}
+    </style>
 </head>
 <body class="is-landing">
 
-    <!-- ============================================ -->
-    <!-- HEADER                                       -->
-    <!-- ============================================ -->
     <header class="header" id="header">
         <div class="header__container">
-            <a href="index.html" class="header__logo">
-                <i data-lucide="zap"></i>
+            <a href="index.html" class="site-logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/>
+                </svg>
                 <span>TechStore</span>
             </a>
 
@@ -40,45 +82,43 @@
 
             <div class="header__actions">
                 <a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta">
-                    <i data-lucide="user"></i>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </a>
             </div>
 
-            <button class="header__menu-btn" id="menuBtn" aria-label="Menu">
+            <button class="header__menu-btn" id="menuBtn" aria-label="Menú">
                 <span></span><span></span><span></span>
             </button>
         </div>
     </header>
 
-    <!-- ============================================ -->
-    <!-- NAV MOVIL                                    -->
-    <!-- ============================================ -->
     <nav class="mobile-nav" id="mobileNav">
         <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
         <div class="mobile-nav__sidebar">
             <div class="mobile-nav__header">
-                <a href="index.html" class="header__logo" style="padding:0">
-                    <i data-lucide="zap"></i>
+                <a href="index.html" class="site-logo" style="padding:0">
+                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/>
+                    </svg>
                     <span>TechStore</span>
                 </a>
-                <button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar"><i data-lucide="x"></i></button>
+                <button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
             </div>
             <ul class="mobile-nav__links">
-                <li><a href="index.html" class="mobile-nav__link"><i data-lucide="home"></i> Inicio</a></li>
-                <li><a href="tienda.html" class="mobile-nav__link"><i data-lucide="layout-grid"></i> Tienda</a></li>
-                <li><a href="ofertas.html" class="mobile-nav__link"><i data-lucide="tag"></i> Ofertas</a></li>
-                <li><a href="#contacto" class="mobile-nav__link"><i data-lucide="mail"></i> Contacto</a></li>
+                <li><a href="index.html" class="mobile-nav__link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg> Inicio</a></li>
+                <li><a href="tienda.html" class="mobile-nav__link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Tienda</a></li>
+                <li><a href="ofertas.html" class="mobile-nav__link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Ofertas</a></li>
+                <li><a href="#contacto" class="mobile-nav__link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contacto</a></li>
                 <li class="mobile-nav__divider"></li>
-                <li><a href="cuenta.html" class="mobile-nav__link"><i data-lucide="user"></i> Mi Cuenta</a></li>
-                <li><a href="cuenta.html#orders" class="mobile-nav__link"><i data-lucide="package"></i> Mis Pedidos</a></li>
-                <li><a href="tracking.html" class="mobile-nav__link"><i data-lucide="truck"></i> Tracking</a></li>
+                <li><a href="cuenta.html" class="mobile-nav__link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Mi Cuenta</a></li>
+                <li><a href="tracking.html" class="mobile-nav__link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Tracking</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- ============================================ -->
-    <!-- HERO LANDING                                 -->
-    <!-- ============================================ -->
+    <!-- HERO -->
     <section class="landing-hero" id="inicio">
         <div class="landing-hero__bg">
             <div class="landing-hero__orb landing-hero__orb--1"></div>
@@ -87,84 +127,98 @@
         </div>
         <div class="container">
             <div class="landing-hero__content">
-                <span class="landing-hero__eyebrow"><i data-lucide="zap"></i> Tu tienda de tecnología</span>
-                <h1 class="landing-hero__title">Tecnología que <span class="accent">enciende</span> tu dia a dia</h1>
-                <p class="landing-hero__desc">Laptops, smartphones, accesorios y gaming gear de última generacion. Selección curada para quienes exigen mas velocidad, mas potencia y cero limites.</p>
-                <div class="landing-hero__actions">
-                    <a href="tienda.html" class="btn-tactile btn-tactile--primary btn-tactile--lg"><i data-lucide="shopping-bag"></i> Explorar tienda</a>
-                    <a href="ofertas.html" class="btn-tactile btn-tactile--ghost btn-tactile--lg"><i data-lucide="flame"></i> Ver ofertas</a>
+                <span class="landing-hero__eyebrow">Tu tienda de tecnología</span>
+                <h1 class="landing-hero__title">Tecnología que <span class="accent">enciende</span> tu día a día</h1>
+                <p class="landing-hero__desc">Laptops, smartphones, accesorios y gaming gear de última generación. Selección curada para quienes exigen más velocidad, más potencia y cero límites.</p>
+                <div class="hero-cta-group">
+                    <a href="tienda.html" class="hero-btn hero-btn--primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Explorar tienda
+                    </a>
+                    <a href="ofertas.html" class="hero-btn hero-btn--ghost">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                        Ver ofertas
+                    </a>
                 </div>
                 <div class="landing-hero__trust">
-                    <div class="trust-item"><div class="trust-item__icon"><i data-lucide="truck"></i></div><div class="trust-item__text"><b>Envío gratis</b><span>En pedidos +$999</span></div></div>
-                    <div class="trust-item"><div class="trust-item__icon"><i data-lucide="shield-check"></i></div><div class="trust-item__text"><b>2 años garantia</b><span>En todos los productos</span></div></div>
-                    <div class="trust-item"><div class="trust-item__icon"><i data-lucide="lock"></i></div><div class="trust-item__text"><b>Pago seguro</b><span>Encriptado SSL</span></div></div>
+                    <div class="trust-item">
+                        <div class="trust-item__dot"></div>
+                        <div class="trust-item__text"><b>Envío gratis</b><span>en pedidos +$999</span></div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item__dot"></div>
+                        <div class="trust-item__text"><b>2 años garantía</b><span>en todos los productos</span></div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item__dot"></div>
+                        <div class="trust-item__text"><b>Pago seguro</b><span>cifrado SSL</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- CATEGORIAS                                    -->
-    <!-- ============================================ -->
+    <!-- CATEGORIAS -->
     <section class="section-clean reveal" id="categorias">
         <div class="container">
             <div class="section-clean__head">
-                <span class="section-clean__eyebrow"><i data-lucide="layout-grid"></i> Explora</span>
+                <span class="section-clean__eyebrow">Explora</span>
                 <h2>Encuentra lo que necesitas</h2>
-                <p>4 categorias principales seleccionadas para acompanar tu dia a dia digital.</p>
+                <p>4 categorías principales seleccionadas para acompañar tu día a día digital.</p>
             </div>
             <div class="featured-bento" id="featuredBento"></div>
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- CTA BANNER                                   -->
-    <!-- ============================================ -->
+    <!-- CTA -->
     <section class="section reveal">
         <div class="container">
             <div class="cta-banner">
-                <div class="cta-banner__content">
-                    <div>
-                        <h2><i data-lucide="flame" style="color:var(--color-accent)"></i> Ofertas por tiempo limitado</h2>
-                        <p>Hasta 40% de descuento en productos seleccionados. No dejes pasar estas ofertas.</p>
-                    </div>
-                    <a href="ofertas.html" class="btn-tactile btn-tactile--secondary"><i data-lucide="arrow-right"></i> Ver ofertas</a>
+                <div>
+                    <h2>Ofertas por tiempo limitado</h2>
+                    <p>Hasta 40% de descuento en productos seleccionados. No dejes pasar estas ofertas.</p>
                 </div>
+                <a href="ofertas.html" class="cta-banner__btn">
+                    Ver ofertas
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- FOOTER                                       -->
-    <!-- ============================================ -->
-    <footer class="footer">
+    <!-- FOOTER -->
+    <footer class="footer" id="contacto">
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a>
-                    <p>Tu tienda de tecnología de confianza. Laptops, smartphones, accesorios y gaming gear seleccionados para acompanar tu dia a dia digital.</p>
+                    <a href="index.html" class="site-logo">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/>
+                        </svg>
+                        <span>TechStore</span>
+                    </a>
+                    <p>Tu tienda de tecnología de confianza. Laptops, smartphones, accesorios y gaming gear seleccionados para acompañar tu día a día digital.</p>
                     <div class="footer__social">
-                        <a href="#" aria-label="Facebook"><i data-lucide="globe"></i></a>
-                        <a href="#" aria-label="Instagram"><i data-lucide="camera"></i></a>
-                        <a href="#" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
-                        <a href="#" aria-label="YouTube"><i data-lucide="play-circle"></i></a>
+                        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="#" aria-label="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                     </div>
                 </div>
                 <div class="footer__col">
                     <h4>Tienda</h4>
                     <ul>
                         <li><a href="tienda.html">Todos los productos</a></li>
-                        <li><a href="tienda.html">Categorias</a></li>
+                        <li><a href="tienda.html">Categorías</a></li>
                         <li><a href="ofertas.html">Ofertas</a></li>
-                        <li><a href="tienda.html">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer__col">
                     <h4>Soporte</h4>
                     <ul>
                         <li><a href="faq.html">Preguntas frecuentes</a></li>
-                        <li><a href="tracking.html">Tracking de envios</a></li>
-                        <li><a href="garantias.html">Garantias</a></li>
+                        <li><a href="tracking.html">Tracking de envíos</a></li>
+                        <li><a href="garantias.html">Garantías</a></li>
                         <li><a href="politica-devoluciones.html">Devoluciones</a></li>
                     </ul>
                 </div>
@@ -172,8 +226,7 @@
                     <h4>Cuenta</h4>
                     <ul>
                         <li><a href="cuenta.html">Mi cuenta</a></li>
-                        <li><a href="cuenta.html#orders">Mis pedidos</a></li>
-                        <li><a href="terminos-condiciones.html">Terminos y condiciones</a></li>
+                        <li><a href="terminos-condiciones.html">Términos y condiciones</a></li>
                         <li><a href="blog.html">Blog</a></li>
                     </ul>
                 </div>
@@ -181,20 +234,18 @@
             <div class="footer__bottom">
                 <p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p>
                 <div class="footer__payments">
-                    <i data-lucide="credit-card"></i>
-                    <i data-lucide="credit-card"></i>
-                    <i data-lucide="credit-card"></i>
-                    <i data-lucide="credit-card"></i>
+                    <svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#1A1F71"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="Inter,sans-serif">VISA</text></svg>
+                    <svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#252525"/><circle cx="16" cy="13" r="8" fill="#EB001B" opacity="0.9"/><circle cx="24" cy="13" r="8" fill="#F79E1B" opacity="0.9"/></svg>
+                    <svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#279EDB"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Inter,sans-serif">AMEX</text></svg>
+                    <svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#253B80"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="7" font-weight="700" font-family="Inter,sans-serif">PayPal</text></svg>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ============================================ -->
-    <!-- TOAST                                        -->
-    <!-- ============================================ -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <script>var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();</script>
     <script src="js/store.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script>lucide.createIcons();</script>
