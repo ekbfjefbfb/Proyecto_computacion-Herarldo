@@ -16,10 +16,10 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--font-family);
     background-color: var(--bg-dark);
     color: var(--text-primary);
-    line-height: 1.6;
+    line-height: var(--line-height);
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -111,8 +111,8 @@ textarea:focus-visible {
 /* ── FLUID TYPOGRAPHY SYSTEM ──────────────────── */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing);
     color: var(--text-primary);
 }
 
@@ -125,7 +125,7 @@ h6 { font-size: clamp(0.85rem, 1.2vw, 1rem); }
 
 p {
     font-size: clamp(0.9rem, 1.2vw, 1rem);
-    line-height: 1.7;
+    line-height: var(--line-height-relaxed);
     color: var(--text-muted);
 }
 

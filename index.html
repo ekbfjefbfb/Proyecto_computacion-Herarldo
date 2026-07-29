@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="TechStore - Tu tienda de tecnología de confianza. Laptops, smartphones, accesorios y gaming.">
-    <title>TechStore | Tecnología de Confianza</title>
+    <meta name="description" content="TechStore - Tecnologia premium lista para comprar. Laptops, smartphones, accesorios y gaming con envio seguro.">
+    <title>TechStore | Tecnologia premium lista para comprar</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,38 +19,35 @@
     <link rel="stylesheet" href="css/premium.css">
     <link rel="stylesheet" href="css/responsive.css">
     <style>
-        .landing-hero__trust{display:flex;gap:40px;flex-wrap:wrap;margin-top:8px}
-        .trust-item{display:flex;align-items:center;gap:10px}
-        .trust-item__dot{width:6px;height:6px;border-radius:50%;background:var(--color-secondary);flex-shrink:0}
-        .trust-item__text b{font-size:0.85rem;font-weight:600;color:var(--text-primary)}
-        .trust-item__text span{font-size:0.78rem;color:var(--text-muted);margin-left:4px}
-        .hero-cta-group{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px}
-        .hero-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);border:none;cursor:pointer}
-        .hero-btn--primary{background:var(--color-primary);color:#fff;box-shadow:0 4px 20px rgba(var(--color-primary-rgb),0.35)}
-        .hero-btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(var(--color-primary-rgb),0.5)}
-        .hero-btn--ghost{background:transparent;color:var(--text-primary);border:1px solid var(--border-color)}
-        .hero-btn--ghost:hover{border-color:var(--color-secondary);color:var(--color-secondary)}
-        .hero-btn svg{width:18px;height:18px}
+        .landing-hero__trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
+        .trust-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.035)}
+        .trust-item__dot{width:28px;height:28px;border-radius:8px;background:rgba(var(--color-secondary-rgb),.1);display:grid;place-items:center;color:var(--color-secondary);flex-shrink:0}
+        .trust-item__dot svg{width:15px;height:15px}
+        .trust-item__text b{display:block;font-size:.8rem;font-weight:750;color:var(--text-primary)}
+        .trust-item__text span{display:block;font-size:.72rem;color:var(--text-muted)}
         .section-clean__head{text-align:center;margin-bottom:48px}
         .section-clean__eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:12px}
         .section-clean__head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
         .section-clean__head p{color:var(--text-muted);font-size:1rem;max-width:50ch;margin:0 auto}
         .bento-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
         .bento-card:hover{transform:translateY(-6px)}
-        .bento-card__bg{position:absolute;inset:0;border-radius:20px;border:1px solid var(--border-color);transition:all 0.3s ease}
+        .bento-card__bg{position:absolute;inset:0;border-radius:20px;border:1px solid var(--border-color);background:var(--bg-surface);transition:all 0.3s ease;overflow:hidden}
         .bento-card:hover .bento-card__bg{border-color:rgba(var(--color-primary-rgb),0.4);box-shadow:0 20px 40px rgba(0,0,0,0.25)}
         .bento-card__content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
-        .bento-card__emoji{font-size:2rem;margin-bottom:12px;line-height:1}
+        .bento-card__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;transform:scale(1.02);transition:transform .45s ease,opacity .45s ease}
+        .bento-card:hover .bento-card__image{opacity:.68;transform:scale(1.08)}
+        .bento-card__icon{width:42px;height:42px;border-radius:10px;background:rgba(3,5,10,.62);border:1px solid rgba(255,255,255,.13);display:grid;place-items:center;color:var(--color-secondary);margin-bottom:12px;backdrop-filter:blur(10px)}
+        .bento-card__icon svg{width:21px;height:21px}
         .bento-card__label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-secondary);margin-bottom:6px}
         .bento-card h3{font-size:1.15rem;font-weight:800;margin-bottom:4px}
         .bento-card p{font-size:0.82rem;color:var(--text-muted);line-height:1.5}
         .bento-card__arrow{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all 0.3s ease}
         .bento-card:hover .bento-card__arrow{background:var(--color-primary);border-color:var(--color-primary);color:#fff;transform:translate(2px,-2px)}
         .bento-card__arrow svg{width:16px;height:16px}
-        .featured-bento{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:260px 260px;gap:20px}
+        .featured-bento{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:230px 230px;gap:18px}
         .featured-bento .bento-card:first-child{grid-row:span 2}
         @media(max-width:900px){.featured-bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.featured-bento .bento-card:first-child{grid-column:span 2;grid-row:span 1}}
-        @media(max-width:640px){.featured-bento{grid-template-columns:1fr}.featured-bento .bento-card:first-child{grid-column:span 1}.landing-hero__trust{gap:20px}.hero-cta-group{flex-direction:column}.hero-btn{justify-content:center}}
+        @media(max-width:640px){.featured-bento{grid-template-columns:1fr}.featured-bento .bento-card:first-child{grid-column:span 1}.landing-hero__trust{gap:10px}}
         .cta-banner{background:linear-gradient(135deg,rgba(var(--color-primary-rgb),0.12),rgba(var(--color-secondary-rgb),0.08));border:1px solid rgba(var(--color-primary-rgb),0.2);border-radius:24px;padding:48px 56px;display:flex;align-items:center;justify-content:space-between;gap:32px}
         .cta-banner h2{font-size:1.5rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
         .cta-banner p{color:var(--text-muted);font-size:0.92rem}
@@ -62,7 +59,7 @@
         .site-logo svg{width:28px;height:28px;color:var(--color-secondary)}
     </style>
 </head>
-<body class="is-landing">
+<body>
 
     <header class="header" id="header">
         <div class="header__container">
@@ -73,6 +70,11 @@
                 <span>TechStore</span>
             </a>
 
+            <div class="header__search">
+                <input type="text" placeholder="Busca laptops, audifonos, monitores..." class="header__search-input" id="searchInput">
+                <button class="header__search-btn" aria-label="Buscar"><i data-lucide="search"></i></button>
+            </div>
+
             <nav class="header__nav" id="headerNav">
                 <a href="index.html" class="header__nav-link header__nav-link--active">Inicio</a>
                 <a href="tienda.html" class="header__nav-link">Tienda</a>
@@ -81,9 +83,13 @@
             </nav>
 
             <div class="header__actions">
+                <button class="header__search-toggle" id="searchToggle" aria-label="Buscar">
+                    <i data-lucide="search"></i>
+                </button>
                 <a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <i data-lucide="user"></i>
                 </a>
+                <button class="header__cart" id="cartBtn" aria-label="Abrir carrito"><i data-lucide="shopping-cart"></i><span class="header__cart-count" id="cartCount">0</span></button>
             </div>
 
             <button class="header__menu-btn" id="menuBtn" aria-label="Menú">
@@ -120,40 +126,45 @@
 
     <!-- HERO -->
     <section class="landing-hero" id="inicio">
-        <div class="landing-hero__bg">
-            <div class="landing-hero__orb landing-hero__orb--1"></div>
-            <div class="landing-hero__orb landing-hero__orb--2"></div>
-            <div class="landing-hero__orb landing-hero__orb--3"></div>
-        </div>
         <div class="container">
             <div class="landing-hero__content">
-                <span class="landing-hero__eyebrow">Tu tienda de tecnología</span>
-                <h1 class="landing-hero__title">Tecnología que <span class="accent">enciende</span> tu día a día</h1>
-                <p class="landing-hero__desc">Laptops, smartphones, accesorios y gaming gear de última generación. Selección curada para quienes exigen más velocidad, más potencia y cero límites.</p>
-                <div class="hero-cta-group">
-                    <a href="tienda.html" class="hero-btn hero-btn--primary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                        Explorar tienda
-                    </a>
-                    <a href="ofertas.html" class="hero-btn hero-btn--ghost">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-                        Ver ofertas
-                    </a>
+                <span class="landing-hero__eyebrow"><i data-lucide="sparkles"></i> Compra directa, sin friccion</span>
+                <h1 class="landing-hero__title">Tecnologia premium, lista para <span class="accent">comprar hoy</span></h1>
+                <p class="landing-hero__desc">Busca, compara y agrega al carrito desde el inicio. Productos curados, imagenes reales y una experiencia rapida para comprar sin perder el hilo.</p>
+                <div class="hero-commerce">
+                    <div class="hero-commerce__search">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="homeSearchInput" placeholder="Buscar MacBook, audifonos, monitor 165Hz...">
+                        <button id="homeSearchBtn">Buscar</button>
+                    </div>
+                    <div class="hero-commerce__chips">
+                        <a href="tienda.html?cat=laptops"><i data-lucide="laptop"></i> Laptops</a>
+                        <a href="tienda.html?cat=smartphones"><i data-lucide="smartphone"></i> Smartphones</a>
+                        <a href="tienda.html?cat=accesorios"><i data-lucide="headphones"></i> Accesorios</a>
+                        <a href="tienda.html?cat=gaming"><i data-lucide="gamepad-2"></i> Gaming</a>
+                    </div>
                 </div>
                 <div class="landing-hero__trust">
                     <div class="trust-item">
-                        <div class="trust-item__dot"></div>
+                        <div class="trust-item__dot"><i data-lucide="truck"></i></div>
                         <div class="trust-item__text"><b>Envío gratis</b><span>en pedidos +$999</span></div>
                     </div>
                     <div class="trust-item">
-                        <div class="trust-item__dot"></div>
+                        <div class="trust-item__dot"><i data-lucide="shield-check"></i></div>
                         <div class="trust-item__text"><b>2 años garantía</b><span>en todos los productos</span></div>
                     </div>
                     <div class="trust-item">
-                        <div class="trust-item__dot"></div>
+                        <div class="trust-item__dot"><i data-lucide="lock"></i></div>
                         <div class="trust-item__text"><b>Pago seguro</b><span>cifrado SSL</span></div>
                     </div>
                 </div>
+            </div>
+            <div class="home-shelf" aria-label="Productos destacados">
+                <div class="home-shelf__head">
+                    <span>Seleccion destacados</span>
+                    <a href="tienda.html">Ver catalogo <i data-lucide="arrow-right"></i></a>
+                </div>
+                <div class="product-grid product-grid--home" id="featuredProducts"></div>
             </div>
         </div>
     </section>
@@ -163,8 +174,8 @@
         <div class="container">
             <div class="section-clean__head">
                 <span class="section-clean__eyebrow">Explora</span>
-                <h2>Encuentra lo que necesitas</h2>
-                <p>4 categorías principales seleccionadas para acompañar tu día a día digital.</p>
+                <h2>Compra por categoria</h2>
+                <p>Rutas claras para entrar al catalogo con el filtro correcto ya aplicado.</p>
             </div>
             <div class="featured-bento" id="featuredBento"></div>
         </div>
@@ -243,11 +254,18 @@
         </div>
     </footer>
 
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-drawer__head"><h3><i data-lucide="shopping-cart"></i> Tu carrito</h3><button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button></div>
+        <div class="cart-drawer__items" id="cartItems"></div>
+        <div class="cart-drawer__foot"><div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div><button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button></div>
+    </aside>
+
     <div class="toast-container" id="toastContainer"></div>
 
     <script>var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();</script>
     <script src="js/store.js"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <script>lucide.createIcons();</script>
+    <script src="https://unpkg.com/lucide@1.27.0/dist/umd/lucide.js"></script>
+    <script>if(window.lucide)lucide.createIcons();</script>
 </body>
 </html>

@@ -5,10 +5,10 @@
        DATA — Productos y categorias
        ===================================================== */
     var CATEGORIES = [
-        { key: 'laptops',     name: 'Laptops',     desc: 'Potencia y movilidad para trabajo y creacion', icon: 'laptop' },
-        { key: 'smartphones', name: 'Smartphones', desc: 'Ultimos lanzamientos con conectividad 5G',     icon: 'smartphone' },
-        { key: 'accesorios',  name: 'Accesorios',  desc: 'Complementa tu setup con calidad premium',     icon: 'headphones' },
-        { key: 'gaming',      name: 'Gaming',      desc: 'Equipo gamer de alto rendimiento',             icon: 'gamepad-2' }
+        { key: 'laptops',     name: 'Laptops',     desc: 'Potencia portatil para trabajo, estudio y creacion', icon: 'laptop',     img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&h=900&fit=crop' },
+        { key: 'smartphones', name: 'Smartphones', desc: 'Camara, bateria y 5G para moverte sin pausa',        icon: 'smartphone', img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900&h=900&fit=crop' },
+        { key: 'accesorios',  name: 'Accesorios',  desc: 'Audio, carga y perifericos con acabado premium',     icon: 'headphones', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&h=900&fit=crop' },
+        { key: 'gaming',      name: 'Gaming',      desc: 'Pantallas, controles y setup para jugar fluido',      icon: 'gamepad-2',  img: 'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=900&h=900&fit=crop' }
     ];
 
     var PRODUCTS = [
@@ -100,17 +100,15 @@
     function renderCategories() {
         var bento = document.getElementById('featuredBento');
         if (!bento) return;
-        var emojis = { laptops: '💻', smartphones: '📱', accesorios: '🎧', gaming: '🎮' };
-        var colors = { laptops: '#6C5CE7', smartphones: '#00CEC9', accesorios: '#FD79A8', gaming: '#FDCB6E' };
         bento.innerHTML = CATEGORIES.map(function (c, i) {
             return '<div class="bento-card' + (i === 0 ? ' bento-featured' : '') + '" data-category="' + c.key + '">' +
-                '<div class="bento-card__bg"></div>' +
+                '<div class="bento-card__bg"><img class="bento-card__image" src="' + esc(c.img) + '" alt="' + esc(c.name) + '" loading="lazy"></div>' +
                 '<div class="bento-card__content">' +
-                    '<div class="bento-card__arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>' +
-                    '<div class="bento-card__emoji">' + emojis[c.key] + '</div>' +
-                    '<div class="bento-card__label">' + c.name + '</div>' +
-                    '<h3>' + c.name + '</h3>' +
-                    '<p>' + c.desc + '</p>' +
+                    '<div class="bento-card__arrow"><i data-lucide="arrow-up-right"></i></div>' +
+                    '<div class="bento-card__icon"><i data-lucide="' + c.icon + '"></i></div>' +
+                    '<div class="bento-card__label">Categoria</div>' +
+                    '<h3>' + esc(c.name) + '</h3>' +
+                    '<p>' + esc(c.desc) + '</p>' +
                 '</div>' +
             '</div>';
         }).join('');
@@ -152,19 +150,19 @@
         if (discount) {
             badgeHTML = '<span class="product-card__discount">-' + discount + '%</span>';
         } else if (p.badge) {
-            badgeHTML = '<span class="product-card__badge">' + p.badge + '</span>';
+            badgeHTML = '<span class="product-card__badge">' + esc(p.badge) + '</span>';
         }
 
         var mediaContent = p.img ?
-            '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)">' :
+            '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy">' :
             '<i data-lucide="' + p.icon + '"></i>';
 
         return '<article class="product-card" data-id="' + p.id + '" data-cat="' + p.cat + '" style="cursor:pointer">' +
             badgeHTML +
             '<div class="product-card__media" data-cat="' + p.cat + '">' + mediaContent + '</div>' +
-            '<div class="product-card__cat">' + p.cat + '</div>' +
-            '<h3>' + p.name + '</h3>' +
-            '<p class="product-card__specs">' + p.specs + '</p>' +
+            '<div class="product-card__cat">' + esc(p.cat) + '</div>' +
+            '<h3>' + esc(p.name) + '</h3>' +
+            '<p class="product-card__specs">' + esc(p.specs) + '</p>' +
             '<div class="product-card__rating">' +
                 '<div class="product-card__stars">' + stars(p.rating) + '</div>' +
                 '<span>(' + p.reviews + ')</span>' +
@@ -174,7 +172,7 @@
                     (p.old ? '<span class="product-card__price-old">' + money(p.old) + '</span>' : '') +
                     '<span class="product-card__price-current">' + money(p.price) + '</span>' +
                 '</div>' +
-                '<button class="product-card__add" data-id="' + p.id + '" aria-label="Agregar ' + p.name + ' al carrito">' +
+                '<button class="product-card__add" data-id="' + p.id + '" aria-label="Agregar ' + esc(p.name) + ' al carrito">' +
                     '<i data-lucide="plus"></i>' +
                 '</button>' +
             '</div>' +
@@ -299,7 +297,7 @@
             var p = findProduct(c.id);
             if (!p) return '';
             return '<div class="cart-item" data-id="' + p.id + '">' +
-                '<div class="cart-item__media"><i data-lucide="' + p.icon + '"></i></div>' +
+                '<div class="cart-item__media">' + (p.img ? '<img src="' + esc(p.img) + '" alt="">' : '<i data-lucide="' + p.icon + '"></i>') + '</div>' +
                 '<div class="cart-item__info">' +
                     '<h4>' + p.name + '</h4>' +
                     '<div class="cart-item__price">' + money(p.price) + '</div>' +
@@ -334,9 +332,17 @@
     function openCart(open) {
         var drawer = document.getElementById('cartDrawer');
         var overlay = document.getElementById('cartOverlay');
+        var mobileNav = document.getElementById('mobileNav');
         if (drawer) { drawer.classList.toggle('open', open); drawer.setAttribute('aria-hidden', String(!open)); }
         if (overlay) overlay.classList.toggle('open', open);
-        document.body.style.overflow = open ? 'hidden' : '';
+        var mobileNavOpen = mobileNav && mobileNav.classList.contains('active');
+        if (!open && mobileNavOpen) {
+            document.body.style.overflow = 'hidden';
+        } else if (!open) {
+            document.body.style.overflow = '';
+        } else {
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     /* =====================================================
@@ -357,13 +363,13 @@
        COUNTDOWN
        ===================================================== */
     function startCountdown() {
-        var total = 6 * 3600 - 1;
+        var total = 6 * 3600;
         var h = document.getElementById('cd-h');
         var m = document.getElementById('cd-m');
         var s = document.getElementById('cd-s');
         if (!h || !m || !s) return;
         function tick() {
-            if (total <= 0) total = 6 * 3600 - 1;
+            if (total <= 0) total = 6 * 3600;
             var hh = Math.floor(total / 3600);
             var mm = Math.floor((total % 3600) / 60);
             var ss = total % 60;
@@ -428,7 +434,8 @@
         function close() {
             mobileNav.classList.remove('active');
             menuBtn.classList.remove('active');
-            document.body.style.overflow = '';
+            var cartOpen = document.getElementById('cartDrawer') && document.getElementById('cartDrawer').classList.contains('open');
+            if (!cartOpen) document.body.style.overflow = '';
         }
 
         menuBtn.addEventListener('click', function () {
@@ -480,7 +487,7 @@
             var list = PRODUCTS.filter(function (p) {
                 return p.name.toLowerCase().includes(q) || p.specs.toLowerCase().includes(q) || p.cat.includes(q);
             });
-            grid.innerHTML = list.length ? list.map(productCardHTML).join('') : '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px 0;">No se encontraron productos para "' + esc(raw) + '"</p>';
+            grid.innerHTML = list.length ? list.map(productCardHTML).join('') : emptySearchHTML(raw);
             bindAddButtons(grid);
             bindCardNavigation(grid);
             if (window.lucide) lucide.createIcons();
@@ -489,6 +496,27 @@
         input.addEventListener('keydown', function (e) { if (e.key === 'Enter') doSearch(); });
         var searchBtn = input.parentElement.querySelector('.header__search-btn');
         if (searchBtn) searchBtn.addEventListener('click', doSearch);
+    }
+
+    function initHomeSearch() {
+        var input = document.getElementById('homeSearchInput');
+        var btn = document.getElementById('homeSearchBtn');
+        if (!input || !btn) return;
+        function go() {
+            var raw = input.value.trim();
+            window.location.href = raw ? 'tienda.html?q=' + encodeURIComponent(raw) : 'tienda.html';
+        }
+        input.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(); });
+        btn.addEventListener('click', go);
+    }
+
+    function emptySearchHTML(term) {
+        return '<div class="empty-state">' +
+            '<div class="empty-state__icon"><i data-lucide="search-x"></i></div>' +
+            '<h3>No encontramos "' + esc(term) + '"</h3>' +
+            '<p>Prueba con laptop, audifonos, monitor, smartphone o gaming.</p>' +
+            '<a href="tienda.html" class="btn btn--ghost">Ver catalogo completo</a>' +
+        '</div>';
     }
 
     /* =====================================================
@@ -530,6 +558,7 @@
         initMobileNav();
         initHeaderScroll();
         if (document.getElementById('searchInput')) initSearch();
+        initHomeSearch();
         initReveal();
 
         var searchToggle = document.getElementById('searchToggle');
@@ -588,7 +617,7 @@
             var qList = PRODUCTS.filter(function (p) {
                 return p.name.toLowerCase().includes(ql) || p.specs.toLowerCase().includes(ql) || p.cat.includes(ql);
             });
-            qGrid.innerHTML = qList.length ? qList.map(productCardHTML).join('') : '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px 0;">No se encontraron productos para "' + esc(qParam) + '"</p>';
+            qGrid.innerHTML = qList.length ? qList.map(productCardHTML).join('') : emptySearchHTML(qParam);
             bindAddButtons(qGrid);
             bindCardNavigation(qGrid);
             if (window.lucide) lucide.createIcons();
