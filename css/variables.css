@@ -7,27 +7,46 @@
 :root {
     /* ── COLORES PRINCIPALES ─────────────────── */
     --color-primary: #6C5CE7;
+    --color-primary-rgb: 108, 92, 231;
     --color-primary-dark: #5A4BD1;
     --color-primary-light: #A29BFE;
-    --color-primary-glow: rgba(108, 92, 231, 0.3);
+    --color-primary-glow: rgba(var(--color-primary-rgb), 0.3);
 
     /* ── COLORES SECUNDARIOS ─────────────────── */
     --color-secondary: #00CEC9;
+    --color-secondary-rgb: 0, 206, 201;
     --color-secondary-dark: #00B5B0;
-    --color-secondary-glow: rgba(0, 206, 201, 0.3);
+    --color-secondary-glow: rgba(var(--color-secondary-rgb), 0.3);
 
     /* ── COLORES DE ACCENTO ──────────────────── */
     --color-accent: #FD79A8;
+    --color-accent-rgb: 253, 121, 168;
     --color-accent-dark: #E84393;
 
     /* ── COLORES DE ESTADO ───────────────────── */
     --color-success: #00B894;
+    --color-success-rgb: 0, 184, 148;
     --color-warning: #FDCB6E;
+    --color-warning-rgb: 253, 203, 110;
     --color-error: #FF6B6B;
+    --color-error-rgb: 255, 107, 107;
     --color-info: #74B9FF;
+
+    /* ── COLORES DE CATEGORÍA ────────────────── */
+    --cat-laptops: var(--color-primary-light);
+    --cat-smartphones: var(--color-secondary);
+    --cat-accesorios: var(--color-accent);
+    --cat-gaming: var(--color-warning);
+
+    /* ── COLORES DE TEXTO ────────────────────── */
+    --text-on-primary: #0A0A0F;
 
     /* ── FONDOS (TEMA OSCURO) ────────────────── */
     --bg-dark: #0A0A0F;
+    --bg-dark-rgb: 10, 10, 15;
+    --bg-primary: #12121A;
+    --bg-primary-rgb: 18, 18, 26;
+    --bg-secondary: #1E1E2E;
     --bg-card: #12121A;
     --bg-card-hover: #1A1A25;
     --bg-surface: #1E1E2E;
@@ -36,7 +55,7 @@
     /* ── COLORES DE TEXTO ────────────────────── */
     --text-primary: #FFFFFF;
     --text-secondary: #B4B4C0;
-    --text-muted: #6C6C80;
+    --text-muted: #8A8AA0;
     --text-link: var(--color-primary-light);
 
     /* ── BORDES ──────────────────────────────── */
@@ -76,6 +95,8 @@
     --z-dropdown: 100;
     --z-sticky: 200;
     --z-fixed: 300;
+    --z-overlay: 350;
     --z-modal: 400;
     --z-toast: 500;
+    --z-max: 600;
 }

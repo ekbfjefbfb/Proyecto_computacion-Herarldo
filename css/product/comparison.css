@@ -305,5 +305,5 @@
 }
 
 .compare-table tbody tr:hover td {
-  background: rgba(108, 92, 231, 0.03);
+  background: rgba(var(--color-primary-rgb), 0.03);
 }

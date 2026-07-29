@@ -21,12 +21,12 @@
     var currentRating = 0;
 
     function setStars(value) {
-      // value = cantidad de estrellas a rellenar (1-5)
       currentRating = value;
       stars.forEach(function (star, index) {
-        // Si el índice es menor que value: fas fa-star, si no: far fa-star
-        star.className = index < value ? 'fas fa-star' : 'far fa-star';
+        star.setAttribute('data-lucide', 'star');
+        star.className = index < value ? 'star-icon star-icon--fill' : 'star-icon';
       });
+      if (window.lucide) lucide.createIcons();
     }
 
     // Click en estrella: seleccionar
@@ -39,7 +39,7 @@
       star.addEventListener('mouseenter', function () {
         var val = parseInt(star.getAttribute('data-value'), 10);
         stars.forEach(function (s, idx) {
-          s.className = idx < val ? 'fas fa-star' : 'far fa-star';
+          s.className = idx < val ? 'star-icon star-icon--fill' : 'star-icon';
         });
       });
 
@@ -60,7 +60,7 @@
       var title = document.getElementById('reviewTitle');
       var text = document.getElementById('reviewText');
 
-      // Validación simple
+      if (!name || !title || !text) return;
       if (!name.value.trim() || !title.value.trim() || !text.value.trim()) {
         showToast('error', 'Error', 'Completa todos los campos');
         return;

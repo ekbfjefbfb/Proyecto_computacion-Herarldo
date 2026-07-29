@@ -176,7 +176,7 @@
     background: var(--color-success);
     border-color: var(--color-success);
     color: white;
-    box-shadow: 0 0 15px rgba(0, 184, 148, 0.3);
+    box-shadow: 0 0 15px rgba(var(--color-success-rgb), 0.3);
 }
 
 /* Paso activo */

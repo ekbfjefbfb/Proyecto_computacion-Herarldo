@@ -99,11 +99,11 @@
     gap: var(--space-xs);
     margin-top: var(--space-sm);
     padding: var(--space-xs) var(--space-md);
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: linear-gradient(135deg, var(--color-warning), #FFA500);
     border-radius: var(--radius-full);
     font-size: 0.8rem;
     font-weight: 600;
-    color: #000;
+    color: var(--text-on-primary);
 }
 
 /* ── ESTADISTICAS ────────────────────────────── */

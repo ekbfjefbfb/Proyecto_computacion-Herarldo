@@ -153,7 +153,7 @@
   align-items: center;
   gap: var(--space-xs);
   font-size: 0.75rem;
-  color: #FFD700;
+  color: var(--color-warning);
   margin-bottom: var(--space-sm);
 }
 

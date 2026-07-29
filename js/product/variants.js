@@ -63,11 +63,13 @@
   if (qtyMinus && qtyPlus && qtyValue) {
     qtyMinus.addEventListener('click', function () {
       var val = parseInt(qtyValue.value, 10);
+      if (isNaN(val)) val = 1;
       if (val > 1) qtyValue.value = val - 1;
     });
 
     qtyPlus.addEventListener('click', function () {
       var val = parseInt(qtyValue.value, 10);
+      if (isNaN(val)) val = 1;
       if (val < 99) qtyValue.value = val + 1;
     });
   }
@@ -90,22 +92,36 @@
   var addToCartBtn = document.getElementById('addToCartBtn');
   if (addToCartBtn) {
     addToCartBtn.addEventListener('click', function () {
-      if (!cartCount) return;
+      var store = window.TechStore;
+      if (!store || !store.addToCart) {
+        showToast('error', 'Error', 'Sistema del carrito no disponible');
+        return;
+      }
 
-      // Obtener cantidad actual
+      // Get product ID from URL
+      var params = new URLSearchParams(window.location.search);
+      var productId = params.get('id');
+      if (!productId) {
+        showToast('error', 'Error', 'No se pudo identificar el producto');
+        return;
+      }
+
+      // Get quantity
       var qty = qtyValue ? parseInt(qtyValue.value, 10) : 1;
+      if (isNaN(qty) || qty < 1) qty = 1;
 
-      // Incrementar contador del carrito
-      var count = parseInt(cartCount.textContent, 10) + qty;
-      cartCount.textContent = count;
+      // Add each unit to cart via store.js
+      for (var i = 0; i < qty; i++) {
+        store.addToCart(productId);
+      }
 
-      // Animación bounce
-      cartCount.classList.remove('cart-bounce');
-      cartCount.offsetHeight; // Forzar reflow
-      cartCount.classList.add('cart-bounce');
-
-      showToast('success', 'Agregado al carrito',
-        qty + ' x MacBook Pro M3 agregado' + (qty > 1 ? 's' : ''));
+      // Bounce animation on cart count
+      var cartCountEl = document.getElementById('cartCount');
+      if (cartCountEl) {
+        cartCountEl.classList.remove('cart-bounce');
+        cartCountEl.offsetHeight;
+        cartCountEl.classList.add('cart-bounce');
+      }
     });
   }
 

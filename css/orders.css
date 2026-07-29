@@ -96,7 +96,7 @@
 }
 
 .order-card__status--delivered {
-    background: rgba(0, 184, 148, 0.15);
+    background: rgba(var(--color-success-rgb), 0.15);
     color: var(--color-success);
     border: 1px solid var(--color-success);
 }
@@ -108,7 +108,7 @@
 }
 
 .order-card__status--pending {
-    background: rgba(253, 203, 110, 0.15);
+    background: rgba(var(--color-warning-rgb), 0.15);
     color: var(--color-warning);
     border: 1px solid var(--color-warning);
 }
@@ -222,14 +222,14 @@
 }
 
 .order-card__btn--review {
-    background: rgba(253, 203, 110, 0.15);
+    background: rgba(var(--color-warning-rgb), 0.15);
     color: var(--color-warning);
     border: 1px solid var(--color-warning);
 }
 
 .order-card__btn--review:hover {
     background: var(--color-warning);
-    color: #000;
+    color: var(--text-on-primary);
 }
 
 .order-card__btn--reorder {
@@ -244,7 +244,7 @@
 }
 
 .order-card__btn--cancel {
-    background: rgba(255, 107, 107, 0.15);
+    background: rgba(var(--color-error-rgb), 0.15);
     color: var(--color-error);
     border: 1px solid var(--color-error);
 }

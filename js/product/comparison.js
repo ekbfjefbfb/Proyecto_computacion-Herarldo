@@ -17,6 +17,8 @@
 
   var showToast = window.showToast || function () {};
 
+  function esc(s) { var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
+
   var compareBtns = document.querySelectorAll('.related-card__compare-btn');
   var compareBar = document.getElementById('compareBar');
   var compareItems = document.getElementById('compareItems');
@@ -53,7 +55,7 @@
         // Ya está seleccionado → quitarlo
         selected.splice(existingIndex, 1);
         btn.classList.remove('active');
-        btn.querySelector('i').className = 'fas fa-balance-scale';
+        btn.querySelector('i') && btn.querySelector('i').setAttribute('data-lucide', 'scale');
         renderCompareBar();
         return;
       }
@@ -75,7 +77,7 @@
       });
 
       btn.classList.add('active');
-      btn.querySelector('i').className = 'fas fa-check';
+      btn.querySelector('i') && btn.querySelector('i').setAttribute('data-lucide', 'check');
       renderCompareBar();
       showToast('info', 'Agregado', name + ' agregado a comparacion');
     });
@@ -103,18 +105,18 @@
 
       // Mapa de iconos según tipo de producto
       var iconMap = {
-        'laptop': 'fa-laptop',
-        'tablet': 'fa-tablet-alt',
-        'desktop': 'fa-desktop',
-        'laptop-large': 'fa-laptop-house',
+        'laptop': 'laptop',
+        'tablet': 'tablet',
+        'desktop': 'monitor',
+        'laptop-large': 'laptop',
       };
-      var icon = iconMap[item.img] || 'fa-box';
+      var icon = iconMap[item.img] || 'package';
 
       el.innerHTML =
-        '<div class="compare-bar__item-img"><i class="fas ' + icon + '"></i></div>' +
-        '<span class="compare-bar__item-name">' + item.name + '</span>' +
+        '<div class="compare-bar__item-img"><i data-lucide="' + icon + '"></i></div>' +
+        '<span class="compare-bar__item-name">' + esc(item.name) + '</span>' +
         '<button class="compare-bar__item-remove" data-id="' + item.id + '" aria-label="Quitar de comparacion">' +
-          '<i class="fas fa-times"></i>' +
+          '<i data-lucide="x"></i>' +
         '</button>';
 
       compareItems.appendChild(el);
@@ -142,7 +144,7 @@
       var card = btn.closest('.related-card');
       if (card.getAttribute('data-compare-id') === id) {
         btn.classList.remove('active');
-        btn.querySelector('i').className = 'fas fa-balance-scale';
+        btn.querySelector('i') && btn.querySelector('i').setAttribute('data-lucide', 'scale');
       }
     });
 
@@ -177,20 +179,20 @@
     if (!compareModalBody) return;
 
     var iconMap = {
-      'laptop': 'fa-laptop',
-      'tablet': 'fa-tablet-alt',
-      'desktop': 'fa-desktop',
-      'laptop-large': 'fa-laptop-house',
+      'laptop': 'laptop',
+      'tablet': 'tablet',
+      'desktop': 'monitor',
+      'laptop-large': 'laptop',
     };
 
     // Cabeceras de producto
     var headerCells = '';
     selected.forEach(function (item) {
-      var icon = iconMap[item.img] || 'fa-box';
+      var icon = iconMap[item.img] || 'package';
       headerCells += '<td>' +
-        '<div class="compare-product-img"><i class="fas ' + icon + '"></i></div>' +
-        '<span class="compare-product-name">' + item.name + '</span>' +
-        '<span class="compare-product-price">' + item.price + '</span>' +
+        '<div class="compare-product-img"><i data-lucide="' + icon + '"></i></div>' +
+        '<span class="compare-product-name">' + esc(item.name) + '</span>' +
+        '<span class="compare-product-price">' + esc(item.price) + '</span>' +
         '</td>';
     });
 
@@ -235,8 +237,8 @@
         var hasIt = (idx + itemIdx) % 2 === 0;
         featureValues += '<td>' +
           (hasIt
-            ? '<span class="check-yes"><i class="fas fa-check-circle"></i></span>'
-            : '<span class="check-no"><i class="fas fa-times-circle"></i></span>') +
+            ? '<span class="check-yes"><i data-lucide="circle-check"></i></span>'
+            : '<span class="check-no"><i data-lucide="circle-x"></i></span>') +
           '</td>';
       });
       rows += '<tr>' +

@@ -95,7 +95,7 @@
 
 .account-nav__link:hover {
     color: var(--text-primary);
-    background: rgba(108, 92, 231, 0.08);
+    background: rgba(var(--color-primary-rgb), 0.08);
 }
 
 .account-nav__link:hover i {
@@ -104,7 +104,7 @@
 
 .account-nav__link--active {
     color: var(--text-primary);
-    background: rgba(108, 92, 231, 0.15);
+    background: rgba(var(--color-primary-rgb), 0.15);
 }
 
 .account-nav__link--active i {
@@ -141,7 +141,7 @@
 }
 
 .account-nav__logout:hover {
-    background: rgba(255, 107, 107, 0.1);
+    background: rgba(var(--color-error-rgb), 0.1);
 }
 
 .account-section {
@@ -157,7 +157,5 @@
 }
 
 .account-section__title {
-    font-size: 1.5rem;
-    font-weight: 700;
     color: var(--text-primary);
 }

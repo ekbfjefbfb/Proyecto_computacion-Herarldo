@@ -48,43 +48,48 @@
 
   function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
   function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+  function esc(str) { var d = document.createElement('div'); d.appendChild(document.createTextNode(str)); return d.innerHTML; }
 
   /* ── HEADER SCROLL ─────────────────────────────── */
   function onScroll() {
-    DOM.header.classList.toggle('scrolled', window.scrollY > 10);
+    if (DOM.header) DOM.header.classList.toggle('scrolled', window.scrollY > 10);
   }
   window.addEventListener('scroll', debounce(onScroll, 16), { passive: true });
 
   /* ── MOBILE NAV ────────────────────────────────── */
   function openMobileNav() {
-    DOM.mobileNav.classList.add('active');
-    DOM.menuBtn.classList.add('active');
+    if (DOM.mobileNav) DOM.mobileNav.classList.add('active');
+    if (DOM.menuBtn) DOM.menuBtn.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMobileNav() {
-    DOM.mobileNav.classList.remove('active');
-    DOM.menuBtn.classList.remove('active');
+    if (DOM.mobileNav) DOM.mobileNav.classList.remove('active');
+    if (DOM.menuBtn) DOM.menuBtn.classList.remove('active');
     document.body.style.overflow = '';
   }
 
-  DOM.menuBtn.addEventListener('click', function () {
-    DOM.mobileNav.classList.contains('active') ? closeMobileNav() : openMobileNav();
-  });
-  DOM.mobileNavOverlay.addEventListener('click', closeMobileNav);
-  DOM.mobileNavClose.addEventListener('click', closeMobileNav);
+  if (DOM.menuBtn) {
+    DOM.menuBtn.addEventListener('click', function () {
+      DOM.mobileNav && DOM.mobileNav.classList.contains('active') ? closeMobileNav() : openMobileNav();
+    });
+  }
+  if (DOM.mobileNavOverlay) DOM.mobileNavOverlay.addEventListener('click', closeMobileNav);
+  if (DOM.mobileNavClose) DOM.mobileNavClose.addEventListener('click', closeMobileNav);
 
   /* ── USER DROPDOWN ─────────────────────────────── */
-  DOM.headerUser.addEventListener('click', function (e) {
-    e.stopPropagation();
-    DOM.headerUser.classList.toggle('open');
-  });
+  if (DOM.headerUser) {
+    DOM.headerUser.addEventListener('click', function (e) {
+      e.stopPropagation();
+      DOM.headerUser.classList.toggle('open');
+    });
 
-  document.addEventListener('click', function (e) {
-    if (!DOM.headerUser.contains(e.target)) {
-      DOM.headerUser.classList.remove('open');
-    }
-  });
+    document.addEventListener('click', function (e) {
+      if (!DOM.headerUser.contains(e.target)) {
+        DOM.headerUser.classList.remove('open');
+      }
+    });
+  }
 
   /* ── SECTION NAVIGATION ────────────────────────── */
   const navLinks = qsa(SELECTORS.navLinks);
@@ -122,7 +127,7 @@
       if (href && href.startsWith('#') && href.length > 1) {
         showSection(href.substring(1));
         closeMobileNav();
-        DOM.headerUser.classList.remove('open');
+        if (DOM.headerUser) DOM.headerUser.classList.remove('open');
       }
     });
   });
@@ -145,9 +150,10 @@
     btn.addEventListener('click', function () {
       var isPassword = input.type === 'password';
       input.type = isPassword ? 'text' : 'password';
-      var icon = btn.querySelector('.fa-eye, .fa-eye-slash');
+      var icon = btn.querySelector('[data-lucide]');
       if (icon) {
-        icon.className = 'fas ' + (isPassword ? 'fa-eye-slash' : 'fa-eye');
+        icon.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
+        if (window.lucide) lucide.createIcons();
       }
     });
   }
@@ -209,8 +215,10 @@
     var loginPassword = document.getElementById('loginPassword');
 
     function validateLoginField(inputId, errorId) {
-      var val = document.getElementById(inputId).value.trim();
+      var el = document.getElementById(inputId);
       var err = document.getElementById(errorId);
+      if (!el || !err) return true;
+      var val = el.value.trim();
       if (inputId === 'loginEmail') {
         if (!val) { err.textContent = 'El correo es requerido'; return false; }
         if (!EMAIL_RE.test(val)) { err.textContent = 'Ingresa un correo valido'; return false; }
@@ -223,10 +231,14 @@
       return true;
     }
 
-    loginEmail.addEventListener('blur', function () { validateLoginField('loginEmail', 'loginEmailError'); });
-    loginEmail.addEventListener('input', function () { validateLoginField('loginEmail', 'loginEmailError'); });
-    loginPassword.addEventListener('blur', function () { validateLoginField('loginPassword', 'loginPasswordError'); });
-    loginPassword.addEventListener('input', function () { validateLoginField('loginPassword', 'loginPasswordError'); });
+    if (loginEmail) {
+      loginEmail.addEventListener('blur', function () { validateLoginField('loginEmail', 'loginEmailError'); });
+      loginEmail.addEventListener('input', function () { validateLoginField('loginEmail', 'loginEmailError'); });
+    }
+    if (loginPassword) {
+      loginPassword.addEventListener('blur', function () { validateLoginField('loginPassword', 'loginPasswordError'); });
+      loginPassword.addEventListener('input', function () { validateLoginField('loginPassword', 'loginPasswordError'); });
+    }
 
     loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -336,16 +348,16 @@
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function () {
       showToast('info', 'Sesion cerrada', 'Has cerrado sesion correctamente');
-      showSection('login');
+      setTimeout(function () { window.location.href = 'cuenta.html'; }, 1500);
     });
   }
 
   /* ── TOAST ─────────────────────────────────────── */
   var TOAST_ICONS = {
-    success: 'fa-check-circle',
-    error: 'fa-times-circle',
-    warning: 'fa-exclamation-triangle',
-    info: 'fa-info-circle',
+    success: 'circle-check',
+    error: 'circle-x',
+    warning: 'triangle-alert',
+    info: 'info',
   };
 
   function showToast(type, title, message) {
@@ -353,13 +365,14 @@
     var toast = document.createElement('div');
     toast.className = 'toast toast--' + type;
     toast.innerHTML =
-      '<i class="fas ' + (TOAST_ICONS[type] || 'fa-info-circle') + ' toast__icon"></i>' +
+      '<i data-lucide="' + (TOAST_ICONS[type] || 'info') + '" class="toast__icon"></i>' +
       '<div class="toast__content">' +
-        '<div class="toast__title">' + title + '</div>' +
-        '<div class="toast__message">' + message + '</div>' +
+        '<div class="toast__title">' + esc(title) + '</div>' +
+        '<div class="toast__message">' + esc(message) + '</div>' +
       '</div>' +
-      '<button class="toast__close" aria-label="Cerrar"><i class="fas fa-times"></i></button>';
+      '<button class="toast__close" aria-label="Cerrar"><i data-lucide="x"></i></button>';
     DOM.toastContainer.appendChild(toast);
+    if (window.lucide) lucide.createIcons();
 
     var closeBtn = toast.querySelector('.toast__close');
     closeBtn.addEventListener('click', function () {
@@ -385,6 +398,49 @@
       });
     });
   }
+
+  /* ── GLOBAL HASH LINK HANDLER ────────────────── */
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (href && href.length > 1) {
+      var sectionId = href.substring(1);
+      if (SECTIONS[sectionId]) {
+        e.preventDefault();
+        showSection(sectionId);
+      }
+    }
+  });
+
+  /* ── DROPDOWN LOGOUT ───────────────────────── */
+  var dropdownLogout = document.querySelector('.header__dropdown-item--logout');
+  if (dropdownLogout) {
+    dropdownLogout.addEventListener('click', function (e) {
+      e.preventDefault();
+      showToast('info', 'Sesion cerrada', 'Has cerrado sesion correctamente');
+      setTimeout(function () { window.location.href = 'cuenta.html'; }, 1500);
+    });
+  }
+
+  /* ── CART LINK (removed - handled by store.js) ── */
+
+  /* ── HASH ON LOAD ───────────────────────────── */
+  if (window.location.hash && window.location.hash.length > 1) {
+    var hashSection = window.location.hash.substring(1);
+    if (SECTIONS[hashSection]) {
+      showSection(hashSection);
+    }
+  }
+
+  window.addEventListener('hashchange', function () {
+    if (window.location.hash && window.location.hash.length > 1) {
+      var sectionId = window.location.hash.substring(1);
+      if (SECTIONS[sectionId]) {
+        showSection(sectionId);
+      }
+    }
+  });
 
   /* Exponer showToast globalmente para los micro-modulos de producto */
   window.showToast = showToast;

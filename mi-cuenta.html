@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechStore - Mi Cuenta">
+    <title>TechStore | Mi Cuenta</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/mobile-nav.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/orders.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a>
+            <div class="header__search"><input type="text" placeholder="Buscar productos..." class="header__search-input"><button class="header__search-btn" aria-label="Buscar"><i data-lucide="search"></i></button></div>
+            <nav class="header__nav"><a href="index.html" class="header__nav-link">Inicio</a><a href="tienda.html" class="header__nav-link">Tienda</a><a href="ofertas.html" class="header__nav-link">Ofertas</a><a href="index.html#contacto" class="header__nav-link">Contacto</a></nav>
+            <div class="header__actions"><a href="mi-cuenta.html" class="header__user header__user--active" id="headerUser" title="Mi Cuenta"><i data-lucide="user"></i></a><button class="header__cart" id="cartBtn" aria-label="Carrito"><i data-lucide="shopping-cart"></i><span class="header__cart-count" id="cartCount" style="display:none">0</span></button></div>
+            <button class="header__menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
+        <div class="mobile-nav__sidebar">
+            <div class="mobile-nav__header"><a href="index.html" class="header__logo" style="padding:0"><i data-lucide="zap"></i> <span>TechStore</span></a><button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar"><i data-lucide="x"></i></button></div>
+            <ul class="mobile-nav__links">
+                <li><a href="index.html" class="mobile-nav__link"><i data-lucide="home"></i> Inicio</a></li>
+                <li><a href="tienda.html" class="mobile-nav__link"><i data-lucide="layout-grid"></i> Tienda</a></li>
+                <li><a href="ofertas.html" class="mobile-nav__link"><i data-lucide="tag"></i> Ofertas</a></li>
+                <li class="mobile-nav__divider"></li>
+                <li><a href="mi-cuenta.html" class="mobile-nav__link"><i data-lucide="user"></i> Mi Cuenta</a></li>
+                <li><a href="tracking.html" class="mobile-nav__link"><i data-lucide="truck"></i> Tracking</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="breadcrumb">
+        <div class="container">
+            <a href="index.html" class="breadcrumb__link">Inicio</a>
+            <span class="breadcrumb__separator">/</span>
+            <span class="breadcrumb__current" id="breadcrumbCurrent">Mi Cuenta</span>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="account-layout">
+
+                <nav class="account-nav" id="accountNav">
+                    <div class="account-nav__user">
+                        <div class="account-nav__avatar" id="avatarInitials">JD</div>
+                        <div class="account-nav__user-info">
+                            <span class="account-nav__name" id="userName">Juan Doe</span>
+                            <span class="account-nav__email" id="userEmail">juan@email.com</span>
+                        </div>
+                    </div>
+                    <div class="account-nav__links">
+                        <button class="account-nav__link account-nav__link--active" data-section="profile"><i data-lucide="user"></i><span>Perfil</span></button>
+                        <button class="account-nav__link" data-section="orders"><i data-lucide="package"></i><span>Pedidos</span></button>
+                        <button class="account-nav__link" data-section="settings"><i data-lucide="settings"></i><span>Config</span></button>
+                        <button class="account-nav__link" data-section="addresses"><i data-lucide="map-pin"></i><span>Direcciones</span></button>
+                        <button class="account-nav__link" data-section="payment"><i data-lucide="credit-card"></i><span>Pago</span></button>
+                    </div>
+                    <div class="account-nav__actions">
+                        <a href="tracking.html" class="account-nav__link" title="Tracking"><i data-lucide="truck"></i></a>
+                        <button class="account-nav__logout" id="logoutBtn" onclick="window.location.href='cuenta.html'"><i data-lucide="log-out"></i></button>
+                    </div>
+                </nav>
+
+                <div class="account-content">
+
+                    <section class="account-section account-section--active" id="section-profile">
+                        <div class="account-section__header">
+                            <h1 class="account-section__title"><i data-lucide="user"></i> Mi Perfil</h1>
+                            <p class="account-section__subtitle">Gestiona tu informacion personal</p>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-card__cover"><div class="profile-card__pattern"></div></div>
+                            <div class="profile-card__body">
+                                <div class="profile-card__avatar"><span>JD</span><div class="profile-card__avatar-ring"></div></div>
+                                <div class="profile-card__info">
+                                    <h2 class="profile-card__name">Juan Doe</h2>
+                                    <p class="profile-card__email">juan@email.com</p>
+                                    <span class="profile-card__member-badge"><i data-lucide="crown"></i> Miembro Gold</span>
+                                </div>
+                                <div class="profile-card__stats">
+                                    <div class="profile-card__stat"><span class="profile-card__stat-number">12</span><span class="profile-card__stat-label">Pedidos</span></div>
+                                    <div class="profile-card__stat"><span class="profile-card__stat-number">$2,450</span><span class="profile-card__stat-label">Gastado</span></div>
+                                    <div class="profile-card__stat"><span class="profile-card__stat-number">8</span><span class="profile-card__stat-label">Favoritos</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="profile-form" id="profileForm">
+                            <h3 class="profile-form__title"><i data-lucide="pencil"></i> Informacion Personal</h3>
+                            <div class="profile-form__grid">
+                                <div class="profile-form__group"><label class="profile-form__label" for="profileName"><i data-lucide="user"></i> Nombre</label><input type="text" id="profileName" class="profile-form__input" value="Juan" required></div>
+                                <div class="profile-form__group"><label class="profile-form__label" for="profileLastName"><i data-lucide="user"></i> Apellido</label><input type="text" id="profileLastName" class="profile-form__input" value="Doe" required></div>
+                                <div class="profile-form__group"><label class="profile-form__label" for="profileEmail"><i data-lucide="mail"></i> Correo</label><input type="email" id="profileEmail" class="profile-form__input" value="juan@email.com" required></div>
+                                <div class="profile-form__group"><label class="profile-form__label" for="profilePhone"><i data-lucide="phone"></i> Telefono</label><input type="tel" id="profilePhone" class="profile-form__input" value="+52 123 456 7890"></div>
+                            </div>
+                            <div class="profile-form__actions">
+                                <button type="reset" class="profile-form__btn profile-form__btn--cancel"><i data-lucide="x"></i> Cancelar</button>
+                                <button type="submit" class="profile-form__btn profile-form__btn--save"><i data-lucide="save"></i> Guardar Cambios</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section class="account-section" id="section-orders">
+                        <div class="account-section__header">
+                            <h1 class="account-section__title"><i data-lucide="package"></i> Mis Pedidos</h1>
+                            <p class="account-section__subtitle">Revisa el historial de tus compras</p>
+                        </div>
+                        <div class="orders-filter">
+                            <button class="orders-filter__btn orders-filter__btn--active" data-filter="all">Todos <span class="orders-filter__count">5</span></button>
+                            <button class="orders-filter__btn" data-filter="pending">Pendientes <span class="orders-filter__count">1</span></button>
+                            <button class="orders-filter__btn" data-filter="shipped">Enviados <span class="orders-filter__count">2</span></button>
+                            <button class="orders-filter__btn" data-filter="delivered">Entregados <span class="orders-filter__count">2</span></button>
+                        </div>
+                        <div class="orders-list" id="ordersList">
+                            <div class="order-card" data-status="delivered">
+                                <div class="order-card__header">
+                                    <div class="order-card__id"><span class="order-card__label">Pedido</span><span class="order-card__number">#TS-2024-0089</span></div>
+                                    <div class="order-card__date"><span class="order-card__label">Fecha</span><span>15 Dic 2024</span></div>
+                                    <div class="order-card__status order-card__status--delivered"><i data-lucide="circle-check"></i> Entregado</div>
+                                </div>
+                                <div class="order-card__products">
+                                    <div class="order-card__product">
+                                        <div class="order-card__product-img"><i data-lucide="headphones"></i></div>
+                                        <div class="order-card__product-info"><h4>Sony WH-1000XM5</h4><p>Audifonos Bluetooth</p></div>
+                                        <div class="order-card__product-qty"><span>x1</span></div>
+                                        <div class="order-card__product-price">$599.00</div>
+                                    </div>
+                                </div>
+                                <div class="order-card__footer">
+                                    <div class="order-card__total"><span>Total:</span><strong>$599.00</strong></div>
+                                    <div class="order-card__actions">
+                                        <button class="order-card__btn order-card__btn--reorder"><i data-lucide="refresh-cw"></i> Volver a Comprar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-card" data-status="shipped">
+                                <div class="order-card__header">
+                                    <div class="order-card__id"><span class="order-card__label">Pedido</span><span class="order-card__number">#TS-2024-0092</span></div>
+                                    <div class="order-card__date"><span class="order-card__label">Fecha</span><span>22 Dic 2024</span></div>
+                                    <div class="order-card__status order-card__status--shipped"><i data-lucide="truck"></i> Enviado</div>
+                                </div>
+                                <div class="order-card__products">
+                                    <div class="order-card__product">
+                                        <div class="order-card__product-img"><i data-lucide="laptop"></i></div>
+                                        <div class="order-card__product-info"><h4>MacBook Air M3</h4><p>15" - 16GB RAM - 512GB</p></div>
+                                        <div class="order-card__product-qty"><span>x1</span></div>
+                                        <div class="order-card__product-price">$1,299.00</div>
+                                    </div>
+                                </div>
+                                <div class="order-card__footer">
+                                    <div class="order-card__total"><span>Total:</span><strong>$1,299.00</strong></div>
+                                    <div class="order-card__actions"><a href="tracking.html" class="order-card__btn order-card__btn--track"><i data-lucide="map-pin"></i> Rastrear</a></div>
+                                </div>
+                            </div>
+                            <div class="order-card" data-status="pending">
+                                <div class="order-card__header">
+                                    <div class="order-card__id"><span class="order-card__label">Pedido</span><span class="order-card__number">#TS-2024-0098</span></div>
+                                    <div class="order-card__date"><span class="order-card__label">Fecha</span><span>30 Dic 2024</span></div>
+                                    <div class="order-card__status order-card__status--pending"><i data-lucide="clock"></i> Pendiente</div>
+                                </div>
+                                <div class="order-card__products">
+                                    <div class="order-card__product">
+                                        <div class="order-card__product-img"><i data-lucide="monitor"></i></div>
+                                        <div class="order-card__product-info"><h4>Samsung 55" OLED 4K</h4><p>Smart TV S95C</p></div>
+                                        <div class="order-card__product-qty"><span>x1</span></div>
+                                        <div class="order-card__product-price">$1,499.00</div>
+                                    </div>
+                                </div>
+                                <div class="order-card__footer">
+                                    <div class="order-card__total"><span>Total:</span><strong>$1,499.00</strong></div>
+                                    <div class="order-card__actions"><button class="order-card__btn order-card__btn--cancel"><i data-lucide="circle-x"></i> Cancelar</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="account-section" id="section-settings">
+                        <div class="account-section__header">
+                            <h1 class="account-section__title"><i data-lucide="settings"></i> Configuracion</h1>
+                            <p class="account-section__subtitle">Personaliza tu experiencia</p>
+                        </div>
+                        <div class="settings-grid">
+                            <div class="settings-card">
+                                <div class="settings-card__header"><i data-lucide="bell"></i><h3>Notificaciones</h3></div>
+                                <div class="settings-card__body">
+                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Notificaciones por Email</h4><p>Recibe actualizaciones de pedidos y ofertas</p></div><label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label></div>
+                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>SMS de Tracking</h4><p>Alertas de envio por mensaje de texto</p></div><label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label></div>
+                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Newsletter</h4><p>Ofertas exclusivas y novedades tech</p></div><label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label></div>
+                                </div>
+                            </div>
+                            <div class="settings-card">
+                                <div class="settings-card__header"><i data-lucide="shield-check"></i><h3>Seguridad</h3></div>
+                                <div class="settings-card__body">
+                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Autenticacion de 2 Factores</h4><p>Proteccion adicional para tu cuenta</p></div><label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label></div>
+                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Sesiones Activas</h4><p>2 dispositivos conectados</p></div><button class="settings-card__btn"><i data-lucide="smartphone"></i> Gestionar</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="account-section" id="section-addresses">
+                        <div class="account-section__header">
+                            <h1 class="account-section__title"><i data-lucide="map-pin"></i> Mis Direcciones</h1>
+                            <p class="account-section__subtitle">Gestiona tus direcciones de envio</p>
+                        </div>
+                        <div class="addresses-grid" id="addressesGrid">
+                            <div class="address-card address-card--primary">
+                                <div class="address-card__badge">Principal</div>
+                                <div class="address-card__icon"><i data-lucide="home"></i></div>
+                                <h3 class="address-card__title">Casa</h3>
+                                <p class="address-card__detail">Av. Reforma 123, Col. Centro<br>Ciudad de Mexico, CP 06000</p>
+                                <p class="address-card__phone"><i data-lucide="phone"></i> +52 123 456 7890</p>
+                                <div class="address-card__actions">
+                                    <button class="address-card__btn address-card__btn--edit"><i data-lucide="pencil"></i> Editar</button>
+                                    <button class="address-card__btn address-card__btn--delete"><i data-lucide="trash-2"></i> Eliminar</button>
+                                </div>
+                            </div>
+                            <div class="address-card address-card--add" id="addAddressBtn">
+                                <div class="address-card__add-icon"><i data-lucide="plus"></i></div>
+                                <h3>Agregar Direccion</h3>
+                                <p>Click para agregar una nueva direccion</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="account-section" id="section-payment">
+                        <div class="account-section__header">
+                            <h1 class="account-section__title"><i data-lucide="credit-card"></i> Metodos de Pago</h1>
+                            <p class="account-section__subtitle">Gestiona tus tarjetas</p>
+                        </div>
+                        <div class="payment-grid" id="paymentGrid">
+                            <div class="payment-card payment-card--visa">
+                                <div class="payment-card__chip"><i data-lucide="cpu"></i></div>
+                                <div class="payment-card__type"><i data-lucide="credit-card"></i></div>
+                                <div class="payment-card__number">**** **** **** 4589</div>
+                                <div class="payment-card__info">
+                                    <div class="payment-card__holder"><span class="payment-card__label">Titular</span><span class="payment-card__value">JUAN DOE</span></div>
+                                    <div class="payment-card__expiry"><span class="payment-card__label">Vence</span><span class="payment-card__value">12/26</span></div>
+                                </div>
+                                <div class="payment-card__actions">
+                                    <button class="payment-card__btn"><i data-lucide="pencil"></i></button>
+                                    <button class="payment-card__btn payment-card__btn--delete"><i data-lucide="trash-2"></i></button>
+                                </div>
+                            </div>
+                            <div class="payment-card payment-card--add" id="addPaymentBtn">
+                                <div class="payment-card__add-icon"><i data-lucide="plus"></i></div>
+                                <h3>Agregar Tarjeta</h3>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand"><a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a><p>Tu tienda de tecnologia de confianza.</p><div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div></div>
+                <div class="footer__col"><h4>Tienda</h4><ul><li><a href="tienda.html">Productos</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div>
+                <div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li></ul></div>
+                <div class="footer__col"><h4>Cuenta</h4><ul><li><a href="mi-cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li></ul></div>
+            </div>
+            <div class="footer__bottom"><p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p><div class="footer__payments"><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i></div></div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-drawer__head"><h3><i data-lucide="shopping-cart"></i> Tu carrito</h3><button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button></div>
+        <div class="cart-drawer__items" id="cartItems"></div>
+        <div class="cart-drawer__foot"><div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div><button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button></div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/store.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="js/main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

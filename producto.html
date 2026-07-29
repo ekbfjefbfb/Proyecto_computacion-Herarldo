@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="TechStore - Detalle de Producto">
   <title>TechStore | MacBook Pro M3</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/header.css">
@@ -22,79 +22,51 @@
   <link rel="stylesheet" href="css/product/related.css">
   <link rel="stylesheet" href="css/product/comparison.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/store.css">
+  <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════════ -->
-  <!-- HEADER                                        -->
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- HEADER -->
   <header class="header" id="header">
     <div class="header__container">
-      <a href="index.html" class="header__logo">
-        <i class="fas fa-bolt"></i>
-        <span>TechStore</span>
-      </a>
-
+      <a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a>
       <div class="header__search">
         <input type="text" placeholder="Buscar productos..." class="header__search-input" id="searchInput">
-        <button class="header__search-btn" aria-label="Buscar">
-          <i class="fas fa-search"></i>
-        </button>
+        <button class="header__search-btn" aria-label="Buscar"><i data-lucide="search"></i></button>
       </div>
-
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Inicio</a>
+        <a href="tienda.html" class="header__nav-link">Tienda</a>
+        <a href="ofertas.html" class="header__nav-link">Ofertas</a>
+        <a href="index.html#contacto" class="header__nav-link">Contacto</a>
+      </nav>
       <div class="header__actions">
-        <div class="header__user" id="headerUser">
-          <i class="fas fa-user"></i>
-          <span class="header__user-name">Mi Cuenta</span>
-          <i class="fas fa-chevron-down header__user-arrow"></i>
-          <div class="header__dropdown" id="userDropdown">
-            <a href="index.html#login" class="header__dropdown-item"><i class="fas fa-sign-in-alt"></i> Iniciar Sesion</a>
-            <a href="index.html#register" class="header__dropdown-item"><i class="fas fa-user-plus"></i> Registrarse</a>
-            <a href="index.html#orders" class="header__dropdown-item"><i class="fas fa-box"></i> Mis Pedidos</a>
-            <a href="tracking.html" class="header__dropdown-item"><i class="fas fa-truck"></i> Tracking</a>
-            <div class="header__dropdown-divider"></div>
-            <a href="#" class="header__dropdown-item header__dropdown-item--logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</a>
-          </div>
-        </div>
-        <a href="#cart" class="header__cart">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="header__cart-count" id="cartCount">0</span>
-        </a>
+        <a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta"><i data-lucide="user"></i></a>
+        <button class="header__cart" id="cartBtn" aria-label="Abrir carrito"><i data-lucide="shopping-cart"></i><span class="header__cart-count" id="cartCount" style="display:none">0</span></button>
       </div>
-
-      <button class="header__menu-btn" id="menuBtn" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="header__menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- ══════════════════════════════════════════════ -->
-  <!-- MOBILE NAV                                    -->
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- MOBILE NAV -->
   <nav class="mobile-nav" id="mobileNav">
     <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
     <div class="mobile-nav__sidebar">
       <div class="mobile-nav__header">
-        <div class="mobile-nav__user">
-          <div class="mobile-nav__avatar"><i class="fas fa-user"></i></div>
-          <div class="mobile-nav__user-info">
-            <span class="mobile-nav__user-name">Usuario</span>
-            <span class="mobile-nav__user-email">correo@email.com</span>
-          </div>
-        </div>
-        <button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+        <a href="index.html" class="header__logo" style="padding:0"><i data-lucide="zap"></i> <span>TechStore</span></a>
+        <button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
       <ul class="mobile-nav__links">
-        <li><a href="index.html" class="mobile-nav__link"><i class="fas fa-home"></i> Inicio</a></li>
-        <li><a href="#" class="mobile-nav__link"><i class="fas fa-th-large"></i> Categorias</a></li>
-        <li><a href="#" class="mobile-nav__link"><i class="fas fa-tag"></i> Ofertas</a></li>
+        <li><a href="index.html" class="mobile-nav__link"><i data-lucide="home"></i> Inicio</a></li>
+        <li><a href="tienda.html" class="mobile-nav__link"><i data-lucide="layout-grid"></i> Tienda</a></li>
+        <li><a href="ofertas.html" class="mobile-nav__link"><i data-lucide="tag"></i> Ofertas</a></li>
+        <li><a href="index.html#contacto" class="mobile-nav__link"><i data-lucide="mail"></i> Contacto</a></li>
         <li class="mobile-nav__divider"></li>
-        <li><a href="index.html#login" class="mobile-nav__link"><i class="fas fa-sign-in-alt"></i> Iniciar Sesion</a></li>
-        <li><a href="index.html#register" class="mobile-nav__link"><i class="fas fa-user-plus"></i> Registrarse</a></li>
-        <li><a href="index.html#orders" class="mobile-nav__link"><i class="fas fa-box"></i> Mis Pedidos</a></li>
-        <li><a href="tracking.html" class="mobile-nav__link"><i class="fas fa-truck"></i> Tracking</a></li>
+        <li><a href="cuenta.html" class="mobile-nav__link"><i data-lucide="user"></i> Mi Cuenta</a></li>
+        <li><a href="tracking.html" class="mobile-nav__link"><i data-lucide="truck"></i> Tracking</a></li>
       </ul>
     </div>
   </nav>
@@ -106,9 +78,9 @@
     <div class="container">
       <a href="index.html" class="breadcrumb__link">Inicio</a>
       <span class="breadcrumb__separator">/</span>
-      <a href="#" class="breadcrumb__link">Laptops</a>
+      <a href="tienda.html" class="breadcrumb__link">Productos</a>
       <span class="breadcrumb__separator">/</span>
-      <span class="breadcrumb__current">MacBook Pro M3</span>
+      <span class="breadcrumb__current" id="breadcrumbProduct">MacBook Pro M3</span>
     </div>
   </section>
 
@@ -173,11 +145,11 @@
 
           <div class="product-info__rating">
             <div class="product-info__stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
+              <i data-lucide="star" class="star-icon star-icon--fill"></i>
+              <i data-lucide="star" class="star-icon star-icon--fill"></i>
+              <i data-lucide="star" class="star-icon star-icon--fill"></i>
+              <i data-lucide="star" class="star-icon star-icon--fill"></i>
+              <i data-lucide="star-half" class="star-icon star-icon--fill"></i>
             </div>
             <span class="product-info__rating-value">4.7</span>
             <span class="product-info__rating-count">
@@ -215,34 +187,34 @@
           <!-- ── ACTIONS ──────────────────────── -->
           <div class="product-info__actions">
             <div class="qty-selector">
-              <button class="qty-selector__btn" id="qtyMinus" aria-label="Disminuir cantidad"><i class="fas fa-minus"></i></button>
+              <button class="qty-selector__btn" id="qtyMinus" aria-label="Disminuir cantidad"><i data-lucide="minus"></i></button>
               <input type="number" class="qty-selector__value" id="qtyValue" value="1" min="1" max="99" readonly>
-              <button class="qty-selector__btn" id="qtyPlus" aria-label="Aumentar cantidad"><i class="fas fa-plus"></i></button>
+              <button class="qty-selector__btn" id="qtyPlus" aria-label="Aumentar cantidad"><i data-lucide="plus"></i></button>
             </div>
             <button class="btn--add-cart" id="addToCartBtn">
-              <i class="fas fa-shopping-cart"></i>
+              <i data-lucide="shopping-cart"></i>
               <span>Agregar al Carrito</span>
             </button>
             <button class="btn--wishlist" id="wishlistBtn" aria-label="Agregar a favoritos">
-              <i class="fas fa-heart"></i>
+              <i data-lucide="heart"></i>
             </button>
           </div>
 
           <!-- ── FEATURES ─────────────────────── -->
           <ul class="product-info__features">
-            <li><i class="fas fa-check"></i> Envio gratis a todo Mexico</li>
-            <li><i class="fas fa-check"></i> 12 meses de garantia extendida</li>
-            <li><i class="fas fa-check"></i> Devolucion gratuita en 30 dias</li>
-            <li><i class="fas fa-check"></i> Soporte tecnico 24/7</li>
+            <li><i data-lucide="check"></i> Envio gratis a todo Mexico</li>
+            <li><i data-lucide="check"></i> 12 meses de garantia extendida</li>
+            <li><i data-lucide="check"></i> Devolucion gratuita en 30 dias</li>
+            <li><i data-lucide="check"></i> Soporte tecnico 24/7</li>
           </ul>
 
           <!-- ── SHARE ────────────────────────── -->
           <div class="product-info__share">
             <span class="product-info__share-label">Compartir:</span>
-            <a href="#" class="product-info__share-link product-info__share-link--fb" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="product-info__share-link product-info__share-link--tw" aria-label="Compartir en Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="product-info__share-link product-info__share-link--wa" aria-label="Compartir en WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" class="product-info__share-link product-info__share-link--cp" aria-label="Copiar enlace"><i class="fas fa-link"></i></a>
+            <a href="#" class="product-info__share-link product-info__share-link--fb" aria-label="Compartir en Facebook"><i data-lucide="globe"></i></a>
+            <a href="#" class="product-info__share-link product-info__share-link--tw" aria-label="Compartir en Twitter"><i data-lucide="at-sign"></i></a>
+            <a href="#" class="product-info__share-link product-info__share-link--wa" aria-label="Compartir en WhatsApp"><i data-lucide="message-circle"></i></a>
+            <a href="#" class="product-info__share-link product-info__share-link--cp" aria-label="Copiar enlace"><i data-lucide="link"></i></a>
           </div>
         </div>
       </div>
@@ -254,13 +226,13 @@
 
         <nav class="tabs-nav" role="tablist">
           <button class="tabs-nav__btn active" role="tab" aria-selected="true" data-tab="description">
-            <i class="fas fa-file-alt"></i> Descripcion
+            <i data-lucide="file-text"></i> Descripcion
           </button>
           <button class="tabs-nav__btn" role="tab" aria-selected="false" data-tab="specs">
-            <i class="fas fa-microchip"></i> Especificaciones
+            <i data-lucide="cpu"></i> Especificaciones
           </button>
           <button class="tabs-nav__btn" role="tab" aria-selected="false" data-tab="reviews">
-            <i class="fas fa-star"></i> Reseñas <span class="orders-filter__count">256</span>
+            <i data-lucide="star" class="star-icon star-icon--fill"></i> Reseñas <span class="orders-filter__count">256</span>
           </button>
         </nav>
 
@@ -283,22 +255,22 @@
 
               <div class="tab-description__highlights">
                 <div class="tab-description__highlight">
-                  <i class="fas fa-microchip"></i>
+                  <i data-lucide="cpu"></i>
                   <h4>Chip M3 Pro</h4>
                   <p>CPU de 12 núcleos y GPU de 18 núcleos</p>
                 </div>
                 <div class="tab-description__highlight">
-                  <i class="fas fa-memory"></i>
+                  <i data-lucide="memory-stick"></i>
                   <h4>18GB RAM Unificada</h4>
                   <p>Memoria ultrarrápida para multitarea extrema</p>
                 </div>
                 <div class="tab-description__highlight">
-                  <i class="fas fa-battery-full"></i>
+                  <i data-lucide="battery-full"></i>
                   <h4>Hasta 18 horas</h4>
                   <p>Batería para todo un día de trabajo intensivo</p>
                 </div>
                 <div class="tab-description__highlight">
-                  <i class="fas fa-display"></i>
+                  <i data-lucide="monitor"></i>
                   <h4>Liquid Retina XDR</h4>
                   <p>14" ProMotion 120Hz · 1600 nits</p>
                 </div>
@@ -335,9 +307,9 @@
               <div class="reviews-summary__score">
                 <div class="reviews-summary__number">4.7</div>
                 <div class="reviews-summary__stars">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
+                  <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                  <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                  <i data-lucide="star-half" class="star-icon star-icon--fill"></i>
                 </div>
                 <div class="reviews-summary__total">256 reseñas</div>
               </div>
@@ -379,9 +351,9 @@
                     <span>Compra verificada · 15 Dic 2024</span>
                   </div>
                   <div class="review-card__rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                    <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                    <i data-lucide="star" class="star-icon star-icon--fill"></i>
                   </div>
                 </div>
                 <h4 class="review-card__title">Bestia de maquina, vale cada peso</h4>
@@ -395,8 +367,8 @@
                 <div class="review-card__footer">
                   <div class="review-card__helpful">
                     <span>Te fue util?</span>
-                    <button aria-label="Si"><i class="fas fa-thumbs-up"></i> 47</button>
-                    <button aria-label="No"><i class="fas fa-thumbs-down"></i> 2</button>
+                    <button aria-label="Si"><i data-lucide="thumbs-up"></i> 47</button>
+                    <button aria-label="No"><i data-lucide="thumbs-down"></i> 2</button>
                   </div>
                 </div>
               </div>
@@ -409,9 +381,9 @@
                     <span>Compra verificada · 8 Dic 2024</span>
                   </div>
                   <div class="review-card__rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
+                    <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                    <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                    <i data-lucide="star-half" class="star-icon star-icon--fill"></i>
                   </div>
                 </div>
                 <h4 class="review-card__title">Potencia increible, pero el precio...</h4>
@@ -425,8 +397,8 @@
                 <div class="review-card__footer">
                   <div class="review-card__helpful">
                     <span>Te fue util?</span>
-                    <button aria-label="Si"><i class="fas fa-thumbs-up"></i> 23</button>
-                    <button aria-label="No"><i class="fas fa-thumbs-down"></i> 1</button>
+                    <button aria-label="Si"><i data-lucide="thumbs-up"></i> 23</button>
+                    <button aria-label="No"><i data-lucide="thumbs-down"></i> 1</button>
                   </div>
                 </div>
               </div>
@@ -439,9 +411,9 @@
                     <span>Compra verificada · 2 Dic 2024</span>
                   </div>
                   <div class="review-card__rating">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                    <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                    <i data-lucide="star" class="star-icon"></i>
                   </div>
                 </div>
                 <h4 class="review-card__title">Excelente maquina, pero cuidado con el calor</h4>
@@ -455,8 +427,8 @@
                 <div class="review-card__footer">
                   <div class="review-card__helpful">
                     <span>Te fue util?</span>
-                    <button aria-label="Si"><i class="fas fa-thumbs-up"></i> 31</button>
-                    <button aria-label="No"><i class="fas fa-thumbs-down"></i> 4</button>
+                    <button aria-label="Si"><i data-lucide="thumbs-up"></i> 31</button>
+                    <button aria-label="No"><i data-lucide="thumbs-down"></i> 4</button>
                   </div>
                 </div>
               </div>
@@ -464,15 +436,15 @@
 
             <!-- ── REVIEW FORM ─────────────────── -->
             <form class="review-form" id="reviewForm">
-              <h3 class="review-form__title"><i class="fas fa-pen"></i> Escribe tu reseña</h3>
+              <h3 class="review-form__title"><i data-lucide="pen"></i> Escribe tu reseña</h3>
               <div class="review-form__group">
                 <label class="review-form__label">Tu calificacion</label>
                 <div class="review-form__stars-input" id="starInput">
-                  <i class="far fa-star" data-value="1"></i>
-                  <i class="far fa-star" data-value="2"></i>
-                  <i class="far fa-star" data-value="3"></i>
-                  <i class="far fa-star" data-value="4"></i>
-                  <i class="far fa-star" data-value="5"></i>
+                  <i data-lucide="star" class="star-icon" data-value="1"></i>
+                  <i data-lucide="star" class="star-icon" data-value="2"></i>
+                  <i data-lucide="star" class="star-icon" data-value="3"></i>
+                  <i data-lucide="star" class="star-icon" data-value="4"></i>
+                  <i data-lucide="star" class="star-icon" data-value="5"></i>
                 </div>
               </div>
               <div class="review-form__group">
@@ -488,7 +460,7 @@
                 <textarea id="reviewText" class="review-form__textarea" placeholder="Comparte tu opinion sobre el producto..." required></textarea>
               </div>
               <button type="submit" class="review-form__submit">
-                <i class="fas fa-paper-plane"></i> Enviar Reseña
+                <i data-lucide="send"></i> Enviar Reseña
               </button>
             </form>
           </div>
@@ -500,10 +472,10 @@
       <!-- ══════════════════════════════════════════ -->
       <section class="related-products">
         <div class="related-products__header">
-          <h2 class="related-products__title"><i class="fas fa-project-diagram"></i> Productos Relacionados</h2>
+          <h2 class="related-products__title"><i data-lucide="git-compare"></i> Productos Relacionados</h2>
           <div class="related-products__nav">
-            <button class="related-nav__btn" id="relatedPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-            <button class="related-nav__btn" id="relatedNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            <button class="related-nav__btn" id="relatedPrev" aria-label="Anterior"><i data-lucide="chevron-left"></i></button>
+            <button class="related-nav__btn" id="relatedNext" aria-label="Siguiente"><i data-lucide="chevron-right"></i></button>
           </div>
         </div>
 
@@ -511,7 +483,7 @@
           <div class="related-card" data-compare-id="1" data-compare-name="MacBook Air M3" data-compare-price="$1,299" data-compare-img="laptop">
             <div class="related-card__badge-compare">
               <button class="related-card__compare-btn" data-compare="1" aria-label="Comparar producto">
-                <i class="fas fa-balance-scale"></i>
+                <i data-lucide="scale"></i>
               </button>
             </div>
             <div class="related-card__img">
@@ -521,23 +493,23 @@
               <span class="related-card__brand">Apple</span>
               <h3 class="related-card__name">MacBook Air M3</h3>
               <div class="related-card__rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i>
                 <span>(189)</span>
               </div>
               <div class="related-card__price">
                 <span class="related-card__price-current">$1,299.00</span>
                 <span class="related-card__price-old">$1,499.00</span>
               </div>
-              <button class="related-card__add"><i class="fas fa-shopping-cart"></i> Agregar</button>
+              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
             </div>
           </div>
 
           <div class="related-card" data-compare-id="2" data-compare-name="iPad Pro M4" data-compare-price="$1,099" data-compare-img="tablet">
             <div class="related-card__badge-compare">
               <button class="related-card__compare-btn" data-compare="2" aria-label="Comparar producto">
-                <i class="fas fa-balance-scale"></i>
+                <i data-lucide="scale"></i>
               </button>
             </div>
             <div class="related-card__img">
@@ -547,22 +519,22 @@
               <span class="related-card__brand">Apple</span>
               <h3 class="related-card__name">iPad Pro M4</h3>
               <div class="related-card__rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star-half" class="star-icon star-icon--fill"></i>
                 <span>(67)</span>
               </div>
               <div class="related-card__price">
                 <span class="related-card__price-current">$1,099.00</span>
               </div>
-              <button class="related-card__add"><i class="fas fa-shopping-cart"></i> Agregar</button>
+              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
             </div>
           </div>
 
           <div class="related-card" data-compare-id="3" data-compare-name="Mac Mini M3" data-compare-price="$699" data-compare-img="desktop">
             <div class="related-card__badge-compare">
               <button class="related-card__compare-btn" data-compare="3" aria-label="Comparar producto">
-                <i class="fas fa-balance-scale"></i>
+                <i data-lucide="scale"></i>
               </button>
             </div>
             <div class="related-card__img">
@@ -572,22 +544,22 @@
               <span class="related-card__brand">Apple</span>
               <h3 class="related-card__name">Mac Mini M3</h3>
               <div class="related-card__rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i>
                 <span>(42)</span>
               </div>
               <div class="related-card__price">
                 <span class="related-card__price-current">$699.00</span>
               </div>
-              <button class="related-card__add"><i class="fas fa-shopping-cart"></i> Agregar</button>
+              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
             </div>
           </div>
 
           <div class="related-card" data-compare-id="4" data-compare-name="MacBook Pro 16 M3 Max" data-compare-price="$3,499" data-compare-img="laptop-large">
             <div class="related-card__badge-compare">
               <button class="related-card__compare-btn" data-compare="4" aria-label="Comparar producto">
-                <i class="fas fa-balance-scale"></i>
+                <i data-lucide="scale"></i>
               </button>
             </div>
             <div class="related-card__img">
@@ -597,15 +569,15 @@
               <span class="related-card__brand">Apple</span>
               <h3 class="related-card__name">MacBook Pro 16" M3 Max</h3>
               <div class="related-card__rating">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i><i data-lucide="star" class="star-icon star-icon--fill"></i>
+                <i data-lucide="star" class="star-icon star-icon--fill"></i>
                 <span>(103)</span>
               </div>
               <div class="related-card__price">
                 <span class="related-card__price-current">$3,499.00</span>
               </div>
-              <button class="related-card__add"><i class="fas fa-shopping-cart"></i> Agregar</button>
+              <button class="related-card__add"><i data-lucide="shopping-cart"></i> Agregar</button>
             </div>
           </div>
         </div>
@@ -619,10 +591,10 @@
   <!-- ══════════════════════════════════════════════ -->
   <aside class="compare-bar" id="compareBar">
     <div class="compare-bar__container">
-      <span class="compare-bar__label"><i class="fas fa-balance-scale"></i> Comparar</span>
+      <span class="compare-bar__label"><i data-lucide="scale"></i> Comparar</span>
       <div class="compare-bar__items" id="compareItems"></div>
       <button class="compare-bar__action" id="compareActionBtn" disabled>
-        <i class="fas fa-arrows-alt-h"></i> Comparar
+        <i data-lucide="move-horizontal"></i> Comparar
       </button>
     </div>
   </aside>
@@ -634,8 +606,8 @@
     <div class="compare-modal__overlay" id="compareModalOverlay"></div>
     <div class="compare-modal__content">
       <div class="compare-modal__header">
-        <h3 class="compare-modal__title"><i class="fas fa-arrows-alt-h"></i> Comparacion de Productos</h3>
-        <button class="compare-modal__close" id="compareModalClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+        <h3 class="compare-modal__title"><i data-lucide="move-horizontal"></i> Comparacion de Productos</h3>
+        <button class="compare-modal__close" id="compareModalClose" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
       <div class="compare-modal__body" id="compareModalBody">
         <!-- Generated by JS -->
@@ -643,54 +615,130 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════ -->
-  <!-- FOOTER                                        -->
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
-        <div class="footer__col">
-          <a href="index.html" class="footer__logo"><i class="fas fa-bolt"></i> TechStore</a>
-          <p class="footer__desc">Tu tienda de tecnologia de confianza.</p>
-          <div class="footer__social">
-            <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          </div>
+        <div class="footer__brand">
+          <a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a>
+          <p>Tu tienda de tecnologia de confianza.</p>
+          <div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div>
         </div>
-        <div class="footer__col">
-          <h4 class="footer__title">Links Rapidos</h4>
-          <ul class="footer__links"><li><a href="index.html">Inicio</a></li><li><a href="#">Productos</a></li><li><a href="#">Ofertas</a></li><li><a href="#">Contacto</a></li></ul>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__title">Soporte</h4>
-          <ul class="footer__links"><li><a href="#">Ayuda</a></li><li><a href="#">Devoluciones</a></li><li><a href="#">Garantias</a></li><li><a href="#">Envios</a></li></ul>
-        </div>
-        <div class="footer__col">
-          <h4 class="footer__title">Contacto</h4>
-          <ul class="footer__contact"><li><i class="fas fa-map-marker-alt"></i> Av. Reforma 123, CDMX</li><li><i class="fas fa-phone"></i> +52 123 456 7890</li><li><i class="fas fa-envelope"></i> soporte@techstore.com</li></ul>
-        </div>
+        <div class="footer__col"><h4>Tienda</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="tienda.html">Tienda</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div>
+        <div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li><li><a href="politica-devoluciones.html">Devoluciones</a></li></ul></div>
+        <div class="footer__col"><h4>Cuenta</h4><ul><li><a href="cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li><li><a href="blog.html">Blog</a></li></ul></div>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2024 TechStore. Todos los derechos reservados.</p>
-        <div class="footer__payments"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-amex"></i><i class="fab fa-cc-paypal"></i></div>
+        <p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p>
+        <div class="footer__payments"><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i></div>
       </div>
     </div>
   </footer>
 
-  <!-- ══════════════════════════════════════════════ -->
-  <!-- TOAST CONTAINER                               -->
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- TOAST -->
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- ══════════════════════════════════════════════ -->
-  <!-- SCRIPTS                                       -->
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer__head">
+      <h3><i data-lucide="shopping-cart"></i> Tu carrito</h3>
+      <button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button>
+    </div>
+    <div class="cart-drawer__items" id="cartItems"></div>
+    <div class="cart-drawer__foot">
+      <div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div>
+      <button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button>
+    </div>
+  </aside>
+
+  <!-- SCRIPTS -->
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/store.js"></script>
   <script src="js/main.js"></script>
   <script src="js/product/gallery.js"></script>
   <script src="js/product/tabs.js"></script>
   <script src="js/product/reviews.js"></script>
   <script src="js/product/comparison.js"></script>
   <script src="js/product/variants.js"></script>
+  <script>
+  (function(){
+      var params = new URLSearchParams(window.location.search);
+      var id = parseInt(params.get('id'), 10);
+      var TS = window.TechStore;
+      if (!TS || !id) return;
+      var product = TS.PRODUCTS.find(function(p){ return p.id === id; });
+      if (!product) return;
+
+      document.title = 'TechStore | ' + product.name;
+
+      var breadcrumbCat = document.querySelector('.breadcrumb__link:nth-child(3)');
+      if (breadcrumbCat) {
+          breadcrumbCat.textContent = product.cat.charAt(0).toUpperCase() + product.cat.slice(1);
+          breadcrumbCat.href = 'index.html#' + product.cat;
+      }
+      var breadcrumbName = document.querySelector('.breadcrumb__current');
+      if (breadcrumbName) breadcrumbName.textContent = product.name;
+
+      var brandEl = document.querySelector('.product-info__brand');
+      if (brandEl) brandEl.textContent = product.cat.charAt(0).toUpperCase() + product.cat.slice(1);
+
+      var titleEl = document.querySelector('.product-info__title');
+      if (titleEl) titleEl.textContent = product.name;
+
+      var subtitleEl = document.querySelector('.product-info__subtitle');
+      if (subtitleEl) subtitleEl.textContent = product.specs;
+
+      var ratingValue = document.querySelector('.product-info__rating-value');
+      if (ratingValue) ratingValue.textContent = product.rating;
+
+      var ratingCount = document.querySelector('.product-info__rating-count');
+      if (ratingCount) ratingCount.innerHTML = '(<a href="#reviews">' + product.reviews + ' reseñas</a>)';
+
+      var currentPrice = document.querySelector('.product-info__price-current');
+      if (currentPrice) currentPrice.textContent = '$' + product.price.toLocaleString('en-US') + '.00';
+
+      var oldPrice = document.querySelector('.product-info__price-old');
+      var discountBadge = document.querySelector('.product-info__price-discount');
+      if (product.old) {
+          if (oldPrice) { oldPrice.textContent = '$' + product.old.toLocaleString('en-US') + '.00'; oldPrice.style.display = ''; }
+          if (discountBadge) { var pct = Math.round((1 - product.price / product.old) * 100); discountBadge.textContent = '-' + pct + '%'; discountBadge.style.display = ''; }
+      } else {
+          if (oldPrice) oldPrice.style.display = 'none';
+          if (discountBadge) discountBadge.style.display = 'none';
+      }
+
+      var reviewsCount = document.querySelector('.tabs-nav__btn[data-tab="reviews"] .orders-filter__count');
+      if (reviewsCount) reviewsCount.textContent = product.reviews;
+
+      var summaryTotal = document.querySelector('.reviews-summary__total');
+      if (summaryTotal) summaryTotal.textContent = product.reviews + ' reseñas';
+
+      var addBtn = document.getElementById('addToCartBtn');
+      if (addBtn) {
+          addBtn.addEventListener('click', function(){
+              var qtyEl = document.getElementById('qtyValue');
+              var qty = qtyEl ? parseInt(qtyEl.value, 10) : 1;
+              for (var i = 0; i < qty; i++) TS.addToCart(product.id);
+          });
+      }
+
+      var qtyMinus = document.getElementById('qtyMinus');
+      var qtyPlus = document.getElementById('qtyPlus');
+      var qtyValue = document.getElementById('qtyValue');
+      if (qtyMinus && qtyPlus && qtyValue) {
+          qtyMinus.addEventListener('click', function(){
+              var v = parseInt(qtyValue.value, 10);
+              if (v > 1) qtyValue.value = v - 1;
+          });
+          qtyPlus.addEventListener('click', function(){
+              var v = parseInt(qtyValue.value, 10);
+              if (v < 99) qtyValue.value = v + 1;
+          });
+      }
+  })();
+  </script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>

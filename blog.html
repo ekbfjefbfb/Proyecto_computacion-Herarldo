@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechStore - Blog de tecnologia">
+    <title>TechStore | Blog</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/mobile-nav.css">
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .blog-page{padding:120px 0 80px}.blog-page .container{max-width:1100px}.blog-page h1{font-size:2rem;font-weight:800;margin-bottom:8px;text-align:center}.blog-page .subtitle{color:var(--text-muted);font-size:1rem;margin-bottom:48px;text-align:center}
+        .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px}
+        .blog-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;transition:transform .3s,border-color .3s;cursor:pointer}.blog-card:hover{transform:translateY(-4px);border-color:var(--color-secondary)}
+        .blog-card__img{width:100%;height:200px;object-fit:cover;display:block;background:linear-gradient(135deg,var(--bg-primary),var(--bg-secondary))}
+        .blog-card__img i{display:flex;align-items:center;justify-content:center;width:100%;height:200px;font-size:2.5rem;color:var(--color-secondary);background:linear-gradient(135deg,rgba(var(--color-primary-rgb),.15),rgba(var(--color-secondary-rgb),.15))}
+        .blog-card__body{padding:20px}
+        .blog-card__tag{display:inline-block;background:rgba(var(--color-secondary-rgb),.1);color:var(--color-secondary);font-size:0.7rem;font-weight:600;padding:4px 10px;border-radius:20px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+        .blog-card__title{font-size:1.05rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+        .blog-card__excerpt{color:var(--text-muted);font-size:0.82rem;line-height:1.6;margin-bottom:14px}
+        .blog-card__meta{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--text-muted);border-top:1px solid var(--border-color);padding-top:14px}
+        .blog-card__meta span{display:flex;align-items:center;gap:6px}
+        .blog-card__meta i{color:var(--color-secondary)}
+    </style>
+</head>
+<body>
+    <header class="header" id="header"><div class="header__container"><a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a><div class="header__search"><input type="text" placeholder="Buscar productos..." class="header__search-input"><button class="header__search-btn" aria-label="Buscar"><i data-lucide="search"></i></button></div><nav class="header__nav"><a href="index.html" class="header__nav-link">Inicio</a><a href="tienda.html" class="header__nav-link">Tienda</a><a href="ofertas.html" class="header__nav-link">Ofertas</a><a href="index.html#contacto" class="header__nav-link">Contacto</a></nav><div class="header__actions"><a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta"><i data-lucide="user"></i></a><button class="header__cart" id="cartBtn" aria-label="Abrir carrito"><i data-lucide="shopping-cart"></i><span class="header__cart-count" id="cartCount" style="display:none">0</span></button></div><button class="header__menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+    <nav class="mobile-nav" id="mobileNav"><div class="mobile-nav__overlay" id="mobileNavOverlay"></div><div class="mobile-nav__sidebar"><div class="mobile-nav__header"><a href="index.html" class="header__logo" style="padding:0"><i data-lucide="zap"></i> <span>TechStore</span></a><button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar"><i data-lucide="x"></i></button></div><ul class="mobile-nav__links"><li><a href="index.html" class="mobile-nav__link"><i data-lucide="home"></i> Inicio</a></li><li><a href="tienda.html" class="mobile-nav__link"><i data-lucide="layout-grid"></i> Productos</a></li><li><a href="ofertas.html" class="mobile-nav__link"><i data-lucide="tag"></i> Ofertas</a></li><li><a href="index.html#contacto" class="mobile-nav__link"><i data-lucide="mail"></i> Contacto</a></li><li class="mobile-nav__divider"></li><li><a href="cuenta.html" class="mobile-nav__link"><i data-lucide="user"></i> Mi Cuenta</a></li><li><a href="tracking.html" class="mobile-nav__link"><i data-lucide="truck"></i> Tracking</a></li></ul></div></nav>
+
+    <main class="blog-page">
+        <div class="container">
+            <h1>Blog TechStore</h1>
+            <p class="subtitle">Noticias, reviews y guias de tecnologia.</p>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-card__img"><i data-lucide="cpu"></i></div>
+                    <div class="blog-card__body">
+                        <span class="blog-card__tag">Hardware</span>
+                        <h3 class="blog-card__title">Los mejores procesadores de 2026: guia completa</h3>
+                        <p class="blog-card__excerpt">Analizamos las ultimas familias de procesadores para que elijas el ideal segun tu presupuesto y necesidades.</p>
+                        <div class="blog-card__meta"><span><i data-lucide="calendar"></i> 15 Jul 2026</span><span><i data-lucide="clock"></i> 8 min</span></div>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card__img"><i data-lucide="laptop"></i></div>
+                    <div class="blog-card__body">
+                        <span class="blog-card__tag">Laptops</span>
+                        <h3 class="blog-card__title">Laptop gaming vs laptop de oficina: que elegir?</h3>
+                        <p class="blog-card__excerpt">Te ayudamos a decidir entre rendimiento gaming y portabilidad para trabajo con esta comparativa detallada.</p>
+                        <div class="blog-card__meta"><span><i data-lucide="calendar"></i> 10 Jul 2026</span><span><i data-lucide="clock"></i> 6 min</span></div>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card__img"><i data-lucide="smartphone"></i></div>
+                    <div class="blog-card__body">
+                        <span class="blog-card__tag">Smartphones</span>
+                        <h3 class="blog-card__title">5 trucos para extender la vida util de tu bateria</h3>
+                        <p class="blog-card__excerpt">Pequenos habitos que marcan la diferencia en la duracion de la bateria de tu smartphone.</p>
+                        <div class="blog-card__meta"><span><i data-lucide="calendar"></i> 05 Jul 2026</span><span><i data-lucide="clock"></i> 4 min</span></div>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card__img"><i data-lucide="headphones"></i></div>
+                    <div class="blog-card__body">
+                        <span class="blog-card__tag">Audio</span>
+                        <h3 class="blog-card__title">Audifonos con cancelacion de ruido: los mejores del año</h3>
+                        <p class="blog-card__excerpt">Comparamos los audifonos con ANC mas populares para que tomes la mejor decision de compra.</p>
+                        <div class="blog-card__meta"><span><i data-lucide="calendar"></i> 01 Jul 2026</span><span><i data-lucide="clock"></i> 7 min</span></div>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card__img"><i data-lucide="gamepad-2"></i></div>
+                    <div class="blog-card__body">
+                        <span class="blog-card__tag">Gaming</span>
+                        <h3 class="blog-card__title">Guia para armar tu PC gamer sin gastar de más</h3>
+                        <p class="blog-card__excerpt">Presupuestos inteligentes, componentes recomendados y consejos para maximizar cada peso invertido.</p>
+                        <div class="blog-card__meta"><span><i data-lucide="calendar"></i> 25 Jun 2026</span><span><i data-lucide="clock"></i> 10 min</span></div>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-card__img"><i data-lucide="shield-check"></i></div>
+                    <div class="blog-card__body">
+                        <span class="blog-card__tag">Seguridad</span>
+                        <h3 class="blog-card__title">Protege tus datos: VPN y antivirus en 2026</h3>
+                        <p class="blog-card__excerpt">Herramientas esenciales para navegar con seguridad y proteger tu informacion personal.</p>
+                        <div class="blog-card__meta"><span><i data-lucide="calendar"></i> 20 Jun 2026</span><span><i data-lucide="clock"></i> 5 min</span></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="header__logo"><i data-lucide="zap"></i> <span>TechStore</span></a><p>Tu tienda de tecnologia de confianza.</p><div class="footer__social"><a href="#"><i data-lucide="globe"></i></a><a href="#"><i data-lucide="camera"></i></a><a href="#"><i data-lucide="at-sign"></i></a></div></div><div class="footer__col"><h4>Tienda</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="tienda.html">Tienda</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div><div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li><li><a href="politica-devoluciones.html">Devoluciones</a></li></ul></div><div class="footer__col"><h4>Cuenta</h4><ul><li><a href="cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li><li><a href="blog.html">Blog</a></li></ul></div></div><div class="footer__bottom"><p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p><div class="footer__payments"><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i><i data-lucide="credit-card"></i></div></div></div></footer>
+    <script>(function(){var mb=document.getElementById('menuBtn'),mn=document.getElementById('mobileNav'),ov=document.getElementById('mobileNavOverlay'),cl=document.getElementById('mobileNavClose');function open(){mn.classList.add('active');mb.classList.add('active');document.body.style.overflow='hidden';}function close(){mn.classList.remove('active');mb.classList.remove('active');document.body.style.overflow='';}mb.addEventListener('click',function(){mn.classList.contains('active')?close():open();});ov.addEventListener('click',close);cl.addEventListener('click',close);var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();})();</script>
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-drawer__head"><h3><i data-lucide="shopping-cart"></i> Tu carrito</h3><button class="cart-drawer__close" id="cartClose" aria-label="Cerrar carrito"><i data-lucide="x"></i></button></div>
+        <div class="cart-drawer__items" id="cartItems"></div>
+        <div class="cart-drawer__foot"><div class="cart-drawer__total"><span>Total</span><b id="cartTotal">$0</b></div><button class="btn btn--primary btn--block" id="checkoutBtn" disabled>Finalizar compra</button></div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/store.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

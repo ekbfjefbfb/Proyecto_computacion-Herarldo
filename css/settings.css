@@ -195,7 +195,7 @@
 .address-card__icon {
     width: 50px;
     height: 50px;
-    background: rgba(108, 92, 231, 0.15);
+    background: rgba(var(--color-primary-rgb), 0.15);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
@@ -245,7 +245,7 @@
 }
 
 .address-card__btn--edit {
-    background: rgba(108, 92, 231, 0.15);
+    background: rgba(var(--color-primary-rgb), 0.15);
     color: var(--color-primary-light);
 }
 
@@ -255,7 +255,7 @@
 }
 
 .address-card__btn--delete {
-    background: rgba(255, 107, 107, 0.15);
+    background: rgba(var(--color-error-rgb), 0.15);
     color: var(--color-error);
 }
 
@@ -278,7 +278,7 @@
 
 .address-card--add:hover {
     border-color: var(--color-primary);
-    background: rgba(108, 92, 231, 0.05);
+    background: rgba(var(--color-primary-rgb), 0.05);
 }
 
 .address-card__add-icon {
@@ -427,7 +427,7 @@
 
 .payment-card--add:hover {
     border-color: var(--color-primary);
-    background: rgba(108, 92, 231, 0.05);
+    background: rgba(var(--color-primary-rgb), 0.05);
 }
 
 .payment-card--add .payment-card__add-icon {
