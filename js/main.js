@@ -282,66 +282,68 @@
   }
 
   /* ── PROFILE FORM ──────────────────────────────── */
-  var profileForm = document.getElementById('profileForm');
-  if (profileForm) {
-    profileForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      showToast('success', 'Guardado!', 'Tu perfil ha sido actualizado');
+  if (!document.getElementById('ordersEmpty')) {
+    var profileForm = document.getElementById('profileForm');
+    if (profileForm) {
+      profileForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        showToast('success', 'Guardado!', 'Tu perfil ha sido actualizado');
+      });
+    }
+
+    var passwordForm = document.getElementById('passwordForm');
+    if (passwordForm) {
+      passwordForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var current = document.getElementById('currentPassword').value;
+        var newPass = document.getElementById('newPassword').value;
+        var confirm = document.getElementById('confirmNewPassword').value;
+
+        if (!current || !newPass || !confirm) {
+          showToast('error', 'Error', 'Completa todos los campos');
+          return;
+        }
+        if (newPass !== confirm) {
+          showToast('error', 'Error', 'Las contrasenas no coinciden');
+          return;
+        }
+        showToast('success', 'Actualizado', 'Tu contrasena ha sido cambiada');
+        passwordForm.reset();
+      });
+    }
+
+    /* ── ORDER FILTERS ─────────────────────────────── */
+    var filterBtns = qsa(SELECTORS.filterBtns);
+    var orderCards = qsa(SELECTORS.orderCards);
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('orders-filter__btn--active'); });
+        btn.classList.add('orders-filter__btn--active');
+
+        var filter = btn.dataset.filter;
+        orderCards.forEach(function (card) {
+          var match = filter === 'all' || card.dataset.status === filter;
+          card.classList.toggle('order-card--hidden', !match);
+          if (match) {
+            card.style.animation = 'none';
+            card.offsetHeight;
+            card.style.animation = REDUCED_MOTION ? 'none' : 'fadeSlideIn 0.4s ease forwards';
+          }
+        });
+      });
     });
-  }
 
-  var passwordForm = document.getElementById('passwordForm');
-  if (passwordForm) {
-    passwordForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var current = document.getElementById('currentPassword').value;
-      var newPass = document.getElementById('newPassword').value;
-      var confirm = document.getElementById('confirmNewPassword').value;
-
-      if (!current || !newPass || !confirm) {
-        showToast('error', 'Error', 'Completa todos los campos');
-        return;
-      }
-      if (newPass !== confirm) {
-        showToast('error', 'Error', 'Las contrasenas no coinciden');
-        return;
-      }
-      showToast('success', 'Actualizado', 'Tu contrasena ha sido cambiada');
-      passwordForm.reset();
-    });
-  }
-
-  /* ── ORDER FILTERS ─────────────────────────────── */
-  var filterBtns = qsa(SELECTORS.filterBtns);
-  var orderCards = qsa(SELECTORS.orderCards);
-
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('orders-filter__btn--active'); });
-      btn.classList.add('orders-filter__btn--active');
-
-      var filter = btn.dataset.filter;
-      orderCards.forEach(function (card) {
-        var match = filter === 'all' || card.dataset.status === filter;
-        card.classList.toggle('order-card--hidden', !match);
-        if (match) {
-          card.style.animation = 'none';
-          card.offsetHeight;
-          card.style.animation = REDUCED_MOTION ? 'none' : 'fadeSlideIn 0.4s ease forwards';
+    /* ── TRACK FROM ORDERS ─────────────────────────── */
+    qsa(SELECTORS.trackBtns).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        showSection('tracking');
+        if (DOM.trackingInput && btn.dataset.tracking) {
+          DOM.trackingInput.value = btn.dataset.tracking;
         }
       });
     });
-  });
-
-  /* ── TRACK FROM ORDERS ─────────────────────────── */
-  qsa(SELECTORS.trackBtns).forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      showSection('tracking');
-      if (DOM.trackingInput && btn.dataset.tracking) {
-        DOM.trackingInput.value = btn.dataset.tracking;
-      }
-    });
-  });
+  }
 
   /* ── LOGOUT ────────────────────────────────────── */
   var logoutBtn = qs(SELECTORS.logoutBtn);
