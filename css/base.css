@@ -79,6 +79,12 @@ button, a, .variant-btn, .variant-btn--size,
 .gallery-thumb, .tabs-nav__btn, .btn--add-cart, .btn--wishlist,
 .product-info__share-link, .review-card__helpful button {
     cursor: pointer;
+    caret-color: transparent;
+}
+
+button:focus-visible, .variant-btn:focus-visible, .variant-btn--size:focus-visible {
+    outline: none;
+    caret-color: transparent;
 }
 
 /* Re-enable selection on review text content */
