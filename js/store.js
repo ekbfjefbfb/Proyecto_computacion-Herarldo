@@ -155,7 +155,7 @@
                 { k: 'Peso', v: '5.4g por auricular' }
             ] },
         { id: 8,  name: 'VoltCharge 65W GaN',      cat: 'accesorios',  price: 39,   old: null,  specs: 'Carga rapida · USB-C · GaN',            icon: 'plug-zap',        img: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&h=400&fit=crop', rating: 4.5, reviews: 412, badge: null,
-            images: ['https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1544441893-675973e31985?w=800&h=800&fit=crop'],
+            images: ['https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1544441893-675973e31985?w=800&h=800&fit=crop'],
             desc: 'Carga todo desde un solo cargador. Tecnologia GaN III lo hace 40% mas pequeno que los cargadores tradicionales pero entrega 65W puros para cargar laptop, tablet y telefono al mismo tiempo.',
             highlights: [
                 { icon: 'zap', title: '65W GaN', desc: 'Tecnologia III — mas pequeno, mas potente' },
@@ -192,7 +192,7 @@
                 { k: 'Peso', v: '780g' }
             ] },
         { id: 10, name: 'NexMouse Wireless Pro',   cat: 'accesorios',  price: 49,   old: 69,   specs: 'Inalambrico · 16000 DPI · RGB',         icon: 'mouse',           img: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&h=400&fit=crop', rating: 4.4, reviews: 178, badge: null,
-            images: ['https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1615663245857-ac4c8e6c9307?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=800&fit=crop'],
+            images: ['https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=800&fit=crop'],
             desc: 'Precision quirurgica sin cables. Sensor optico de 16000 DPI, 1000Hz polling rate y 70 horas de bateria. El NexMouse Wireless Pro te da ventaja en gaming y productividad.',
             highlights: [
                 { icon: 'crosshair', title: '16000 DPI', desc: 'Sensor optico de precision extrema' },
@@ -227,7 +227,7 @@
                 { k: 'Peso', v: '220g' }
             ] },
         { id: 12, name: 'PixelView 27" 165Hz',     cat: 'gaming',      price: 329,  old: 399,  specs: '165Hz · 1ms · IPS QHD',                 icon: 'monitor',         img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=400&fit=crop', rating: 4.9, reviews: 267, badge: 'Top ventas',
-            images: ['https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1616353071855-2c13a4c60e6c?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop'],
+            images: ['https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=800&h=800&fit=crop'],
             desc: 'Cada frame cuenta. Panel IPS QHD a 165Hz con 1ms de respuesta, FreeSync Premium y 99% sRGB. El PixelView 27 te da la ventaja visual que necesitas para competir al mas alto nivel.',
             highlights: [
                 { icon: 'monitor', title: '165Hz QHD', desc: '2560x1440 — fluido y nítido' },
@@ -266,7 +266,7 @@
                 { k: 'Peso', v: '3.8kg' }
             ] },
         { id: 14, name: 'NovaPad 11 Pro',           cat: 'tablets',     price: 549,  old: null,  specs: '11" OLED · 256GB · Stylus',             icon: 'tablet',         img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=400&fit=crop', rating: 4.6, reviews: 94,  badge: 'Nuevo',
-            images: ['https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1589739900243-4b52cd9b1765?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1632631244952-318619c53273?w=800&h=800&fit=crop'],
+            images: ['https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop'],
             desc: 'Productividad y creatividad en pantalla OLED de 11 pulgadas. La NovaPad 11 Pro incluye stylus magnetico, soporte para teclado y chip M1 para renders rapidos y multitarea sin lag.',
             highlights: [
                 { icon: 'pen-tool', title: 'Stylus magnetico', desc: 'Precision al nivel del pixel' },
@@ -285,7 +285,7 @@
                 { k: 'Peso', v: '466g' }
             ] },
         { id: 15, name: 'NovaPad Mini',              cat: 'tablets',     price: 329,  old: 379,  specs: '10.9" LCD · 128GB · Compacta',          icon: 'tablet',         img: 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=600&h=400&fit=crop', rating: 4.4, reviews: 187, badge: null,
-            images: ['https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1632631244952-318619c53273?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1589739900243-4b52cd9b1765?w=800&h=800&fit=crop'],
+            images: ['https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop'],
             desc: 'Compacta, ligera y potente. La NovaPad Mini es perfecta para leer, navegar y consumir contenido en cualquier lugar. Pantalla de 10.9" con colores nítidos y autonomia de 10 horas.',
             highlights: [
                 { icon: 'monitor', title: '10.9" LCD', desc: 'Pantalla nítida y brillante' },
@@ -304,7 +304,7 @@
                 { k: 'Peso', v: '478g' }
             ] },
         { id: 16, name: 'LuminaHub Smart Hub',       cat: 'smart-home',  price: 89,   old: null,  specs: 'Zigbee · Matter · Pantalla 7"',         icon: 'wifi',           img: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=600&h=400&fit=crop', rating: 4.5, reviews: 156, badge: 'Nuevo',
-            images: ['https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop'],
+            images: ['https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop'],
             desc: 'El cerebro de tu hogar inteligente. LuminaHub conecta hasta 200 dispositivos Zigbee y Matter, con pantalla tactil de 7 pulgadas para controlar luces, climas y cerraduras con la voz o al tacto.',
             highlights: [
                 { icon: 'wifi', title: 'Matter + Zigbee', desc: 'Compatible con todo' },
@@ -322,8 +322,8 @@
                 { k: 'Alimentacion', v: 'Cable USB-C 12V/2A' },
                 { k: 'Peso', v: '350g' }
             ] },
-        { id: 17, name: 'LuminaCam 2K',              cat: 'smart-home',  price: 49,   old: 69,   specs: '2K · Visibilidad nocturna · IA',        icon: 'camera',         img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop', rating: 4.7, reviews: 312, badge: null,
-            images: ['https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop'],
+        { id: 17, name: 'LuminaCam 2K',              cat: 'smart-home',  price: 49,   old: 69,   specs: '2K · Visibilidad nocturna · IA',        icon: 'camera',         img: 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=600&h=400&fit=crop', rating: 4.7, reviews: 312, badge: null,
+            images: ['https://images.unsplash.com/photo-1557862921-37829c790f19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop'],
             desc: 'Seguridad inteligente con vision nocturna a color. La LuminaCam 2K detecta personas, mascotas y paquetes con IA, envia alertas instantaneas a tu telefono y graba 24/7 en la nube.',
             highlights: [
                 { icon: 'eye', title: 'Visión nocturna', desc: 'Color en completa oscuridad' },
@@ -342,7 +342,7 @@
                 { k: 'Resistencia', v: 'IP66 — polvo y lluvia' }
             ] },
         { id: 18, name: 'LuminaSwitch Pro',          cat: 'smart-home',  price: 29,   old: null,  specs: 'Matter · WiFi · Panel tactil',           icon: 'toggle-right',   img: 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=600&h=400&fit=crop', rating: 4.3, reviews: 89,  badge: null,
-            images: ['https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop'],
+            images: ['https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop'],
             desc: 'Interruptor inteligente con panel tactil retroiluminado. Controla luces, ventiladores y reguladores de energia desde el muro, tu telefono o por voz. Compatible con Matter sin hub adicional.',
             highlights: [
                 { icon: 'toggle-right', title: '3 circuitos', desc: 'Controla hasta 3 luces independientes' },
