@@ -415,18 +415,21 @@
         var iconMap = { success: 'circle-check', error: 'circle-x', info: 'info', warning: 'alert-triangle' };
         var toast = document.createElement('div');
         toast.className = 'toast toast--' + type;
-        toast.innerHTML = '<i data-lucide="' + (iconMap[type] || 'circle-check') + '" class="toast__icon"></i>' +
+        toast.innerHTML = '<div class="toast__icon"><i data-lucide="' + (iconMap[type] || 'circle-check') + '"></i></div>' +
             '<div class="toast__content"><div class="toast__title">' + esc(msg) + '</div>' +
             (message ? '<div class="toast__message">' + esc(message) + '</div>' : '') + '</div>' +
-            '<button class="toast__close" aria-label="Cerrar"><i data-lucide="x"></i></button>';
+            '<button class="toast__close" aria-label="Cerrar notificacion"><i data-lucide="x"></i></button>' +
+            '<div class="toast__progress"></div>';
         container.appendChild(toast);
         if (window.lucide) lucide.createIcons();
-        toast.querySelector('.toast__close').addEventListener('click', function () {
-            if (toast.parentNode) toast.parentNode.removeChild(toast);
-        });
-        setTimeout(function () {
-            if (toast.parentNode) toast.parentNode.removeChild(toast);
-        }, 3000);
+        function dismiss() {
+            toast.classList.add('toast--exit');
+            setTimeout(function () {
+                if (toast.parentNode) toast.parentNode.removeChild(toast);
+            }, 300);
+        }
+        toast.querySelector('.toast__close').addEventListener('click', dismiss);
+        setTimeout(dismiss, 3000);
     }
 
     /* =====================================================

@@ -184,19 +184,6 @@
     opacity: 0.3;
 }
 
-.toast__icon svg,
-.toast__icon i[data-lucide] {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-}
-
-.toast__close svg,
-.toast__close i[data-lucide] {
-    width: 16px;
-    height: 16px;
-}
-
 /* ── STAR RATING ────────────────────────────── */
 .star-icon {
     width: 16px;
