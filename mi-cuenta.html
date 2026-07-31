@@ -1,128 +1,53 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Cuenta - TechStore Honduras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Gestiona tu perfil, pedidos, direcciones y métodos de pago en TechStore Honduras.">
   <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <title>Mi Cuenta - TechStore Honduras</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/sidebar.css">
-  <link rel="stylesheet" href="css/profile.css">
-  <link rel="stylesheet" href="css/orders.css">
-  <link rel="stylesheet" href="css/settings.css">
-  <link rel="stylesheet" href="css/cart-drawer.css">
-  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/store.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/account.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="header__inner">
-      <a href="index.html" class="site-logo" aria-label="TechStore - Inicio">
-        <span class="site-logo__icon">T</span>
-        <span class="site-logo__text">Tech<strong>Store</strong></span>
+  <header class="header" id="header">
+    <div class="header__container">
+      <a href="index.html" class="site-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/>
+        </svg>
+        <span>TechStore</span>
       </a>
-      <nav class="header__nav" aria-label="Navegación principal">
-        <a href="index.html" class="header__link">Inicio</a>
-        <a href="tienda.html" class="header__link">Tienda</a>
-        <a href="ofertas.html" class="header__link">Ofertas</a>
-        <a href="blog.html" class="header__link">Blog</a>
+      <nav class="header__nav" id="headerNav">
+        <a href="index.html" class="header__nav-link">Inicio</a>
+        <a href="tienda.html" class="header__nav-link">Tienda</a>
+        <a href="ofertas.html" class="header__nav-link">Ofertas</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
       </nav>
       <div class="header__actions">
-        <button class="header__icon-btn" aria-label="Buscar" id="openSearch">
-          <i data-lucide="search"></i>
-        </button>
-        <button class="header__icon-btn" aria-label="Favoritos" id="openFavorites">
-          <i data-lucide="heart"></i>
-          <span class="header__badge" id="favCount">0</span>
-        </button>
-        <button class="header__icon-btn header__cart-btn" aria-label="Abrir carrito de compras" id="openCart">
-          <i data-lucide="shopping-cart"></i>
-          <span class="header__badge" id="cartCount">0</span>
-        </button>
-        <a href="cuenta.html" class="header__icon-btn header__user-btn" aria-label="Mi cuenta" id="userBtn">
+        <a href="cuenta.html" class="header__user" id="headerUser" title="Mi Cuenta">
           <i data-lucide="user"></i>
         </a>
       </div>
+      <button class="header__menu-btn" id="menuBtn" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Cart Drawer -->
-  <div class="cart-overlay" id="cartOverlay" role="presentation"></div>
-  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
-    <div class="cart-drawer__header">
-      <h2 class="cart-drawer__title">Carrito</h2>
-      <button class="cart-drawer__close" id="closeCart" aria-label="Cerrar carrito">
-        <i data-lucide="x"></i>
-      </button>
-    </div>
-    <div class="cart-drawer__body" id="cartBody">
-      <div class="cart-drawer__empty" id="cartEmpty">
-        <i data-lucide="shopping-cart"></i>
-        <p>Tu carrito está vacío</p>
-        <a href="tienda.html" class="btn btn--primary">Ir a la tienda</a>
-      </div>
-      <ul class="cart-drawer__list" id="cartList"></ul>
-    </div>
-    <div class="cart-drawer__footer" id="cartFooter">
-      <div class="cart-drawer__subtotal">
-        <span>Subtotal</span>
-        <span id="cartSubtotal">L 0.00</span>
-      </div>
-      <a href="checkout.html" class="btn btn--primary btn--full" id="checkoutBtn">Finalizar compra</a>
-    </div>
-  </aside>
-
-  <!-- Favorites Drawer -->
-  <div class="fav-overlay" id="favOverlay" role="presentation"></div>
-  <aside class="fav-drawer" id="favDrawer" role="dialog" aria-modal="true" aria-label="Favoritos">
-    <div class="fav-drawer__header">
-      <h2 class="fav-drawer__title">Favoritos</h2>
-      <button class="fav-drawer__close" id="closeFav" aria-label="Cerrar favoritos">
-        <i data-lucide="x"></i>
-      </button>
-    </div>
-    <div class="fav-drawer__body" id="favBody">
-      <div class="fav-drawer__empty" id="favEmpty">
-        <i data-lucide="heart"></i>
-        <p>No tienes favoritos aún</p>
-        <a href="tienda.html" class="btn btn--primary">Explorar tienda</a>
-      </div>
-      <ul class="fav-drawer__list" id="favList"></ul>
-    </div>
-  </aside>
-
-  <!-- Search Drawer -->
-  <div class="search-overlay" id="searchOverlay" role="presentation"></div>
-  <div class="search-drawer" id="searchDrawer" role="dialog" aria-modal="true" aria-label="Buscar productos">
-    <div class="search-drawer__header">
-      <div class="search-drawer__input-wrap">
-        <i data-lucide="search"></i>
-        <input type="search" class="search-drawer__input" id="searchInput" placeholder="Buscar productos..." autocomplete="off">
-      </div>
-      <button class="search-drawer__close" id="closeSearch" aria-label="Cerrar búsqueda">
-        <i data-lucide="x"></i>
-      </button>
-    </div>
-    <div class="search-drawer__body" id="searchBody">
-      <p class="search-drawer__hint">Escribe al menos 2 caracteres para buscar</p>
-    </div>
-  </div>
-
-  <!-- Toast -->
-  <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
-
-  <!-- Main Content -->
   <main id="main-content" class="account-page">
     <div class="account-container">
 
-      <!-- Sidebar -->
       <aside class="account-sidebar" role="navigation" aria-label="Menú de cuenta">
         <div class="sidebar__user">
           <div class="sidebar__avatar" id="sidebarAvatar">U</div>
@@ -131,51 +56,41 @@
             <span class="sidebar__email" id="sidebarEmail">correo@ejemplo.com</span>
           </div>
         </div>
-
         <nav class="sidebar__nav">
           <button class="sidebar__link sidebar__link--active" data-section="perfil" aria-current="page">
-            <i data-lucide="user"></i>
-            <span>Mi Perfil</span>
+            <i data-lucide="user"></i><span>Mi Perfil</span>
           </button>
           <button class="sidebar__link" data-section="pedidos">
-            <i data-lucide="package"></i>
-            <span>Mis Pedidos</span>
+            <i data-lucide="package"></i><span>Mis Pedidos</span>
           </button>
           <button class="sidebar__link" data-section="direcciones">
-            <i data-lucide="map-pin"></i>
-            <span>Direcciones</span>
+            <i data-lucide="map-pin"></i><span>Direcciones</span>
           </button>
           <button class="sidebar__link" data-section="pagos">
-            <i data-lucide="credit-card"></i>
-            <span>Pagos</span>
+            <i data-lucide="credit-card"></i><span>Pagos</span>
           </button>
           <button class="sidebar__link" data-section="ajustes">
-            <i data-lucide="settings"></i>
-            <span>Ajustes</span>
+            <i data-lucide="settings"></i><span>Ajustes</span>
           </button>
         </nav>
-
         <div class="sidebar__footer">
           <button class="sidebar__logout" id="sidebarLogout">
-            <i data-lucide="log-out"></i>
-            <span>Cerrar Sesión</span>
+            <i data-lucide="log-out"></i><span>Cerrar Sesión</span>
           </button>
         </div>
       </aside>
 
-      <!-- Content Area -->
       <div class="account-content">
 
-        <!-- ============================================ -->
         <!-- PERFIL -->
-        <!-- ============================================ -->
         <section class="account-section account-section--active" id="sec-perfil">
           <div class="section-header">
-            <h1 class="section-header__title">Mi Perfil</h1>
-            <p class="section-header__desc">Administra tu información personal</p>
+            <div>
+              <h1 class="section-header__title">Mi Perfil</h1>
+              <p class="section-header__desc">Administra tu información personal</p>
+            </div>
           </div>
 
-          <!-- Profile Card -->
           <div class="profile-hero">
             <div class="profile-hero__cover">
               <div class="profile-hero__pattern"></div>
@@ -187,27 +102,21 @@
                 <p class="profile-hero__email" id="profileEmail">correo@ejemplo.com</p>
                 <div class="profile-hero__meta">
                   <span class="profile-hero__badge">
-                    <i data-lucide="shield-check"></i>
-                    Miembro verificado
+                    <i data-lucide="shield-check"></i> Miembro verificado
                   </span>
                   <span class="profile-hero__badge profile-hero__badge--points">
-                    <i data-lucide="star"></i>
-                    <span id="profilePoints">0</span> puntos
+                    <i data-lucide="star"></i> <span id="profilePoints">0</span> puntos
                   </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Profile Form -->
           <div class="card">
             <div class="card__header">
-              <h3 class="card__title">
-                <i data-lucide="pencil"></i>
-                Información Personal
-              </h3>
+              <h3 class="card__title"><i data-lucide="pencil"></i> Información Personal</h3>
             </div>
-            <form class="profile-form" id="profileForm">
+            <form class="card__body" id="profileForm">
               <div class="profile-form__grid">
                 <div class="form-group">
                   <label class="form-label" for="profName">Nombre completo</label>
@@ -250,38 +159,29 @@
                   <input type="text" id="profAddress" class="form-input" placeholder="Calle, colonia, ciudad">
                 </div>
               </div>
-              <div class="profile-form__actions">
-                <button type="button" class="btn btn--outline" id="profileCancel">Cancelar</button>
-                <button type="submit" class="btn btn--primary">
-                  <i data-lucide="save"></i>
-                  Guardar Cambios
-                </button>
+              <div class="card__actions">
+                <button type="button" class="btn btn--ghost" id="profileCancel">Cancelar</button>
+                <button type="submit" class="btn btn--primary"><i data-lucide="save"></i> Guardar Cambios</button>
               </div>
             </form>
           </div>
 
-          <!-- Change Password -->
           <div class="card">
             <div class="card__header">
-              <h3 class="card__title">
-                <i data-lucide="lock"></i>
-                Cambiar Contraseña
-              </h3>
+              <h3 class="card__title"><i data-lucide="lock"></i> Cambiar Contraseña</h3>
             </div>
-            <form class="profile-form" id="passwordForm">
-              <div class="profile-form__grid profile-form__grid--single">
-                <div class="form-group">
-                  <label class="form-label" for="currentPass">Contraseña actual</label>
-                  <input type="password" id="currentPass" class="form-input" placeholder="••••••••" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="newPass">Nueva contraseña</label>
-                  <input type="password" id="newPass" class="form-input" placeholder="Mínimo 8 caracteres" required minlength="8">
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="confirmPass">Confirmar contraseña</label>
-                  <input type="password" id="confirmPass" class="form-input" placeholder="Repite la contraseña" required minlength="8">
-                </div>
+            <form class="card__body" id="passwordForm">
+              <div class="form-group">
+                <label class="form-label" for="currentPass">Contraseña actual</label>
+                <input type="password" id="currentPass" class="form-input" placeholder="••••••••" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="newPass">Nueva contraseña</label>
+                <input type="password" id="newPass" class="form-input" placeholder="Mínimo 8 caracteres" required minlength="8">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="confirmPass">Confirmar contraseña</label>
+                <input type="password" id="confirmPass" class="form-input" placeholder="Repite la contraseña" required minlength="8">
               </div>
               <div class="password-strength" id="passwordStrength">
                 <div class="password-strength__bar">
@@ -289,56 +189,36 @@
                 </div>
                 <span class="password-strength__text" id="strengthText"></span>
               </div>
-              <div class="profile-form__actions">
-                <button type="button" class="btn btn--outline" id="passwordCancel">Cancelar</button>
-                <button type="submit" class="btn btn--primary">
-                  <i data-lucide="key"></i>
-                  Actualizar Contraseña
-                </button>
+              <div class="card__actions">
+                <button type="button" class="btn btn--ghost" id="passwordCancel">Cancelar</button>
+                <button type="submit" class="btn btn--primary"><i data-lucide="key"></i> Actualizar Contraseña</button>
               </div>
             </form>
           </div>
         </section>
 
-        <!-- ============================================ -->
         <!-- PEDIDOS -->
-        <!-- ============================================ -->
         <section class="account-section" id="sec-pedidos">
           <div class="section-header">
-            <h1 class="section-header__title">Mis Pedidos</h1>
-            <p class="section-header__desc">Revisa el historial de tus compras</p>
+            <div>
+              <h1 class="section-header__title">Mis Pedidos</h1>
+              <p class="section-header__desc">Revisa el historial de tus compras</p>
+            </div>
           </div>
-
-          <!-- Filters -->
           <div class="orders-filters">
             <button class="orders-filter orders-filter--active" data-filter="all">
-              <i data-lucide="layers"></i>
-              Todos
-              <span class="orders-filter__count" id="filterAll">0</span>
+              <i data-lucide="layers"></i> Todos <span class="orders-filter__count" id="filterAll">0</span>
             </button>
             <button class="orders-filter" data-filter="pending">
-              <i data-lucide="clock"></i>
-              Pendientes
-              <span class="orders-filter__count" id="filterPending">0</span>
-            </button>
-            <button class="orders-filter" data-filter="confirmed">
-              <i data-lucide="check-circle"></i>
-              Confirmados
-              <span class="orders-filter__count" id="filterConfirmed">0</span>
+              <i data-lucide="clock"></i> Pendientes <span class="orders-filter__count" id="filterPending">0</span>
             </button>
             <button class="orders-filter" data-filter="shipped">
-              <i data-lucide="truck"></i>
-              Enviados
-              <span class="orders-filter__count" id="filterShipped">0</span>
+              <i data-lucide="truck"></i> Enviados <span class="orders-filter__count" id="filterShipped">0</span>
             </button>
             <button class="orders-filter" data-filter="delivered">
-              <i data-lucide="package-check"></i>
-              Entregados
-              <span class="orders-filter__count" id="filterDelivered">0</span>
+              <i data-lucide="package-check"></i> Entregados <span class="orders-filter__count" id="filterDelivered">0</span>
             </button>
           </div>
-
-          <!-- Orders List -->
           <div class="orders-list" id="ordersList">
             <div class="orders-empty" id="ordersEmpty">
               <i data-lucide="package-x"></i>
@@ -349,185 +229,122 @@
           </div>
         </section>
 
-        <!-- ============================================ -->
         <!-- DIRECCIONES -->
-        <!-- ============================================ -->
         <section class="account-section" id="sec-direcciones">
           <div class="section-header">
             <div>
               <h1 class="section-header__title">Mis Direcciones</h1>
               <p class="section-header__desc">Gestiona tus direcciones de envío</p>
             </div>
-            <button class="btn btn--primary" id="addAddressBtn">
-              <i data-lucide="plus"></i>
-              Nueva Dirección
-            </button>
+            <button class="btn btn--primary" id="addAddressBtn"><i data-lucide="plus"></i> Nueva Dirección</button>
           </div>
-
           <div class="addresses-grid" id="addressesList">
             <div class="addresses-empty" id="addressesEmpty">
               <i data-lucide="map-pin-off"></i>
               <h3>No tienes direcciones guardadas</h3>
               <p>Agrega una dirección para agilizar tus compras</p>
-              <button class="btn btn--primary" id="addAddressEmpty">
-                <i data-lucide="plus"></i>
-                Agregar Dirección
-              </button>
+              <button class="btn btn--primary" id="addAddressEmpty"><i data-lucide="plus"></i> Agregar Dirección</button>
             </div>
           </div>
         </section>
 
-        <!-- ============================================ -->
         <!-- PAGOS -->
-        <!-- ============================================ -->
         <section class="account-section" id="sec-pagos">
           <div class="section-header">
             <div>
               <h1 class="section-header__title">Mis Pagos</h1>
               <p class="section-header__desc">Administra tus tarjetas de crédito y débito</p>
             </div>
-            <button class="btn btn--primary" id="addCardBtn">
-              <i data-lucide="plus"></i>
-              Nueva Tarjeta
-            </button>
+            <button class="btn btn--primary" id="addCardBtn"><i data-lucide="plus"></i> Nueva Tarjeta</button>
           </div>
-
           <div class="cards-grid" id="cardsList">
             <div class="cards-empty" id="cardsEmpty">
               <i data-lucide="credit-card"></i>
               <h3>No tienes tarjetas guardadas</h3>
               <p>Agrega una tarjeta para compras más rápidas</p>
-              <button class="btn btn--primary" id="addCardEmpty">
-                <i data-lucide="plus"></i>
-                Agregar Tarjeta
-              </button>
+              <button class="btn btn--primary" id="addCardEmpty"><i data-lucide="plus"></i> Agregar Tarjeta</button>
             </div>
           </div>
         </section>
 
-        <!-- ============================================ -->
         <!-- AJUSTES -->
-        <!-- ============================================ -->
         <section class="account-section" id="sec-ajustes">
           <div class="section-header">
-            <h1 class="section-header__title">Ajustes</h1>
-            <p class="section-header__desc">Personaliza tu experiencia</p>
+            <div>
+              <h1 class="section-header__title">Ajustes</h1>
+              <p class="section-header__desc">Personaliza tu experiencia</p>
+            </div>
           </div>
 
-          <!-- Notifications -->
           <div class="card">
-            <div class="card__header">
-              <h3 class="card__title">
-                <i data-lucide="bell"></i>
-                Notificaciones
-              </h3>
-            </div>
-            <div class="settings-list">
+            <div class="card__header"><h3 class="card__title"><i data-lucide="bell"></i> Notificaciones</h3></div>
+            <div class="card__body">
               <div class="settings-item">
                 <div class="settings-item__info">
                   <span class="settings-item__label">Notificaciones por email</span>
                   <span class="settings-item__desc">Recibe actualizaciones de pedidos y ofertas</span>
                 </div>
-                <label class="toggle" for="setEmail">
-                  <input type="checkbox" id="setEmail" class="toggle__input">
-                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
-                </label>
+                <label class="toggle"><input type="checkbox" id="setEmail" class="toggle__input"><span class="toggle__track"><span class="toggle__thumb"></span></span></label>
               </div>
               <div class="settings-item">
                 <div class="settings-item__info">
                   <span class="settings-item__label">Alertas de precio</span>
                   <span class="settings-item__desc">Notificación cuando bajen precios de tus favoritos</span>
                 </div>
-                <label class="toggle" for="setPriceAlert">
-                  <input type="checkbox" id="setPriceAlert" class="toggle__input">
-                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
-                </label>
+                <label class="toggle"><input type="checkbox" id="setPriceAlert" class="toggle__input"><span class="toggle__track"><span class="toggle__thumb"></span></span></label>
               </div>
               <div class="settings-item">
                 <div class="settings-item__info">
                   <span class="settings-item__label">Newsletter semanal</span>
                   <span class="settings-item__desc">Resumen de novedades y promociones</span>
                 </div>
-                <label class="toggle" for="setNewsletter">
-                  <input type="checkbox" id="setNewsletter" class="toggle__input">
-                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
-                </label>
+                <label class="toggle"><input type="checkbox" id="setNewsletter" class="toggle__input"><span class="toggle__track"><span class="toggle__thumb"></span></span></label>
               </div>
             </div>
           </div>
 
-          <!-- Appearance -->
           <div class="card">
-            <div class="card__header">
-              <h3 class="card__title">
-                <i data-lucide="palette"></i>
-                Apariencia
-              </h3>
-            </div>
-            <div class="settings-list">
+            <div class="card__header"><h3 class="card__title"><i data-lucide="palette"></i> Apariencia</h3></div>
+            <div class="card__body">
               <div class="settings-item">
                 <div class="settings-item__info">
                   <span class="settings-item__label">Modo oscuro</span>
                   <span class="settings-item__desc">Cambia la apariencia de la interfaz</span>
                 </div>
-                <label class="toggle" for="setDarkMode">
-                  <input type="checkbox" id="setDarkMode" class="toggle__input">
-                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
-                </label>
+                <label class="toggle"><input type="checkbox" id="setDarkMode" class="toggle__input"><span class="toggle__track"><span class="toggle__thumb"></span></span></label>
               </div>
             </div>
           </div>
 
-          <!-- Privacy -->
           <div class="card">
-            <div class="card__header">
-              <h3 class="card__title">
-                <i data-lucide="shield"></i>
-                Privacidad
-              </h3>
-            </div>
-            <div class="settings-list">
+            <div class="card__header"><h3 class="card__title"><i data-lucide="shield"></i> Privacidad</h3></div>
+            <div class="card__body">
               <div class="settings-item">
                 <div class="settings-item__info">
                   <span class="settings-item__label">Mostrar perfil público</span>
                   <span class="settings-item__desc">Permite que otros usuarios vean tu perfil</span>
                 </div>
-                <label class="toggle" for="setPublicProfile">
-                  <input type="checkbox" id="setPublicProfile" class="toggle__input">
-                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
-                </label>
+                <label class="toggle"><input type="checkbox" id="setPublicProfile" class="toggle__input"><span class="toggle__track"><span class="toggle__thumb"></span></span></label>
               </div>
               <div class="settings-item">
                 <div class="settings-item__info">
                   <span class="settings-item__label">Historial de compras visible</span>
                   <span class="settings-item__desc">Muestra tus compras en tu perfil</span>
                 </div>
-                <label class="toggle" for="setShowPurchases">
-                  <input type="checkbox" id="setShowPurchases" class="toggle__input">
-                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
-                </label>
+                <label class="toggle"><input type="checkbox" id="setShowPurchases" class="toggle__input"><span class="toggle__track"><span class="toggle__thumb"></span></span></label>
               </div>
             </div>
           </div>
 
-          <!-- Danger Zone -->
           <div class="card card--danger">
-            <div class="card__header">
-              <h3 class="card__title">
-                <i data-lucide="alert-triangle"></i>
-                Zona de Peligro
-              </h3>
-            </div>
-            <div class="settings-list">
+            <div class="card__header"><h3 class="card__title"><i data-lucide="alert-triangle"></i> Zona de Peligro</h3></div>
+            <div class="card__body">
               <div class="settings-item">
                 <div class="settings-item__info">
                   <span class="settings-item__label">Eliminar cuenta</span>
                   <span class="settings-item__desc">Elimina permanentemente tu cuenta y todos tus datos</span>
                 </div>
-                <button class="btn btn--danger" id="deleteAccountBtn">
-                  <i data-lucide="trash-2"></i>
-                  Eliminar
-                </button>
+                <button class="btn btn--danger-sm" id="deleteAccountBtn"><i data-lucide="trash-2"></i> Eliminar</button>
               </div>
             </div>
           </div>
@@ -538,13 +355,11 @@
   </main>
 
   <!-- Address Modal -->
-  <div class="modal-overlay" id="addressModalOverlay" role="presentation"></div>
+  <div class="modal-overlay" id="addressModalOverlay"></div>
   <div class="modal" id="addressModal" role="dialog" aria-modal="true" aria-labelledby="addressModalTitle">
     <div class="modal__header">
       <h2 class="modal__title" id="addressModalTitle">Nueva Dirección</h2>
-      <button class="modal__close" id="closeAddressModal" aria-label="Cerrar">
-        <i data-lucide="x"></i>
-      </button>
+      <button class="modal__close" id="closeAddressModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
     </div>
     <form class="modal__body" id="addressForm">
       <div class="form-row">
@@ -600,54 +415,33 @@
         <label class="form-label" for="addrPhone">Teléfono de contacto</label>
         <input type="tel" id="addrPhone" class="form-input" placeholder="+504 0000-0000" required>
       </div>
-      <label class="checkbox-label" for="addrDefault">
-        <input type="checkbox" id="addrDefault" class="checkbox-input">
-        <span class="checkbox-mark"></span>
-        Establecer como dirección predeterminada
-      </label>
+      <label class="checkbox-label"><input type="checkbox" id="addrDefault" class="checkbox-input"><span class="checkbox-mark"></span> Establecer como dirección predeterminada</label>
     </form>
     <div class="modal__footer">
-      <button type="button" class="btn btn--outline" id="cancelAddressModal">Cancelar</button>
-      <button type="submit" class="btn btn--primary" id="saveAddressBtn">
-        <i data-lucide="save"></i>
-        Guardar Dirección
-      </button>
+      <button type="button" class="btn btn--ghost" id="cancelAddressModal">Cancelar</button>
+      <button type="button" class="btn btn--primary" id="saveAddressBtn"><i data-lucide="save"></i> Guardar Dirección</button>
     </div>
   </div>
 
   <!-- Card Modal -->
-  <div class="modal-overlay" id="cardModalOverlay" role="presentation"></div>
+  <div class="modal-overlay" id="cardModalOverlay"></div>
   <div class="modal" id="cardModal" role="dialog" aria-modal="true" aria-labelledby="cardModalTitle">
     <div class="modal__header">
       <h2 class="modal__title" id="cardModalTitle">Nueva Tarjeta</h2>
-      <button class="modal__close" id="closeCardModal" aria-label="Cerrar">
-        <i data-lucide="x"></i>
-      </button>
+      <button class="modal__close" id="closeCardModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
     </div>
     <form class="modal__body" id="cardForm">
-      <!-- Card Preview -->
       <div class="card-preview">
         <div class="card-preview__inner" id="cardPreview">
-          <div class="card-preview__chip">
-            <svg width="36" height="28" viewBox="0 0 36 28" fill="none">
-              <rect width="36" height="28" rx="4" fill="#D4AF37"/>
-              <rect x="2" y="2" width="16" height="10" rx="2" fill="#C5A028" opacity="0.6"/>
-              <rect x="2" y="14" width="16" height="12" rx="2" fill="#C5A028" opacity="0.4"/>
-              <rect x="20" y="2" width="14" height="10" rx="2" fill="#C5A028" opacity="0.4"/>
-              <rect x="20" y="14" width="14" height="12" rx="2" fill="#C5A028" opacity="0.3"/>
-            </svg>
-          </div>
+          <div class="card-preview__chip"><svg width="36" height="28" viewBox="0 0 36 28" fill="none"><rect width="36" height="28" rx="4" fill="#D4AF37"/><rect x="2" y="2" width="16" height="10" rx="2" fill="#C5A028" opacity="0.6"/><rect x="2" y="14" width="16" height="12" rx="2" fill="#C5A028" opacity="0.4"/><rect x="20" y="2" width="14" height="10" rx="2" fill="#C5A028" opacity="0.4"/><rect x="20" y="14" width="14" height="12" rx="2" fill="#C5A028" opacity="0.3"/></svg></div>
           <div class="card-preview__number" id="previewNumber">•••• •••• •••• ••••</div>
           <div class="card-preview__bottom">
             <div class="card-preview__name" id="previewName">NOMBRE DEL TITULAR</div>
             <div class="card-preview__expiry" id="previewExpiry">MM/AA</div>
           </div>
-          <div class="card-preview__brand" id="cardBrandIcon">
-            <i data-lucide="credit-card"></i>
-          </div>
+          <div class="card-preview__brand" id="cardBrandIcon"><i data-lucide="credit-card"></i></div>
         </div>
       </div>
-
       <div class="form-group">
         <label class="form-label" for="cardNumber">Número de tarjeta</label>
         <div class="form-input-wrap">
@@ -668,55 +462,31 @@
           <label class="form-label" for="cardCvv">CVV</label>
           <div class="form-input-wrap">
             <input type="password" id="cardCvv" class="form-input" placeholder="•••" maxlength="4" inputmode="numeric" required>
-            <i data-lucide="eye-off" class="form-input-icon" id="toggleCvv"></i>
+            <span class="form-input-icon form-input-icon--clickable" id="toggleCvv"><i data-lucide="eye-off"></i></span>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label" for="cardType">Tipo de tarjeta</label>
+        <label class="form-label">Tipo de tarjeta</label>
         <div class="card-type-selector">
-          <label class="card-type-option">
-            <input type="radio" name="cardType" value="credit" checked>
-            <span class="card-type-option__box">
-              <i data-lucide="credit-card"></i>
-              Crédito
-            </span>
-          </label>
-          <label class="card-type-option">
-            <input type="radio" name="cardType" value="debit">
-            <span class="card-type-option__box">
-              <i data-lucide="wallet"></i>
-              Débito
-            </span>
-          </label>
+          <label class="card-type-option"><input type="radio" name="cardType" value="credit" checked><span class="card-type-option__box"><i data-lucide="credit-card"></i> Crédito</span></label>
+          <label class="card-type-option"><input type="radio" name="cardType" value="debit"><span class="card-type-option__box"><i data-lucide="wallet"></i> Débito</span></label>
         </div>
       </div>
-      <label class="checkbox-label" for="cardDefault">
-        <input type="checkbox" id="cardDefault" class="checkbox-input">
-        <span class="checkbox-mark"></span>
-        Establecer como tarjeta predeterminada
-      </label>
+      <label class="checkbox-label"><input type="checkbox" id="cardDefault" class="checkbox-input"><span class="checkbox-mark"></span> Establecer como tarjeta predeterminada</label>
     </form>
     <div class="modal__footer">
-      <button type="button" class="btn btn--outline" id="cancelCardModal">Cancelar</button>
-      <button type="submit" class="btn btn--primary" id="saveCardBtn">
-        <i data-lucide="save"></i>
-        Guardar Tarjeta
-      </button>
+      <button type="button" class="btn btn--ghost" id="cancelCardModal">Cancelar</button>
+      <button type="button" class="btn btn--primary" id="saveCardBtn"><i data-lucide="save"></i> Guardar Tarjeta</button>
     </div>
   </div>
 
   <!-- Delete Account Modal -->
-  <div class="modal-overlay" id="deleteModalOverlay" role="presentation"></div>
+  <div class="modal-overlay" id="deleteModalOverlay"></div>
   <div class="modal modal--sm" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
     <div class="modal__header">
-      <h2 class="modal__title modal__title--danger" id="deleteModalTitle">
-        <i data-lucide="alert-triangle"></i>
-        Eliminar Cuenta
-      </h2>
-      <button class="modal__close" id="closeDeleteModal" aria-label="Cerrar">
-        <i data-lucide="x"></i>
-      </button>
+      <h2 class="modal__title modal__title--danger" id="deleteModalTitle"><i data-lucide="alert-triangle"></i> Eliminar Cuenta</h2>
+      <button class="modal__close" id="closeDeleteModal" aria-label="Cerrar"><i data-lucide="x"></i></button>
     </div>
     <div class="modal__body">
       <p class="modal__text">Esta acción es <strong>irreversible</strong>. Se eliminarán permanentemente:</p>
@@ -733,11 +503,8 @@
       </div>
     </div>
     <div class="modal__footer">
-      <button type="button" class="btn btn--outline" id="cancelDeleteModal">Cancelar</button>
-      <button type="button" class="btn btn--danger" id="confirmDeleteBtn" disabled>
-        <i data-lucide="trash-2"></i>
-        Eliminar Definitivamente
-      </button>
+      <button type="button" class="btn btn--ghost" id="cancelDeleteModal">Cancelar</button>
+      <button type="button" class="btn btn--danger" id="confirmDeleteBtn" disabled><i data-lucide="trash-2"></i> Eliminar Definitivamente</button>
     </div>
   </div>
 
