@@ -425,6 +425,7 @@
 
 @media (max-width: 640px) {
     .landing-hero {
+        height: auto;
         min-height: auto;
         padding: calc(var(--header-height) + 16px) 0 28px;
     }

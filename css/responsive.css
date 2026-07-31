@@ -35,27 +35,6 @@
         width: 98%;
         max-height: 85vh;
     }
-    .account-nav {
-        flex-wrap: wrap;
-    }
-
-    .account-nav__user {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: var(--space-sm);
-        margin-bottom: var(--space-sm);
-    }
-
-    .account-nav__links {
-        order: 2;
-    }
-
-    .account-nav__actions {
-        order: 3;
-        border-left: none;
-        padding-left: 0;
-    }
 
     .header__search {
         position: absolute;
@@ -79,10 +58,6 @@
         height: 40px;
     }
 
-    .header__user-name {
-        display: none;
-    }
-
     .footer__grid {
         grid-template-columns: 1fr 1fr;
         gap: var(--space-xl);
@@ -95,17 +70,6 @@
 
     .tracking-progress__steps {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .profile-card__body {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .profile-card__stats {
-        width: 100%;
-        justify-content: center;
     }
 }
 
@@ -190,64 +154,12 @@
         --space-3xl: 48px;
     }
 
-    .header__menu-btn {
-        display: flex;
-    }
-
-    .mobile-nav {
-        display: block;
-    }
-
     .header__actions {
         gap: var(--space-sm);
     }
 
     .main-content {
         padding: var(--space-lg) 0;
-    }
-
-    .account-section__title {
-        font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-    }
-
-    .profile-card__body {
-        padding: 0 var(--space-md) var(--space-lg);
-    }
-
-    .profile-card__stats {
-        flex-wrap: wrap;
-        gap: var(--space-md);
-    }
-
-    .profile-card__stat {
-        min-width: 80px;
-    }
-
-    .profile-form__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .order-card__header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-md);
-    }
-
-    .order-card__status {
-        margin-left: 0;
-    }
-
-    .order-card__product {
-        flex-wrap: wrap;
-    }
-
-    .order-card__product-price {
-        min-width: auto;
-    }
-
-    .order-card__footer {
-        flex-direction: column;
-        align-items: flex-start;
     }
 
     .tracking-progress__steps {
@@ -261,15 +173,7 @@
         font-size: 0.8rem;
     }
 
-    .settings-grid {
-        grid-template-columns: 1fr;
-    }
-
     .addresses-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .payment-grid {
         grid-template-columns: 1fr;
     }
 
@@ -345,25 +249,7 @@
         display: none;
     }
 
-    .orders-filter {
-        flex-direction: column;
-    }
-
-    .orders-filter__btn {
-        justify-content: center;
-    }
-
     .tracking-search__btn span {
         display: none;
-    }
-
-    .profile-card__cover {
-        height: 100px;
-    }
-
-    .profile-card__avatar {
-        width: 80px;
-        height: 80px;
-        font-size: 2rem;
     }
 }

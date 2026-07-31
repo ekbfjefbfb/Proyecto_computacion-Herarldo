@@ -449,3 +449,30 @@
     font-weight: 700;
     margin-bottom: 32px;
 }
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 1024px) {
+    .checkout__grid {
+        grid-template-columns: 1fr 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout {
+        padding: 100px 0 60px;
+    }
+
+    .checkout__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout h1 {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+    }
+
+    .checkout-summary {
+        order: -1;
+        position: static;
+    }
+}
