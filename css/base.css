@@ -60,6 +60,7 @@ button:active, .filter-btn:active, .variant-btn:active {
 .related-products {
     user-select: none;
     -webkit-user-select: none;
+    cursor: default;
 }
 
 /* Re-enable text selection on actual inputs and textareas */
@@ -71,6 +72,13 @@ input, textarea, select,
     user-select: text;
     -webkit-user-select: text;
     caret-color: auto;
+}
+
+/* Interactive elements should always be pointer */
+button, a, .variant-btn, .variant-btn--size,
+.gallery-thumb, .tabs-nav__btn, .btn--add-cart, .btn--wishlist,
+.product-info__share-link, .review-card__helpful button {
+    cursor: pointer;
 }
 
 /* Re-enable selection on review text content */
