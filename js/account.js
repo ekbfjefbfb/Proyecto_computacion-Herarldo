@@ -130,21 +130,27 @@
 
   if (el('passwordCancel')) el('passwordCancel').addEventListener('click', function () { passwordForm.reset(); });
 
-  /* ── ORDERS (mock) ── */
-  var mockOrders = [
-    { id: 'TS-2026-001', date: '15 Jul 2026', status: 'delivered', items: [{ name: 'NovaBook Air 13', qty: 1, price: 899, icon: 'laptop' }], total: 899 },
-    { id: 'TS-2026-002', date: '22 Jul 2026', status: 'shipped', items: [{ name: 'AuroraBuds Pro', qty: 2, price: 149, icon: 'headphones' }], total: 298 },
-    { id: 'TS-2026-003', date: '28 Jul 2026', status: 'pending', items: [{ name: 'Zenith X12', qty: 1, price: 799, icon: 'smartphone' }, { name: 'VoltCharge 65W', qty: 1, price: 39, icon: 'plug-zap' }], total: 838 }
-  ];
-
+  /* ── ORDERS (from localStorage — real purchases) ── */
   var ordersList = el('ordersList');
   var ordersEmpty = el('ordersEmpty');
   var statusLabels = { pending: 'Pendiente', confirmed: 'Confirmado', shipped: 'Enviado', delivered: 'Entregado' };
   var statusIcons = { pending: 'clock', confirmed: 'check-circle', shipped: 'truck', delivered: 'package-check' };
 
+  function getOrders() {
+    try { return JSON.parse(localStorage.getItem('techstore_orders') || '[]'); }
+    catch (e) { return []; }
+  }
+
+  function formatOrderDate(iso) {
+    var d = new Date(iso);
+    var months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
   function renderOrders(filter) {
     if (!ordersList) return;
-    var list = filter === 'all' ? mockOrders : mockOrders.filter(function (o) { return o.status === filter; });
+    var allOrders = getOrders();
+    var list = filter === 'all' ? allOrders : allOrders.filter(function (o) { return o.status === filter; });
     if (list.length === 0) {
       ordersList.innerHTML = '';
       if (ordersEmpty) ordersEmpty.style.display = '';
@@ -155,12 +161,12 @@
       return '<div class="order-card" data-status="' + o.status + '">' +
         '<div class="order-card__header">' +
           '<div><span class="order-card__label">Pedido</span><span class="order-card__number">#' + o.id + '</span></div>' +
-          '<div><span class="order-card__label">Fecha</span><span>' + o.date + '</span></div>' +
+          '<div><span class="order-card__label">Fecha</span><span>' + formatOrderDate(o.date) + '</span></div>' +
           '<div class="order-card__status order-card__status--' + o.status + '"><i data-lucide="' + statusIcons[o.status] + '"></i> ' + statusLabels[o.status] + '</div>' +
         '</div>' +
         '<div class="order-card__products">' + o.items.map(function (it) {
           return '<div class="order-card__product">' +
-            '<div class="order-card__product-img"><i data-lucide="' + it.icon + '"></i></div>' +
+            '<div class="order-card__product-img"><i data-lucide="' + (it.icon || 'package') + '"></i></div>' +
             '<div class="order-card__product-info"><h4>' + it.name + '</h4><p>Cantidad: ' + it.qty + '</p></div>' +
             '<div class="order-card__product-price">$' + (it.price * it.qty).toLocaleString('en-US') + '</div>' +
           '</div>';
@@ -178,21 +184,27 @@
     if (window.lucide) lucide.createIcons();
   }
 
-  var filterBtns = $$('.orders-filter');
-  var filterCounts = { all: mockOrders.length, pending: 0, confirmed: 0, shipped: 0, delivered: 0 };
-  mockOrders.forEach(function (o) { filterCounts[o.status]++; });
+  function updateFilterCounts() {
+    var allOrders = getOrders();
+    var counts = { all: allOrders.length, pending: 0, confirmed: 0, shipped: 0, delivered: 0 };
+    allOrders.forEach(function (o) { if (counts[o.status] !== undefined) counts[o.status]++; });
+    filterBtns.forEach(function (btn) {
+      var count = btn.querySelector('.orders-filter__count');
+      var f = btn.dataset.filter;
+      if (count && counts[f] !== undefined) count.textContent = counts[f];
+    });
+  }
 
+  var filterBtns = $$('.orders-filter');
   filterBtns.forEach(function (btn) {
-    var count = btn.querySelector('.orders-filter__count');
-    var f = btn.dataset.filter;
-    if (count && filterCounts[f] !== undefined) count.textContent = filterCounts[f];
     btn.addEventListener('click', function () {
       filterBtns.forEach(function (b) { b.classList.remove('orders-filter--active'); });
       btn.classList.add('orders-filter--active');
-      renderOrders(f);
+      renderOrders(btn.dataset.filter);
     });
   });
 
+  updateFilterCounts();
   renderOrders('all');
 
   /* ── ADDRESSES ── */
@@ -526,18 +538,14 @@
     emailNotifications: true,
     priceAlerts: false,
     newsletter: false,
-    darkMode: true,
-    publicProfile: false,
-    showPurchases: true
+    darkMode: true
   };
 
   var toggleMap = {
     setEmail: 'emailNotifications',
     setPriceAlert: 'priceAlerts',
     setNewsletter: 'newsletter',
-    setDarkMode: 'darkMode',
-    setPublicProfile: 'publicProfile',
-    setShowPurchases: 'showPurchases'
+    setDarkMode: 'darkMode'
   };
 
   Object.keys(toggleMap).forEach(function (id) {
@@ -590,6 +598,7 @@
         localStorage.removeItem('techstore_addresses');
         localStorage.removeItem('techstore_cards');
         localStorage.removeItem('techstore_settings');
+        localStorage.removeItem('techstore_orders');
       } catch (e) {}
       toast('Cuenta eliminada');
       setTimeout(function () { window.location.href = 'cuenta.html'; }, 1000);

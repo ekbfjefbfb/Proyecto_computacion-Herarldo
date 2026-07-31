@@ -7,8 +7,10 @@
     var CATEGORIES = [
         { key: 'laptops',     name: 'Trabajo fluido',   label: 'Laptops',     desc: 'Equipos ligeros y pro para escribir, crear, editar y presentar sin esperar.', icon: 'laptop',     img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1100&h=900&fit=crop', meta: 'Desde $899', count: '3 modelos' },
         { key: 'smartphones', name: 'Todo en el bolsillo', label: 'Smartphones', desc: 'Camara, pantalla, bateria y 5G para moverte todo el dia.', icon: 'smartphone', img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1100&h=900&fit=crop', meta: 'Desde $549', count: '3 modelos' },
+        { key: 'tablets',     name: 'Pantalla en mano',   label: 'Tablets',     desc: 'Lectura, diseno, firma digital y entretenimiento en pantalla tactil.', icon: 'tablet',     img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=1100&h=900&fit=crop', meta: 'Desde $329', count: '2 modelos' },
         { key: 'accesorios',  name: 'Setup limpio',     label: 'Accesorios',  desc: 'Audio, carga, teclado y mouse para que tu escritorio se sienta terminado.', icon: 'headphones', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1100&h=900&fit=crop', meta: 'Desde $39', count: '4 piezas' },
-        { key: 'gaming',      name: 'Juego sin corte',  label: 'Gaming',      desc: 'Monitor, control y consola para jugar con respuesta rapida y buena imagen.', icon: 'gamepad-2',  img: 'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1100&h=900&fit=crop', meta: 'Desde $69', count: '3 opciones' }
+        { key: 'gaming',      name: 'Juego sin corte',  label: 'Gaming',      desc: 'Monitor, control y consola para jugar con respuesta rapida y buena imagen.', icon: 'gamepad-2',  img: 'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=1100&h=900&fit=crop', meta: 'Desde $69', count: '3 opciones' },
+        { key: 'smart-home',  name: 'Casa conectada',    label: 'Smart Home',  desc: 'Asistentes, camaras, interruptores y sensores para automatizar tu hogar.', icon: 'wifi',       img: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=1100&h=900&fit=crop', meta: 'Desde $29', count: '3 dispositivos' }
     ];
 
     var PRODUCTS = [
@@ -262,6 +264,101 @@
                 { k: 'Puertos', v: 'HDMI 2.1 · USB-A x3 · USB-C · Ethernet' },
                 { k: 'Conectividad', v: 'Wi-Fi 6E · Bluetooth 5.2' },
                 { k: 'Peso', v: '3.8kg' }
+            ] },
+        { id: 14, name: 'NovaPad 11 Pro',           cat: 'tablets',     price: 549,  old: null,  specs: '11" OLED · 256GB · Stylus',             icon: 'tablet',         img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=400&fit=crop', rating: 4.6, reviews: 94,  badge: 'Nuevo',
+            images: ['https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1589739900243-4b52cd9b1765?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1632631244952-318619c53273?w=800&h=800&fit=crop'],
+            desc: 'Productividad y creatividad en pantalla OLED de 11 pulgadas. La NovaPad 11 Pro incluye stylus magnetico, soporte para teclado y chip M1 para renders rapidos y multitarea sin lag.',
+            highlights: [
+                { icon: 'pen-tool', title: 'Stylus magnetico', desc: 'Precision al nivel del pixel' },
+                { icon: 'monitor', title: 'OLED 120Hz', desc: '11" HDR · colores vibrantes' },
+                { icon: 'cpu', title: 'Chip M1', desc: 'Rendimiento de escritorio' },
+                { icon: 'battery-full', title: '15h bateria', desc: 'Todo el dia creando' }
+            ],
+            descSpecs: [
+                { k: 'Pantalla', v: '11" OLED — 2388x1668 — 120Hz — P3 wide color' },
+                { k: 'Procesador', v: 'Apple M1 — 8 nucleos' },
+                { k: 'Memoria RAM', v: '8GB LPDDR4X' },
+                { k: 'Almacenamiento', v: '256GB SSD' },
+                { k: 'Camara', v: '12MP Wide · 10MP Ultra Wide · LiDAR' },
+                { k: 'Puertos', v: 'USB-C · MagSafe 3' },
+                { k: 'Conectividad', v: 'Wi-Fi 6E · Bluetooth 5.3 · 5G (opcional)' },
+                { k: 'Peso', v: '466g' }
+            ] },
+        { id: 15, name: 'NovaPad Mini',              cat: 'tablets',     price: 329,  old: 379,  specs: '10.9" LCD · 128GB · Compacta',          icon: 'tablet',         img: 'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=600&h=400&fit=crop', rating: 4.4, reviews: 187, badge: null,
+            images: ['https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1632631244952-318619c53273?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1589739900243-4b52cd9b1765?w=800&h=800&fit=crop'],
+            desc: 'Compacta, ligera y potente. La NovaPad Mini es perfecta para leer, navegar y consumir contenido en cualquier lugar. Pantalla de 10.9" con colores nítidos y autonomia de 10 horas.',
+            highlights: [
+                { icon: 'monitor', title: '10.9" LCD', desc: 'Pantalla nítida y brillante' },
+                { icon: 'battery-full', title: '10h bateria', desc: 'Lectura y streaming sin pausa' },
+                { icon: 'weight', title: '478g', desc: 'Ultra ligera para llevar siempre' },
+                { icon: 'camera', title: '8MP', desc: 'Para fotos y escaneo de documentos' }
+            ],
+            descSpecs: [
+                { k: 'Pantalla', v: '10.9" Liquid Retina — 2360x1640 — 60Hz' },
+                { k: 'Procesador', v: 'A14 Bionic' },
+                { k: 'Memoria RAM', v: '4GB' },
+                { k: 'Almacenamiento', v: '128GB' },
+                { k: 'Camara', v: '8MP Wide · FaceTime HD 12MP frontal' },
+                { k: 'Puertos', v: 'USB-C' },
+                { k: 'Conectividad', v: 'Wi-Fi 6 · Bluetooth 5.2' },
+                { k: 'Peso', v: '478g' }
+            ] },
+        { id: 16, name: 'LuminaHub Smart Hub',       cat: 'smart-home',  price: 89,   old: null,  specs: 'Zigbee · Matter · Pantalla 7"',         icon: 'wifi',           img: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=600&h=400&fit=crop', rating: 4.5, reviews: 156, badge: 'Nuevo',
+            images: ['https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop'],
+            desc: 'El cerebro de tu hogar inteligente. LuminaHub conecta hasta 200 dispositivos Zigbee y Matter, con pantalla tactil de 7 pulgadas para controlar luces, climas y cerraduras con la voz o al tacto.',
+            highlights: [
+                { icon: 'wifi', title: 'Matter + Zigbee', desc: 'Compatible con todo' },
+                { icon: 'monitor', title: 'Pantalla 7"', desc: 'Tactil con widgets de clima y control' },
+                { icon: 'mic', title: 'Asistente de voz', desc: 'Escucha y responde en espanol' },
+                { icon: 'cpu', title: '200 dispositivos', desc: 'Sin congestion ni lag' }
+            ],
+            descSpecs: [
+                { k: 'Pantalla', v: '7" IPS — 1024x600 — tactil capacitiva' },
+                { k: 'Procesador', v: 'Quad-core 1.8GHz' },
+                { k: 'Conectividad', v: 'Wi-Fi 6 · Bluetooth 5.3 · Zigbee 3.0 · Thread' },
+                { k: 'Compatibilidad', v: 'Matter · Apple HomeKit · Google Home · Alexa' },
+                { k: 'Altavoz', v: '5W full range' },
+                { k: 'Puertos', v: 'Ethernet · USB-C · USB-A' },
+                { k: 'Alimentacion', v: 'Cable USB-C 12V/2A' },
+                { k: 'Peso', v: '350g' }
+            ] },
+        { id: 17, name: 'LuminaCam 2K',              cat: 'smart-home',  price: 49,   old: 69,   specs: '2K · Visibilidad nocturna · IA',        icon: 'camera',         img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop', rating: 4.7, reviews: 312, badge: null,
+            images: ['https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop'],
+            desc: 'Seguridad inteligente con vision nocturna a color. La LuminaCam 2K detecta personas, mascotas y paquetes con IA, envia alertas instantaneas a tu telefono y graba 24/7 en la nube.',
+            highlights: [
+                { icon: 'eye', title: 'Visión nocturna', desc: 'Color en completa oscuridad' },
+                { icon: 'brain', title: 'IA integrada', desc: 'Detecta personas vs mascotas' },
+                { icon: 'cloud', title: 'Nube 24/7', desc: 'Grabacion continua con 30 dias gratis' },
+                { icon: 'shield', title: 'Dos factores', desc: 'Encriptacion E2E de extremo a extremo' }
+            ],
+            descSpecs: [
+                { k: 'Resolucion', v: '2K QHD — 2560x1440' },
+                { k: 'Campo de vision', v: '130° diagonal' },
+                { k: 'Visión nocturna', v: 'A color — 10m de alcance' },
+                { k: 'IA', v: 'Deteccion de personas, mascotas, paquetes' },
+                { k: 'Audio', v: 'Altavoz 2W · Microfono bidireccional con reduccion de ruido' },
+                { k: 'Almacenamiento', v: 'MicroSD hasta 256GB · Nube con suscripcion' },
+                { k: 'Conectividad', v: 'Wi-Fi 6 · Bluetooth 5.0' },
+                { k: 'Resistencia', v: 'IP66 — polvo y lluvia' }
+            ] },
+        { id: 18, name: 'LuminaSwitch Pro',          cat: 'smart-home',  price: 29,   old: null,  specs: 'Matter · WiFi · Panel tactil',           icon: 'toggle-right',   img: 'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=600&h=400&fit=crop', rating: 4.3, reviews: 89,  badge: null,
+            images: ['https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop', 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=800&fit=crop'],
+            desc: 'Interruptor inteligente con panel tactil retroiluminado. Controla luces, ventiladores y reguladores de energia desde el muro, tu telefono o por voz. Compatible con Matter sin hub adicional.',
+            highlights: [
+                { icon: 'toggle-right', title: '3 circuitos', desc: 'Controla hasta 3 luces independientes' },
+                { icon: 'wifi', title: 'Matter directo', desc: 'Sin hub necesario' },
+                { icon: 'moon', title: 'Regulable', desc: 'Brillo dimmable del 1% al 100%' },
+                { icon: 'zap', title: 'Instalacion', desc: 'Reemplaza el switch existente en 10 min' }
+            ],
+            descSpecs: [
+                { k: 'Circuitos', v: '3 independientes — 200W c/u LED' },
+                { k: 'Conectividad', v: 'Wi-Fi 2.4GHz · Thread · Bluetooth' },
+                { k: 'Compatibilidad', v: 'Matter · Apple HomeKit · Google Home · Alexa' },
+                { k: 'Panel', v: 'Tactil capacitivo con retroiluminacion LED' },
+                { k: 'Voltaje', v: '110V-240V AC' },
+                { k: 'Tamaño', v: 'Estándar US — encaja en caja existente' },
+                { k: 'Material', v: 'Cristal templado + policarbonato' },
+                { k: 'Peso', v: '120g' }
             ] }
     ];
 

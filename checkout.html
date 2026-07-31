@@ -178,14 +178,13 @@
             if (shipEmail) { shipEmail.value = session.email || ''; shipEmail.readOnly = true; shipEmail.style.opacity = '0.6'; }
             if (shipPhone) { shipPhone.value = session.phone || ''; shipPhone.readOnly = true; shipPhone.style.opacity = '0.6'; }
 
-            var addrKey = 'techstore_addresses_' + session.id;
-            var addrs = (function(){try{return JSON.parse(localStorage.getItem(addrKey) || '[]');}catch(e){return[];}})();
+            var addrs = (function(){try{return JSON.parse(localStorage.getItem('techstore_addresses') || '[]');}catch(e){return[];}})();
             if (addrs.length > 0) {
-                var addr = addrs[0];
+                var addr = addrs.find(function(a){ return a.isDefault; }) || addrs[0];
                 var shipAddr = document.getElementById('shipAddr');
                 var shipCity = document.getElementById('shipCity');
                 var shipZip = document.getElementById('shipZip');
-                if (shipAddr) { shipAddr.value = addr.address || ''; shipAddr.readOnly = true; shipAddr.style.opacity = '0.6'; }
+                if (shipAddr) { shipAddr.value = addr.street || ''; shipAddr.readOnly = true; shipAddr.style.opacity = '0.6'; }
                 if (shipCity) { shipCity.value = addr.city || ''; shipCity.readOnly = true; shipCity.style.opacity = '0.6'; }
                 if (shipZip) { shipZip.value = addr.zip || ''; shipZip.readOnly = true; shipZip.style.opacity = '0.6'; }
             }
