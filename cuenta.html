@@ -122,7 +122,7 @@
             var sessionData={id:user.id,name:user.name,email:user.email,phone:user.phone};
             if(!safeSet('techstore_session',sessionData)){toast('error','Error','No se pudo guardar la sesion');return;}
             toast('success','Bienvenido','Hola '+user.name);
-            setTimeout(function(){window.location.href='mi-cuenta.html';},500);
+            window.location.href='mi-cuenta.html';
         });
 
         document.getElementById('registerForm').addEventListener('submit',function(e){
@@ -144,9 +144,8 @@
             users.push(newUser);
             if(!safeSet('techstore_users',users)){toast('error','Error','No se pudo crear la cuenta');return;}
             var sessionData={id:newUser.id,name:newUser.name,email:newUser.email,phone:newUser.phone};
-            if(!safeSet('techstore_session',sessionData)){toast('error','Error','Cuenta creada pero no se pudo iniciar sesion');setTimeout(function(){window.location.href='cuenta.html';},1000);return;}
-            toast('success','Cuenta creada','Bienvenido '+name);
-            setTimeout(function(){window.location.href='mi-cuenta.html';},500);
+            if(!safeSet('techstore_session',sessionData)){toast('error','Error','Cuenta creada pero no se pudo iniciar sesion');window.location.href='cuenta.html';return;}
+            window.location.href='mi-cuenta.html';
         });
     })();
 

@@ -75,8 +75,8 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: var(--radius-sm);
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
@@ -808,9 +808,9 @@
 }
 
 .cart-item__qty button {
-    width: 26px;
-    height: 26px;
-    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;

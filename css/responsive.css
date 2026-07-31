@@ -241,6 +241,18 @@
         padding: var(--space-sm);
     }
 
+    .compare-table {
+        min-width: auto;
+    }
+
+    .compare-table th {
+        width: 100px;
+    }
+
+    .compare-table td {
+        min-width: 120px;
+    }
+
     .gallery-thumb {
         width: 48px;
         height: 48px;
@@ -251,5 +263,17 @@
 
     .tracking-search__btn span {
         display: none;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
     }
 }
