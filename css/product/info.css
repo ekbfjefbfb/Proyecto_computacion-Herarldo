@@ -161,14 +161,14 @@
 /* Checkmark sobre el color activo */
 .variant-btn.active::after {
   content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 8px;
   height: 12px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: translate(-50%, -50%) rotate(45deg);
-  font-size: 0.7rem;
-  color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  transform: translate(-50%, -60%) rotate(45deg);
 }
 
 /* Variante rectangular para tamaño/capacidad */
