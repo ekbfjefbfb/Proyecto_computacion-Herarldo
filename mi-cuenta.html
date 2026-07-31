@@ -1,497 +1,749 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TechStore - Mi Cuenta">
-    <title>TechStore | Mi Cuenta</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/mobile-nav.css">
-    <link rel="stylesheet" href="css/forms.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/orders.css">
-    <link rel="stylesheet" href="css/settings.css">
-    <link rel="stylesheet" href="css/store.css">
-    <link rel="stylesheet" href="css/premium.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cuenta - TechStore Honduras</title>
+  <meta name="description" content="Gestiona tu perfil, pedidos, direcciones y métodos de pago en TechStore Honduras.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/orders.css">
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/cart-drawer.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-    <a href="#main-content" class="skip-link">Saltar al contenido</a>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header__inner">
+      <a href="index.html" class="site-logo" aria-label="TechStore - Inicio">
+        <span class="site-logo__icon">T</span>
+        <span class="site-logo__text">Tech<strong>Store</strong></span>
+      </a>
+      <nav class="header__nav" aria-label="Navegación principal">
+        <a href="index.html" class="header__link">Inicio</a>
+        <a href="tienda.html" class="header__link">Tienda</a>
+        <a href="ofertas.html" class="header__link">Ofertas</a>
+        <a href="blog.html" class="header__link">Blog</a>
+      </nav>
+      <div class="header__actions">
+        <button class="header__icon-btn" aria-label="Buscar" id="openSearch">
+          <i data-lucide="search"></i>
+        </button>
+        <button class="header__icon-btn" aria-label="Favoritos" id="openFavorites">
+          <i data-lucide="heart"></i>
+          <span class="header__badge" id="favCount">0</span>
+        </button>
+        <button class="header__icon-btn header__cart-btn" aria-label="Abrir carrito de compras" id="openCart">
+          <i data-lucide="shopping-cart"></i>
+          <span class="header__badge" id="cartCount">0</span>
+        </button>
+        <a href="cuenta.html" class="header__icon-btn header__user-btn" aria-label="Mi cuenta" id="userBtn">
+          <i data-lucide="user"></i>
+        </a>
+      </div>
+    </div>
+  </header>
 
-    <header class="header" id="header">
-        <div class="header__container">
-<a href="index.html" class="site-logo"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/></svg><span>TechStore</span></a>
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay" role="presentation"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">Carrito</h2>
+      <button class="cart-drawer__close" id="closeCart" aria-label="Cerrar carrito">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="cart-drawer__body" id="cartBody">
+      <div class="cart-drawer__empty" id="cartEmpty">
+        <i data-lucide="shopping-cart"></i>
+        <p>Tu carrito está vacío</p>
+        <a href="tienda.html" class="btn btn--primary">Ir a la tienda</a>
+      </div>
+      <ul class="cart-drawer__list" id="cartList"></ul>
+    </div>
+    <div class="cart-drawer__footer" id="cartFooter">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">L 0.00</span>
+      </div>
+      <a href="checkout.html" class="btn btn--primary btn--full" id="checkoutBtn">Finalizar compra</a>
+    </div>
+  </aside>
 
-            <nav class="header__nav"><a href="index.html" class="header__nav-link">Inicio</a><a href="tienda.html" class="header__nav-link">Tienda</a><a href="ofertas.html" class="header__nav-link">Ofertas</a><a href="index.html#contacto" class="header__nav-link">Contacto</a></nav>
-            <div class="header__actions"><a href="mi-cuenta.html" class="header__user header__user--active" id="headerUser" title="Mi Cuenta"><i data-lucide="user"></i></a></div>
-            <button class="header__menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  <!-- Favorites Drawer -->
+  <div class="fav-overlay" id="favOverlay" role="presentation"></div>
+  <aside class="fav-drawer" id="favDrawer" role="dialog" aria-modal="true" aria-label="Favoritos">
+    <div class="fav-drawer__header">
+      <h2 class="fav-drawer__title">Favoritos</h2>
+      <button class="fav-drawer__close" id="closeFav" aria-label="Cerrar favoritos">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="fav-drawer__body" id="favBody">
+      <div class="fav-drawer__empty" id="favEmpty">
+        <i data-lucide="heart"></i>
+        <p>No tienes favoritos aún</p>
+        <a href="tienda.html" class="btn btn--primary">Explorar tienda</a>
+      </div>
+      <ul class="fav-drawer__list" id="favList"></ul>
+    </div>
+  </aside>
+
+  <!-- Search Drawer -->
+  <div class="search-overlay" id="searchOverlay" role="presentation"></div>
+  <div class="search-drawer" id="searchDrawer" role="dialog" aria-modal="true" aria-label="Buscar productos">
+    <div class="search-drawer__header">
+      <div class="search-drawer__input-wrap">
+        <i data-lucide="search"></i>
+        <input type="search" class="search-drawer__input" id="searchInput" placeholder="Buscar productos..." autocomplete="off">
+      </div>
+      <button class="search-drawer__close" id="closeSearch" aria-label="Cerrar búsqueda">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="search-drawer__body" id="searchBody">
+      <p class="search-drawer__hint">Escribe al menos 2 caracteres para buscar</p>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
+
+  <!-- Main Content -->
+  <main id="main-content" class="account-page">
+    <div class="account-container">
+
+      <!-- Sidebar -->
+      <aside class="account-sidebar" role="navigation" aria-label="Menú de cuenta">
+        <div class="sidebar__user">
+          <div class="sidebar__avatar" id="sidebarAvatar">U</div>
+          <div class="sidebar__user-info">
+            <span class="sidebar__name" id="sidebarName">Usuario</span>
+            <span class="sidebar__email" id="sidebarEmail">correo@ejemplo.com</span>
+          </div>
         </div>
-    </header>
 
-    <nav class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav__overlay" id="mobileNavOverlay"></div>
-        <div class="mobile-nav__sidebar">
-            <div class="mobile-nav__header"><a href="index.html" class="site-logo" style="padding:0"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/></svg><span>TechStore</span></a><button class="mobile-nav__close" id="mobileNavClose" aria-label="Cerrar"><i data-lucide="x"></i></button></div>
-            <ul class="mobile-nav__links">
-                <li><a href="index.html" class="mobile-nav__link"><i data-lucide="home"></i> Inicio</a></li>
-                <li><a href="tienda.html" class="mobile-nav__link"><i data-lucide="layout-grid"></i> Tienda</a></li>
-                <li><a href="ofertas.html" class="mobile-nav__link"><i data-lucide="tag"></i> Ofertas</a></li>
-                <li class="mobile-nav__divider"></li>
-                <li><a href="mi-cuenta.html" class="mobile-nav__link"><i data-lucide="user"></i> Mi Cuenta</a></li>
-                <li><a href="tracking.html" class="mobile-nav__link"><i data-lucide="truck"></i> Tracking</a></li>
-            </ul>
+        <nav class="sidebar__nav">
+          <button class="sidebar__link sidebar__link--active" data-section="perfil" aria-current="page">
+            <i data-lucide="user"></i>
+            <span>Mi Perfil</span>
+          </button>
+          <button class="sidebar__link" data-section="pedidos">
+            <i data-lucide="package"></i>
+            <span>Mis Pedidos</span>
+          </button>
+          <button class="sidebar__link" data-section="direcciones">
+            <i data-lucide="map-pin"></i>
+            <span>Direcciones</span>
+          </button>
+          <button class="sidebar__link" data-section="pagos">
+            <i data-lucide="credit-card"></i>
+            <span>Pagos</span>
+          </button>
+          <button class="sidebar__link" data-section="ajustes">
+            <i data-lucide="settings"></i>
+            <span>Ajustes</span>
+          </button>
+        </nav>
+
+        <div class="sidebar__footer">
+          <button class="sidebar__logout" id="sidebarLogout">
+            <i data-lucide="log-out"></i>
+            <span>Cerrar Sesión</span>
+          </button>
         </div>
-    </nav>
+      </aside>
 
-    <section class="breadcrumb">
-        <div class="container">
-            <a href="index.html" class="breadcrumb__link">Inicio</a>
-            <span class="breadcrumb__separator">/</span>
-            <span class="breadcrumb__current" id="breadcrumbCurrent">Mi Cuenta</span>
-        </div>
-    </section>
+      <!-- Content Area -->
+      <div class="account-content">
 
-    <main class="main-content" id="main-content">
-        <div class="container">
-            <div class="account-layout">
+        <!-- ============================================ -->
+        <!-- PERFIL -->
+        <!-- ============================================ -->
+        <section class="account-section account-section--active" id="sec-perfil">
+          <div class="section-header">
+            <h1 class="section-header__title">Mi Perfil</h1>
+            <p class="section-header__desc">Administra tu información personal</p>
+          </div>
 
-                <nav class="account-nav" id="accountNav">
-                    <div class="account-nav__user">
-                        <div class="account-nav__avatar" id="avatarInitials">JD</div>
-                        <div class="account-nav__user-info">
-                            <span class="account-nav__name" id="userName">Juan Doe</span>
-                            <span class="account-nav__email" id="userEmail">juan@email.com</span>
-                        </div>
-                    </div>
-                    <div class="account-nav__links">
-                        <button class="account-nav__link account-nav__link--active" data-section="profile"><i data-lucide="user"></i><span>Perfil</span></button>
-                        <button class="account-nav__link" data-section="orders"><i data-lucide="package"></i><span>Pedidos</span></button>
-                        <button class="account-nav__link" data-section="settings"><i data-lucide="settings"></i><span>Config</span></button>
-                        <button class="account-nav__link" data-section="addresses"><i data-lucide="map-pin"></i><span>Direcciones</span></button>
-                        <button class="account-nav__link" data-section="payment"><i data-lucide="credit-card"></i><span>Pago</span></button>
-                    </div>
-                    <div class="account-nav__actions">
-                        <a href="tracking.html" class="account-nav__link" title="Tracking"><i data-lucide="truck"></i></a>
-                        <button class="account-nav__logout" id="logoutBtn"><i data-lucide="log-out"></i></button>
-                    </div>
-                </nav>
-
-                <div class="account-content">
-
-                    <section class="account-section account-section--active" id="section-profile">
-                        <div class="account-section__header">
-                            <h1 class="account-section__title"><i data-lucide="user"></i> Mi Perfil</h1>
-                            <p class="account-section__subtitle">Gestiona tu información personal</p>
-                        </div>
-                        <div class="profile-card">
-                            <div class="profile-card__cover"><div class="profile-card__pattern"></div></div>
-                            <div class="profile-card__body">
-                                <div class="profile-card__avatar"><span>JD</span><div class="profile-card__avatar-ring"></div></div>
-                                <div class="profile-card__info">
-                                    <h2 class="profile-card__name">Juan Doe</h2>
-                                    <p class="profile-card__email">juan@email.com</p>
-                                    <span class="profile-card__member-badge"><i data-lucide="crown"></i> Miembro Gold</span>
-                                </div>
-                                <div class="profile-card__stats">
-                                    <div class="profile-card__stat"><span class="profile-card__stat-number" id="statOrders">0</span><span class="profile-card__stat-label">Pedidos</span></div>
-                                    <div class="profile-card__stat"><span class="profile-card__stat-number" id="statSpent">$0</span><span class="profile-card__stat-label">Gastado</span></div>
-                                    <div class="profile-card__stat"><span class="profile-card__stat-number" id="statFavorites">0</span><span class="profile-card__stat-label">Favoritos</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <form class="profile-form" id="profileForm">
-                            <h3 class="profile-form__title"><i data-lucide="pencil"></i> Información Personal</h3>
-                            <div class="profile-form__grid">
-                                <div class="profile-form__group"><label class="profile-form__label" for="profileName"><i data-lucide="user"></i> Nombre</label><input type="text" id="profileName" class="profile-form__input" value="Juan" required></div>
-                                <div class="profile-form__group"><label class="profile-form__label" for="profileLastName"><i data-lucide="user"></i> Apellido</label><input type="text" id="profileLastName" class="profile-form__input" value="Doe" required></div>
-                                <div class="profile-form__group"><label class="profile-form__label" for="profileEmail"><i data-lucide="mail"></i> Correo</label><input type="email" id="profileEmail" class="profile-form__input" value="juan@email.com" required></div>
-                                <div class="profile-form__group"><label class="profile-form__label" for="profilePhone"><i data-lucide="phone"></i> Telefono</label><input type="tel" id="profilePhone" class="profile-form__input" value="+52 123 456 7890"></div>
-                            </div>
-                            <div class="profile-form__actions">
-                                <button type="reset" class="profile-form__btn profile-form__btn--cancel"><i data-lucide="x"></i> Cancelar</button>
-                                <button type="submit" class="profile-form__btn profile-form__btn--save"><i data-lucide="save"></i> Guardar Cambios</button>
-                            </div>
-                        </form>
-                    </section>
-
-                    <section class="account-section" id="section-orders">
-                        <div class="account-section__header">
-                            <h1 class="account-section__title"><i data-lucide="package"></i> Mis Pedidos</h1>
-                            <p class="account-section__subtitle">Revisa el historial de tus compras</p>
-                        </div>
-                        <div class="orders-filter" id="ordersFilter">
-                            <button class="orders-filter__btn orders-filter__btn--active" data-filter="all">Todos <span class="orders-filter__count" id="countAll">0</span></button>
-                            <button class="orders-filter__btn" data-filter="pending">Pendientes <span class="orders-filter__count" id="countPending">0</span></button>
-                            <button class="orders-filter__btn" data-filter="shipped">Enviados <span class="orders-filter__count" id="countShipped">0</span></button>
-                            <button class="orders-filter__btn" data-filter="delivered">Entregados <span class="orders-filter__count" id="countDelivered">0</span></button>
-                        </div>
-                        <div class="orders-list" id="ordersList">
-                            <div class="orders-empty" id="ordersEmpty" style="display:none;text-align:center;padding:48px 0;color:var(--text-muted)">
-                                <i data-lucide="package" style="width:48px;height:48px;display:block;margin:0 auto 16px;color:var(--border-color)"></i>
-                                <p style="font-size:0.95rem;margin-bottom:8px">No tienes pedidos aun</p>
-                                <a href="tienda.html" style="color:var(--color-secondary);font-size:0.85rem;text-decoration:none">Explorar tienda</a>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="account-section" id="section-settings">
-                        <div class="account-section__header">
-                            <h1 class="account-section__title"><i data-lucide="settings"></i> Configuracion</h1>
-                            <p class="account-section__subtitle">Personaliza tu experiencia</p>
-                        </div>
-                        <div class="settings-grid">
-                            <div class="settings-card">
-                                <div class="settings-card__header"><i data-lucide="bell"></i><h3>Notificaciones</h3></div>
-                                <div class="settings-card__body">
-                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Notificaciones por Email</h4><p>Recibe actualizaciones de pedidos y ofertas</p></div><label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label></div>
-                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>SMS de Tracking</h4><p>Alertas de envío por mensaje de texto</p></div><label class="toggle"><input type="checkbox" checked><span class="toggle__slider"></span></label></div>
-                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Newsletter</h4><p>Ofertas exclusivas y novedades tech</p></div><label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label></div>
-                                </div>
-                            </div>
-                            <div class="settings-card">
-                                <div class="settings-card__header"><i data-lucide="shield-check"></i><h3>Seguridad</h3></div>
-                                <div class="settings-card__body">
-                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Autenticacion de 2 Factores</h4><p>Protección adicional para tu cuenta</p></div><label class="toggle"><input type="checkbox"><span class="toggle__slider"></span></label></div>
-                                    <div class="settings-card__option"><div class="settings-card__option-info"><h4>Sesiones Activas</h4><p>2 dispositivos conectados</p></div><button class="settings-card__btn"><i data-lucide="smartphone"></i> Gestionar</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="account-section" id="section-addresses">
-                        <div class="account-section__header">
-                            <h1 class="account-section__title"><i data-lucide="map-pin"></i> Mis Direcciones</h1>
-                            <p class="account-section__subtitle">Gestiona tus direcciones de envio</p>
-                        </div>
-                        <div class="addresses-grid" id="addressesGrid"></div>
-                    </section>
-
-                    <section class="account-section" id="section-payment">
-                        <div class="account-section__header">
-                            <h1 class="account-section__title"><i data-lucide="credit-card"></i> Metodos de Pago</h1>
-                            <p class="account-section__subtitle">Gestiona tus tarjetas</p>
-                        </div>
-                        <div class="payment-grid" id="paymentGrid"></div>
-                    </section>
-
+          <!-- Profile Card -->
+          <div class="profile-hero">
+            <div class="profile-hero__cover">
+              <div class="profile-hero__pattern"></div>
+            </div>
+            <div class="profile-hero__body">
+              <div class="profile-hero__avatar" id="profileAvatar">U</div>
+              <div class="profile-hero__info">
+                <h2 class="profile-hero__name" id="profileName">Usuario</h2>
+                <p class="profile-hero__email" id="profileEmail">correo@ejemplo.com</p>
+                <div class="profile-hero__meta">
+                  <span class="profile-hero__badge">
+                    <i data-lucide="shield-check"></i>
+                    Miembro verificado
+                  </span>
+                  <span class="profile-hero__badge profile-hero__badge--points">
+                    <i data-lucide="star"></i>
+                    <span id="profilePoints">0</span> puntos
+                  </span>
                 </div>
+              </div>
             </div>
-        </div>
-    </main>
+          </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand"><a href="index.html" class="site-logo"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 3L6 20h8l-2 9 12-14h-8l2-12z" fill="currentColor"/></svg><span>TechStore</span></a><p>Tu tienda de tecnología de confianza.</p><div class="footer__social"><a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" aria-label="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div></div>
-                <div class="footer__col"><h4>Tienda</h4><ul><li><a href="tienda.html">Productos</a></li><li><a href="ofertas.html">Ofertas</a></li></ul></div>
-                <div class="footer__col"><h4>Soporte</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="tracking.html">Tracking</a></li><li><a href="garantias.html">Garantias</a></li></ul></div>
-                <div class="footer__col"><h4>Cuenta</h4><ul><li><a href="mi-cuenta.html">Mi cuenta</a></li><li><a href="terminos-condiciones.html">Terminos</a></li></ul></div>
+          <!-- Profile Form -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">
+                <i data-lucide="pencil"></i>
+                Información Personal
+              </h3>
             </div>
-            <div class="footer__bottom"><p>&copy; <span id="year"></span> TechStore. Todos los derechos reservados.</p><div class="footer__payments"><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#1A1F71"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="Inter,sans-serif">VISA</text></svg><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#252525"/><circle cx="16" cy="13" r="8" fill="#EB001B" opacity="0.9"/><circle cx="24" cy="13" r="8" fill="#F79E1B" opacity="0.9"/></svg><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#279EDB"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Inter,sans-serif">AMEX</text></svg><svg width="40" height="26" viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#253B80"/><text x="20" y="16" text-anchor="middle" fill="#fff" font-size="7" font-weight="700" font-family="Inter,sans-serif">PayPal</text></svg></div></div>
+            <form class="profile-form" id="profileForm">
+              <div class="profile-form__grid">
+                <div class="form-group">
+                  <label class="form-label" for="profName">Nombre completo</label>
+                  <input type="text" id="profName" class="form-input" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profEmail">Correo electrónico</label>
+                  <input type="email" id="profEmail" class="form-input" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profPhone">Teléfono</label>
+                  <input type="tel" id="profPhone" class="form-input" placeholder="+504 0000-0000">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profDept">Departamento</label>
+                  <select id="profDept" class="form-select">
+                    <option value="">Seleccionar...</option>
+                    <option value="Atlántida">Atlántida</option>
+                    <option value="Choluteca">Choluteca</option>
+                    <option value="Colón">Colón</option>
+                    <option value="Comayagua">Comayagua</option>
+                    <option value="Copán">Copán</option>
+                    <option value="Cortés">Cortés</option>
+                    <option value="El Paraíso">El Paraíso</option>
+                    <option value="Francisco Morazán">Francisco Morazán</option>
+                    <option value="Gracias a Dios">Gracias a Dios</option>
+                    <option value="Intibucá">Intibucá</option>
+                    <option value="Islas de la Bahía">Islas de la Bahía</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="Lempira">Lempira</option>
+                    <option value="Ocotepeque">Ocotepeque</option>
+                    <option value="Olancho">Olancho</option>
+                    <option value="Santa Bárbara">Santa Bárbara</option>
+                    <option value="Valle">Valle</option>
+                    <option value="Yoro">Yoro</option>
+                  </select>
+                </div>
+                <div class="form-group form-group--full">
+                  <label class="form-label" for="profAddress">Dirección</label>
+                  <input type="text" id="profAddress" class="form-input" placeholder="Calle, colonia, ciudad">
+                </div>
+              </div>
+              <div class="profile-form__actions">
+                <button type="button" class="btn btn--outline" id="profileCancel">Cancelar</button>
+                <button type="submit" class="btn btn--primary">
+                  <i data-lucide="save"></i>
+                  Guardar Cambios
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Change Password -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">
+                <i data-lucide="lock"></i>
+                Cambiar Contraseña
+              </h3>
+            </div>
+            <form class="profile-form" id="passwordForm">
+              <div class="profile-form__grid profile-form__grid--single">
+                <div class="form-group">
+                  <label class="form-label" for="currentPass">Contraseña actual</label>
+                  <input type="password" id="currentPass" class="form-input" placeholder="••••••••" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="newPass">Nueva contraseña</label>
+                  <input type="password" id="newPass" class="form-input" placeholder="Mínimo 8 caracteres" required minlength="8">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="confirmPass">Confirmar contraseña</label>
+                  <input type="password" id="confirmPass" class="form-input" placeholder="Repite la contraseña" required minlength="8">
+                </div>
+              </div>
+              <div class="password-strength" id="passwordStrength">
+                <div class="password-strength__bar">
+                  <div class="password-strength__fill" id="strengthFill"></div>
+                </div>
+                <span class="password-strength__text" id="strengthText"></span>
+              </div>
+              <div class="profile-form__actions">
+                <button type="button" class="btn btn--outline" id="passwordCancel">Cancelar</button>
+                <button type="submit" class="btn btn--primary">
+                  <i data-lucide="key"></i>
+                  Actualizar Contraseña
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- PEDIDOS -->
+        <!-- ============================================ -->
+        <section class="account-section" id="sec-pedidos">
+          <div class="section-header">
+            <h1 class="section-header__title">Mis Pedidos</h1>
+            <p class="section-header__desc">Revisa el historial de tus compras</p>
+          </div>
+
+          <!-- Filters -->
+          <div class="orders-filters">
+            <button class="orders-filter orders-filter--active" data-filter="all">
+              <i data-lucide="layers"></i>
+              Todos
+              <span class="orders-filter__count" id="filterAll">0</span>
+            </button>
+            <button class="orders-filter" data-filter="pending">
+              <i data-lucide="clock"></i>
+              Pendientes
+              <span class="orders-filter__count" id="filterPending">0</span>
+            </button>
+            <button class="orders-filter" data-filter="confirmed">
+              <i data-lucide="check-circle"></i>
+              Confirmados
+              <span class="orders-filter__count" id="filterConfirmed">0</span>
+            </button>
+            <button class="orders-filter" data-filter="shipped">
+              <i data-lucide="truck"></i>
+              Enviados
+              <span class="orders-filter__count" id="filterShipped">0</span>
+            </button>
+            <button class="orders-filter" data-filter="delivered">
+              <i data-lucide="package-check"></i>
+              Entregados
+              <span class="orders-filter__count" id="filterDelivered">0</span>
+            </button>
+          </div>
+
+          <!-- Orders List -->
+          <div class="orders-list" id="ordersList">
+            <div class="orders-empty" id="ordersEmpty">
+              <i data-lucide="package-x"></i>
+              <h3>No tienes pedidos aún</h3>
+              <p>Explora nuestra tienda y realiza tu primera compra</p>
+              <a href="tienda.html" class="btn btn--primary">Ir a la Tienda</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- DIRECCIONES -->
+        <!-- ============================================ -->
+        <section class="account-section" id="sec-direcciones">
+          <div class="section-header">
+            <div>
+              <h1 class="section-header__title">Mis Direcciones</h1>
+              <p class="section-header__desc">Gestiona tus direcciones de envío</p>
+            </div>
+            <button class="btn btn--primary" id="addAddressBtn">
+              <i data-lucide="plus"></i>
+              Nueva Dirección
+            </button>
+          </div>
+
+          <div class="addresses-grid" id="addressesList">
+            <div class="addresses-empty" id="addressesEmpty">
+              <i data-lucide="map-pin-off"></i>
+              <h3>No tienes direcciones guardadas</h3>
+              <p>Agrega una dirección para agilizar tus compras</p>
+              <button class="btn btn--primary" id="addAddressEmpty">
+                <i data-lucide="plus"></i>
+                Agregar Dirección
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- PAGOS -->
+        <!-- ============================================ -->
+        <section class="account-section" id="sec-pagos">
+          <div class="section-header">
+            <div>
+              <h1 class="section-header__title">Mis Pagos</h1>
+              <p class="section-header__desc">Administra tus tarjetas de crédito y débito</p>
+            </div>
+            <button class="btn btn--primary" id="addCardBtn">
+              <i data-lucide="plus"></i>
+              Nueva Tarjeta
+            </button>
+          </div>
+
+          <div class="cards-grid" id="cardsList">
+            <div class="cards-empty" id="cardsEmpty">
+              <i data-lucide="credit-card"></i>
+              <h3>No tienes tarjetas guardadas</h3>
+              <p>Agrega una tarjeta para compras más rápidas</p>
+              <button class="btn btn--primary" id="addCardEmpty">
+                <i data-lucide="plus"></i>
+                Agregar Tarjeta
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- AJUSTES -->
+        <!-- ============================================ -->
+        <section class="account-section" id="sec-ajustes">
+          <div class="section-header">
+            <h1 class="section-header__title">Ajustes</h1>
+            <p class="section-header__desc">Personaliza tu experiencia</p>
+          </div>
+
+          <!-- Notifications -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">
+                <i data-lucide="bell"></i>
+                Notificaciones
+              </h3>
+            </div>
+            <div class="settings-list">
+              <div class="settings-item">
+                <div class="settings-item__info">
+                  <span class="settings-item__label">Notificaciones por email</span>
+                  <span class="settings-item__desc">Recibe actualizaciones de pedidos y ofertas</span>
+                </div>
+                <label class="toggle" for="setEmail">
+                  <input type="checkbox" id="setEmail" class="toggle__input">
+                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                </label>
+              </div>
+              <div class="settings-item">
+                <div class="settings-item__info">
+                  <span class="settings-item__label">Alertas de precio</span>
+                  <span class="settings-item__desc">Notificación cuando bajen precios de tus favoritos</span>
+                </div>
+                <label class="toggle" for="setPriceAlert">
+                  <input type="checkbox" id="setPriceAlert" class="toggle__input">
+                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                </label>
+              </div>
+              <div class="settings-item">
+                <div class="settings-item__info">
+                  <span class="settings-item__label">Newsletter semanal</span>
+                  <span class="settings-item__desc">Resumen de novedades y promociones</span>
+                </div>
+                <label class="toggle" for="setNewsletter">
+                  <input type="checkbox" id="setNewsletter" class="toggle__input">
+                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appearance -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">
+                <i data-lucide="palette"></i>
+                Apariencia
+              </h3>
+            </div>
+            <div class="settings-list">
+              <div class="settings-item">
+                <div class="settings-item__info">
+                  <span class="settings-item__label">Modo oscuro</span>
+                  <span class="settings-item__desc">Cambia la apariencia de la interfaz</span>
+                </div>
+                <label class="toggle" for="setDarkMode">
+                  <input type="checkbox" id="setDarkMode" class="toggle__input">
+                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Privacy -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">
+                <i data-lucide="shield"></i>
+                Privacidad
+              </h3>
+            </div>
+            <div class="settings-list">
+              <div class="settings-item">
+                <div class="settings-item__info">
+                  <span class="settings-item__label">Mostrar perfil público</span>
+                  <span class="settings-item__desc">Permite que otros usuarios vean tu perfil</span>
+                </div>
+                <label class="toggle" for="setPublicProfile">
+                  <input type="checkbox" id="setPublicProfile" class="toggle__input">
+                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                </label>
+              </div>
+              <div class="settings-item">
+                <div class="settings-item__info">
+                  <span class="settings-item__label">Historial de compras visible</span>
+                  <span class="settings-item__desc">Muestra tus compras en tu perfil</span>
+                </div>
+                <label class="toggle" for="setShowPurchases">
+                  <input type="checkbox" id="setShowPurchases" class="toggle__input">
+                  <span class="toggle__track"><span class="toggle__thumb"></span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="card card--danger">
+            <div class="card__header">
+              <h3 class="card__title">
+                <i data-lucide="alert-triangle"></i>
+                Zona de Peligro
+              </h3>
+            </div>
+            <div class="settings-list">
+              <div class="settings-item">
+                <div class="settings-item__info">
+                  <span class="settings-item__label">Eliminar cuenta</span>
+                  <span class="settings-item__desc">Elimina permanentemente tu cuenta y todos tus datos</span>
+                </div>
+                <button class="btn btn--danger" id="deleteAccountBtn">
+                  <i data-lucide="trash-2"></i>
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Address Modal -->
+  <div class="modal-overlay" id="addressModalOverlay" role="presentation"></div>
+  <div class="modal" id="addressModal" role="dialog" aria-modal="true" aria-labelledby="addressModalTitle">
+    <div class="modal__header">
+      <h2 class="modal__title" id="addressModalTitle">Nueva Dirección</h2>
+      <button class="modal__close" id="closeAddressModal" aria-label="Cerrar">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <form class="modal__body" id="addressForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="addrLabel">Etiqueta</label>
+          <select id="addrLabel" class="form-select" required>
+            <option value="">Seleccionar...</option>
+            <option value="Casa">Casa</option>
+            <option value="Trabajo">Trabajo</option>
+            <option value="Otro">Otro</option>
+          </select>
         </div>
-    </footer>
+        <div class="form-group">
+          <label class="form-label" for="addrName">Nombre del destinatario</label>
+          <input type="text" id="addrName" class="form-input" placeholder="Nombre completo" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="addrStreet">Dirección</label>
+        <input type="text" id="addrStreet" class="form-input" placeholder="Calle, colonia, número" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="addrCity">Ciudad</label>
+          <input type="text" id="addrCity" class="form-input" placeholder="Ciudad" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="addrDept">Departamento</label>
+          <select id="addrDept" class="form-select" required>
+            <option value="">Seleccionar...</option>
+            <option value="Atlántida">Atlántida</option>
+            <option value="Choluteca">Choluteca</option>
+            <option value="Colón">Colón</option>
+            <option value="Comayagua">Comayagua</option>
+            <option value="Copán">Copán</option>
+            <option value="Cortés">Cortés</option>
+            <option value="El Paraíso">El Paraíso</option>
+            <option value="Francisco Morazán">Francisco Morazán</option>
+            <option value="Gracias a Dios">Gracias a Dios</option>
+            <option value="Intibucá">Intibucá</option>
+            <option value="Islas de la Bahía">Islas de la Bahía</option>
+            <option value="La Paz">La Paz</option>
+            <option value="Lempira">Lempira</option>
+            <option value="Ocotepeque">Ocotepeque</option>
+            <option value="Olancho">Olancho</option>
+            <option value="Santa Bárbara">Santa Bárbara</option>
+            <option value="Valle">Valle</option>
+            <option value="Yoro">Yoro</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="addrPhone">Teléfono de contacto</label>
+        <input type="tel" id="addrPhone" class="form-input" placeholder="+504 0000-0000" required>
+      </div>
+      <label class="checkbox-label" for="addrDefault">
+        <input type="checkbox" id="addrDefault" class="checkbox-input">
+        <span class="checkbox-mark"></span>
+        Establecer como dirección predeterminada
+      </label>
+    </form>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--outline" id="cancelAddressModal">Cancelar</button>
+      <button type="submit" class="btn btn--primary" id="saveAddressBtn">
+        <i data-lucide="save"></i>
+        Guardar Dirección
+      </button>
+    </div>
+  </div>
 
-    <div class="toast-container" id="toastContainer"></div>
+  <!-- Card Modal -->
+  <div class="modal-overlay" id="cardModalOverlay" role="presentation"></div>
+  <div class="modal" id="cardModal" role="dialog" aria-modal="true" aria-labelledby="cardModalTitle">
+    <div class="modal__header">
+      <h2 class="modal__title" id="cardModalTitle">Nueva Tarjeta</h2>
+      <button class="modal__close" id="closeCardModal" aria-label="Cerrar">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <form class="modal__body" id="cardForm">
+      <!-- Card Preview -->
+      <div class="card-preview">
+        <div class="card-preview__inner" id="cardPreview">
+          <div class="card-preview__chip">
+            <svg width="36" height="28" viewBox="0 0 36 28" fill="none">
+              <rect width="36" height="28" rx="4" fill="#D4AF37"/>
+              <rect x="2" y="2" width="16" height="10" rx="2" fill="#C5A028" opacity="0.6"/>
+              <rect x="2" y="14" width="16" height="12" rx="2" fill="#C5A028" opacity="0.4"/>
+              <rect x="20" y="2" width="14" height="10" rx="2" fill="#C5A028" opacity="0.4"/>
+              <rect x="20" y="14" width="14" height="12" rx="2" fill="#C5A028" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="card-preview__number" id="previewNumber">•••• •••• •••• ••••</div>
+          <div class="card-preview__bottom">
+            <div class="card-preview__name" id="previewName">NOMBRE DEL TITULAR</div>
+            <div class="card-preview__expiry" id="previewExpiry">MM/AA</div>
+          </div>
+          <div class="card-preview__brand" id="cardBrandIcon">
+            <i data-lucide="credit-card"></i>
+          </div>
+        </div>
+      </div>
 
-    <script src="js/store.js"></script>
-    <script src="https://unpkg.com/lucide@1.27.0/dist/umd/lucide.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-    (function(){
-        var session=null;
-        try{
-            var raw=localStorage.getItem('techstore_session');
-            session=raw?JSON.parse(raw):null;
-        }catch(e){
-            session=null;
-        }
-        if(!session||!session.id){
-            window.location.href='cuenta.html';
-            return;
-        }
+      <div class="form-group">
+        <label class="form-label" for="cardNumber">Número de tarjeta</label>
+        <div class="form-input-wrap">
+          <input type="text" id="cardNumber" class="form-input" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric" required>
+          <span class="form-input-icon" id="cardBrandBadge"></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="cardName">Nombre del titular</label>
+        <input type="text" id="cardName" class="form-input" placeholder="Como aparece en la tarjeta" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="cardExpiry">Vencimiento</label>
+          <input type="text" id="cardExpiry" class="form-input" placeholder="MM/AA" maxlength="5" inputmode="numeric" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cardCvv">CVV</label>
+          <div class="form-input-wrap">
+            <input type="password" id="cardCvv" class="form-input" placeholder="•••" maxlength="4" inputmode="numeric" required>
+            <i data-lucide="eye-off" class="form-input-icon" id="toggleCvv"></i>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="cardType">Tipo de tarjeta</label>
+        <div class="card-type-selector">
+          <label class="card-type-option">
+            <input type="radio" name="cardType" value="credit" checked>
+            <span class="card-type-option__box">
+              <i data-lucide="credit-card"></i>
+              Crédito
+            </span>
+          </label>
+          <label class="card-type-option">
+            <input type="radio" name="cardType" value="debit">
+            <span class="card-type-option__box">
+              <i data-lucide="wallet"></i>
+              Débito
+            </span>
+          </label>
+        </div>
+      </div>
+      <label class="checkbox-label" for="cardDefault">
+        <input type="checkbox" id="cardDefault" class="checkbox-input">
+        <span class="checkbox-mark"></span>
+        Establecer como tarjeta predeterminada
+      </label>
+    </form>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--outline" id="cancelCardModal">Cancelar</button>
+      <button type="submit" class="btn btn--primary" id="saveCardBtn">
+        <i data-lucide="save"></i>
+        Guardar Tarjeta
+      </button>
+    </div>
+  </div>
 
-        var nameParts=(session.name||'').split(' ');
-        var initials=(nameParts[0]||'').charAt(0).toUpperCase()+(nameParts[nameParts.length-1]||'').charAt(0).toUpperCase();
+  <!-- Delete Account Modal -->
+  <div class="modal-overlay" id="deleteModalOverlay" role="presentation"></div>
+  <div class="modal modal--sm" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+    <div class="modal__header">
+      <h2 class="modal__title modal__title--danger" id="deleteModalTitle">
+        <i data-lucide="alert-triangle"></i>
+        Eliminar Cuenta
+      </h2>
+      <button class="modal__close" id="closeDeleteModal" aria-label="Cerrar">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="modal__body">
+      <p class="modal__text">Esta acción es <strong>irreversible</strong>. Se eliminarán permanentemente:</p>
+      <ul class="modal__list">
+        <li>Tu perfil y datos personales</li>
+        <li>Historial de pedidos</li>
+        <li>Direcciones guardadas</li>
+        <li>Métodos de pago</li>
+        <li>Lista de favoritos</li>
+      </ul>
+      <div class="form-group">
+        <label class="form-label" for="deleteConfirm">Escribe <strong>ELIMINAR</strong> para confirmar</label>
+        <input type="text" id="deleteConfirm" class="form-input" placeholder="ELIMINAR" autocomplete="off">
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--outline" id="cancelDeleteModal">Cancelar</button>
+      <button type="button" class="btn btn--danger" id="confirmDeleteBtn" disabled>
+        <i data-lucide="trash-2"></i>
+        Eliminar Definitivamente
+      </button>
+    </div>
+  </div>
 
-        document.getElementById('avatarInitials').textContent=initials;
-        document.getElementById('userName').textContent=session.name;
-        document.getElementById('userEmail').textContent=session.email;
-
-        var profileAvatar=document.querySelector('.profile-card__avatar span');
-        var profileName=document.querySelector('.profile-card__name');
-        var profileEmail=document.querySelector('.profile-card__email');
-        if(profileAvatar)profileAvatar.textContent=initials;
-        if(profileName)profileName.textContent=session.name;
-        if(profileEmail)profileEmail.textContent=session.email;
-
-        var fName=document.getElementById('profileName');
-        var fEmail=document.getElementById('profileEmail');
-        var fPhone=document.getElementById('profilePhone');
-        if(fName)fName.value=session.name||'';
-        if(fEmail)fEmail.value=session.email||'';
-        if(fPhone)fPhone.value=session.phone||'';
-
-        var profileForm=document.getElementById('profileForm');
-        if(profileForm){
-            profileForm.addEventListener('submit',function(e){
-                e.preventDefault();
-                var newName=fName?fName.value.trim():session.name;
-                var newEmail=fEmail?fEmail.value.trim():session.email;
-                var newPhone=fPhone?fPhone.value.trim():session.phone;
-                if(!newName||!newEmail){window.showToast('error','Error','Nombre y correo son obligatorios');return;}
-                session.name=newName;session.email=newEmail;session.phone=newPhone;
-                try{localStorage.setItem('techstore_session',JSON.stringify(session));}catch(e){}
-                var users=(function(){try{return JSON.parse(localStorage.getItem('techstore_users')||'[]');}catch(e){return[];}})();
-                var user=users.find(function(u){return u.id===session.id;});
-                if(user){user.name=newName;user.email=newEmail;user.phone=newPhone;try{localStorage.setItem('techstore_users',JSON.stringify(users));}catch(e){}}
-                var np=newName.split(' ');var ni=(np[0]||'').charAt(0).toUpperCase()+(np[np.length-1]||'').charAt(0).toUpperCase();
-                document.getElementById('avatarInitials').textContent=ni;
-                document.getElementById('userName').textContent=newName;
-                document.getElementById('userEmail').textContent=newEmail;
-                if(profileAvatar)profileAvatar.textContent=ni;
-                if(profileName)profileName.textContent=newName;
-                if(profileEmail)profileEmail.textContent=newEmail;
-                window.showToast('success','Guardado','Perfil actualizado correctamente');
-            });
-        }
-
-        /* ── ORDERS ──────────────────────────────────── */
-        var allOrders=(function(){try{return JSON.parse(localStorage.getItem('techstore_orders')||'[]');}catch(e){return[];}})().filter(function(o){return o.userId===session.id;});
-        var statusLabels={pending:{label:'Pendiente',icon:'clock'},shipped:{label:'Enviado',icon:'truck'},delivered:{label:'Entregado',icon:'circle-check'},cancelled:{label:'Cancelado',icon:'circle-x'}};
-        var statusNames={pending:'pending',shipped:'shipped',delivered:'delivered',cancelled:'cancelled'};
-
-        function formatPrice(n){return '$'+Number(n).toLocaleString('en-US');}
-        function formatDate(iso){var d=new Date(iso);var months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];return d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();}
-
-        function renderOrders(filter){
-            var list=document.getElementById('ordersList');
-            var empty=document.getElementById('ordersEmpty');
-            var filtered=filter&&filter!=='all'?allOrders.filter(function(o){return o.status===filter;}):allOrders;
-
-            var counts={all:allOrders.length,pending:0,shipped:0,delivered:0};
-            allOrders.forEach(function(o){if(counts[o.status]!==undefined)counts[o.status]++;});
-            var cA=document.getElementById('countAll');if(cA)cA.textContent=counts.all;
-            var cP=document.getElementById('countPending');if(cP)cP.textContent=counts.pending;
-            var cS=document.getElementById('countShipped');if(cS)cS.textContent=counts.shipped;
-            var cD=document.getElementById('countDelivered');if(cD)cD.textContent=counts.delivered;
-
-            var existing=list.querySelectorAll('.order-card');
-            existing.forEach(function(el){el.remove();});
-
-            if(filtered.length===0){if(empty)empty.style.display='block';return;}
-            if(empty)empty.style.display='none';
-
-            filtered.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
-
-            filtered.forEach(function(order){
-                var st=statusLabels[order.status]||statusLabels.pending;
-                var card=document.createElement('div');
-                card.className='order-card';
-                card.dataset.status=order.status;
-
-                var productsHtml='';
-                order.items.forEach(function(item){
-                    productsHtml+='<div class="order-card__product"><div class="order-card__product-img"><i data-lucide="'+(item.icon||'package')+'"></i></div><div class="order-card__product-info"><h4>'+item.name+'</h4></div><div class="order-card__product-qty"><span>x'+item.qty+'</span></div><div class="order-card__product-price">'+formatPrice(item.price*item.qty)+'</div></div>';
-                });
-
-                var actionsHtml='';
-                if(order.status==='pending'){
-                    actionsHtml='<button class="order-card__btn order-card__btn--cancel" onclick="cancelOrder(\''+order.id+'\')"><i data-lucide="circle-x"></i> Cancelar</button>';
-                }else if(order.status==='shipped'){
-                    actionsHtml='<a href="tracking.html" class="order-card__btn order-card__btn--track"><i data-lucide="map-pin"></i> Rastrear</a>';
-                }else if(order.status==='delivered'){
-                    actionsHtml='<button class="order-card__btn order-card__btn--reorder" onclick="reorder(\''+order.id+'\')"><i data-lucide="refresh-cw"></i> Volver a Comprar</button>';
-                }
-
-                card.innerHTML='<div class="order-card__header"><div class="order-card__id"><span class="order-card__label">Pedido</span><span class="order-card__number">#'+order.id+'</span></div><div class="order-card__date"><span class="order-card__label">Fecha</span><span>'+formatDate(order.date)+'</span></div><div class="order-card__status order-card__status--'+order.status+'"><i data-lucide="'+st.icon+'"></i> '+st.label+'</div></div><div class="order-card__products">'+productsHtml+'</div><div class="order-card__footer"><div class="order-card__total"><span>Total:</span><strong>'+formatPrice(order.total)+'</strong></div><div class="order-card__actions">'+actionsHtml+'</div></div>';
-
-                list.appendChild(card);
-            });
-            if(window.lucide)lucide.createIcons();
-        }
-
-        window.cancelOrder=function(orderId){
-            var orders=(function(){try{return JSON.parse(localStorage.getItem('techstore_orders')||'[]');}catch(e){return[];}})();
-            var order=orders.find(function(o){return o.id===orderId;});
-            if(order){order.status='cancelled';try{localStorage.setItem('techstore_orders',JSON.stringify(orders));}catch(e){}allOrders=orders.filter(function(o){return o.userId===session.id;});renderOrders('all');window.showToast('info','Pedido cancelado','El pedido #'+orderId+' ha sido cancelado');}
-        };
-
-        window.reorder=function(orderId){
-            var orders=(function(){try{return JSON.parse(localStorage.getItem('techstore_orders')||'[]');}catch(e){return[];}})();
-            var order=orders.find(function(o){return o.id===orderId;});
-            if(!order)return;
-            var cart=(function(){try{return JSON.parse(localStorage.getItem('techstore_cart')||'[]');}catch(e){return[];}})();
-            order.items.forEach(function(item){
-                var existing=cart.find(function(c){return c.id===item.id;});
-                if(existing){existing.qty+=item.qty;}else{cart.push({id:item.id,qty:item.qty});}
-            });
-            try{localStorage.setItem('techstore_cart',JSON.stringify(cart));}catch(e){}
-            window.showToast('success','Agregado','Productos agregados al carrito');
-        };
-
-        renderOrders('all');
-
-        var totalOrders=allOrders.length;
-        var totalSpent=allOrders.reduce(function(s,o){return s+o.total;},0);
-        var statOrders=document.getElementById('statOrders');if(statOrders)statOrders.textContent=totalOrders;
-        var statSpent=document.getElementById('statSpent');if(statSpent)statSpent.textContent=formatPrice(totalSpent);
-        var favKey='techstore_favorites_'+session.id;
-        var favorites=(function(){try{return JSON.parse(localStorage.getItem(favKey)||'[]');}catch(e){return[];}})();
-        var statFav=document.getElementById('statFavorites');if(statFav)statFav.textContent=favorites.length;
-
-        document.querySelectorAll('#ordersFilter .orders-filter__btn').forEach(function(btn){
-            btn.addEventListener('click',function(){
-                document.querySelectorAll('#ordersFilter .orders-filter__btn').forEach(function(b){b.classList.remove('orders-filter__btn--active');});
-                btn.classList.add('orders-filter__btn--active');
-                renderOrders(btn.dataset.filter);
-            });
-        });
-
-        /* ── SETTINGS ──────────────────────────────── */
-        var settingsKey='techstore_settings_'+session.id;
-        var settings=(function(){try{return JSON.parse(localStorage.getItem(settingsKey)||'{"emailNotif":true,"smsTracking":true,"newsletter":false,"twoFactor":false}');}catch(e){return{emailNotif:true,smsTracking:true,newsletter:false,twoFactor:false};}})();
-        var toggles=document.querySelectorAll('.settings-card__option input[type=checkbox]');
-        toggles.forEach(function(t,i){
-            var keys=['emailNotif','smsTracking','newsletter','twoFactor'];
-            if(keys[i])t.checked=settings[keys[i]];
-            t.addEventListener('change',function(){
-                settings[keys[i]]=t.checked;
-                try{localStorage.setItem(settingsKey,JSON.stringify(settings));}catch(e){}
-                window.showToast('success','Configuracion','Preferencia actualizada');
-            });
-        });
-
-        /* ── ADDRESSES ─────────────────────────────── */
-        var addrKey='techstore_addresses_'+session.id;
-        var addresses=(function(){try{return JSON.parse(localStorage.getItem(addrKey)||'[{"id":1,"type":"Casa","address":"Av. Reforma 123, Col. Centro","city":"Ciudad de Honduras","zip":"11101","phone":"'+(session.phone||'')+'","isPrimary":true}]');}catch(e){return[{id:1,type:'Casa',address:'Av. Reforma 123, Col. Centro',city:'Ciudad de Honduras',zip:'11101',phone:session.phone||'',isPrimary:true}];}})();
-
-        function renderAddresses(){
-            var grid=document.getElementById('addressesGrid');
-            grid.innerHTML='';
-            addresses.forEach(function(addr){
-                var card=document.createElement('div');
-                card.className='address-card'+(addr.isPrimary?' address-card--primary':'');
-                card.innerHTML='<div class="address-card__badge">'+(addr.isPrimary?'Principal':'Secundaria')+'</div><div class="address-card__icon"><i data-lucide="'+(addr.type==='Casa'?'home':'building')+'"></i></div><h3 class="address-card__title">'+addr.type+'</h3><p class="address-card__detail">'+addr.address+'<br>'+addr.city+', CP '+addr.zip+'</p><p class="address-card__phone"><i data-lucide="phone"></i> '+addr.phone+'</p><div class="address-card__actions"><button class="address-card__btn address-card__btn--edit" onclick="editAddress('+addr.id+')"><i data-lucide="pencil"></i> Editar</button><button class="address-card__btn address-card__btn--delete" onclick="deleteAddress('+addr.id+')"><i data-lucide="trash-2"></i> Eliminar</button></div>';
-                grid.appendChild(card);
-            });
-            var addCard=document.createElement('div');
-            addCard.className='address-card address-card--add';
-            addCard.id='addAddressBtn';
-            addCard.onclick=function(){addAddress();};
-            addCard.innerHTML='<div class="address-card__add-icon"><i data-lucide="plus"></i></div><h3>Agregar Direccion</h3><p>Click para agregar una nueva direccion</p>';
-            grid.appendChild(addCard);
-            if(window.lucide)lucide.createIcons();
-        }
-
-        window.addAddress=function(){
-            var type=prompt('Tipo de dirección (Casa, Oficina, etc.):');
-            if(!type)return;
-            var addr=prompt('Dirección completa:');
-            if(!addr)return;
-            var city=prompt('Ciudad:');
-            if(!city)return;
-            var zip=prompt('Codigo postal:');
-            if(!zip)return;
-            var phone=prompt('Telefono:',session.phone||'');
-            addresses.push({id:Date.now(),type:type,address:addr,city:city,zip:zip,phone:phone||'',isPrimary:addresses.length===0});
-            try{localStorage.setItem(addrKey,JSON.stringify(addresses));}catch(e){}
-            renderAddresses();
-            window.showToast('success','Dirección agregada',type+' agregada correctamente');
-        };
-
-        window.editAddress=function(id){
-            var addr=addresses.find(function(a){return a.id===id;});
-            if(!addr)return;
-            var newAddr=prompt('Direccion:',addr.address);
-            if(newAddr)addr.address=newAddr;
-            var newCity=prompt('Ciudad:',addr.city);
-            if(newCity)addr.city=newCity;
-            var newZip=prompt('Codigo postal:',addr.zip);
-            if(newZip)addr.zip=newZip;
-            try{localStorage.setItem(addrKey,JSON.stringify(addresses));}catch(e){}
-            renderAddresses();
-            window.showToast('success','Dirección actualizada','Datos guardados correctamente');
-        };
-
-        window.deleteAddress=function(id){
-            if(!confirm('Eliminar esta direccion?'))return;
-            addresses=addresses.filter(function(a){return a.id!==id;});
-            if(addresses.length>0)addresses[0].isPrimary=true;
-            try{localStorage.setItem(addrKey,JSON.stringify(addresses));}catch(e){}
-            renderAddresses();
-            window.showToast('info','Dirección eliminada','Dirección removida');
-        };
-
-        renderAddresses();
-
-        /* ── PAYMENT CARDS ─────────────────────────── */
-        var payKey='techstore_payments_'+session.id;
-        var payments=(function(){try{return JSON.parse(localStorage.getItem(payKey)||'[{"id":1,"number":"**** **** **** 4589","holder":(session.name||"USUARIO").toUpperCase(),"expiry":"12/26","brand":"visa"}]');}catch(e){return[{id:1,number:'**** **** **** 4589',holder:(session.name||'USUARIO').toUpperCase(),expiry:'12/26',brand:'visa'}];}})();
-
-        function renderPayments(){
-            var grid=document.getElementById('paymentGrid');
-            grid.innerHTML='';
-            payments.forEach(function(card){
-                var el=document.createElement('div');
-                el.className='payment-card payment-card--'+card.brand;
-                el.innerHTML='<div class="payment-card__chip"><i data-lucide="cpu"></i></div><div class="payment-card__type"><i data-lucide="credit-card"></i></div><div class="payment-card__number">'+card.number+'</div><div class="payment-card__info"><div class="payment-card__holder"><span class="payment-card__label">Titular</span><span class="payment-card__value">'+card.holder+'</span></div><div class="payment-card__expiry"><span class="payment-card__label">Vence</span><span class="payment-card__value">'+card.expiry+'</span></div></div><div class="payment-card__actions"><button class="payment-card__btn" onclick="editPayment('+card.id+')"><i data-lucide="pencil"></i></button><button class="payment-card__btn payment-card__btn--delete" onclick="deletePayment('+card.id+')"><i data-lucide="trash-2"></i></button></div>';
-                grid.appendChild(el);
-            });
-            var addCard=document.createElement('div');
-            addCard.className='payment-card payment-card--add';
-            addCard.id='addPaymentBtn';
-            addCard.onclick=function(){addPayment();};
-            addCard.innerHTML='<div class="payment-card__add-icon"><i data-lucide="plus"></i></div><h3>Agregar Tarjeta</h3><p>Nueva tarjeta de credito o debito</p>';
-            grid.appendChild(addCard);
-            if(window.lucide)lucide.createIcons();
-        }
-
-        window.addPayment=function(){
-            var num=prompt('Numero de tarjeta (ultimos 4 digitos):');
-            if(!num)return;
-            num='**** **** **** '+num.slice(-4);
-            var holder=prompt('Nombre del titular:',(session.name||'').toUpperCase());
-            if(!holder)return;
-            var exp=prompt('Vencimiento (MM/AA):','12/26');
-            if(!exp)return;
-            payments.push({id:Date.now(),number:num,holder:holder.toUpperCase(),expiry:exp,brand:'visa'});
-            try{localStorage.setItem(payKey,JSON.stringify(payments));}catch(e){}
-            renderPayments();
-            window.showToast('success','Tarjeta agregada',num+' agregada correctamente');
-        };
-
-        window.editPayment=function(id){
-            var card=payments.find(function(c){return c.id===id;});
-            if(!card)return;
-            var newHolder=prompt('Titular:',card.holder);
-            if(newHolder)card.holder=newHolder.toUpperCase();
-            var newExp=prompt('Vencimiento:',card.expiry);
-            if(newExp)card.expiry=newExp;
-            try{localStorage.setItem(payKey,JSON.stringify(payments));}catch(e){}
-            renderPayments();
-            window.showToast('success','Tarjeta actualizada','Datos guardados correctamente');
-        };
-
-        window.deletePayment=function(id){
-            if(!confirm('Eliminar esta tarjeta?'))return;
-            payments=payments.filter(function(c){return c.id!==id;});
-            try{localStorage.setItem(payKey,JSON.stringify(payments));}catch(e){}
-            renderPayments();
-            window.showToast('info','Tarjeta eliminada','Tarjeta removida');
-        };
-
-        renderPayments();
-    })();
-    </script>
-    <script>lucide.createIcons();</script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/account.js"></script>
 </body>
 </html>

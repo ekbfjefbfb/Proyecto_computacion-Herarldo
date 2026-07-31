@@ -1,36 +1,48 @@
 /* ============================================ */
-/* HISTORIAL DE PEDIDOS                         */
-/* Filtros, tarjetas de pedido, estados         */
+/* PEDIDOS — Filtros + Cards + Lista            */
 /* ============================================ */
 
-/* ── FILTROS DE PEDIDOS ──────────────────────── */
-.orders-filter {
+/* ── FILTROS ────────────────────────────────── */
+.orders-filters {
     display: flex;
     gap: var(--space-sm);
     margin-bottom: var(--space-xl);
-    flex-wrap: wrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
 }
 
-.orders-filter__btn {
+.orders-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.orders-filter {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-lg);
+    gap: 6px;
+    padding: 8px 16px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-full);
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    transition: all var(--transition-normal);
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
 }
 
-.orders-filter__btn:hover {
+.orders-filter i {
+    width: 16px;
+    height: 16px;
+}
+
+.orders-filter:hover {
     border-color: var(--color-primary);
     color: var(--text-primary);
 }
 
-.orders-filter__btn--active {
+.orders-filter--active {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: white;
@@ -38,32 +50,63 @@
 
 .orders-filter__count {
     padding: 1px 8px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-full);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
 }
 
-/* ── TARJETA DE PEDIDO ───────────────────────── */
+.orders-filter:not(.orders-filter--active) .orders-filter__count {
+    background: rgba(var(--color-primary-rgb), 0.15);
+    color: var(--color-primary-light);
+}
+
+/* ── EMPTY STATE ────────────────────────────── */
+.orders-empty {
+    text-align: center;
+    padding: var(--space-3xl) var(--space-xl);
+    color: var(--text-muted);
+}
+
+.orders-empty i {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-md);
+    opacity: 0.4;
+}
+
+.orders-empty h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.orders-empty p {
+    margin-bottom: var(--space-lg);
+}
+
+/* ── ORDER CARD ─────────────────────────────── */
 .order-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     margin-bottom: var(--space-md);
     overflow: hidden;
-    transition: all var(--transition-normal);
+    transition: border-color var(--transition-fast);
 }
 
 .order-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: var(--shadow-glow);
+    border-color: rgba(var(--color-primary-rgb), 0.3);
 }
 
-/* Cabecera del pedido */
 .order-card__header {
     display: flex;
     align-items: center;
     gap: var(--space-xl);
-    padding: var(--space-lg) var(--space-xl);
+    padding: var(--space-md) var(--space-xl);
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border-color);
     flex-wrap: wrap;
@@ -71,7 +114,7 @@
 
 .order-card__label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -80,49 +123,56 @@
 
 .order-card__number {
     font-weight: 700;
+    font-size: 0.9rem;
     color: var(--color-primary-light);
 }
 
-/* ── BADGES DE ESTADO ────────────────────────── */
 .order-card__status {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-xs) var(--space-md);
+    gap: 6px;
+    padding: 4px 14px;
     border-radius: var(--radius-full);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     margin-left: auto;
 }
 
+.order-card__status i {
+    width: 14px;
+    height: 14px;
+}
+
 .order-card__status--delivered {
-    background: rgba(var(--color-success-rgb), 0.15);
+    background: rgba(var(--color-success-rgb), 0.12);
     color: var(--color-success);
-    border: 1px solid var(--color-success);
 }
 
 .order-card__status--shipped {
-    background: rgba(var(--color-info-rgb), 0.15);
+    background: rgba(var(--color-info-rgb), 0.12);
     color: var(--color-info);
-    border: 1px solid var(--color-info);
 }
 
 .order-card__status--pending {
-    background: rgba(var(--color-warning-rgb), 0.15);
+    background: rgba(var(--color-warning-rgb), 0.12);
     color: var(--color-warning);
-    border: 1px solid var(--color-warning);
 }
 
-/* ── PRODUCTOS DEL PEDIDO ────────────────────── */
+.order-card__status--confirmed {
+    background: rgba(var(--color-primary-rgb), 0.12);
+    color: var(--color-primary-light);
+}
+
+/* ── ORDER PRODUCTS ─────────────────────────── */
 .order-card__products {
-    padding: var(--space-md) var(--space-xl);
+    padding: var(--space-sm) var(--space-xl);
 }
 
 .order-card__product {
     display: flex;
     align-items: center;
     gap: var(--space-md);
-    padding: var(--space-md) 0;
+    padding: var(--space-sm) 0;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -131,70 +181,68 @@
 }
 
 .order-card__product-img {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     background: var(--bg-surface);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
     color: var(--color-primary-light);
     flex-shrink: 0;
 }
 
-.order-card__product-info { flex: 1; }
+.order-card__product-img i {
+    width: 20px;
+    height: 20px;
+}
+
+.order-card__product-info {
+    flex: 1;
+    min-width: 0;
+}
 
 .order-card__product-info h4 {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .order-card__product-info p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.order-card__product-qty {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
 }
 
 .order-card__product-price {
     font-weight: 600;
+    font-size: 0.9rem;
     color: var(--text-primary);
-    min-width: 100px;
-    text-align: right;
+    white-space: nowrap;
 }
 
-/* ── FOOTER DEL PEDIDO ───────────────────────── */
+/* ── ORDER FOOTER ───────────────────────────── */
 .order-card__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-lg) var(--space-xl);
+    padding: var(--space-md) var(--space-xl);
     background: var(--bg-surface);
     border-top: 1px solid var(--border-color);
     flex-wrap: wrap;
     gap: var(--space-md);
 }
 
-.order-card__total {
-    font-size: 1rem;
-}
-
 .order-card__total span {
+    font-size: 0.85rem;
     color: var(--text-muted);
-    margin-right: var(--space-sm);
+    margin-right: var(--space-xs);
 }
 
 .order-card__total strong {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--color-primary-light);
 }
 
-/* ── BOTONES DE ACCION ───────────────────────── */
 .order-card__actions {
     display: flex;
     gap: var(--space-sm);
@@ -203,12 +251,17 @@
 .order-card__btn {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-lg);
+    gap: 6px;
+    padding: 6px 14px;
     border-radius: var(--radius-md);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    transition: all var(--transition-normal);
+    transition: all var(--transition-fast);
+}
+
+.order-card__btn i {
+    width: 14px;
+    height: 14px;
 }
 
 .order-card__btn--track {
@@ -218,13 +271,12 @@
 
 .order-card__btn--track:hover {
     background: var(--color-primary-dark);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .order-card__btn--review {
-    background: rgba(var(--color-warning-rgb), 0.15);
+    background: rgba(var(--color-warning-rgb), 0.12);
     color: var(--color-warning);
-    border: 1px solid var(--color-warning);
 }
 
 .order-card__btn--review:hover {
@@ -232,26 +284,12 @@
     color: var(--text-on-primary);
 }
 
-.order-card__btn--reorder {
-    background: var(--bg-surface);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-}
-
-.order-card__btn--reorder:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary-light);
-}
-
 .order-card__btn--cancel {
-    background: rgba(var(--color-error-rgb), 0.15);
+    background: rgba(var(--color-error-rgb), 0.12);
     color: var(--color-error);
-    border: 1px solid var(--color-error);
 }
 
 .order-card__btn--cancel:hover {
     background: var(--color-error);
     color: white;
 }
-
-.order-card--hidden { display: none; }
