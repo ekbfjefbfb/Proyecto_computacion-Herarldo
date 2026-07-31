@@ -249,6 +249,10 @@
   border: none;
   outline: none;
   -moz-appearance: textfield;
+  cursor: default;
+  caret-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Oculta flechas del input number en Chrome */

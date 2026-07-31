@@ -49,8 +49,41 @@ button:active, .filter-btn:active, .variant-btn:active {
     transform: scale(0.97) !important;
 }
 
+/* ── GHOST CURSOR FIX: prevent I-beam on non-input elements ── */
+.product-gallery,
+.product-info,
+.product-tabs,
+.review-card,
+.review-form,
+.tab-description,
+.specs-table,
+.related-products {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Re-enable text selection on actual inputs and textareas */
+input, textarea, select,
+.review-form__textarea,
+.review-form__input,
+.form-input,
+.form-select {
+    user-select: text;
+    -webkit-user-select: text;
+    caret-color: auto;
+}
+
+/* Re-enable selection on review text content */
+.review-card__text p,
+.tab-description p {
+    user-select: text;
+    -webkit-user-select: text;
+}
+
 .product-card, .related-card {
     contain: layout style;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .product-card:hover, .related-card:hover {

@@ -21,6 +21,8 @@
   border-radius: var(--radius-card);
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Imagen dentro del contenedor principal */
