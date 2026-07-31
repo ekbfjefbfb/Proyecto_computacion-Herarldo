@@ -3,8 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="TechStore - Detalle de Producto">
-  <title>TechStore | MacBook Pro M3</title>
+  <meta name="description" content="TechStore Honduras - Encuentra laptops, smartphones, accesorios y mas.">
+  <title>TechStore | Producto</title>
+  <meta property="og:type" content="product">
+  <meta property="og:locale" content="es_HN">
+  <meta property="og:site_name" content="TechStore Honduras">
+  <script>
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var id = parseInt(params.get('id'), 10);
+    if (!id) return;
+    var PRODUCTS = [
+      {id:1,name:'NovaBook Air 13',price:899,specs:'8GB RAM · 256GB SSD · Intel i5',img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=800&fit=crop'},
+      {id:2,name:'NovaBook Pro 14',price:1299,specs:'16GB RAM · 512GB SSD · Intel i7',img:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=800&fit=crop'},
+      {id:3,name:'NovaBook Ultra X',price:1899,specs:'32GB RAM · 1TB SSD · RTX 4060',img:'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&h=800&fit=crop'},
+      {id:4,name:'Zenith X12',price:799,specs:'128GB · Camara 50MP · 5G',img:'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=800&fit=crop'},
+      {id:5,name:'Zenith X12 Mini',price:649,specs:'128GB · Camara 48MP · Compacto',img:'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&h=800&fit=crop'},
+      {id:6,name:'Pulse Edge 5G',price:549,specs:'256GB · Camara 108MP · 5G',img:'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&h=800&fit=crop'},
+      {id:7,name:'AuroraBuds Pro',price:149,specs:'Cancelacion de ruido · 30h bateria',img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=800&fit=crop'},
+      {id:8,name:'VoltCharge 65W GaN',price:39,specs:'Carga rapida · USB-C · GaN',img:'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&h=800&fit=crop'},
+      {id:9,name:'HyperKey Mechanical RGB',price:89,specs:'Switches mecanicos · RGB · Anti-ghost',img:'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=800&h=800&fit=crop'},
+      {id:10,name:'NexMouse Wireless Pro',price:49,specs:'Inalambrico · 16000 DPI · RGB',img:'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&h=800&fit=crop'},
+      {id:11,name:'ArcadeX Controller Pro',price:69,specs:'Inalambrico · Vibracion dual · USB-C',img:'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=800&h=800&fit=crop'},
+      {id:12,name:'PixelView 27" 165Hz',price:329,specs:'165Hz · 1ms · IPS QHD',img:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&h=800&fit=crop'},
+      {id:13,name:'QuantumConsole One',price:499,specs:'4K · 1TB SSD · Ray Tracing',img:'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&h=800&fit=crop'},
+      {id:14,name:'NovaPad 11 Pro',price:549,specs:'11" OLED · 256GB · Stylus',img:'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=800&fit=crop'},
+      {id:15,name:'NovaPad Mini',price:329,specs:'10.9" LCD · 128GB · Compacta',img:'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=800&h=800&fit=crop'},
+      {id:16,name:'LuminaHub Smart Hub',price:89,specs:'Zigbee · Matter · Pantalla 7"',img:'https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop'},
+      {id:17,name:'LuminaCam 2K',price:49,specs:'2K · Visibilidad nocturna · IA',img:'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=800&fit=crop'},
+      {id:18,name:'LuminaSwitch Pro',price:29,specs:'Matter · WiFi · Panel tactil',img:'https://images.unsplash.com/photo-1523475496153-3d6cc0f0bf19?w=800&h=800&fit=crop'}
+    ];
+    var p = PRODUCTS.find(function(x){return x.id===id;});
+    if (!p) return;
+    document.title = 'TechStore | ' + p.name;
+    var setMeta = function(attr,content){
+      var el = document.querySelector('meta[property="'+attr+'"]') || document.querySelector('meta[name="'+attr+'"]');
+      if(el){el.setAttribute('content',content);}
+    };
+    setMeta('description','TechStore Honduras - ' + p.name + ' — $' + p.price.toLocaleString('en-US') + ' — ' + p.specs);
+    setMeta('og:title','TechStore | ' + p.name);
+    setMeta('og:description',p.name + ' por $' + p.price.toLocaleString('en-US') + ' — ' + p.specs);
+    setMeta('og:image',p.img);
+    setMeta('og:url',window.location.href);
+    setMeta('twitter:card','summary_large_image');
+    setMeta('twitter:title','TechStore | ' + p.name);
+    setMeta('twitter:description',p.name + ' por $' + p.price.toLocaleString('en-US'));
+    setMeta('twitter:image',p.img);
+  })();
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0A0F'/%3E%3Cpath d='M55 8 L22 56 H46 L40 92 L82 42 H56 Z' fill='%2300CEC9'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
