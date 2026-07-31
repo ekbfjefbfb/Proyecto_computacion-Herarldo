@@ -1,13 +1,10 @@
 /*
-  gallery.css — Galería de imágenes con zoom
+  gallery.css — Galería de imágenes de producto
   Propósito:
     - Layout sticky de la galería (lado izquierdo)
-    - Imagen principal con efecto de lupa (zoom lens)
-    - Panel de zoom que muestra el área ampliada
+    - Imagen principal con hover scale suave
     - Miniaturas navegables debajo de la imagen principal
     - Badges superpuestos (Nuevo, Exclusivo, etc.)
-  Responsive:
-    - En mobile el zoom se desactiva (touch incompatible con hover)
 */
 
 /* Contenedor sticky de toda la galería */
@@ -23,7 +20,6 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius-card);
   overflow: hidden;
-  cursor: crosshair;
   aspect-ratio: 1 / 1;
 }
 
@@ -35,6 +31,11 @@
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.gallery-main:hover img {
+  transform: scale(1.02);
 }
 
 /* Fallback con icono si no hay imagen */
@@ -49,57 +50,47 @@
   background: var(--bg-surface);
 }
 
-/*
-  Lupa de zoom (lens)
-  Sigue al cursor dentro de gallery-main.
-  Se oculta por defecto, aparece en hover.
-  Transform centra el lens en el cursor (translate -50%).
-*/
-.gallery-zoom-lens {
+/* Badges sobre la imagen */
+.gallery-badges {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 120px;
-  height: 120px;
-  background: rgba(var(--color-primary-rgb), 0.15);
-  border: 2px solid var(--color-primary);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 3;
 }
 
-.gallery-main:hover .gallery-zoom-lens {
-  opacity: 1;
+.gallery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/*
-  Panel de resultado del zoom
-  Se muestra a la derecha de la imagen principal.
-  Contiene la misma imagen pero escalada y desplazada
-  para mostrar el área bajo el lens ampliada.
-*/
-.gallery-zoom-result {
-  position: absolute;
-  top: 0;
-  left: calc(100% + var(--space-md));
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  z-index: var(--z-dropdown);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--transition-fast), visibility var(--transition-fast);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
+.gallery-badge--new {
+  background: rgba(var(--color-secondary-rgb), 0.2);
+  color: var(--color-secondary);
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.3);
 }
 
-.gallery-zoom-result.active {
-  opacity: 1;
-  visibility: visible;
+.gallery-badge--exclusive {
+  background: rgba(var(--color-primary-rgb), 0.2);
+  color: var(--color-primary-light);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+}
+
+.gallery-badge--sale {
+  background: rgba(var(--color-accent-rgb), 0.2);
+  color: var(--color-accent);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
 }
 
 /* Tira de miniaturas */
@@ -117,9 +108,10 @@
   border: 2px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   background: var(--bg-surface);
   flex-shrink: 0;
+  padding: 0;
 }
 
 .gallery-thumb:hover {
@@ -147,29 +139,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
-  color: var(--text-muted);
 }
-
-/* Badges superpuestos en la imagen (esquina superior izq) */
-.gallery-badge {
-  position: absolute;
-  top: var(--space-md);
-  left: var(--space-md);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.gallery-badge__item {
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: white;
-}
-
-.gallery-badge__item--sale { background: var(--color-error); }
-.gallery-badge__item--new { background: var(--color-success); }
-.gallery-badge__item--exclusive { background: var(--color-accent); }

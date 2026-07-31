@@ -23,11 +23,6 @@
         margin: 0 auto;
     }
 
-    .gallery-zoom-lens,
-    .gallery-zoom-result {
-        display: none !important;
-    }
-
     .related-grid {
         grid-template-columns: repeat(2, 1fr);
     }
